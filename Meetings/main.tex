@@ -1,0 +1,67 @@
+%implementing document formatting:
+\input{preamble.tex}
+%Vectors
+\renewcommand{\vec}[1]{\boldsymbol{\mathbf{#1}}}
+\begin{document}
+\renewcommand\chaptername{KAPITEL}
+\renewcommand\contentsname{Indhold}
+\renewcommand\figurename{Figur}
+\renewcommand\tablename{Tabel}
+
+\section*{Supervisor meeting\\ \small Wednesday, 7th of September 2016}
+
+\subsection{Vicon}
+\begin{itemize}
+  \item[-] Access and introduction for vicon room done.
+  \item[-] Vicon system is fast enough for stability control.
+  \item[-] The information for stability control must be revived by the controlling unit at a rate of 5-10 Hz for stable flight.
+\end{itemize}
+
+\subsection{Hardware}
+\begin{itemize}
+  \item[-] Control externally and access to internal measurements is possible with the older quad rotor.
+  \item[-] New platform is also an option, either educational or hobby.
+\end{itemize}
+
+\subsection{Project Scope}
+\begin{itemize}
+  \item[-] Distributed systems are two separate systems interacting.
+  \item[-] On board local stabilization control is an option.
+  \item[-] Information can be passed down from the quadrotor (rotor speed, angles, etc).
+  \item[-] Significantly easier to control it with a remote than flying between coordinates.
+\end{itemize}
+
+\subsection{Meetings \& Reading Material}
+\begin{itemize}
+  \item[-] Send material 24 hours in advance.
+  \item[-] Usually meetings on Wednesdays at 11.00.
+  \item[-] The entire report must be sent every time along with pages to be reviewed.
+  \item[-] Mail subject should contain group-number.
+\end{itemize}
+
+\subsection{Worksheet \& Paper}
+\begin{itemize}
+  \item[-] The paper should be 6-8 pages.
+  \item[-] When writing the paper, assume that people are at a very high level of knowledge.
+  \item[-] The worksheets do not have to look nice.
+\end{itemize}
+
+\subsection{Miscellaneous}
+\begin{itemize}
+  \item[-] Reading material: Anders will provide some student reports.
+  \item[-] We should think of how far we want to go with modeling.
+  \item[-] The coordinate system rotates with the quadrotor.
+  \item[-] The "global" coordinate system is called inertial.
+  \item[-] The "local" coordinate system is called body.
+  \item[-] Z-axis pointing down (up is negative).
+  \item[-] The shape of the wing is called airfoil.
+  \item[-] Primarily pushing air: Newtonian.
+  \item[-] Bernoulli effect is caused by the shape of the airfoil.
+  \item[-] Propeller speed is what we need to control and airfoil dynamics can be neglected in near equilibrium flight.
+  \item[-] When moving sideways some z-axis-thrust is lost, which means you have to throttle up.
+\end{itemize}
+
+\subsection{Next Supervisor Meeting}
+Wednesdays, 21st of September at 11.00
+
+\end{document}
