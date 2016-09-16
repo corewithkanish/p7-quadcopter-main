@@ -1,0 +1,73 @@
+\chapter{Figures}
+
+% Include one figure
+\begin{figure}[H] 
+	\centering
+	\includegraphics[scale=1.3]{figures/CubliCorner-700x4302}
+	\caption{A Cubli balancing on one of its corners.\cite{RAndrea}}
+	\label{CubliCorner}
+\end{figure}\vspace{-18pt}
+
+% Include to pictures in a row, with different captures
+\begin{minipage}{\linewidth}
+	\begin{minipage}{0.45\linewidth}
+		\begin{figure}[H]
+			\includegraphics[scale=.5]{figures/PotentiometerResolution}
+			\centering
+			\captionsetup{justification=centering}
+			\captionof{figure}{Potentiometer measurements in volts and the corresponding values that the ADC provides.}
+			\label{PotentiometerResolution}
+		\end{figure}
+	\end{minipage}
+	\hspace{0.03\linewidth}
+	\begin{minipage}{0.45\linewidth}
+		\begin{figure}[H]
+			\includegraphics[scale=.5]{figures/PotentiometerResolutionDegRad}
+			\centering
+			\captionsetup{justification=centering}
+			\captionof{figure}{Potentiometer measurements converted to radians and degrees.\vspace{12pt}}
+			\label{PotentiometerResolutionRadDeg}
+		\end{figure}
+	\end{minipage}
+\end{minipage}
+
+% Include to pictures in a row, with different captures and a common one
+\begin{figure}[H]
+	\begin{minipage}{\linewidth}
+		\captionsetup[subfigure]{font = footnotesize}
+		\centering
+		\subcaptionbox
+		{
+			Here \si{f(x_a) < f(x_b)} resulting in the red interval, \si{x_{L} < x^* < x_a}, and green interval, \si{x_a < x^* < x_b}, which when combined yields the new bracket, \si{[x_{L},\ x_b]}, shown in blue.
+			\label{dichotomousLargerB}
+		}
+		{
+			\includegraphics[scale=.6]{dichotomousLargerB}
+		}\quad
+		\subcaptionbox
+		{
+			Here \si{f(x_b) < f(x_a)} resulting in the green interval, \si{x_a < x^* < x_b}, and red interval, \si{x_b < x^* < x_{U}}, which when combined yields the new bracket, \si{[x_a,\ x_{U}]}, shown in blue.
+			\label{dichotomousLargerA}
+		}
+		{
+			\includegraphics[scale=.6]{dichotomousLargerA}
+		}
+		\caption{The function, \si{f(x)}, is only evaluated at the points indicated by red dots. Two examples of how the graph of \si{f(x)} could appear is shown in green and red.}
+		\label{dichotomousLargerAorB}
+	\end{minipage}
+\end{figure}\vspace{-18pt}
+
+% Tikz diagrams
+
+\begin{figure}[H]
+	\input{figures/blockDiagram.tikz}
+	\caption{Block diagram of the Cubli as a SISO system. The input is the torque applied to the wheel. The output is the angular position of the frame.}
+	\label{cubliSimulink}
+\end{figure}
+
+\begin{figure}[H]
+	\input{figures/blockDiagramController.tikz}
+	\centering
+	\caption{Block diagram of the final controlled system.}
+	\label{blockDiagramController}
+\end{figure}\vspace{-18pt}

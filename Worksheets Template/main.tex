@@ -1,0 +1,105 @@
+\input{setup/preamble.tex}% package inclusion and set up of the document
+
+\input{setup/macros.tex}% my new macros
+
+\begin{document}
+	%%% Prereport %%%
+	\setlength\cftaftertoctitleskip{2pt}
+	\setlength\cftafterloftitleskip{6pt}
+	\setlength\cftafterlottitleskip{6pt}
+	\selectlanguage{english}
+	\title{Cubli}
+	
+	%%% Frontmatter Settings %%%
+	\pagestyle{empty} %disable headers and footers
+	\pagenumbering{roman} %use roman page numbering in the frontmatter I II...
+	\fancyfoot[RE,LO]{16gr630} %page number on all pages
+	\fancyfoot[LE,RO]{\thepage}
+	\fancyhead[LE,LO,RE,RO]{}
+	
+	%%% Introductory Formalities %%%
+	\input{chapters/frontpage}
+	\pagestyle{fancy}
+	\input{formalities/kolofon}
+	\input{formalities/titleSheet}
+	%%% Preface %%%
+	%\cleardoublepage
+	\input{formalities/preface.tex}
+	
+	\cleardoublepage
+	
+	\pdfbookmark[0]{Table of Contents}{label: tableOfContents}
+	\tableofcontents
+	\cleardoublepage
+	
+	
+	%%% Mainmatter Settings %%%
+	\pagenumbering{arabic} %use arabic page numbering in the mainmatter
+	\fancyfoot[RO,LE]{\thepage \text{ of} \pageref{LastPage}}
+	\fancyfoot[RE,LO]{16gr630}
+	\fancyhead[RE,LO]{}
+	\fancyhead[RE,LO]{\color{aaublue}\small\nouppercase\leftmark} %even page - chapter title
+	\pagestyle{fancy}
+	
+	%%% Part 1 %%%
+	\part{Part 1}
+	
+	%---------- Chapter 1 ---------------------------------------- 
+	\input{chapters/figures.tex}
+	
+	%---------- Chapter 2 ---------------------------------------- 
+	\input{chapters/equations.tex}
+
+	%---------- Chapter 3 ---------------------------------------- 
+	\input{chapters/misc.tex}	
+	
+	%%% Part 2 %%%
+	\part{Part 2}
+
+	
+%	
+	%%% Part 3 %%%
+	\part{Test \& Conclusion}
+	\input{chapters/aAcceptanceTest/acceptanceTest}
+	\input{chapters/bDiscussion/discussion}
+	\input{chapters/cConclusion/conclusion}
+	\input{chapters/dPerspective/perspective}
+	
+	%%% Setup for Appendix and Bibliography %%%
+
+	
+	\bookmarksetup{startatroot}
+	\addtocontents{toc}{\bigskip}
+	\newpage
+	\fancyhead[RO]{\color{aaublue}\small Appendix \nouppercase\rightmark} %even page - chapter title
+	\fancyhead[LE]{\color{aaublue}\small Appendix \nouppercase\rightmark} %uneven page - section title
+	\fancyhead[RE,LO]{}
+	\titleformat{\section}[hang]{\Large\bfseries}{\thesection\hsp\textcolor{aaublue}{|}\hsp}{0pt}{\Large\bfseries}
+
+	%%% Appendix %%%
+		%\renewcommand{\thechapter}{\Alph{chapter}}
+		%	\addcontentsline{toc}{chapter}{Appendix}
+		%	\setcounter{chapter}{0}
+		%	\setcounter{section}{0}
+		%	\setcounter{table}{0}
+		%	\setcounter{equation}{0}
+		%	\setcounter{figure}{0}
+
+
+	\appendix
+	\part*{Appendix} \addcontentsline{toc}{chapter}{Appendix}
+	\cleardoublepage\makeatletter\@openrightfalse\makeatother
+	
+	
+	%---------- Appendix A ----------------------------------------
+	\input{appendix/dPotmeterLinearity.tex}
+		
+		
+%	\end{appendices}
+		
+	%%% Bibliography %%%
+	\printbibliography
+	
+	%%% To Do List %%%
+
+	\end{document}
