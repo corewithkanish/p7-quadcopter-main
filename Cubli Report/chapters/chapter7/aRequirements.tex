@@ -1,0 +1,46 @@
+\chapter{Design Specifications}\label{chap:specifications}
+
+
+\section{Requirements}\label{sec:requirements}
+Based on the design considerations and limitations explained earlier in this report, a list of requirements has been developed. %has been has replaced shall be
+%
+\begin{enumerate}
+\item \textbf{The Cubli should be able to balance starting from an unstable equilibrium position and null velocity.}
+  \begin{itemize}
+  \item[] Considering only naturally occurring perturbations, the Cubli needs to be able to regulate its position by itself, around \si{0\ rad}, without falling directly.
+  \end{itemize}
+
+\item \textbf{The prototype should be able to balance around \si{0\ \rad}, even though the angle of inclination of the baseplate is changed within a reasonable range, using internally mounted sensors.}  
+  \begin{itemize}
+  \item[] This ensures that the 2D design of the Cubli can keep its upright position independently from its base plate and therefore, can be more easily translated to a 3D model.
+  \end{itemize}
+%  
+%\item \textbf{The Cubli should be balancing during X \si{s}.}\fxnote{A number should be determined for X.}
+%  	\begin{itemize}
+%  		\item[] The amount of time the system stands should be measured from the moment the controller starts acting on the plant, with initial conditions an unstable equilibrium position (aproximately \si{0\ rad \cdot s^{-1}}) with a null velocity of the wheel and the frame. The timer should be stopped as soon as the Cubli falls outside of the active region of the controller.
+%  	\end{itemize}
+%  	
+%\item \textbf{The implemented controller should keep the Cubli within X \si{rad \cdot s^{-1}}.}\fxnote{A number has to be determined for Xand more arguments should be given.}
+\end{enumerate}
+%
+From these established requirements, a controller allowing the Cubli to stabilize in an upright position is to be designed and implemented.
+
+\section{Further Capabilities Analysis}\label{title}
+Moreover, a further investigation on the behavior of the controlled system is to be done in order to determine the capabilities of the final prototype. This includes:
+\begin{enumerate}
+%\item \textbf{Duration of the stable operation}
+%	\begin{itemize}
+%	\item[] How long can the Cubli be in equilibrium until the controller in not able to balance it.
+%	\end{itemize}
+%
+	\item \textbf{Maximum recovery angle}
+	\begin{itemize}
+		\item[] Once the Cubli is balance, its position is forced to change to different angles and the capability of it to go back to the equilibrium position is checked. 
+	\end{itemize}
+	
+	\item \textbf{Maximum catching angle with no initial velocity of the wheel}
+	\begin{itemize}
+		\item[] The maximum starting angle the system can have and still be able to balance is to be tested.\\
+	\end{itemize}
+	
+\end{enumerate}
