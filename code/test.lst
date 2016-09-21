@@ -82,12 +82,12 @@
  115               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 test.c
-C:\Users\NIELSS~1\AppData\Local\Temp/cc2TyT68.s:2      *ABS*:0000003f __SREG__
-C:\Users\NIELSS~1\AppData\Local\Temp/cc2TyT68.s:3      *ABS*:0000003e __SP_H__
-C:\Users\NIELSS~1\AppData\Local\Temp/cc2TyT68.s:4      *ABS*:0000003d __SP_L__
-C:\Users\NIELSS~1\AppData\Local\Temp/cc2TyT68.s:5      *ABS*:00000034 __CCP__
-C:\Users\NIELSS~1\AppData\Local\Temp/cc2TyT68.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/cc2TyT68.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/cc2TyT68.s:18     .text:00000000 BlinkPortD
+C:\Users\NIELSS~1\AppData\Local\Temp/ccT3amhd.s:2      *ABS*:0000003f __SREG__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccT3amhd.s:3      *ABS*:0000003e __SP_H__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccT3amhd.s:4      *ABS*:0000003d __SP_L__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccT3amhd.s:5      *ABS*:00000034 __CCP__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccT3amhd.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccT3amhd.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccT3amhd.s:18     .text:00000000 BlinkPortD
 
 NO UNDEFINED SYMBOLS
