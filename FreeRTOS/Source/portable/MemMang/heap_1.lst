@@ -117,19 +117,19 @@
  180               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 heap_1.c
-C:\Users\NIELSS~1\AppData\Local\Temp/cctcE9rg.s:2      *ABS*:0000003f __SREG__
-C:\Users\NIELSS~1\AppData\Local\Temp/cctcE9rg.s:3      *ABS*:0000003e __SP_H__
-C:\Users\NIELSS~1\AppData\Local\Temp/cctcE9rg.s:4      *ABS*:0000003d __SP_L__
-C:\Users\NIELSS~1\AppData\Local\Temp/cctcE9rg.s:5      *ABS*:00000034 __CCP__
-C:\Users\NIELSS~1\AppData\Local\Temp/cctcE9rg.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/cctcE9rg.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/cctcE9rg.s:18     .text:00000000 vPortFree
-C:\Users\NIELSS~1\AppData\Local\Temp/cctcE9rg.s:31     .text:00000002 vPortInitialiseBlocks
+C:\Users\Amalie\AppData\Local\Temp/ccR8vxKl.s:2      *ABS*:0000003f __SREG__
+C:\Users\Amalie\AppData\Local\Temp/ccR8vxKl.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Amalie\AppData\Local\Temp/ccR8vxKl.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Amalie\AppData\Local\Temp/ccR8vxKl.s:5      *ABS*:00000034 __CCP__
+C:\Users\Amalie\AppData\Local\Temp/ccR8vxKl.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Amalie\AppData\Local\Temp/ccR8vxKl.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Amalie\AppData\Local\Temp/ccR8vxKl.s:18     .text:00000000 vPortFree
+C:\Users\Amalie\AppData\Local\Temp/ccR8vxKl.s:31     .text:00000002 vPortInitialiseBlocks
                              .bss:00000000 xNextFreeByte
-C:\Users\NIELSS~1\AppData\Local\Temp/cctcE9rg.s:46     .text:0000000c xPortGetFreeHeapSize
-C:\Users\NIELSS~1\AppData\Local\Temp/cctcE9rg.s:66     .text:00000020 pvPortMalloc
-C:\Users\NIELSS~1\AppData\Local\Temp/cctcE9rg.s:129    .bss:00000002 pucAlignedHeap.1629
-C:\Users\NIELSS~1\AppData\Local\Temp/cctcE9rg.s:130    .bss:00000004 ucHeap
+C:\Users\Amalie\AppData\Local\Temp/ccR8vxKl.s:46     .text:0000000c xPortGetFreeHeapSize
+C:\Users\Amalie\AppData\Local\Temp/ccR8vxKl.s:66     .text:00000020 pvPortMalloc
+C:\Users\Amalie\AppData\Local\Temp/ccR8vxKl.s:129    .bss:00000002 pucAlignedHeap.1629
+C:\Users\Amalie\AppData\Local\Temp/ccR8vxKl.s:130    .bss:00000004 ucHeap
 
 UNDEFINED SYMBOLS
 vTaskSuspendAll

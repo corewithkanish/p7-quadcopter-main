@@ -165,7 +165,7 @@ LDFLAGS += -lm
 AVRDUDE_PROGRAMMER = avrispmkII
 
 
-AVRDUDE_PORT = com1	   # programmer connected to serial device
+AVRDUDE_PORT = usb	   # programmer connected to serial device
 #AVRDUDE_PORT = lpt1	# programmer connected to parallel port
 
 AVRDUDE_WRITE_FLASH = -U flash:w:$(TARGET).hex

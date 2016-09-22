@@ -672,36 +672,36 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  .debug_frame   0x00000690       0x50 ../Common/Minimal/PollQ.o
  .debug_frame   0x000006e0       0x50 ../Common/Minimal/comtest.o
 
-.debug_str      0x00000000     0x1735
+.debug_str      0x00000000     0x1740
  *(.debug_str)
- .debug_str     0x00000000      0x12c main.o
-                                0x165 (size before relaxing)
- .debug_str     0x0000012c       0x6e ParTest/ParTest.o
-                                0x12b (size before relaxing)
- .debug_str     0x0000019a      0x126 serial/serial.o
-                                0x202 (size before relaxing)
- .debug_str     0x000002c0       0x6c regtest.o
-                                0x13e (size before relaxing)
- .debug_str     0x0000032c      0x8e6 ../Source/tasks.o
-                                0xa0f (size before relaxing)
- .debug_str     0x00000c12      0x38d ../Source/queue.o
-                                0x5d0 (size before relaxing)
- .debug_str     0x00000f9f       0xa5 ../Source/list.o
-                                0x211 (size before relaxing)
- .debug_str     0x00001044      0x25a ../Source/croutine.o
-                                0x431 (size before relaxing)
- .debug_str     0x0000129e       0x9f ../Source/portable/MemMang/heap_1.o
-                                0x16b (size before relaxing)
- .debug_str     0x0000133d       0xdb ../Source/portable/GCC_ATMega2560/port.o
-                                0x1f2 (size before relaxing)
- .debug_str     0x00001418       0xd7 ../Common/Minimal/crflash.o
-                                0x29a (size before relaxing)
- .debug_str     0x000014ef       0x95 ../Common/Minimal/integer.o
-                                0x19a (size before relaxing)
- .debug_str     0x00001584       0xde ../Common/Minimal/PollQ.o
-                                0x1e9 (size before relaxing)
- .debug_str     0x00001662       0xd3 ../Common/Minimal/comtest.o
-                                0x1ff (size before relaxing)
+ .debug_str     0x00000000      0x137 main.o
+                                0x170 (size before relaxing)
+ .debug_str     0x00000137       0x6e ParTest/ParTest.o
+                                0x136 (size before relaxing)
+ .debug_str     0x000001a5      0x126 serial/serial.o
+                                0x20d (size before relaxing)
+ .debug_str     0x000002cb       0x6c regtest.o
+                                0x149 (size before relaxing)
+ .debug_str     0x00000337      0x8e6 ../Source/tasks.o
+                                0xa1a (size before relaxing)
+ .debug_str     0x00000c1d      0x38d ../Source/queue.o
+                                0x5db (size before relaxing)
+ .debug_str     0x00000faa       0xa5 ../Source/list.o
+                                0x21c (size before relaxing)
+ .debug_str     0x0000104f      0x25a ../Source/croutine.o
+                                0x43c (size before relaxing)
+ .debug_str     0x000012a9       0x9f ../Source/portable/MemMang/heap_1.o
+                                0x176 (size before relaxing)
+ .debug_str     0x00001348       0xdb ../Source/portable/GCC_ATMega2560/port.o
+                                0x1fd (size before relaxing)
+ .debug_str     0x00001423       0xd7 ../Common/Minimal/crflash.o
+                                0x2a5 (size before relaxing)
+ .debug_str     0x000014fa       0x95 ../Common/Minimal/integer.o
+                                0x1a5 (size before relaxing)
+ .debug_str     0x0000158f       0xde ../Common/Minimal/PollQ.o
+                                0x1f4 (size before relaxing)
+ .debug_str     0x0000166d       0xd3 ../Common/Minimal/comtest.o
+                                0x20a (size before relaxing)
 
 .debug_loc      0x00000000     0x212f
  *(.debug_loc)
