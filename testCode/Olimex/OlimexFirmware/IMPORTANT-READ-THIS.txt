@@ -1,0 +1,35 @@
+
+Step 1 - Make sure jumpers are in ON and 5V position (see sticker)
+
+Step 2 - Install Atmel Flip
+
+Step 4 - Connect programmer to computer
+
+Step 5 - Press the tiny reset-button (entering firmware mode)
+
+Step 6 - Go to device manager and find the device (should be at90usb162 dfu)
+         -> Right-click the device -> update driver software
+         -> Browse my computer for driver software
+            then
+            Navigate to: C:\Program Files (x86)\Atmel\Flip 3.4.7\usb
+            and
+            Install driver continuing through warnings
+
+Step 7 - Open Atmel Flip
+         Device -> Select -----------------> chose AT90USB162
+         then
+         Settings -> Comunication -> USB --> click [open]
+         then
+         File -> Load Hex File ------------> chose OlimexFirmware\libUSB-AVRISP-MKII_old_1.hex
+
+Step 8 - Click [Run]  when done, disconnect and connect the programmer
+
+Step 9 - Go to device manager and find the device (should be AVRISP mkII)
+         -> Right-click the device -> update driver software
+         -> Browse my computer for driver software
+            then
+            Navigate to: OlimexDrivers\WindowsDriver
+            and
+            Install driver
+
+Step 3 - Profit!
