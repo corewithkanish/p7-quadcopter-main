@@ -8,25 +8,160 @@
   15               	.Ltext0:
   16               	.global	main
   18               	main:
-  19               	.LFB2:
+  19               	.LFB6:
   20               	.LM1:
-  21               	/* prologue: function */
-  22               	/* frame size = 0 */
-  23               	.L2:
-  24               	.LM2:
-  25 0000 0E94 0000 		call BlinkPortD
-  26 0004 00C0      		rjmp .L2
-  27               	.LFE2:
-  53               	.Letext0:
+  21 0000 0F93      		push r16
+  22 0002 1F93      		push r17
+  23 0004 CF93      		push r28
+  24 0006 DF93      		push r29
+  25               	/* prologue: function */
+  26               	/* frame size = 0 */
+  27               	.LM2:
+  28 0008 80E0      		ldi r24,lo8(0)
+  29 000a 90E0      		ldi r25,hi8(0)
+  30 000c 0E94 0000 		call PWM_init
+  31 0010 80E2      		ldi r24,lo8(20000)
+  32 0012 9EE4      		ldi r25,hi8(20000)
+  33               	.LVL0:
+  34               	.LBB24:
+  35               	.LBB25:
+  36               	.LBB26:
+  37               	.LBB27:
+  38               	.LM3:
+  39 0014 20E9      		ldi r18,lo8(400)
+  40 0016 31E0      		ldi r19,hi8(400)
+  41               	.L2:
+  42 0018 F901      		movw r30,r18
+  43               	.LVL1:
+  44               	/* #APP */
+  45               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+  46 001a 3197      		1: sbiw r30,1
+  47 001c 01F4      		brne 1b
+  48               	 ;  0 "" 2
+  49               	/* #NOAPP */
+  50               	.LBE27:
+  51               	.LBE26:
+  52               	.LM4:
+  53 001e 0197      		sbiw r24,1
+  54               	.LM5:
+  55 0020 01F4      		brne .L2
+  56               	.LBE25:
+  57               	.LBE24:
+  58               	.LM6:
+  59 0022 80E8      		ldi r24,lo8(128)
+  60 0024 90E0      		ldi r25,hi8(128)
+  61               	.LVL2:
+  62 0026 60E8      		ldi r22,lo8(128)
+  63 0028 70E0      		ldi r23,hi8(128)
+  64 002a 40E8      		ldi r20,lo8(128)
+  65 002c 50E0      		ldi r21,hi8(128)
+  66 002e 20E8      		ldi r18,lo8(128)
+  67 0030 30E0      		ldi r19,hi8(128)
+  68 0032 0E94 0000 		call Set_PWM_duty
+  69               	.LVL3:
+  70 0036 80E6      		ldi r24,lo8(-5536)
+  71 0038 9AEE      		ldi r25,hi8(-5536)
+  72               	.LVL4:
+  73               	.LBB28:
+  74               	.LBB29:
+  75               	.LBB30:
+  76               	.LBB31:
+  77               	.LM7:
+  78 003a 20E9      		ldi r18,lo8(400)
+  79 003c 31E0      		ldi r19,hi8(400)
+  80               	.L3:
+  81 003e F901      		movw r30,r18
+  82               	.LVL5:
+  83               	/* #APP */
+  84               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+  85 0040 3197      		1: sbiw r30,1
+  86 0042 01F4      		brne 1b
+  87               	 ;  0 "" 2
+  88               	/* #NOAPP */
+  89               	.LBE31:
+  90               	.LBE30:
+  91               	.LM8:
+  92 0044 0197      		sbiw r24,1
+  93               	.LM9:
+  94 0046 01F4      		brne .L3
+  95 0048 C0E8      		ldi r28,lo8(128)
+  96 004a D0E0      		ldi r29,hi8(128)
+  97               	.LVL6:
+  98               	.LBE29:
+  99               	.LBE28:
+ 100               	.LBB32:
+ 101               	.LBB33:
+ 102               	.LBB34:
+ 103               	.LBB35:
+ 104               	.LM10:
+ 105 004c 00E9      		ldi r16,lo8(400)
+ 106 004e 11E0      		ldi r17,hi8(400)
+ 107               	.LVL7:
+ 108               	.L7:
+ 109               	.LBE35:
+ 110               	.LBE34:
+ 111               	.LBE33:
+ 112               	.LBE32:
+ 113               	.LM11:
+ 114 0050 CE01      		movw r24,r28
+ 115               	.LVL8:
+ 116 0052 60E8      		ldi r22,lo8(128)
+ 117 0054 70E0      		ldi r23,hi8(128)
+ 118 0056 40E8      		ldi r20,lo8(128)
+ 119 0058 50E0      		ldi r21,hi8(128)
+ 120 005a 20E8      		ldi r18,lo8(128)
+ 121 005c 30E0      		ldi r19,hi8(128)
+ 122 005e 0E94 0000 		call Set_PWM_duty
+ 123               	.LVL9:
+ 124               	.LM12:
+ 125 0062 C93B      		cpi r28,185
+ 126 0064 D105      		cpc r29,__zero_reg__
+ 127 0066 04F0      		brlt .L4
+ 128 0068 C9EB      		ldi r28,lo8(185)
+ 129 006a D0E0      		ldi r29,hi8(185)
+ 130 006c 00C0      		rjmp .L5
+ 131               	.L4:
+ 132               	.LM13:
+ 133 006e 2196      		adiw r28,1
+ 134               	.L5:
+ 135 0070 84EF      		ldi r24,lo8(500)
+ 136 0072 91E0      		ldi r25,hi8(500)
+ 137               	.LVL10:
+ 138               	.L6:
+ 139               	.LBB39:
+ 140               	.LBB38:
+ 141               	.LBB37:
+ 142               	.LBB36:
+ 143               	.LM14:
+ 144 0074 F801      		movw r30,r16
+ 145               	.LVL11:
+ 146               	/* #APP */
+ 147               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 148 0076 3197      		1: sbiw r30,1
+ 149 0078 01F4      		brne 1b
+ 150               	 ;  0 "" 2
+ 151               	/* #NOAPP */
+ 152               	.LBE36:
+ 153               	.LBE37:
+ 154               	.LM15:
+ 155 007a 0197      		sbiw r24,1
+ 156               	.LM16:
+ 157 007c 01F4      		brne .L6
+ 158 007e 00C0      		rjmp .L7
+ 159               	.LBE38:
+ 160               	.LBE39:
+ 161               	.LFE6:
+ 187               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\NIELSS~1\AppData\Local\Temp/ccgnqTn2.s:2      *ABS*:0000003f __SREG__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccgnqTn2.s:3      *ABS*:0000003e __SP_H__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccgnqTn2.s:4      *ABS*:0000003d __SP_L__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccgnqTn2.s:5      *ABS*:00000034 __CCP__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccgnqTn2.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccgnqTn2.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccgnqTn2.s:18     .text:00000000 main
+C:\Users\USUARIO\AppData\Local\Temp/ccguXJzs.s:2      *ABS*:0000003f __SREG__
+C:\Users\USUARIO\AppData\Local\Temp/ccguXJzs.s:3      *ABS*:0000003e __SP_H__
+C:\Users\USUARIO\AppData\Local\Temp/ccguXJzs.s:4      *ABS*:0000003d __SP_L__
+C:\Users\USUARIO\AppData\Local\Temp/ccguXJzs.s:5      *ABS*:00000034 __CCP__
+C:\Users\USUARIO\AppData\Local\Temp/ccguXJzs.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\USUARIO\AppData\Local\Temp/ccguXJzs.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\USUARIO\AppData\Local\Temp/ccguXJzs.s:18     .text:00000000 main
 
 UNDEFINED SYMBOLS
-BlinkPortD
+PWM_init
+Set_PWM_duty

@@ -1,7 +1,10 @@
-//setting data direction registries
-#define LED_DDR DDRD
+//Set data direction registers
 
-//Setting port names
-#define LED PORTD
+//Set port names
 
-void BlinkPortD(void);
+//Set pin names
+
+
+// Functions prototypes
+void PWM_init(int initial_duty);
+void Set_PWM_duty(int duty0, int duty4A, int duty4B, int duty4C);

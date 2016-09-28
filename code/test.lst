@@ -6,88 +6,84 @@
    6               	__tmp_reg__ = 0
    7               	__zero_reg__ = 1
   15               	.Ltext0:
-  16               	.global	BlinkPortD
-  18               	BlinkPortD:
-  19               	.LFB6:
+  16               	.global	PWM_init
+  18               	PWM_init:
+  19               	.LFB2:
   20               	.LM1:
-  21               	/* prologue: function */
-  22               	/* frame size = 0 */
-  23               	.LM2:
-  24 0000 8FEF      		ldi r24,lo8(-1)
-  25 0002 8AB9      		out 42-32,r24
-  26 0004 80E1      		ldi r24,lo8(10000)
-  27 0006 97E2      		ldi r25,hi8(10000)
-  28               	.LVL0:
-  29               	.LBB18:
-  30               	.LBB19:
-  31               	.LBB20:
-  32               	.LBB21:
-  33               	.LM3:
-  34 0008 20E9      		ldi r18,lo8(400)
-  35 000a 31E0      		ldi r19,hi8(400)
-  36               	.L2:
-  37 000c F901      		movw r30,r18
-  38               	.LVL1:
-  39               	/* #APP */
-  40               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
-  41 000e 3197      		1: sbiw r30,1
-  42 0010 01F4      		brne 1b
-  43               	 ;  0 "" 2
-  44               	/* #NOAPP */
-  45               	.LBE21:
-  46               	.LBE20:
-  47               	.LM4:
-  48 0012 0197      		sbiw r24,1
-  49               	.LM5:
-  50 0014 01F4      		brne .L2
-  51               	.LBE19:
-  52               	.LBE18:
-  53               	.LM6:
-  54 0016 8FEF      		ldi r24,lo8(-1)
-  55               	.LVL2:
-  56 0018 8BB9      		out 43-32,r24
-  57 001a 80E1      		ldi r24,lo8(10000)
-  58 001c 97E2      		ldi r25,hi8(10000)
-  59               	.LVL3:
-  60               	.LBB22:
-  61               	.LBB23:
-  62               	.LBB24:
-  63               	.LBB25:
-  64               	.LM7:
-  65 001e 20E9      		ldi r18,lo8(400)
-  66 0020 31E0      		ldi r19,hi8(400)
-  67               	.L3:
-  68 0022 F901      		movw r30,r18
-  69               	.LVL4:
-  70               	/* #APP */
-  71               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
-  72 0024 3197      		1: sbiw r30,1
-  73 0026 01F4      		brne 1b
-  74               	 ;  0 "" 2
-  75               	/* #NOAPP */
-  76               	.LBE25:
-  77               	.LBE24:
-  78               	.LM8:
-  79 0028 0197      		sbiw r24,1
-  80               	.LM9:
-  81 002a 01F4      		brne .L3
-  82               	.LBE23:
-  83               	.LBE22:
-  84               	.LM10:
-  85 002c 1BB8      		out 43-32,__zero_reg__
-  86               	/* epilogue start */
-  87               	.LM11:
-  88 002e 0895      		ret
-  89               	.LFE6:
- 115               	.Letext0:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	.LM2:
+  25 0000 91E8      		ldi r25,lo8(-127)
+  26 0002 94BD      		out 68-32,r25
+  27               	.LM3:
+  28 0004 23E0      		ldi r18,lo8(3)
+  29 0006 25BD      		out 69-32,r18
+  30               	.LM4:
+  31 0008 87BD      		out 71-32,r24
+  32               	.LM5:
+  33 000a 90E8      		ldi r25,lo8(-128)
+  34 000c 94B9      		out 36-32,r25
+  35               	.LM6:
+  36 000e 16BC      		out 70-32,__zero_reg__
+  37               	.LM7:
+  38 0010 99EA      		ldi r25,lo8(-87)
+  39 0012 9093 A000 		sts 160,r25
+  40               	.LM8:
+  41 0016 2093 A100 		sts 161,r18
+  42               	.LM9:
+  43 001a 8093 A800 		sts 168,r24
+  44               	.LM10:
+  45 001e 8093 AA00 		sts 170,r24
+  46               	.LM11:
+  47 0022 8093 AC00 		sts 172,r24
+  48               	.LM12:
+  49 0026 1092 A900 		sts 169,__zero_reg__
+  50               	.LM13:
+  51 002a 1092 AB00 		sts 171,__zero_reg__
+  52               	.LM14:
+  53 002e 1092 AD00 		sts 173,__zero_reg__
+  54               	.LM15:
+  55 0032 88E3      		ldi r24,lo8(56)
+  56               	.LVL1:
+  57 0034 8093 0101 		sts 257,r24
+  58               	.LM16:
+  59 0038 1092 A400 		sts 164,__zero_reg__
+  60               	.LM17:
+  61 003c 1092 A500 		sts 165,__zero_reg__
+  62               	/* epilogue start */
+  63               	.LM18:
+  64 0040 0895      		ret
+  65               	.LFE2:
+  67               	.global	Set_PWM_duty
+  69               	Set_PWM_duty:
+  70               	.LFB3:
+  71               	.LM19:
+  72               	.LVL2:
+  73               	/* prologue: function */
+  74               	/* frame size = 0 */
+  75               	.LM20:
+  76 0042 87BD      		out 71-32,r24
+  77               	.LM21:
+  78 0044 6093 A800 		sts 168,r22
+  79               	.LM22:
+  80 0048 4093 AA00 		sts 170,r20
+  81               	.LM23:
+  82 004c 2093 AC00 		sts 172,r18
+  83               	/* epilogue start */
+  84               	.LM24:
+  85 0050 0895      		ret
+  86               	.LFE3:
+ 120               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 test.c
-C:\Users\NIELSS~1\AppData\Local\Temp/cc2TyT68.s:2      *ABS*:0000003f __SREG__
-C:\Users\NIELSS~1\AppData\Local\Temp/cc2TyT68.s:3      *ABS*:0000003e __SP_H__
-C:\Users\NIELSS~1\AppData\Local\Temp/cc2TyT68.s:4      *ABS*:0000003d __SP_L__
-C:\Users\NIELSS~1\AppData\Local\Temp/cc2TyT68.s:5      *ABS*:00000034 __CCP__
-C:\Users\NIELSS~1\AppData\Local\Temp/cc2TyT68.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/cc2TyT68.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/cc2TyT68.s:18     .text:00000000 BlinkPortD
+C:\Users\USUARIO\AppData\Local\Temp/ccwQ237U.s:2      *ABS*:0000003f __SREG__
+C:\Users\USUARIO\AppData\Local\Temp/ccwQ237U.s:3      *ABS*:0000003e __SP_H__
+C:\Users\USUARIO\AppData\Local\Temp/ccwQ237U.s:4      *ABS*:0000003d __SP_L__
+C:\Users\USUARIO\AppData\Local\Temp/ccwQ237U.s:5      *ABS*:00000034 __CCP__
+C:\Users\USUARIO\AppData\Local\Temp/ccwQ237U.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\USUARIO\AppData\Local\Temp/ccwQ237U.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\USUARIO\AppData\Local\Temp/ccwQ237U.s:18     .text:00000000 PWM_init
+C:\Users\USUARIO\AppData\Local\Temp/ccwQ237U.s:69     .text:00000042 Set_PWM_duty
 
 NO UNDEFINED SYMBOLS
