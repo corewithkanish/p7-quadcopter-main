@@ -16,7 +16,7 @@ int main()
     _delay_ms(1000);
     LED = 0xFF;
     _delay_ms(1000);
-    LED = 0x00;
+    LED = 0xFF;
   }
 
   return 0;
