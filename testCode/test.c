@@ -3,9 +3,9 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-#define LED_DDR DDRD
+#define LED_DDR DDRB
 
-#define LED PORTD
+#define LED PORTB
 
 int main()
 {
@@ -14,7 +14,7 @@ int main()
   while(1)
   {
     _delay_ms(1000);
-    LED = 0xFF;
+    LED = 0x00;
     _delay_ms(1000);
     LED = 0xFF;
   }

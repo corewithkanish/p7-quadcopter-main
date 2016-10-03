@@ -1157,17 +1157,17 @@
  1220               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 regtest.c
-C:\Users\NIELSS~1\AppData\Local\Temp/ccG1dUK6.s:2      *ABS*:0000003f __SREG__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccG1dUK6.s:3      *ABS*:0000003e __SP_H__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccG1dUK6.s:4      *ABS*:0000003d __SP_L__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccG1dUK6.s:5      *ABS*:00000034 __CCP__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccG1dUK6.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccG1dUK6.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccG1dUK6.s:18     .text:00000000 xAreRegTestTasksStillRunning
-C:\Users\NIELSS~1\AppData\Local\Temp/ccG1dUK6.s:1170   .bss:00000000 xRegTestError
-C:\Users\NIELSS~1\AppData\Local\Temp/ccG1dUK6.s:37     .text:00000010 prvRegisterCheck1
-C:\Users\NIELSS~1\AppData\Local\Temp/ccG1dUK6.s:578    .text:00000154 prvRegisterCheck2
-C:\Users\NIELSS~1\AppData\Local\Temp/ccG1dUK6.s:1126   .text:00000298 vStartRegTestTasks
+C:\Users\Amalie\AppData\Local\Temp/ccu9MHG5.s:2      *ABS*:0000003f __SREG__
+C:\Users\Amalie\AppData\Local\Temp/ccu9MHG5.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Amalie\AppData\Local\Temp/ccu9MHG5.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Amalie\AppData\Local\Temp/ccu9MHG5.s:5      *ABS*:00000034 __CCP__
+C:\Users\Amalie\AppData\Local\Temp/ccu9MHG5.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Amalie\AppData\Local\Temp/ccu9MHG5.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Amalie\AppData\Local\Temp/ccu9MHG5.s:18     .text:00000000 xAreRegTestTasksStillRunning
+C:\Users\Amalie\AppData\Local\Temp/ccu9MHG5.s:1170   .bss:00000000 xRegTestError
+C:\Users\Amalie\AppData\Local\Temp/ccu9MHG5.s:37     .text:00000010 prvRegisterCheck1
+C:\Users\Amalie\AppData\Local\Temp/ccu9MHG5.s:578    .text:00000154 prvRegisterCheck2
+C:\Users\Amalie\AppData\Local\Temp/ccu9MHG5.s:1126   .text:00000298 vStartRegTestTasks
 
 UNDEFINED SYMBOLS
 xTaskCreate

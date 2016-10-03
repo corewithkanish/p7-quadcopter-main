@@ -1,29 +1,17 @@
 Archive member included because of file (symbol)
 
-c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_mulsi3.o)
-                              ../Common/Minimal/integer.o (__mulsi3)
-c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodhi4.o)
-                              ../Common/Minimal/comtest.o (__udivmodhi4)
-c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
-                              serial/serial.o (__udivmodsi4)
-c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_divmodsi4.o)
-                              ../Common/Minimal/integer.o (__divmodsi4)
-c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
-                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o (exit)
-c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_exit.o)
+                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o (exit)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_copy_data.o)
+                              main.o (__do_copy_data)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_clear_bss.o)
                               main.o (__do_clear_bss)
-c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(memcpy.o)
-                              ../Source/queue.o (memcpy)
-c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(eerd_block_atmega2560.o)
-                              main.o (__eerd_block_m2560)
-c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(eewr_byte_atmega2560.o)
-                              main.o (__eewr_byte_m2560)
 
 Memory Configuration
 
 Name             Origin             Length             Attributes
-text             0x00000000         0x00100000         xr
-data             0x00800200         0x0000fe00         rw !x
+text             0x00000000         0x00002000         xr
+data             0x00800060         0x0000ffa0         rw !x
 eeprom           0x00810000         0x00010000         rw !x
 fuse             0x00820000         0x00000400         rw !x
 lock             0x00830000         0x00000400         rw !x
@@ -32,26 +20,12 @@ signature        0x00840000         0x00000400         rw !x
 
 Linker script and memory map
 
-Address of section .data set to 0x800200
-LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib\libm.a
 LOAD main.o
-LOAD ParTest/ParTest.o
-LOAD serial/serial.o
-LOAD regtest.o
-LOAD ../Source/tasks.o
-LOAD ../Source/queue.o
-LOAD ../Source/list.o
-LOAD ../Source/croutine.o
-LOAD ../Source/portable/MemMang/heap_1.o
-LOAD ../Source/portable/GCC_ATMega2560/port.o
-LOAD ../Common/Minimal/crflash.o
-LOAD ../Common/Minimal/integer.o
-LOAD ../Common/Minimal/PollQ.o
-LOAD ../Common/Minimal/comtest.o
-LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libm.a
-LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
-LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a
-LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib\libc.a
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a
 
 .hash
  *(.hash)
@@ -143,48 +117,48 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x2c3c
+.text           0x00000000      0x166
  *(.vectors)
- .vectors       0x00000000       0xe4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
+ .vectors       0x00000000       0x1a c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
                 0x00000000                __vectors
                 0x00000000                __vector_default
  *(.vectors)
  *(.progmem.gcc*)
  *(.progmem*)
-                0x000000e4                . = ALIGN (0x2)
-                0x000000e4                __trampolines_start = .
+                0x0000001a                . = ALIGN (0x2)
+                0x0000001a                __trampolines_start = .
  *(.trampolines)
- .trampolines   0x000000e4        0x0 linker stubs
+ .trampolines   0x0000001a        0x0 linker stubs
  *(.trampolines*)
-                0x000000e4                __trampolines_end = .
+                0x0000001a                __trampolines_end = .
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x000000e4                __ctors_start = .
+                0x0000001a                __ctors_start = .
  *(.ctors)
-                0x000000e4                __ctors_end = .
-                0x000000e4                __dtors_start = .
+                0x0000001a                __ctors_end = .
+                0x0000001a                __dtors_start = .
  *(.dtors)
-                0x000000e4                __dtors_end = .
+                0x0000001a                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x000000e4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-                0x000000e4                __init
+ .init0         0x0000001a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+                0x0000001a                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x000000e4       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
+ .init2         0x0000001a        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x000000f4       0x1a c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-                0x000000f4                __do_copy_data
- .init4         0x0000010e       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
-                0x0000010e                __do_clear_bss
+ .init4         0x00000026       0x18 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_copy_data.o)
+                0x00000026                __do_copy_data
+ .init4         0x0000003e       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_clear_bss.o)
+                0x0000003e                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -195,201 +169,39 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x0000011e        0x8 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
+ .init9         0x0000004e        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
  *(.init9)
  *(.text)
- .text          0x00000126        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-                0x00000126                __vector_38
-                0x00000126                __vector_22
-                0x00000126                __vector_28
-                0x00000126                __vector_1
-                0x00000126                __vector_32
-                0x00000126                __vector_34
-                0x00000126                __vector_24
-                0x00000126                __vector_12
-                0x00000126                __vector_55
-                0x00000126                __vector_46
-                0x00000126                __bad_interrupt
-                0x00000126                __vector_6
-                0x00000126                __vector_31
-                0x00000126                __vector_35
-                0x00000126                __vector_39
-                0x00000126                __vector_3
-                0x00000126                __vector_23
-                0x00000126                __vector_30
-                0x00000126                __vector_45
-                0x00000126                __vector_11
-                0x00000126                __vector_54
-                0x00000126                __vector_13
-                0x00000126                __vector_19
-                0x00000126                __vector_56
-                0x00000126                __vector_7
-                0x00000126                __vector_49
-                0x00000126                __vector_41
-                0x00000126                __vector_43
-                0x00000126                __vector_27
-                0x00000126                __vector_5
-                0x00000126                __vector_33
-                0x00000126                __vector_47
-                0x00000126                __vector_52
-                0x00000126                __vector_37
-                0x00000126                __vector_4
-                0x00000126                __vector_44
-                0x00000126                __vector_51
-                0x00000126                __vector_9
-                0x00000126                __vector_2
-                0x00000126                __vector_21
-                0x00000126                __vector_15
-                0x00000126                __vector_36
-                0x00000126                __vector_29
-                0x00000126                __vector_40
-                0x00000126                __vector_8
-                0x00000126                __vector_48
-                0x00000126                __vector_14
-                0x00000126                __vector_53
-                0x00000126                __vector_10
-                0x00000126                __vector_50
-                0x00000126                __vector_16
-                0x00000126                __vector_18
-                0x00000126                __vector_20
-                0x00000126                __vector_42
- .text          0x0000012a      0x10e main.o
-                0x00000130                main
-                0x0000012a                vApplicationIdleHook
- .text          0x00000238       0x9e ParTest/ParTest.o
-                0x00000248                vParTestToggleLED
-                0x0000028e                vParTestSetLED
-                0x00000238                vParTestInitialise
- .text          0x000002d6      0x216 serial/serial.o
-                0x000002d6                vSerialClose
-                0x00000380                __vector_25
-                0x0000040c                xSerialPutChar
-                0x00000448                xSerialGetChar
-                0x000002f2                __vector_26
-                0x0000045c                xSerialPortInitMinimal
- .text          0x000004ec      0x2d4 regtest.o
-                0x000004ec                xAreRegTestTasksStillRunning
-                0x00000784                vStartRegTestTasks
- .text          0x000007c0      0xe58 ../Source/tasks.o
-                0x0000119c                vTaskPlaceOnUnorderedEventList
-                0x000007f4                pcTaskGetName
-                0x00001276                vTaskEndScheduler
-                0x00001252                vTaskPlaceOnEventList
-                0x000007cc                xTaskGetTickCount
-                0x00000b5e                xTaskRemoveFromEventList
-                0x000012fa                vTaskDelete
-                0x00000894                xTaskCheckForTimeOut
-                0x000010ec                ulTaskNotifyTake
-                0x000007c0                vTaskSuspendAll
-                0x000007e2                xTaskGetTickCountFromISR
-                0x00000932                xTaskNotifyStateClear
-                0x0000080a                vTaskSwitchContext
-                0x00000fde                xTaskNotifyWait
-                0x000007ee                uxTaskGetNumberOfTasks
-                0x00000d70                xTaskGenericNotify
-                0x000011f4                vTaskDelayUntil
-                0x000009fe                xTaskGenericNotifyFromISR
-                0x00000af6                xTaskRemoveFromUnorderedEventList
-                0x00000e44                xTaskResumeAll
-                0x000015c8                vTaskStartScheduler
-                0x000008fa                vTaskMissedYield
-                0x00000bde                xTaskIncrementTick
-                0x000013d6                xTaskCreate
-                0x000011ce                vTaskDelay
-                0x0000087e                vTaskSetTimeOutState
-                0x00000902                uxTaskResetEventItemValue
-                0x0000095c                vTaskNotifyGiveFromISR
- .text          0x00001618      0x818 ../Source/queue.o
-                0x0000175e                xQueueCRReceiveFromISR
-                0x000019b0                xQueueGenericSendFromISR
-                0x000017d4                xQueueCRSendFromISR
-                0x00001734                xQueuePeekFromISR
-                0x0000189c                xQueueCRSend
-                0x00001908                vQueueDelete
-                0x00001c06                xQueueGenericSend
-                0x00001812                xQueueCRReceive
-                0x0000190e                xQueueReceiveFromISR
-                0x00001de0                xQueueGenericCreate
-                0x00001628                uxQueueSpacesAvailable
-                0x00001652                xQueueIsQueueFullFromISR
-                0x00001618                uxQueueMessagesWaiting
-                0x00001a92                xQueueGenericReceive
-                0x00001d5c                xQueueGenericReset
-                0x0000163c                uxQueueMessagesWaitingFromISR
-                0x00001642                xQueueIsQueueEmptyFromISR
-                0x0000196a                xQueueGiveFromISR
- .text          0x00001e30      0x11e ../Source/list.o
-                0x00001e58                vListInsertEnd
-                0x00001e50                vListInitialiseItem
-                0x00001e30                vListInitialise
-                0x00001efa                uxListRemove
-                0x00001e96                vListInsert
- .text          0x00001f4e      0x37e ../Source/croutine.o
-                0x00001f4e                xCoRoutineRemoveFromEventList
-                0x000021d8                xCoRoutineCreate
-                0x00001f9e                vCoRoutineSchedule
-                0x0000215e                vCoRoutineAddToDelayedList
- .text          0x000022cc       0x84 ../Source/portable/MemMang/heap_1.o
-                0x000022d8                xPortGetFreeHeapSize
-                0x000022cc                vPortFree
-                0x000022ec                pvPortMalloc
-                0x000022ce                vPortInitialiseBlocks
- .text          0x00002350      0x278 ../Source/portable/GCC_ATMega2560/port.o
-                0x000023e0                xPortStartScheduler
-                0x00002456                vPortYieldFromTick
-                0x00002454                vPortEndScheduler
-                0x00002510                __vector_17
-                0x00002516                vPortYield
-                0x00002350                pxPortInitialiseStack
- .text          0x000025c8      0x194 ../Common/Minimal/crflash.o
-                0x000025c8                xAreFlashCoRoutinesStillRunning
-                0x000025ce                vStartFlashCoRoutines
- .text          0x0000275c       0xf6 ../Common/Minimal/integer.o
-                0x0000282a                vStartIntegerMathTasks
-                0x0000281c                xAreIntegerMathsTaskStillRunning
- .text          0x00002852      0x180 ../Common/Minimal/PollQ.o
-                0x00002852                xArePollingQueuesStillRunning
-                0x0000286c                vStartPolledQueueTasks
- .text          0x000029d2      0x138 ../Common/Minimal/comtest.o
-                0x000029d2                xAreComTestTasksStillRunning
-                0x000029e0                vAltStartComTestTasks
- .text          0x00002b0a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_mulsi3.o)
- .text          0x00002b0a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodhi4.o)
- .text          0x00002b0a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
- .text          0x00002b0a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_divmodsi4.o)
- .text          0x00002b0a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
- .text          0x00002b0a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
- .text          0x00002b0a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(memcpy.o)
- .text          0x00002b0a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(eerd_block_atmega2560.o)
- .text          0x00002b0a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(eewr_byte_atmega2560.o)
-                0x00002b0a                . = ALIGN (0x2)
+ .text          0x00000052        0x2 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+                0x00000052                __vector_1
+                0x00000052                __vector_12
+                0x00000052                __bad_interrupt
+                0x00000052                __vector_6
+                0x00000052                __vector_3
+                0x00000052                __vector_11
+                0x00000052                __vector_7
+                0x00000052                __vector_5
+                0x00000052                __vector_4
+                0x00000052                __vector_9
+                0x00000052                __vector_2
+                0x00000052                __vector_8
+                0x00000052                __vector_10
+ .text          0x00000054      0x10e main.o
+                0x0000005a                main
+                0x00000054                vApplicationIdleHook
+ .text          0x00000162        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_exit.o)
+ .text          0x00000162        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_copy_data.o)
+ .text          0x00000162        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_clear_bss.o)
+                0x00000162                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x00002b0a       0x3e c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_mulsi3.o)
-                0x00002b0a                __mulsi3
- .text.libgcc   0x00002b48       0x28 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodhi4.o)
-                0x00002b48                __udivmodhi4
- .text.libgcc   0x00002b70       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
-                0x00002b70                __udivmodsi4
- .text.libgcc   0x00002bb4       0x36 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_divmodsi4.o)
-                0x00002bb4                __divmodsi4
- .text.libgcc   0x00002bea        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
- .text.libgcc   0x00002bea        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
- .text.avr-libc
-                0x00002bea       0x12 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(memcpy.o)
-                0x00002bea                memcpy
- .text.avr-libc
-                0x00002bfc       0x20 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(eerd_block_atmega2560.o)
-                0x00002c00                __eerd_blraw_m2560
-                0x00002bfc                __eerd_block_m2560
- .text.avr-libc
-                0x00002c1c       0x1c c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(eewr_byte_atmega2560.o)
-                0x00002c1e                __eewr_r18_m2560
-                0x00002c1c                __eewr_byte_m2560
-                0x00002c38                . = ALIGN (0x2)
+ .text.libgcc   0x00000162        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_exit.o)
+ .text.libgcc   0x00000162        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000162        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_clear_bss.o)
+                0x00000162                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00002c38        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
-                0x00002c38                exit
-                0x00002c38                _exit
+ .fini9         0x00000162        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_exit.o)
+                0x00000162                exit
+                0x00000162                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -408,88 +220,46 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00002c38        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .fini0         0x00000162        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_exit.o)
  *(.fini0)
-                0x00002c3c                _etext = .
+                0x00000166                _etext = .
 
-.data           0x00800200       0x50 load address 0x00002c3c
-                0x00800200                PROVIDE (__data_start, .)
+.data           0x00800060        0xa load address 0x00000166
+                0x00800060                PROVIDE (__data_start, .)
  *(.data)
- .data          0x00800200        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
- .data          0x00800200        0xa main.o
- .data          0x0080020a        0x1 ParTest/ParTest.o
- .data          0x0080020b        0x0 serial/serial.o
- .data          0x0080020b        0xa regtest.o
- .data          0x00800215        0x5 ../Source/tasks.o
- .data          0x0080021a        0x0 ../Source/queue.o
- .data          0x0080021a        0x0 ../Source/list.o
- .data          0x0080021a        0x0 ../Source/croutine.o
- .data          0x0080021a        0x0 ../Source/portable/MemMang/heap_1.o
- .data          0x0080021a        0x0 ../Source/portable/GCC_ATMega2560/port.o
- .data          0x0080021a       0x11 ../Common/Minimal/crflash.o
- .data          0x0080022b        0x8 ../Common/Minimal/integer.o
- .data          0x00800233       0x10 ../Common/Minimal/PollQ.o
- .data          0x00800243        0xc ../Common/Minimal/comtest.o
- .data          0x0080024f        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_mulsi3.o)
- .data          0x0080024f        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodhi4.o)
- .data          0x0080024f        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
- .data          0x0080024f        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_divmodsi4.o)
- .data          0x0080024f        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
- .data          0x0080024f        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
- .data          0x0080024f        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(memcpy.o)
- .data          0x0080024f        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(eerd_block_atmega2560.o)
- .data          0x0080024f        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(eewr_byte_atmega2560.o)
+ .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+ .data          0x00800060        0xa main.o
+ .data          0x0080006a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_exit.o)
+ .data          0x0080006a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_copy_data.o)
+ .data          0x0080006a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_clear_bss.o)
  *(.data*)
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.d*)
-                0x00800250                . = ALIGN (0x2)
- *fill*         0x0080024f        0x1 00
-                0x00800250                _edata = .
-                0x00800250                PROVIDE (__data_end, .)
+                0x0080006a                . = ALIGN (0x2)
+                0x0080006a                _edata = .
+                0x0080006a                PROVIDE (__data_end, .)
 
-.bss            0x00800250      0x686
-                0x00800250                PROVIDE (__bss_start, .)
+.bss            0x0080006a        0x1
+                0x0080006a                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x00800250        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
- .bss           0x00800250        0x1 main.o
- .bss           0x00800251        0x0 ParTest/ParTest.o
- .bss           0x00800251        0x4 serial/serial.o
- .bss           0x00800255        0x1 regtest.o
-                0x00800255                xRegTestError
- .bss           0x00800256       0x5d ../Source/tasks.o
-                0x00800256                pxCurrentTCB
- .bss           0x008002b3        0x0 ../Source/queue.o
- .bss           0x008002b3        0x0 ../Source/list.o
- .bss           0x008002b3       0x3a ../Source/croutine.o
-                0x008002b3                pxCurrentCoRoutine
- .bss           0x008002ed      0x5e0 ../Source/portable/MemMang/heap_1.o
- .bss           0x008008cd        0x0 ../Source/portable/GCC_ATMega2560/port.o
- .bss           0x008008cd        0x2 ../Common/Minimal/crflash.o
- .bss           0x008008cf        0x1 ../Common/Minimal/integer.o
- .bss           0x008008d0        0x4 ../Common/Minimal/PollQ.o
- .bss           0x008008d4        0x2 ../Common/Minimal/comtest.o
- .bss           0x008008d6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_mulsi3.o)
- .bss           0x008008d6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodhi4.o)
- .bss           0x008008d6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
- .bss           0x008008d6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_divmodsi4.o)
- .bss           0x008008d6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
- .bss           0x008008d6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
- .bss           0x008008d6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(memcpy.o)
- .bss           0x008008d6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(eerd_block_atmega2560.o)
- .bss           0x008008d6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(eewr_byte_atmega2560.o)
+ .bss           0x0080006a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+ .bss           0x0080006a        0x1 main.o
+ .bss           0x0080006b        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_exit.o)
+ .bss           0x0080006b        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_copy_data.o)
+ .bss           0x0080006b        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_clear_bss.o)
  *(.bss*)
  *(COMMON)
-                0x008008d6                PROVIDE (__bss_end, .)
-                0x00002c3c                __data_load_start = LOADADDR (.data)
-                0x00002c8c                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0080006b                PROVIDE (__bss_end, .)
+                0x00000166                __data_load_start = LOADADDR (.data)
+                0x00000170                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x008008d6        0x0
-                0x008008d6                PROVIDE (__noinit_start, .)
+.noinit         0x0080006b        0x0
+                0x0080006b                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x008008d6                PROVIDE (__noinit_end, .)
-                0x008008d6                _end = .
-                0x008008d6                PROVIDE (__heap_start, .)
+                0x0080006b                PROVIDE (__noinit_end, .)
+                0x0080006b                _end = .
+                0x0080006b                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -540,474 +310,101 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x1c0
+.debug_aranges  0x00000000       0x20
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x20 main.o
- .debug_aranges
-                0x00000020       0x20 ParTest/ParTest.o
- .debug_aranges
-                0x00000040       0x20 serial/serial.o
- .debug_aranges
-                0x00000060       0x20 regtest.o
- .debug_aranges
-                0x00000080       0x20 ../Source/tasks.o
- .debug_aranges
-                0x000000a0       0x20 ../Source/queue.o
- .debug_aranges
-                0x000000c0       0x20 ../Source/list.o
- .debug_aranges
-                0x000000e0       0x20 ../Source/croutine.o
- .debug_aranges
-                0x00000100       0x20 ../Source/portable/MemMang/heap_1.o
- .debug_aranges
-                0x00000120       0x20 ../Source/portable/GCC_ATMega2560/port.o
- .debug_aranges
-                0x00000140       0x20 ../Common/Minimal/crflash.o
- .debug_aranges
-                0x00000160       0x20 ../Common/Minimal/integer.o
- .debug_aranges
-                0x00000180       0x20 ../Common/Minimal/PollQ.o
- .debug_aranges
-                0x000001a0       0x20 ../Common/Minimal/comtest.o
 
 .debug_pubnames
-                0x00000000      0x92f
+                0x00000000       0x34
  *(.debug_pubnames)
  .debug_pubnames
                 0x00000000       0x34 main.o
- .debug_pubnames
-                0x00000034       0x52 ParTest/ParTest.o
- .debug_pubnames
-                0x00000086       0x84 serial/serial.o
- .debug_pubnames
-                0x0000010a       0x5c regtest.o
- .debug_pubnames
-                0x00000166      0x2c1 ../Source/tasks.o
- .debug_pubnames
-                0x00000427      0x1ce ../Source/queue.o
- .debug_pubnames
-                0x000005f5       0x72 ../Source/list.o
- .debug_pubnames
-                0x00000667       0x96 ../Source/croutine.o
- .debug_pubnames
-                0x000006fd       0x64 ../Source/portable/MemMang/heap_1.o
- .debug_pubnames
-                0x00000761       0x90 ../Source/portable/GCC_ATMega2560/port.o
- .debug_pubnames
-                0x000007f1       0x50 ../Common/Minimal/crflash.o
- .debug_pubnames
-                0x00000841       0x52 ../Common/Minimal/integer.o
- .debug_pubnames
-                0x00000893       0x4f ../Common/Minimal/PollQ.o
- .debug_pubnames
-                0x000008e2       0x4d ../Common/Minimal/comtest.o
 
-.debug_info     0x00000000     0x3763
+.debug_info     0x00000000      0x147
  *(.debug_info)
  .debug_info    0x00000000      0x147 main.o
- .debug_info    0x00000147      0x10f ParTest/ParTest.o
- .debug_info    0x00000256      0x294 serial/serial.o
- .debug_info    0x000004ea      0x10e regtest.o
- .debug_info    0x000005f8     0x1145 ../Source/tasks.o
- .debug_info    0x0000173d      0xd22 ../Source/queue.o
- .debug_info    0x0000245f      0x2b5 ../Source/list.o
- .debug_info    0x00002714      0x50e ../Source/croutine.o
- .debug_info    0x00002c22      0x15b ../Source/portable/MemMang/heap_1.o
- .debug_info    0x00002d7d      0x1f2 ../Source/portable/GCC_ATMega2560/port.o
- .debug_info    0x00002f6f      0x2bc ../Common/Minimal/crflash.o
- .debug_info    0x0000322b      0x17c ../Common/Minimal/integer.o
- .debug_info    0x000033a7      0x1c4 ../Common/Minimal/PollQ.o
- .debug_info    0x0000356b      0x1f8 ../Common/Minimal/comtest.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0xfd0
+.debug_abbrev   0x00000000       0xff
  *(.debug_abbrev)
  .debug_abbrev  0x00000000       0xff main.o
- .debug_abbrev  0x000000ff       0x93 ParTest/ParTest.o
- .debug_abbrev  0x00000192       0xd2 serial/serial.o
- .debug_abbrev  0x00000264       0xce regtest.o
- .debug_abbrev  0x00000332      0x28a ../Source/tasks.o
- .debug_abbrev  0x000005bc      0x1d3 ../Source/queue.o
- .debug_abbrev  0x0000078f       0xdf ../Source/list.o
- .debug_abbrev  0x0000086e      0x1cd ../Source/croutine.o
- .debug_abbrev  0x00000a3b       0xfa ../Source/portable/MemMang/heap_1.o
- .debug_abbrev  0x00000b35      0x118 ../Source/portable/GCC_ATMega2560/port.o
- .debug_abbrev  0x00000c4d      0x107 ../Common/Minimal/crflash.o
- .debug_abbrev  0x00000d54       0xd9 ../Common/Minimal/integer.o
- .debug_abbrev  0x00000e2d       0xc0 ../Common/Minimal/PollQ.o
- .debug_abbrev  0x00000eed       0xe3 ../Common/Minimal/comtest.o
 
-.debug_line     0x00000000     0x3668
+.debug_line     0x00000000      0x143
  *(.debug_line)
  .debug_line    0x00000000      0x143 main.o
- .debug_line    0x00000143      0x11d ParTest/ParTest.o
- .debug_line    0x00000260      0x25c serial/serial.o
- .debug_line    0x000004bc      0x8d6 regtest.o
- .debug_line    0x00000d92      0xc9d ../Source/tasks.o
- .debug_line    0x00001a2f      0xa81 ../Source/queue.o
- .debug_line    0x000024b0      0x24e ../Source/list.o
- .debug_line    0x000026fe      0x361 ../Source/croutine.o
- .debug_line    0x00002a5f      0x169 ../Source/portable/MemMang/heap_1.o
- .debug_line    0x00002bc8      0x348 ../Source/portable/GCC_ATMega2560/port.o
- .debug_line    0x00002f10      0x1eb ../Common/Minimal/crflash.o
- .debug_line    0x000030fb      0x146 ../Common/Minimal/integer.o
- .debug_line    0x00003241      0x212 ../Common/Minimal/PollQ.o
- .debug_line    0x00003453      0x215 ../Common/Minimal/comtest.o
 
-.debug_frame    0x00000000      0x730
+.debug_frame    0x00000000       0x40
  *(.debug_frame)
  .debug_frame   0x00000000       0x40 main.o
- .debug_frame   0x00000040       0x40 ParTest/ParTest.o
- .debug_frame   0x00000080       0x70 serial/serial.o
- .debug_frame   0x000000f0       0x50 regtest.o
- .debug_frame   0x00000140      0x1f0 ../Source/tasks.o
- .debug_frame   0x00000330      0x160 ../Source/queue.o
- .debug_frame   0x00000490       0x60 ../Source/list.o
- .debug_frame   0x000004f0       0x50 ../Source/croutine.o
- .debug_frame   0x00000540       0x50 ../Source/portable/MemMang/heap_1.o
- .debug_frame   0x00000590       0x70 ../Source/portable/GCC_ATMega2560/port.o
- .debug_frame   0x00000600       0x50 ../Common/Minimal/crflash.o
- .debug_frame   0x00000650       0x40 ../Common/Minimal/integer.o
- .debug_frame   0x00000690       0x50 ../Common/Minimal/PollQ.o
- .debug_frame   0x000006e0       0x50 ../Common/Minimal/comtest.o
 
-.debug_str      0x00000000     0x1735
+.debug_str      0x00000000      0x137
  *(.debug_str)
- .debug_str     0x00000000      0x12c main.o
-                                0x165 (size before relaxing)
- .debug_str     0x0000012c       0x6e ParTest/ParTest.o
-                                0x12b (size before relaxing)
- .debug_str     0x0000019a      0x126 serial/serial.o
-                                0x202 (size before relaxing)
- .debug_str     0x000002c0       0x6c regtest.o
-                                0x13e (size before relaxing)
- .debug_str     0x0000032c      0x8e6 ../Source/tasks.o
-                                0xa0f (size before relaxing)
- .debug_str     0x00000c12      0x38d ../Source/queue.o
-                                0x5d0 (size before relaxing)
- .debug_str     0x00000f9f       0xa5 ../Source/list.o
-                                0x211 (size before relaxing)
- .debug_str     0x00001044      0x25a ../Source/croutine.o
-                                0x431 (size before relaxing)
- .debug_str     0x0000129e       0x9f ../Source/portable/MemMang/heap_1.o
-                                0x16b (size before relaxing)
- .debug_str     0x0000133d       0xdb ../Source/portable/GCC_ATMega2560/port.o
-                                0x1f2 (size before relaxing)
- .debug_str     0x00001418       0xd7 ../Common/Minimal/crflash.o
-                                0x29a (size before relaxing)
- .debug_str     0x000014ef       0x95 ../Common/Minimal/integer.o
-                                0x19a (size before relaxing)
- .debug_str     0x00001584       0xde ../Common/Minimal/PollQ.o
-                                0x1e9 (size before relaxing)
- .debug_str     0x00001662       0xd3 ../Common/Minimal/comtest.o
-                                0x1ff (size before relaxing)
+ .debug_str     0x00000000      0x137 main.o
+                                0x170 (size before relaxing)
 
-.debug_loc      0x00000000     0x212f
+.debug_loc      0x00000000       0x18
  *(.debug_loc)
  .debug_loc     0x00000000       0x18 main.o
- .debug_loc     0x00000018       0xa1 ParTest/ParTest.o
- .debug_loc     0x000000b9      0x1a3 serial/serial.o
- .debug_loc     0x0000025c      0xc32 ../Source/tasks.o
- .debug_loc     0x00000e8e      0xb71 ../Source/queue.o
- .debug_loc     0x000019ff      0x138 ../Source/list.o
- .debug_loc     0x00001b37      0x1d0 ../Source/croutine.o
- .debug_loc     0x00001d07       0x60 ../Source/portable/MemMang/heap_1.o
- .debug_loc     0x00001d67       0x3b ../Source/portable/GCC_ATMega2560/port.o
- .debug_loc     0x00001da2      0x162 ../Common/Minimal/crflash.o
- .debug_loc     0x00001f04       0x36 ../Common/Minimal/integer.o
- .debug_loc     0x00001f3a       0xae ../Common/Minimal/PollQ.o
- .debug_loc     0x00001fe8      0x147 ../Common/Minimal/comtest.o
 
 .debug_macinfo
  *(.debug_macinfo)
-OUTPUT(rtosdemo.elf elf32-avr)
+OUTPUT(main elf32-avr)
 LOAD linker stubs
 
-.debug_ranges   0x00000000       0x48
+.debug_ranges   0x00000000       0x18
  .debug_ranges  0x00000000       0x18 main.o
- .debug_ranges  0x00000018       0x18 ../Source/tasks.o
- .debug_ranges  0x00000030       0x18 ../Source/queue.o
 
 Cross Reference Table
 
 Symbol                                            File
-__bad_interrupt                                   c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__bss_end                                         c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
-__bss_start                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
-__data_end                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__data_load_start                                 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__data_start                                      c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__divmodsi4                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_divmodsi4.o)
-                                                  ../Common/Minimal/integer.o
-__do_clear_bss                                    c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
-                                                  ../Common/Minimal/comtest.o
-                                                  ../Common/Minimal/PollQ.o
-                                                  ../Common/Minimal/integer.o
-                                                  ../Common/Minimal/crflash.o
-                                                  ../Source/portable/MemMang/heap_1.o
-                                                  ../Source/croutine.o
-                                                  ../Source/tasks.o
-                                                  regtest.o
-                                                  serial/serial.o
+__bad_interrupt                                   c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+__bss_end                                         c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_clear_bss.o)
+__bss_start                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_clear_bss.o)
+__data_end                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_copy_data.o)
+__data_load_start                                 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_copy_data.o)
+__data_start                                      c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_copy_data.o)
+__do_clear_bss                                    c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_clear_bss.o)
                                                   main.o
-__do_copy_data                                    c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-                                                  ../Common/Minimal/comtest.o
-                                                  ../Common/Minimal/PollQ.o
-                                                  ../Common/Minimal/integer.o
-                                                  ../Common/Minimal/crflash.o
-                                                  ../Source/tasks.o
-                                                  regtest.o
-                                                  ParTest/ParTest.o
+__do_copy_data                                    c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_copy_data.o)
                                                   main.o
-__eerd_block_m2560                                c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(eerd_block_atmega2560.o)
-                                                  main.o
-__eerd_blraw_m2560                                c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(eerd_block_atmega2560.o)
-__eewr_byte_m2560                                 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(eewr_byte_atmega2560.o)
-                                                  main.o
-__eewr_r18_m2560                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(eewr_byte_atmega2560.o)
-__heap_end                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__init                                            c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__mulsi3                                          c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_mulsi3.o)
-                                                  ../Common/Minimal/integer.o
-__stack                                           c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__udivmodhi4                                      c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodhi4.o)
-                                                  ../Common/Minimal/comtest.o
-__udivmodsi4                                      c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
-                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_divmodsi4.o)
-                                                  serial/serial.o
-__vector_1                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_10                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_11                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_12                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_13                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_14                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_15                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_16                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_17                                       ../Source/portable/GCC_ATMega2560/port.o
-                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_18                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_19                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_2                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_20                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_21                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_22                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_23                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_24                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_25                                       serial/serial.o
-                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_26                                       serial/serial.o
-                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_27                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_28                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_29                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_3                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_30                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_31                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_32                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_33                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_34                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_35                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_36                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_37                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_38                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_39                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_4                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_40                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_41                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_42                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_43                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_44                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_45                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_46                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_47                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_48                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_49                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_5                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_50                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_51                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_52                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_53                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_54                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_55                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_56                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_6                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_7                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_8                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_9                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vector_default                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-__vectors                                         c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-_exit                                             c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
-exit                                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
-                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
+__eerd_block_m2560                                main.o
+__eewr_byte_m2560                                 main.o
+__heap_end                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+__init                                            c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+__stack                                           c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+__vector_1                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+__vector_10                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+__vector_11                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+__vector_12                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+__vector_2                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+__vector_3                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+__vector_4                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+__vector_5                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+__vector_6                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+__vector_7                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+__vector_8                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+__vector_9                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+__vector_default                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+__vectors                                         c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+_exit                                             c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_exit.o)
+exit                                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3\libgcc.a(_exit.o)
+                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
 main                                              main.o
-                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
-memcpy                                            c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(memcpy.o)
-                                                  ../Source/queue.o
-pcTaskGetName                                     ../Source/tasks.o
-pvPortMalloc                                      ../Source/portable/MemMang/heap_1.o
-                                                  ../Source/croutine.o
-                                                  ../Source/queue.o
-                                                  ../Source/tasks.o
-pxCurrentCoRoutine                                ../Source/croutine.o
-pxCurrentTCB                                      ../Source/tasks.o
-                                                  ../Source/portable/GCC_ATMega2560/port.o
-pxPortInitialiseStack                             ../Source/portable/GCC_ATMega2560/port.o
-                                                  ../Source/tasks.o
-ulTaskNotifyTake                                  ../Source/tasks.o
-uxListRemove                                      ../Source/list.o
-                                                  ../Source/croutine.o
-                                                  ../Source/tasks.o
-uxQueueMessagesWaiting                            ../Source/queue.o
-                                                  ../Common/Minimal/PollQ.o
-uxQueueMessagesWaitingFromISR                     ../Source/queue.o
-uxQueueSpacesAvailable                            ../Source/queue.o
-uxTaskGetNumberOfTasks                            ../Source/tasks.o
-uxTaskResetEventItemValue                         ../Source/tasks.o
-vAltStartComTestTasks                             ../Common/Minimal/comtest.o
-                                                  main.o
+                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/crts8515.o
+vAltStartComTestTasks                             main.o
 vApplicationIdleHook                              main.o
-                                                  ../Source/tasks.o
-vCoRoutineAddToDelayedList                        ../Source/croutine.o
-                                                  ../Common/Minimal/crflash.o
-                                                  ../Source/queue.o
-vCoRoutineSchedule                                ../Source/croutine.o
-                                                  main.o
-vListInitialise                                   ../Source/list.o
-                                                  ../Source/croutine.o
-                                                  ../Source/queue.o
-                                                  ../Source/tasks.o
-vListInitialiseItem                               ../Source/list.o
-                                                  ../Source/croutine.o
-                                                  ../Source/tasks.o
-vListInsert                                       ../Source/list.o
-                                                  ../Source/croutine.o
-                                                  ../Source/tasks.o
-vListInsertEnd                                    ../Source/list.o
-                                                  ../Source/croutine.o
-                                                  ../Source/tasks.o
-vParTestInitialise                                ParTest/ParTest.o
-                                                  main.o
-vParTestSetLED                                    ParTest/ParTest.o
-                                                  ../Common/Minimal/comtest.o
-vParTestToggleLED                                 ParTest/ParTest.o
-                                                  ../Common/Minimal/comtest.o
-                                                  ../Common/Minimal/crflash.o
-                                                  main.o
-vPortEndScheduler                                 ../Source/portable/GCC_ATMega2560/port.o
-                                                  ../Source/tasks.o
-vPortFree                                         ../Source/portable/MemMang/heap_1.o
-                                                  ../Source/queue.o
-                                                  ../Source/tasks.o
-vPortInitialiseBlocks                             ../Source/portable/MemMang/heap_1.o
-vPortYield                                        ../Source/portable/GCC_ATMega2560/port.o
-                                                  ../Source/queue.o
-                                                  ../Source/tasks.o
-                                                  serial/serial.o
-vPortYieldFromTick                                ../Source/portable/GCC_ATMega2560/port.o
-vQueueDelete                                      ../Source/queue.o
-vSerialClose                                      serial/serial.o
-vStartFlashCoRoutines                             ../Common/Minimal/crflash.o
-                                                  main.o
-vStartIntegerMathTasks                            ../Common/Minimal/integer.o
-                                                  main.o
-vStartPolledQueueTasks                            ../Common/Minimal/PollQ.o
-                                                  main.o
-vStartRegTestTasks                                regtest.o
-                                                  main.o
-vTaskDelay                                        ../Source/tasks.o
-                                                  ../Common/Minimal/comtest.o
-                                                  ../Common/Minimal/PollQ.o
-                                                  main.o
-vTaskDelayUntil                                   ../Source/tasks.o
-vTaskDelete                                       ../Source/tasks.o
-vTaskEndScheduler                                 ../Source/tasks.o
-vTaskMissedYield                                  ../Source/tasks.o
-                                                  ../Source/queue.o
-vTaskNotifyGiveFromISR                            ../Source/tasks.o
-vTaskPlaceOnEventList                             ../Source/tasks.o
-                                                  ../Source/queue.o
-vTaskPlaceOnUnorderedEventList                    ../Source/tasks.o
-vTaskSetTimeOutState                              ../Source/tasks.o
-                                                  ../Source/queue.o
-vTaskStartScheduler                               ../Source/tasks.o
-                                                  main.o
-vTaskSuspendAll                                   ../Source/tasks.o
-                                                  ../Source/portable/MemMang/heap_1.o
-                                                  ../Source/queue.o
-                                                  ParTest/ParTest.o
-vTaskSwitchContext                                ../Source/tasks.o
-                                                  ../Source/portable/GCC_ATMega2560/port.o
-xAreComTestTasksStillRunning                      ../Common/Minimal/comtest.o
-                                                  main.o
-xAreFlashCoRoutinesStillRunning                   ../Common/Minimal/crflash.o
-xAreIntegerMathsTaskStillRunning                  ../Common/Minimal/integer.o
-                                                  main.o
-xArePollingQueuesStillRunning                     ../Common/Minimal/PollQ.o
-                                                  main.o
-xAreRegTestTasksStillRunning                      regtest.o
-                                                  main.o
-xCoRoutineCreate                                  ../Source/croutine.o
-                                                  ../Common/Minimal/crflash.o
-xCoRoutineRemoveFromEventList                     ../Source/croutine.o
-                                                  ../Source/queue.o
-xPortGetFreeHeapSize                              ../Source/portable/MemMang/heap_1.o
-xPortStartScheduler                               ../Source/portable/GCC_ATMega2560/port.o
-                                                  ../Source/tasks.o
-xQueueCRReceive                                   ../Source/queue.o
-                                                  ../Common/Minimal/crflash.o
-xQueueCRReceiveFromISR                            ../Source/queue.o
-xQueueCRSend                                      ../Source/queue.o
-                                                  ../Common/Minimal/crflash.o
-xQueueCRSendFromISR                               ../Source/queue.o
-xQueueGenericCreate                               ../Source/queue.o
-                                                  ../Common/Minimal/PollQ.o
-                                                  ../Common/Minimal/crflash.o
-                                                  serial/serial.o
-xQueueGenericReceive                              ../Source/queue.o
-                                                  ../Common/Minimal/PollQ.o
-                                                  serial/serial.o
-xQueueGenericReset                                ../Source/queue.o
-xQueueGenericSend                                 ../Source/queue.o
-                                                  ../Common/Minimal/PollQ.o
-                                                  serial/serial.o
-xQueueGenericSendFromISR                          ../Source/queue.o
-                                                  serial/serial.o
-xQueueGiveFromISR                                 ../Source/queue.o
-xQueueIsQueueEmptyFromISR                         ../Source/queue.o
-xQueueIsQueueFullFromISR                          ../Source/queue.o
-xQueuePeekFromISR                                 ../Source/queue.o
-xQueueReceiveFromISR                              ../Source/queue.o
-                                                  serial/serial.o
-xRegTestError                                     regtest.o
-xSerialGetChar                                    serial/serial.o
-                                                  ../Common/Minimal/comtest.o
-xSerialPortInitMinimal                            serial/serial.o
-                                                  ../Common/Minimal/comtest.o
-xSerialPutChar                                    serial/serial.o
-                                                  ../Common/Minimal/comtest.o
-xTaskCheckForTimeOut                              ../Source/tasks.o
-                                                  ../Source/queue.o
-xTaskCreate                                       ../Source/tasks.o
-                                                  ../Common/Minimal/comtest.o
-                                                  ../Common/Minimal/PollQ.o
-                                                  ../Common/Minimal/integer.o
-                                                  regtest.o
-                                                  main.o
-xTaskGenericNotify                                ../Source/tasks.o
-xTaskGenericNotifyFromISR                         ../Source/tasks.o
-xTaskGetTickCount                                 ../Source/tasks.o
-                                                  ../Common/Minimal/comtest.o
-                                                  ../Source/croutine.o
-xTaskGetTickCountFromISR                          ../Source/tasks.o
-xTaskIncrementTick                                ../Source/tasks.o
-                                                  ../Source/portable/GCC_ATMega2560/port.o
-xTaskNotifyStateClear                             ../Source/tasks.o
-xTaskNotifyWait                                   ../Source/tasks.o
-xTaskRemoveFromEventList                          ../Source/tasks.o
-                                                  ../Source/queue.o
-xTaskRemoveFromUnorderedEventList                 ../Source/tasks.o
-xTaskResumeAll                                    ../Source/tasks.o
-                                                  ../Source/portable/MemMang/heap_1.o
-                                                  ../Source/queue.o
-                                                  ParTest/ParTest.o
+vCoRoutineSchedule                                main.o
+vParTestInitialise                                main.o
+vParTestToggleLED                                 main.o
+vStartFlashCoRoutines                             main.o
+vStartIntegerMathTasks                            main.o
+vStartPolledQueueTasks                            main.o
+vStartRegTestTasks                                main.o
+vTaskDelay                                        main.o
+vTaskStartScheduler                               main.o
+xAreComTestTasksStillRunning                      main.o
+xAreIntegerMathsTaskStillRunning                  main.o
+xArePollingQueuesStillRunning                     main.o
+xAreRegTestTasksStillRunning                      main.o
+xTaskCreate                                       main.o

@@ -249,18 +249,18 @@
  310               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 comtest.c
-C:\Users\NIELSS~1\AppData\Local\Temp/ccx7MzPF.s:2      *ABS*:0000003f __SREG__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccx7MzPF.s:3      *ABS*:0000003e __SP_H__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccx7MzPF.s:4      *ABS*:0000003d __SP_L__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccx7MzPF.s:5      *ABS*:00000034 __CCP__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccx7MzPF.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccx7MzPF.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccx7MzPF.s:18     .text:00000000 xAreComTestTasksStillRunning
+C:\Users\Amalie\AppData\Local\Temp/ccuUukFk.s:2      *ABS*:0000003f __SREG__
+C:\Users\Amalie\AppData\Local\Temp/ccuUukFk.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Amalie\AppData\Local\Temp/ccuUukFk.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Amalie\AppData\Local\Temp/ccuUukFk.s:5      *ABS*:00000034 __CCP__
+C:\Users\Amalie\AppData\Local\Temp/ccuUukFk.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Amalie\AppData\Local\Temp/ccuUukFk.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Amalie\AppData\Local\Temp/ccuUukFk.s:18     .text:00000000 xAreComTestTasksStillRunning
                              .bss:00000000 uxRxLoops
-C:\Users\NIELSS~1\AppData\Local\Temp/ccx7MzPF.s:42     .text:0000000e vAltStartComTestTasks
-C:\Users\NIELSS~1\AppData\Local\Temp/ccx7MzPF.s:260    .bss:00000001 uxBaseLED
-C:\Users\NIELSS~1\AppData\Local\Temp/ccx7MzPF.s:201    .text:000000e8 vComTxTask
-C:\Users\NIELSS~1\AppData\Local\Temp/ccx7MzPF.s:98     .text:00000062 vComRxTask
+C:\Users\Amalie\AppData\Local\Temp/ccuUukFk.s:42     .text:0000000e vAltStartComTestTasks
+C:\Users\Amalie\AppData\Local\Temp/ccuUukFk.s:260    .bss:00000001 uxBaseLED
+C:\Users\Amalie\AppData\Local\Temp/ccuUukFk.s:201    .text:000000e8 vComTxTask
+C:\Users\Amalie\AppData\Local\Temp/ccuUukFk.s:98     .text:00000062 vComRxTask
 
 UNDEFINED SYMBOLS
 xSerialPortInitMinimal

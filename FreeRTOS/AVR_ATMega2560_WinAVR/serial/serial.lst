@@ -396,20 +396,20 @@
  479               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 serial.c
-C:\Users\NIELSS~1\AppData\Local\Temp/ccFmSxlh.s:2      *ABS*:0000003f __SREG__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccFmSxlh.s:3      *ABS*:0000003e __SP_H__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccFmSxlh.s:4      *ABS*:0000003d __SP_L__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccFmSxlh.s:5      *ABS*:00000034 __CCP__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccFmSxlh.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccFmSxlh.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccFmSxlh.s:18     .text:00000000 vSerialClose
-C:\Users\NIELSS~1\AppData\Local\Temp/ccFmSxlh.s:68     .text:0000001c __vector_26
-C:\Users\NIELSS~1\AppData\Local\Temp/ccFmSxlh.s:413    .bss:00000002 xCharsForTx
-C:\Users\NIELSS~1\AppData\Local\Temp/ccFmSxlh.s:156    .text:000000aa __vector_25
+C:\Users\Amalie\AppData\Local\Temp/ccrb0CNg.s:2      *ABS*:0000003f __SREG__
+C:\Users\Amalie\AppData\Local\Temp/ccrb0CNg.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Amalie\AppData\Local\Temp/ccrb0CNg.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Amalie\AppData\Local\Temp/ccrb0CNg.s:5      *ABS*:00000034 __CCP__
+C:\Users\Amalie\AppData\Local\Temp/ccrb0CNg.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Amalie\AppData\Local\Temp/ccrb0CNg.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Amalie\AppData\Local\Temp/ccrb0CNg.s:18     .text:00000000 vSerialClose
+C:\Users\Amalie\AppData\Local\Temp/ccrb0CNg.s:68     .text:0000001c __vector_26
+C:\Users\Amalie\AppData\Local\Temp/ccrb0CNg.s:413    .bss:00000002 xCharsForTx
+C:\Users\Amalie\AppData\Local\Temp/ccrb0CNg.s:156    .text:000000aa __vector_25
                              .bss:00000000 xRxedChars
-C:\Users\NIELSS~1\AppData\Local\Temp/ccFmSxlh.s:242    .text:00000136 xSerialPutChar
-C:\Users\NIELSS~1\AppData\Local\Temp/ccFmSxlh.s:290    .text:00000172 xSerialGetChar
-C:\Users\NIELSS~1\AppData\Local\Temp/ccFmSxlh.s:312    .text:00000186 xSerialPortInitMinimal
+C:\Users\Amalie\AppData\Local\Temp/ccrb0CNg.s:242    .text:00000136 xSerialPutChar
+C:\Users\Amalie\AppData\Local\Temp/ccrb0CNg.s:290    .text:00000172 xSerialGetChar
+C:\Users\Amalie\AppData\Local\Temp/ccrb0CNg.s:312    .text:00000186 xSerialPortInitMinimal
 
 UNDEFINED SYMBOLS
 xQueueReceiveFromISR

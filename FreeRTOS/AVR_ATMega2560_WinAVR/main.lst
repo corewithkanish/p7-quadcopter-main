@@ -202,16 +202,16 @@
  256               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\NIELSS~1\AppData\Local\Temp/cciPDRuR.s:2      *ABS*:0000003f __SREG__
-C:\Users\NIELSS~1\AppData\Local\Temp/cciPDRuR.s:3      *ABS*:0000003e __SP_H__
-C:\Users\NIELSS~1\AppData\Local\Temp/cciPDRuR.s:4      *ABS*:0000003d __SP_L__
-C:\Users\NIELSS~1\AppData\Local\Temp/cciPDRuR.s:5      *ABS*:00000034 __CCP__
-C:\Users\NIELSS~1\AppData\Local\Temp/cciPDRuR.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/cciPDRuR.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/cciPDRuR.s:18     .text:00000000 vApplicationIdleHook
-C:\Users\NIELSS~1\AppData\Local\Temp/cciPDRuR.s:36     .text:00000006 main
-C:\Users\NIELSS~1\AppData\Local\Temp/cciPDRuR.s:121    .text:0000008e vErrorChecks
-C:\Users\NIELSS~1\AppData\Local\Temp/cciPDRuR.s:210    .data:00000006 ulDummyVariable.1942
+C:\Users\Amalie\AppData\Local\Temp/cck0ZrOM.s:2      *ABS*:0000003f __SREG__
+C:\Users\Amalie\AppData\Local\Temp/cck0ZrOM.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Amalie\AppData\Local\Temp/cck0ZrOM.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Amalie\AppData\Local\Temp/cck0ZrOM.s:5      *ABS*:00000034 __CCP__
+C:\Users\Amalie\AppData\Local\Temp/cck0ZrOM.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Amalie\AppData\Local\Temp/cck0ZrOM.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Amalie\AppData\Local\Temp/cck0ZrOM.s:18     .text:00000000 vApplicationIdleHook
+C:\Users\Amalie\AppData\Local\Temp/cck0ZrOM.s:36     .text:00000006 main
+C:\Users\Amalie\AppData\Local\Temp/cck0ZrOM.s:121    .text:0000008e vErrorChecks
+C:\Users\Amalie\AppData\Local\Temp/cck0ZrOM.s:210    .data:00000006 ulDummyVariable.1942
                              .bss:00000000 xErrorHasOccurred.1949
 
 UNDEFINED SYMBOLS

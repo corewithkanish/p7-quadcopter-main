@@ -198,16 +198,16 @@
  250               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 integer.c
-C:\Users\NIELSS~1\AppData\Local\Temp/ccplnejf.s:2      *ABS*:0000003f __SREG__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccplnejf.s:3      *ABS*:0000003e __SP_H__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccplnejf.s:4      *ABS*:0000003d __SP_L__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccplnejf.s:5      *ABS*:00000034 __CCP__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccplnejf.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccplnejf.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccplnejf.s:17     .text:00000000 vCompeteingIntMathTask
-C:\Users\NIELSS~1\AppData\Local\Temp/ccplnejf.s:155    .text:000000c0 xAreIntegerMathsTaskStillRunning
+C:\Users\Amalie\AppData\Local\Temp/cccfEHCX.s:2      *ABS*:0000003f __SREG__
+C:\Users\Amalie\AppData\Local\Temp/cccfEHCX.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Amalie\AppData\Local\Temp/cccfEHCX.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Amalie\AppData\Local\Temp/cccfEHCX.s:5      *ABS*:00000034 __CCP__
+C:\Users\Amalie\AppData\Local\Temp/cccfEHCX.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Amalie\AppData\Local\Temp/cccfEHCX.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Amalie\AppData\Local\Temp/cccfEHCX.s:17     .text:00000000 vCompeteingIntMathTask
+C:\Users\Amalie\AppData\Local\Temp/cccfEHCX.s:155    .text:000000c0 xAreIntegerMathsTaskStillRunning
                              .bss:00000000 xTaskCheck
-C:\Users\NIELSS~1\AppData\Local\Temp/ccplnejf.s:177    .text:000000ce vStartIntegerMathTasks
+C:\Users\Amalie\AppData\Local\Temp/cccfEHCX.s:177    .text:000000ce vStartIntegerMathTasks
 
 UNDEFINED SYMBOLS
 __mulsi3
