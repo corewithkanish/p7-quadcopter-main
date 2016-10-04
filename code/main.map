@@ -382,12 +382,12 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  .debug_frame   0x00000000       0x20 main.o
  .debug_frame   0x00000020       0x30 test.o
 
-.debug_str      0x00000000      0x11f
+.debug_str      0x00000000      0x105
  *(.debug_str)
- .debug_str     0x00000000       0xf5 main.o
-                                0x129 (size before relaxing)
- .debug_str     0x000000f5       0x2a test.o
-                                 0xf9 (size before relaxing)
+ .debug_str     0x00000000       0xdb main.o
+                                0x10f (size before relaxing)
+ .debug_str     0x000000db       0x2a test.o
+                                 0xdf (size before relaxing)
 
 .debug_loc      0x00000000       0xc8
  *(.debug_loc)

@@ -114,11 +114,11 @@
  122 005e 0E94 0000 		call Set_PWM_duty
  123               	.LVL9:
  124               	.LM12:
- 125 0062 C93B      		cpi r28,185
+ 125 0062 CB3B      		cpi r28,187
  126 0064 D105      		cpc r29,__zero_reg__
  127 0066 04F0      		brlt .L4
- 128 0068 C9EB      		ldi r28,lo8(185)
- 129 006a D0E0      		ldi r29,hi8(185)
+ 128 0068 CBEB      		ldi r28,lo8(187)
+ 129 006a D0E0      		ldi r29,hi8(187)
  130 006c 00C0      		rjmp .L5
  131               	.L4:
  132               	.LM13:
@@ -154,13 +154,13 @@
  187               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\USUARIO\AppData\Local\Temp/ccN0LGuI.s:2      *ABS*:0000003f __SREG__
-C:\Users\USUARIO\AppData\Local\Temp/ccN0LGuI.s:3      *ABS*:0000003e __SP_H__
-C:\Users\USUARIO\AppData\Local\Temp/ccN0LGuI.s:4      *ABS*:0000003d __SP_L__
-C:\Users\USUARIO\AppData\Local\Temp/ccN0LGuI.s:5      *ABS*:00000034 __CCP__
-C:\Users\USUARIO\AppData\Local\Temp/ccN0LGuI.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\USUARIO\AppData\Local\Temp/ccN0LGuI.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\USUARIO\AppData\Local\Temp/ccN0LGuI.s:18     .text:00000000 main
+C:\Users\NIELSS~1\AppData\Local\Temp/ccYrBwKF.s:2      *ABS*:0000003f __SREG__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccYrBwKF.s:3      *ABS*:0000003e __SP_H__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccYrBwKF.s:4      *ABS*:0000003d __SP_L__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccYrBwKF.s:5      *ABS*:00000034 __CCP__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccYrBwKF.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccYrBwKF.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccYrBwKF.s:18     .text:00000000 main
 
 UNDEFINED SYMBOLS
 PWM_init

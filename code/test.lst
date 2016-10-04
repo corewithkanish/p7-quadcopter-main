@@ -77,13 +77,13 @@
  120               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 test.c
-C:\Users\USUARIO\AppData\Local\Temp/cchmlz9T.s:2      *ABS*:0000003f __SREG__
-C:\Users\USUARIO\AppData\Local\Temp/cchmlz9T.s:3      *ABS*:0000003e __SP_H__
-C:\Users\USUARIO\AppData\Local\Temp/cchmlz9T.s:4      *ABS*:0000003d __SP_L__
-C:\Users\USUARIO\AppData\Local\Temp/cchmlz9T.s:5      *ABS*:00000034 __CCP__
-C:\Users\USUARIO\AppData\Local\Temp/cchmlz9T.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\USUARIO\AppData\Local\Temp/cchmlz9T.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\USUARIO\AppData\Local\Temp/cchmlz9T.s:18     .text:00000000 PWM_init
-C:\Users\USUARIO\AppData\Local\Temp/cchmlz9T.s:69     .text:00000042 Set_PWM_duty
+C:\Users\NIELSS~1\AppData\Local\Temp/ccKogbHS.s:2      *ABS*:0000003f __SREG__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccKogbHS.s:3      *ABS*:0000003e __SP_H__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccKogbHS.s:4      *ABS*:0000003d __SP_L__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccKogbHS.s:5      *ABS*:00000034 __CCP__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccKogbHS.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccKogbHS.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccKogbHS.s:18     .text:00000000 PWM_init
+C:\Users\NIELSS~1\AppData\Local\Temp/ccKogbHS.s:69     .text:00000042 Set_PWM_duty
 
 NO UNDEFINED SYMBOLS
