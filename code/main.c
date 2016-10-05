@@ -12,7 +12,7 @@ int main(void)
 	int duty4B = 128;
 	int duty4C = 128;
 
-	int duty_final = 187;
+	int duty_final = 167;
 
 	Set_PWM_duty(duty0, duty4A, duty4B, duty4C);
 	_delay_ms(6000);
