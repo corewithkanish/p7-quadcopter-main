@@ -8,28 +8,38 @@
 \renewcommand\figurename{Figur}
 \renewcommand\tablename{Tabel}
 
-\section*{Supervisor meeting\\ \small Wednesday, 21st of September 2016}
+\section*{Supervisor meeting\\ \small Wednesday, 5th of October 2016}
 
-\subsection{Modeling}
+\subsection{Tests}
 \begin{itemize}
-  \item[-] The model looks fine for now, however we might discover some signerrors when we start doing control.
-  \item[-] Drag force: $D = \frac{1}{2} \rho A V^2 C_D$, look it up on Wiki.
-  \item[-] The drag is easy to model, just put it in with a negative sign in the velocity direction.
+  \item[-] The thrust test has been done with a new setup, resulting in slightly different measurements.
+  \item[-] The drag test has been done using the torque-meter, results seems okay.
+  \item[-] The battery level test is yet to be done.
 \end{itemize}
 
-\subsection{Communication}
+\subsection{Simulation}
 \begin{itemize}
-  \item[-] We can use an acknowledge-based communication, reason: Educational.
-  \item[-] We will send position and angle information through the network.
+  \item[-] Talk about the controller design with Christoffer.
+  \item[-] When we change roll, the other to motors change the velocity a little bit. The disturbance is small and may originate from sign-error or from physical implications of the model.
+  \item[-] To investigate the above, the two motors (that maybe should not change) can be turned off in the simulation.
+\end{itemize}
+
+\subsection{Observer}
+\begin{itemize}
+  \item[-] A reduced order observer has been designed to determine the angular velocities.
+  \item[-] The Vicon system returns very good measurements, so an observer would not be needed, since the derivative of these angles would be sufficient.
+  \item[-] It is not necessary when only using vicon, but for the learning perspective, it is nice to implement in the system.
+  \item[-] The observer is especially relevant when using on-board sensors like a gyroscope, so designing it now will make the project flexible for later such implementation.
 \end{itemize}
 
 \subsection{Miscellaneous}
 \begin{itemize}
-  \item[-] Write down details on the scope of the project.
-  \item[-] Get a blue box to keep stuff in the Vicon room.
+  \item[-] To get an acceleration of \si{1 m/s^2} we need around \si{0.5 rad} - weather or not this is a large acceleration is difficult to say. It is not ridicules number.
+  \item[-] We can compute the maximum acceleration from the mass and thrust force of the quadrotor.
+  \item[-] When choosing the magnitude of acceleration we should take the angular disturbances into account.
 \end{itemize}
 
 \subsection{Next Supervisor Meeting}
-Wednesdays, 28th of September at 10.00
+Wednesdays, 12th of October at 10.00
 
 \end{document}
