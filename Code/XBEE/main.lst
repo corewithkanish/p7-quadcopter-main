@@ -1,0 +1,82 @@
+   1               		.file	"main.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	main
+  18               	main:
+  19               	.LFB6:
+  20               	.LM1:
+  21 0000 CF93      		push r28
+  22 0002 DF93      		push r29
+  23               	/* prologue: function */
+  24               	/* frame size = 0 */
+  25               	.LM2:
+  26 0004 87E6      		ldi r24,lo8(103)
+  27 0006 90E0      		ldi r25,hi8(103)
+  28 0008 0E94 0000 		call USART_init
+  29               	.LBB12:
+  30               	.LBB13:
+  31               	.LBB14:
+  32               	.LBB15:
+  33               	.LM3:
+  34 000c C0E9      		ldi r28,lo8(400)
+  35 000e D1E0      		ldi r29,hi8(400)
+  36               	.L3:
+  37               	.LBE15:
+  38               	.LBE14:
+  39               	.LBE13:
+  40               	.LBE12:
+  41               	.LM4:
+  42 0010 0E94 0000 		call USART_receive
+  43 0014 20E1      		ldi r18,lo8(10000)
+  44 0016 37E2      		ldi r19,hi8(10000)
+  45               	.LVL0:
+  46               	.L2:
+  47               	.LBB19:
+  48               	.LBB18:
+  49               	.LBB17:
+  50               	.LBB16:
+  51               	.LM5:
+  52 0018 FE01      		movw r30,r28
+  53               	.LVL1:
+  54               	/* #APP */
+  55               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+  56 001a 3197      		1: sbiw r30,1
+  57 001c 01F4      		brne 1b
+  58               	 ;  0 "" 2
+  59               	/* #NOAPP */
+  60               	.LBE16:
+  61               	.LBE17:
+  62               	.LM6:
+  63 001e 2150      		subi r18,lo8(-(-1))
+  64 0020 3040      		sbci r19,hi8(-(-1))
+  65               	.LM7:
+  66 0022 01F4      		brne .L2
+  67               	.LBE18:
+  68               	.LBE19:
+  69               	.LM8:
+  70 0024 8052      		subi r24,lo8(-(-32))
+  71               	.LVL2:
+  72 0026 0E94 0000 		call USART_transmit
+  73               	.LVL3:
+  74 002a 00C0      		rjmp .L3
+  75               	.LFE6:
+ 101               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\USUARIO\AppData\Local\Temp/ccb9iyWk.s:2      *ABS*:0000003f __SREG__
+C:\Users\USUARIO\AppData\Local\Temp/ccb9iyWk.s:3      *ABS*:0000003e __SP_H__
+C:\Users\USUARIO\AppData\Local\Temp/ccb9iyWk.s:4      *ABS*:0000003d __SP_L__
+C:\Users\USUARIO\AppData\Local\Temp/ccb9iyWk.s:5      *ABS*:00000034 __CCP__
+C:\Users\USUARIO\AppData\Local\Temp/ccb9iyWk.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\USUARIO\AppData\Local\Temp/ccb9iyWk.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\USUARIO\AppData\Local\Temp/ccb9iyWk.s:18     .text:00000000 main
+
+UNDEFINED SYMBOLS
+USART_init
+USART_receive
+USART_transmit

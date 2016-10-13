@@ -38,7 +38,7 @@ Ae=[A zeros(size(A,1),size(C,1));
         C zeros(size(C,1),size(C,1))];
 Be=[B; zeros(size(C,1),size(B,2))];
 
-Fe=-place(Ae,Be,[[-3 -3.2 -3.3 -3.4 -3.5 -3.6] [-7.7 -7.8 -7.9]]); % Place uses the form A-BF
+Fe=-place(Ae,Be,[[-4 -4.2 -4.3 -4.4 -4.5 -4.6] [-7.7 -7.8 -7.9]]); % Place uses the form A-BF
 F=Fe(:,1:size(A,2));
 F1=F(:,1:3);
 F2=F(:,4:6);
@@ -82,7 +82,7 @@ Ccl=[C1 zeros(size(C1,1),size(A12+B1*F2,2)) zeros(size(C1,1),size(A12+B1*F2,2))]
 Dcl=0;
 
 system_cl=ss(Acl,Bcl,Ccl,Dcl);
-%step(system_cl);
+step(system_cl);
 %impulse(system_cl);
-bode(system_cl)
+%bode(system_cl)
 
