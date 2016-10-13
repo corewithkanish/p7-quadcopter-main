@@ -8,98 +8,29 @@
   15               	.Ltext0:
   16               	.global	main
   18               	main:
-  19               	.LFB6:
+  19               	.LFB2:
   20               	.LM1:
   21               	/* prologue: function */
   22               	/* frame size = 0 */
   23               	.LM2:
   24 0000 8FEF      		ldi r24,lo8(-1)
-  25 0002 84B9      		out 36-32,r24
-  26 0004 20E1      		ldi r18,lo8(10000)
-  27 0006 37E2      		ldi r19,hi8(10000)
-  28               	.LVL0:
-  29               	.LBB18:
-  30               	.LBB19:
-  31               	.LBB20:
-  32               	.LBB21:
-  33               	.LM3:
-  34 0008 40E9      		ldi r20,lo8(400)
-  35 000a 51E0      		ldi r21,hi8(400)
-  36               	.LBE21:
-  37               	.LBE20:
-  38               	.LBE19:
-  39               	.LBE18:
-  40               	.LM4:
-  41 000c 6FEF      		ldi r22,lo8(-1)
-  42 000e 00C0      		rjmp .L7
-  43               	.LVL1:
-  44               	.L3:
-  45               	.LBB25:
-  46               	.LBB26:
-  47               	.LBB27:
-  48               	.LBB28:
-  49               	.LM5:
-  50 0010 CA01      		movw r24,r20
-  51               	.LVL2:
-  52               	/* #APP */
-  53               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
-  54 0012 0197      		1: sbiw r24,1
-  55 0014 01F4      		brne 1b
-  56               	 ;  0 "" 2
-  57               	/* #NOAPP */
-  58               	.LBE28:
-  59               	.LBE27:
-  60               	.LM6:
-  61 0016 2150      		subi r18,lo8(-(-1))
-  62 0018 3040      		sbci r19,hi8(-(-1))
-  63               	.L7:
-  64               	.LM7:
-  65 001a 2115      		cp r18,__zero_reg__
-  66 001c 3105      		cpc r19,__zero_reg__
-  67 001e 01F4      		brne .L3
-  68               	.LBE26:
-  69               	.LBE25:
-  70               	.LM8:
-  71 0020 15B8      		out 37-32,__zero_reg__
-  72 0022 80E1      		ldi r24,lo8(10000)
-  73 0024 97E2      		ldi r25,hi8(10000)
-  74               	.LVL3:
-  75               	.L4:
-  76               	.LBB29:
-  77               	.LBB24:
-  78               	.LBB23:
-  79               	.LBB22:
-  80               	.LM9:
-  81 0026 FA01      		movw r30,r20
-  82               	/* #APP */
-  83               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
-  84 0028 3197      		1: sbiw r30,1
-  85 002a 01F4      		brne 1b
-  86               	 ;  0 "" 2
-  87               	/* #NOAPP */
-  88               	.LBE22:
-  89               	.LBE23:
-  90               	.LM10:
-  91 002c 0197      		sbiw r24,1
-  92               	.LM11:
-  93 002e 01F4      		brne .L4
-  94               	.LBE24:
-  95               	.LBE29:
-  96               	.LM12:
-  97 0030 65B9      		out 37-32,r22
-  98 0032 20E1      		ldi r18,lo8(10000)
-  99 0034 37E2      		ldi r19,hi8(10000)
- 100 0036 00C0      		rjmp .L3
- 101               	.LFE6:
- 127               	.Letext0:
+  25 0002 8DB9      		out 45-32,r24
+  26               	.L2:
+  27               	.LM3:
+  28 0004 8EB9      		out 46-32,r24
+  29               	.LM4:
+  30 0006 1EB8      		out 46-32,__zero_reg__
+  31 0008 00C0      		rjmp .L2
+  32               	.LFE2:
+  58               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 test.c
-C:\Users\Amalie\AppData\Local\Temp/ccH2cwSP.s:2      *ABS*:0000003f __SREG__
-C:\Users\Amalie\AppData\Local\Temp/ccH2cwSP.s:3      *ABS*:0000003e __SP_H__
-C:\Users\Amalie\AppData\Local\Temp/ccH2cwSP.s:4      *ABS*:0000003d __SP_L__
-C:\Users\Amalie\AppData\Local\Temp/ccH2cwSP.s:5      *ABS*:00000034 __CCP__
-C:\Users\Amalie\AppData\Local\Temp/ccH2cwSP.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\Amalie\AppData\Local\Temp/ccH2cwSP.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\Amalie\AppData\Local\Temp/ccH2cwSP.s:18     .text:00000000 main
+C:\Users\NIELSS~1\AppData\Local\Temp/ccjbj1Cf.s:2      *ABS*:0000003f __SREG__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccjbj1Cf.s:3      *ABS*:0000003e __SP_H__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccjbj1Cf.s:4      *ABS*:0000003d __SP_L__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccjbj1Cf.s:5      *ABS*:00000034 __CCP__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccjbj1Cf.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccjbj1Cf.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccjbj1Cf.s:18     .text:00000000 main
 
 NO UNDEFINED SYMBOLS
