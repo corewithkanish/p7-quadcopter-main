@@ -31,6 +31,7 @@ SOURCES = $(FILENAME).c
  SOURCES += freertos/list.c
  SOURCES += freertos/queue.c
  SOURCES += freertos/tasks.c
+ SOURCES += freertos/serial/serial.c
  SOURCES += freertos/portable/MemMang/heap_3.c
 SOURCES += freertos/timers.c
 
