@@ -1880,7 +1880,7 @@ BaseType_t xReturn;
 	#endif /* configUSE_TIMERS */
 
 	if( xReturn == pdPASS )
-	{
+	{    
 		/* Interrupts are turned off here, to ensure a tick does not occur
 		before or during the call to xPortStartScheduler().  The stacks of
 		the created tasks contain a status word with interrupts switched on
@@ -1907,6 +1907,7 @@ BaseType_t xReturn;
 
 		/* Setting up the timer tick is hardware specific and thus in the
 		portable interface. */
+    
 		if( xPortStartScheduler() != pdFALSE )
 		{
 			/* Should not reach here as if the scheduler is running the
@@ -3130,7 +3131,7 @@ void vTaskMissedYield( void )
  *
  */
 static portTASK_FUNCTION( prvIdleTask, pvParameters )
-{
+{  
 	/* Stop warnings. */
 	( void ) pvParameters;
 
