@@ -10,6 +10,7 @@
 
 \section*{Supervisor meeting\\ \small Wednesday, 19th of October 2016}
 
+<<<<<<< HEAD
 \subsection{Paper Structure}
 \begin{itemize}
   \item[-] The proper names for the controllers could be Angular Velocity controller, Angle controller, Translational Velocity Controller.
@@ -28,6 +29,32 @@
   \item[-] Procedure: Swing the drone with two wires for calculating the moment of inertia around x and y axes.
   \item[-] To calculate the moment of inertia around z axis, we need to swing it so it turns around the z axis.
   \item[-] Initial estimation could be an analytical calculation as we know the mass and we can assume a ring-shape mass distribution. This could help us check if our results from the experiment are reasonable.
+=======
+\subsection{The examination}
+\begin{itemize}
+  \item[-] The poster is normally presented along with the presentation.
+  \item[-] The examination will revolve around both the worksheets and the paper.
+\end{itemize}
+
+\subsection{Paper}
+\begin{itemize}
+  \item[-] Fill in headlines in the template, what goes where.
+\end{itemize}
+
+\subsection{Observer}
+\begin{itemize}
+  \item[-] A reduced order observer has been designed to determine the angular velocities.
+  \item[-] The Vicon system returns very good measurements, so an observer would not be needed, since the derivative of these angles would be sufficient.
+  \item[-] It is not necessary when only using vicon, but for the learning perspective, it is nice to implement in the system.
+  \item[-] The observer is especially relevant when using on-board sensors like a gyroscope, so designing it now will make the project flexible for later such implementation.
+\end{itemize}
+
+\subsection{Miscellaneous}
+\begin{itemize}
+  \item[-] To get an acceleration of \si{1 m/s^2} we need around \si{0.5 rad} - weather or not this is a large acceleration is difficult to say. It is not ridicules number.
+  \item[-] We can compute the maximum acceleration from the mass and thrust force of the quadrotor.
+  \item[-] When choosing the magnitude of acceleration we should take the angular disturbances into account.
+>>>>>>> 78df4f9bf671c707dcb9cfa05c6dbe8e6e1385d1
 \end{itemize}
 
 \subsection{Next Supervisor Meeting}
