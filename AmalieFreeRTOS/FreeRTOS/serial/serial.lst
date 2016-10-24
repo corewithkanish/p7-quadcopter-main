@@ -1,0 +1,422 @@
+   1               		.file	"serial.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	vSerialClose
+  18               	vSerialClose:
+  19               	.LFB5:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	.LM2:
+  25               	/* #APP */
+  26               	 ;  219 "serial/serial.c" 1
+  27 0000 0FB6      		in		__tmp_reg__, __SREG__
+  28               	 ;  0 "" 2
+  29               	 ;  219 "serial/serial.c" 1
+  30 0002 F894      		cli
+  31               	 ;  0 "" 2
+  32               	 ;  219 "serial/serial.c" 1
+  33 0004 0F92      		push	__tmp_reg__
+  34               	 ;  0 "" 2
+  35               	/* #NOAPP */
+  36               	.LBB2:
+  37               	.LM3:
+  38 0006 E9EC      		ldi r30,lo8(201)
+  39 0008 F0E0      		ldi r31,hi8(201)
+  40 000a 8081      		ld r24,Z
+  41               	.LVL1:
+  42 000c 8F7D      		andi r24,lo8(-33)
+  43 000e 8083      		st Z,r24
+  44               	.LBE2:
+  45               	.LM4:
+  46 0010 8081      		ld r24,Z
+  47               	.LVL2:
+  48               	.LM5:
+  49 0012 8F77      		andi r24,lo8(127)
+  50               	.LM6:
+  51 0014 8083      		st Z,r24
+  52               	.LM7:
+  53               	/* #APP */
+  54               	 ;  226 "serial/serial.c" 1
+  55 0016 0F90      		pop		__tmp_reg__
+  56               	 ;  0 "" 2
+  57               	 ;  226 "serial/serial.c" 1
+  58 0018 0FBE      		out		__SREG__, __tmp_reg__
+  59               	 ;  0 "" 2
+  60               	/* epilogue start */
+  61               	.LM8:
+  62               	/* #NOAPP */
+  63 001a 0895      		ret
+  64               	.LFE5:
+  66               	.global	__vector_37
+  68               	__vector_37:
+  69               	.LFB7:
+  70               	.LM9:
+  71 001c 1F92      		push __zero_reg__
+  72 001e 0F92      		push r0
+  73 0020 0FB6      		in r0,__SREG__
+  74 0022 0F92      		push r0
+  75 0024 0BB6      		in r0,91-32
+  76 0026 0F92      		push r0
+  77 0028 1124      		clr __zero_reg__
+  78 002a 2F93      		push r18
+  79 002c 3F93      		push r19
+  80 002e 4F93      		push r20
+  81 0030 5F93      		push r21
+  82 0032 6F93      		push r22
+  83 0034 7F93      		push r23
+  84 0036 8F93      		push r24
+  85 0038 9F93      		push r25
+  86 003a AF93      		push r26
+  87 003c BF93      		push r27
+  88 003e EF93      		push r30
+  89 0040 FF93      		push r31
+  90 0042 DF93      		push r29
+  91 0044 CF93      		push r28
+  92 0046 0F92      		push __tmp_reg__
+  93 0048 0F92      		push __tmp_reg__
+  94 004a CDB7      		in r28,__SP_L__
+  95 004c DEB7      		in r29,__SP_H__
+  96               	/* prologue: Signal */
+  97               	/* frame size = 2 */
+  98               	.LM10:
+  99 004e 8091 0000 		lds r24,xCharsForTx
+ 100 0052 9091 0000 		lds r25,(xCharsForTx)+1
+ 101 0056 BE01      		movw r22,r28
+ 102 0058 6F5F      		subi r22,lo8(-(1))
+ 103 005a 7F4F      		sbci r23,hi8(-(1))
+ 104 005c AE01      		movw r20,r28
+ 105 005e 4E5F      		subi r20,lo8(-(2))
+ 106 0060 5F4F      		sbci r21,hi8(-(2))
+ 107 0062 0E94 0000 		call xQueueReceiveFromISR
+ 108 0066 8130      		cpi r24,lo8(1)
+ 109 0068 01F4      		brne .L4
+ 110               	.LM11:
+ 111 006a 8981      		ldd r24,Y+1
+ 112               	.LVL3:
+ 113 006c 8093 CE00 		sts 206,r24
+ 114 0070 00C0      		rjmp .L6
+ 115               	.LVL4:
+ 116               	.L4:
+ 117               	.LBB3:
+ 118               	.LM12:
+ 119 0072 8091 C900 		lds r24,201
+ 120               	.LVL5:
+ 121 0076 8F7D      		andi r24,lo8(-33)
+ 122 0078 8093 C900 		sts 201,r24
+ 123               	.LVL6:
+ 124               	.L6:
+ 125               	/* epilogue start */
+ 126               	.LBE3:
+ 127               	.LM13:
+ 128 007c 0F90      		pop __tmp_reg__
+ 129 007e 0F90      		pop __tmp_reg__
+ 130 0080 CF91      		pop r28
+ 131 0082 DF91      		pop r29
+ 132 0084 FF91      		pop r31
+ 133 0086 EF91      		pop r30
+ 134 0088 BF91      		pop r27
+ 135 008a AF91      		pop r26
+ 136 008c 9F91      		pop r25
+ 137 008e 8F91      		pop r24
+ 138               	.LVL7:
+ 139 0090 7F91      		pop r23
+ 140 0092 6F91      		pop r22
+ 141 0094 5F91      		pop r21
+ 142 0096 4F91      		pop r20
+ 143 0098 3F91      		pop r19
+ 144 009a 2F91      		pop r18
+ 145 009c 0F90      		pop r0
+ 146 009e 0BBE      		out 91-32,r0
+ 147 00a0 0F90      		pop r0
+ 148 00a2 0FBE      		out __SREG__,r0
+ 149 00a4 0F90      		pop r0
+ 150 00a6 1F90      		pop __zero_reg__
+ 151 00a8 1895      		reti
+ 152               	.LFE7:
+ 154               	.global	__vector_36
+ 156               	__vector_36:
+ 157               	.LFB6:
+ 158               	.LM14:
+ 159 00aa 1F92      		push __zero_reg__
+ 160 00ac 0F92      		push r0
+ 161 00ae 0FB6      		in r0,__SREG__
+ 162 00b0 0F92      		push r0
+ 163 00b2 0BB6      		in r0,91-32
+ 164 00b4 0F92      		push r0
+ 165 00b6 1124      		clr __zero_reg__
+ 166 00b8 2F93      		push r18
+ 167 00ba 3F93      		push r19
+ 168 00bc 4F93      		push r20
+ 169 00be 5F93      		push r21
+ 170 00c0 6F93      		push r22
+ 171 00c2 7F93      		push r23
+ 172 00c4 8F93      		push r24
+ 173 00c6 9F93      		push r25
+ 174 00c8 AF93      		push r26
+ 175 00ca BF93      		push r27
+ 176 00cc EF93      		push r30
+ 177 00ce FF93      		push r31
+ 178 00d0 DF93      		push r29
+ 179 00d2 CF93      		push r28
+ 180 00d4 0F92      		push __tmp_reg__
+ 181 00d6 0F92      		push __tmp_reg__
+ 182 00d8 CDB7      		in r28,__SP_L__
+ 183 00da DEB7      		in r29,__SP_H__
+ 184               	/* prologue: Signal */
+ 185               	/* frame size = 2 */
+ 186               	.LM15:
+ 187 00dc 1A82      		std Y+2,__zero_reg__
+ 188               	.LVL8:
+ 189               	.LM16:
+ 190 00de 8091 CE00 		lds r24,206
+ 191 00e2 8983      		std Y+1,r24
+ 192               	.LVL9:
+ 193               	.LM17:
+ 194 00e4 8091 0000 		lds r24,xRxedChars
+ 195 00e8 9091 0000 		lds r25,(xRxedChars)+1
+ 196 00ec BE01      		movw r22,r28
+ 197 00ee 6F5F      		subi r22,lo8(-(1))
+ 198 00f0 7F4F      		sbci r23,hi8(-(1))
+ 199 00f2 AE01      		movw r20,r28
+ 200 00f4 4E5F      		subi r20,lo8(-(2))
+ 201 00f6 5F4F      		sbci r21,hi8(-(2))
+ 202 00f8 20E0      		ldi r18,lo8(0)
+ 203 00fa 0E94 0000 		call xQueueGenericSendFromISR
+ 204               	.LM18:
+ 205 00fe 8A81      		ldd r24,Y+2
+ 206 0100 8823      		tst r24
+ 207 0102 01F0      		breq .L9
+ 208               	.LVL10:
+ 209               	.LM19:
+ 210 0104 0E94 0000 		call vPortYield
+ 211               	.LVL11:
+ 212               	.L9:
+ 213               	/* epilogue start */
+ 214               	.LM20:
+ 215 0108 0F90      		pop __tmp_reg__
+ 216 010a 0F90      		pop __tmp_reg__
+ 217 010c CF91      		pop r28
+ 218 010e DF91      		pop r29
+ 219 0110 FF91      		pop r31
+ 220 0112 EF91      		pop r30
+ 221 0114 BF91      		pop r27
+ 222 0116 AF91      		pop r26
+ 223 0118 9F91      		pop r25
+ 224 011a 8F91      		pop r24
+ 225 011c 7F91      		pop r23
+ 226 011e 6F91      		pop r22
+ 227 0120 5F91      		pop r21
+ 228 0122 4F91      		pop r20
+ 229 0124 3F91      		pop r19
+ 230 0126 2F91      		pop r18
+ 231 0128 0F90      		pop r0
+ 232 012a 0BBE      		out 91-32,r0
+ 233 012c 0F90      		pop r0
+ 234 012e 0FBE      		out __SREG__,r0
+ 235 0130 0F90      		pop r0
+ 236 0132 1F90      		pop __zero_reg__
+ 237 0134 1895      		reti
+ 238               	.LFE6:
+ 240               	.global	xSerialPutChar
+ 242               	xSerialPutChar:
+ 243               	.LFB4:
+ 244               	.LM21:
+ 245               	.LVL12:
+ 246 0136 DF93      		push r29
+ 247 0138 CF93      		push r28
+ 248 013a 0F92      		push __tmp_reg__
+ 249 013c CDB7      		in r28,__SP_L__
+ 250 013e DEB7      		in r29,__SP_H__
+ 251               	/* prologue: function */
+ 252               	/* frame size = 1 */
+ 253 0140 6983      		std Y+1,r22
+ 254               	.LM22:
+ 255 0142 8091 0000 		lds r24,xCharsForTx
+ 256 0146 9091 0000 		lds r25,(xCharsForTx)+1
+ 257               	.LVL13:
+ 258 014a BE01      		movw r22,r28
+ 259               	.LVL14:
+ 260 014c 6F5F      		subi r22,lo8(-(1))
+ 261 014e 7F4F      		sbci r23,hi8(-(1))
+ 262 0150 20E0      		ldi r18,lo8(0)
+ 263 0152 0E94 0000 		call xQueueGenericSend
+ 264               	.LVL15:
+ 265 0156 8130      		cpi r24,lo8(1)
+ 266 0158 01F0      		breq .L11
+ 267 015a 80E0      		ldi r24,lo8(0)
+ 268 015c 00C0      		rjmp .L12
+ 269               	.L11:
+ 270               	.LBB4:
+ 271               	.LM23:
+ 272 015e 8091 C900 		lds r24,201
+ 273               	.LVL16:
+ 274 0162 8062      		ori r24,lo8(32)
+ 275 0164 8093 C900 		sts 201,r24
+ 276 0168 81E0      		ldi r24,lo8(1)
+ 277               	.LVL17:
+ 278               	.L12:
+ 279               	/* epilogue start */
+ 280               	.LBE4:
+ 281               	.LM24:
+ 282 016a 0F90      		pop __tmp_reg__
+ 283 016c CF91      		pop r28
+ 284 016e DF91      		pop r29
+ 285 0170 0895      		ret
+ 286               	.LFE4:
+ 288               	.global	xSerialGetChar
+ 290               	xSerialGetChar:
+ 291               	.LFB3:
+ 292               	.LM25:
+ 293               	.LVL18:
+ 294               	/* prologue: function */
+ 295               	/* frame size = 0 */
+ 296               	.LM26:
+ 297 0172 8091 0000 		lds r24,xRxedChars
+ 298 0176 9091 0000 		lds r25,(xRxedChars)+1
+ 299               	.LVL19:
+ 300 017a 20E0      		ldi r18,lo8(0)
+ 301 017c 0E94 0000 		call xQueueGenericReceive
+ 302               	.LVL20:
+ 303 0180 8111      		cpse r24,__zero_reg__
+ 304 0182 81E0      		ldi r24,lo8(1)
+ 305               	.L15:
+ 306               	.LM27:
+ 307 0184 0895      		ret
+ 308               	.LFE3:
+ 310               	.global	xSerialPortInitMinimal
+ 312               	xSerialPortInitMinimal:
+ 313               	.LFB2:
+ 314               	.LM28:
+ 315               	.LVL21:
+ 316 0186 DF92      		push r13
+ 317 0188 EF92      		push r14
+ 318 018a FF92      		push r15
+ 319 018c 0F93      		push r16
+ 320 018e 1F93      		push r17
+ 321               	/* prologue: function */
+ 322               	/* frame size = 0 */
+ 323 0190 7B01      		movw r14,r22
+ 324 0192 8C01      		movw r16,r24
+ 325 0194 D42E      		mov r13,r20
+ 326               	.LM29:
+ 327               	/* #APP */
+ 328               	 ;  140 "serial/serial.c" 1
+ 329 0196 0FB6      		in		__tmp_reg__, __SREG__
+ 330               	 ;  0 "" 2
+ 331               	 ;  140 "serial/serial.c" 1
+ 332 0198 F894      		cli
+ 333               	 ;  0 "" 2
+ 334               	 ;  140 "serial/serial.c" 1
+ 335 019a 0F92      		push	__tmp_reg__
+ 336               	 ;  0 "" 2
+ 337               	.LM30:
+ 338               	/* #NOAPP */
+ 339 019c 842F      		mov r24,r20
+ 340 019e 61E0      		ldi r22,lo8(1)
+ 341               	.LVL22:
+ 342 01a0 40E0      		ldi r20,lo8(0)
+ 343               	.LVL23:
+ 344 01a2 0E94 0000 		call xQueueGenericCreate
+ 345 01a6 9093 0000 		sts (xRxedChars)+1,r25
+ 346 01aa 8093 0000 		sts xRxedChars,r24
+ 347               	.LM31:
+ 348 01ae 8D2D      		mov r24,r13
+ 349 01b0 61E0      		ldi r22,lo8(1)
+ 350 01b2 40E0      		ldi r20,lo8(0)
+ 351 01b4 0E94 0000 		call xQueueGenericCreate
+ 352 01b8 9093 0000 		sts (xCharsForTx)+1,r25
+ 353 01bc 8093 0000 		sts xCharsForTx,r24
+ 354               	.LM32:
+ 355 01c0 94E0      		ldi r25,4
+ 356 01c2 EE0C      	1:	lsl r14
+ 357 01c4 FF1C      		rol r15
+ 358 01c6 001F      		rol r16
+ 359 01c8 111F      		rol r17
+ 360 01ca 9A95      		dec r25
+ 361 01cc 01F4      		brne 1b
+ 362 01ce 60E0      		ldi r22,lo8(16000000)
+ 363 01d0 74E2      		ldi r23,hi8(16000000)
+ 364 01d2 84EF      		ldi r24,hlo8(16000000)
+ 365 01d4 90E0      		ldi r25,hhi8(16000000)
+ 366 01d6 A801      		movw r20,r16
+ 367 01d8 9701      		movw r18,r14
+ 368 01da 0E94 0000 		call __udivmodsi4
+ 369 01de 2150      		subi r18,lo8(-(-1))
+ 370 01e0 3040      		sbci r19,hi8(-(-1))
+ 371 01e2 4040      		sbci r20,hlo8(-(-1))
+ 372 01e4 5040      		sbci r21,hhi8(-(-1))
+ 373               	.LVL24:
+ 374               	.LM33:
+ 375 01e6 2093 CC00 		sts 204,r18
+ 376               	.LM34:
+ 377 01ea 232F      		mov r18,r19
+ 378 01ec 342F      		mov r19,r20
+ 379 01ee 452F      		mov r20,r21
+ 380 01f0 5527      		clr r21
+ 381               	.LVL25:
+ 382               	.LM35:
+ 383 01f2 2093 CD00 		sts 205,r18
+ 384               	.LM36:
+ 385 01f6 88E9      		ldi r24,lo8(-104)
+ 386 01f8 8093 C900 		sts 201,r24
+ 387               	.LM37:
+ 388 01fc 86E8      		ldi r24,lo8(-122)
+ 389 01fe 8093 CA00 		sts 202,r24
+ 390               	.LM38:
+ 391               	/* #APP */
+ 392               	 ;  165 "serial/serial.c" 1
+ 393 0202 0F90      		pop		__tmp_reg__
+ 394               	 ;  0 "" 2
+ 395               	 ;  165 "serial/serial.c" 1
+ 396 0204 0FBE      		out		__SREG__, __tmp_reg__
+ 397               	 ;  0 "" 2
+ 398               	.LM39:
+ 399               	/* #NOAPP */
+ 400 0206 80E0      		ldi r24,lo8(0)
+ 401 0208 90E0      		ldi r25,hi8(0)
+ 402               	/* epilogue start */
+ 403 020a 1F91      		pop r17
+ 404 020c 0F91      		pop r16
+ 405 020e FF90      		pop r15
+ 406 0210 EF90      		pop r14
+ 407               	.LVL26:
+ 408 0212 DF90      		pop r13
+ 409               	.LVL27:
+ 410 0214 0895      		ret
+ 411               	.LFE2:
+ 413               		.lcomm xRxedChars,2
+ 414               		.lcomm xCharsForTx,2
+ 479               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 serial.c
+C:\Users\NIELSS~1\AppData\Local\Temp/ccvY7IVm.s:2      *ABS*:0000003f __SREG__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccvY7IVm.s:3      *ABS*:0000003e __SP_H__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccvY7IVm.s:4      *ABS*:0000003d __SP_L__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccvY7IVm.s:5      *ABS*:00000034 __CCP__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccvY7IVm.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccvY7IVm.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\NIELSS~1\AppData\Local\Temp/ccvY7IVm.s:18     .text:00000000 vSerialClose
+C:\Users\NIELSS~1\AppData\Local\Temp/ccvY7IVm.s:68     .text:0000001c __vector_37
+C:\Users\NIELSS~1\AppData\Local\Temp/ccvY7IVm.s:413    .bss:00000002 xCharsForTx
+C:\Users\NIELSS~1\AppData\Local\Temp/ccvY7IVm.s:156    .text:000000aa __vector_36
+                             .bss:00000000 xRxedChars
+C:\Users\NIELSS~1\AppData\Local\Temp/ccvY7IVm.s:242    .text:00000136 xSerialPutChar
+C:\Users\NIELSS~1\AppData\Local\Temp/ccvY7IVm.s:290    .text:00000172 xSerialGetChar
+C:\Users\NIELSS~1\AppData\Local\Temp/ccvY7IVm.s:312    .text:00000186 xSerialPortInitMinimal
+
+UNDEFINED SYMBOLS
+xQueueReceiveFromISR
+xQueueGenericSendFromISR
+vPortYield
+xQueueGenericSend
+xQueueGenericReceive
+xQueueGenericCreate
+__udivmodsi4
+__do_clear_bss
