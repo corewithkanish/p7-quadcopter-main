@@ -59,24 +59,34 @@
   67               	.LBE18:
   68               	.LBE19:
   69               	.LM8:
-  70 0024 8052      		subi r24,lo8(-(-32))
-  71               	.LVL2:
-  72 0026 0E94 0000 		call USART_transmit
-  73               	.LVL3:
-  74 002a 00C0      		rjmp .L3
-  75               	.LFE6:
- 101               	.Letext0:
+  70 0024 682F      		mov r22,r24
+  71 0026 70E0      		ldi r23,lo8(0)
+  72 0028 80E0      		ldi r24,lo8(0)
+  73 002a 90E0      		ldi r25,hi8(0)
+  74 002c 0E94 0000 		call __floatunsisf
+  75               	.LVL2:
+  76 0030 20E0      		ldi r18,lo8(0xc1200000)
+  77 0032 30E0      		ldi r19,hi8(0xc1200000)
+  78 0034 40E2      		ldi r20,hlo8(0xc1200000)
+  79 0036 51EC      		ldi r21,hhi8(0xc1200000)
+  80 0038 0E94 0000 		call __divsf3
+  81 003c 0E94 0000 		call USART_transmit
+  82 0040 00C0      		rjmp .L3
+  83               	.LFE6:
+ 109               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\USUARIO\AppData\Local\Temp/ccb9iyWk.s:2      *ABS*:0000003f __SREG__
-C:\Users\USUARIO\AppData\Local\Temp/ccb9iyWk.s:3      *ABS*:0000003e __SP_H__
-C:\Users\USUARIO\AppData\Local\Temp/ccb9iyWk.s:4      *ABS*:0000003d __SP_L__
-C:\Users\USUARIO\AppData\Local\Temp/ccb9iyWk.s:5      *ABS*:00000034 __CCP__
-C:\Users\USUARIO\AppData\Local\Temp/ccb9iyWk.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\USUARIO\AppData\Local\Temp/ccb9iyWk.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\USUARIO\AppData\Local\Temp/ccb9iyWk.s:18     .text:00000000 main
+C:\Users\USUARIO\AppData\Local\Temp/ccpsoFWw.s:2      *ABS*:0000003f __SREG__
+C:\Users\USUARIO\AppData\Local\Temp/ccpsoFWw.s:3      *ABS*:0000003e __SP_H__
+C:\Users\USUARIO\AppData\Local\Temp/ccpsoFWw.s:4      *ABS*:0000003d __SP_L__
+C:\Users\USUARIO\AppData\Local\Temp/ccpsoFWw.s:5      *ABS*:00000034 __CCP__
+C:\Users\USUARIO\AppData\Local\Temp/ccpsoFWw.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\USUARIO\AppData\Local\Temp/ccpsoFWw.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\USUARIO\AppData\Local\Temp/ccpsoFWw.s:18     .text:00000000 main
 
 UNDEFINED SYMBOLS
 USART_init
 USART_receive
+__floatunsisf
+__divsf3
 USART_transmit
