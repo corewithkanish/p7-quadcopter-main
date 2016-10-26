@@ -1,0 +1,41 @@
+CC     = "C:\Program Files\MATLAB\R2015b\sys\lcc64\lcc64\bin\lcc64.exe"
+LD     = "C:\Program Files\MATLAB\R2015b\sys\lcc64\lcc64\bin\lcclnk64.exe"
+LIBCMD = "C:\Program Files\MATLAB\R2015b\sys\lcc64\lcc64\bin\lcclib64.exe"
+CFLAGS = -dll -noregistrylookup  -c -Zp8 -DLCC_WIN64 -DMATLAB_MEX_FILE -DMX_COMPAT_32 -nodeclspec 
+LDFLAGS = -s -dll -L"C:\Program Files\MATLAB\R2015b\sys\lcc64\lcc64\lib64" -entry LibMain -map sfun.map 
+LIBFLAGS = 
+
+OBJECTS = \
+	"state_feedback_reference_sfun.obj"\
+	"c2_state_feedback_reference.obj"\
+	"state_feedback_reference_sfun_registry.obj"\
+	"lccstub.obj"\
+	"state_feedback_reference_sfun.def"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\sf_runtime.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libmwblas.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libmwlapack.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libmx.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libmex.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libmat.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libfixedpoint.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libut.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libmwmathutil.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libemlrt.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libmwsl_log_load_blocks.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libmwsimulink.lib"\
+	"C:\Program Files\MATLAB\R2015b\extern\lib\win64\microsoft\libmwsl_sfcn_cov_bridge.lib"\
+	"C:\Program Files\MATLAB\R2015b\lib\win64\libmwipp.lib"\
+
+INCLUDE_PATH= -I"C:\Program Files\MATLAB\R2015b\sys\lcc64\lcc64\include64"  -I"C:\Program Files\MATLAB\R2015b\extern\include"  -I"C:\Program Files\MATLAB\R2015b\simulink\include"  -I"C:\Program Files\MATLAB\R2015b\stateflow\c\mex\include"  -I"C:\Program Files\MATLAB\R2015b\rtw\c\src"  -I"D:\University\Master\7thSemester\Project\p7-quadcopter-main\Simulation\StateSpace\slprj\_sfprj\state_feedback_reference\_self\sfun\src" 
+ 
+
+state_feedback_reference_sfun.mexw64 : $(MAKEFILE) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o state_feedback_reference_sfun.mexw64 @state_feedback_reference_sfun.lmko
+state_feedback_reference_sfun.obj :	"state_feedback_reference_sfun.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "state_feedback_reference_sfun.c"
+c2_state_feedback_reference.obj :	"c2_state_feedback_reference.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c2_state_feedback_reference.c"
+state_feedback_reference_sfun_registry.obj :	"state_feedback_reference_sfun_registry.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "state_feedback_reference_sfun_registry.c"
+lccstub.obj :	"C:\Program Files\MATLAB\R2015b\sys\lcc64\lcc64\mex\lccstub.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "C:\Program Files\MATLAB\R2015b\sys\lcc64\lcc64\mex\lccstub.c"

@@ -104,49 +104,55 @@
  118               	.LVL6:
  119               	/* prologue: function */
  120               	/* frame size = 0 */
- 121 0068 982F      		mov r25,r24
- 122               	.LVL7:
- 123               	.L8:
- 124               	.LM32:
- 125 006a 8091 C000 		lds r24,192
- 126 006e 85FF      		sbrs r24,5
- 127 0070 00C0      		rjmp .L8
- 128               	.LM33:
- 129 0072 9093 C600 		sts 198,r25
- 130               	/* epilogue start */
- 131               	.LM34:
- 132 0076 0895      		ret
- 133               	.LFE5:
- 135               	.global	USART_receive
- 137               	USART_receive:
- 138               	.LFB6:
- 139               	.LM35:
- 140               	/* prologue: function */
- 141               	/* frame size = 0 */
- 142               	.L12:
- 143               	.LM36:
- 144 0078 8091 C000 		lds r24,192
- 145 007c 87FF      		sbrs r24,7
- 146 007e 00C0      		rjmp .L12
- 147               	.LM37:
- 148 0080 8091 C600 		lds r24,198
- 149               	/* epilogue start */
- 150               	.LM38:
- 151 0084 0895      		ret
- 152               	.LFE6:
- 210               	.Letext0:
+ 121 0068 9B01      		movw r18,r22
+ 122 006a AC01      		movw r20,r24
+ 123               	.LVL7:
+ 124               	.L8:
+ 125               	.LM32:
+ 126 006c 8091 C000 		lds r24,192
+ 127 0070 85FF      		sbrs r24,5
+ 128 0072 00C0      		rjmp .L8
+ 129               	.LM33:
+ 130 0074 CA01      		movw r24,r20
+ 131 0076 B901      		movw r22,r18
+ 132 0078 0E94 0000 		call __fixunssfsi
+ 133               	.LVL8:
+ 134 007c 6093 C600 		sts 198,r22
+ 135               	/* epilogue start */
+ 136               	.LM34:
+ 137 0080 0895      		ret
+ 138               	.LFE5:
+ 140               	.global	USART_receive
+ 142               	USART_receive:
+ 143               	.LFB6:
+ 144               	.LM35:
+ 145               	/* prologue: function */
+ 146               	/* frame size = 0 */
+ 147               	.L12:
+ 148               	.LM36:
+ 149 0082 8091 C000 		lds r24,192
+ 150 0086 87FF      		sbrs r24,7
+ 151 0088 00C0      		rjmp .L12
+ 152               	.LM37:
+ 153 008a 8091 C600 		lds r24,198
+ 154               	/* epilogue start */
+ 155               	.LM38:
+ 156 008e 0895      		ret
+ 157               	.LFE6:
+ 215               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 functions.c
-C:\Users\USUARIO\AppData\Local\Temp/ccpAEqhZ.s:2      *ABS*:0000003f __SREG__
-C:\Users\USUARIO\AppData\Local\Temp/ccpAEqhZ.s:3      *ABS*:0000003e __SP_H__
-C:\Users\USUARIO\AppData\Local\Temp/ccpAEqhZ.s:4      *ABS*:0000003d __SP_L__
-C:\Users\USUARIO\AppData\Local\Temp/ccpAEqhZ.s:5      *ABS*:00000034 __CCP__
-C:\Users\USUARIO\AppData\Local\Temp/ccpAEqhZ.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\USUARIO\AppData\Local\Temp/ccpAEqhZ.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\USUARIO\AppData\Local\Temp/ccpAEqhZ.s:18     .text:00000000 PWM_init
-C:\Users\USUARIO\AppData\Local\Temp/ccpAEqhZ.s:69     .text:00000042 set_PWM_duty
-C:\Users\USUARIO\AppData\Local\Temp/ccpAEqhZ.s:90     .text:00000052 USART_init
-C:\Users\USUARIO\AppData\Local\Temp/ccpAEqhZ.s:115    .text:00000068 USART_transmit
-C:\Users\USUARIO\AppData\Local\Temp/ccpAEqhZ.s:137    .text:00000078 USART_receive
+C:\Users\USUARIO\AppData\Local\Temp/ccVImgTR.s:2      *ABS*:0000003f __SREG__
+C:\Users\USUARIO\AppData\Local\Temp/ccVImgTR.s:3      *ABS*:0000003e __SP_H__
+C:\Users\USUARIO\AppData\Local\Temp/ccVImgTR.s:4      *ABS*:0000003d __SP_L__
+C:\Users\USUARIO\AppData\Local\Temp/ccVImgTR.s:5      *ABS*:00000034 __CCP__
+C:\Users\USUARIO\AppData\Local\Temp/ccVImgTR.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\USUARIO\AppData\Local\Temp/ccVImgTR.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\USUARIO\AppData\Local\Temp/ccVImgTR.s:18     .text:00000000 PWM_init
+C:\Users\USUARIO\AppData\Local\Temp/ccVImgTR.s:69     .text:00000042 set_PWM_duty
+C:\Users\USUARIO\AppData\Local\Temp/ccVImgTR.s:90     .text:00000052 USART_init
+C:\Users\USUARIO\AppData\Local\Temp/ccVImgTR.s:115    .text:00000068 USART_transmit
+C:\Users\USUARIO\AppData\Local\Temp/ccVImgTR.s:142    .text:00000082 USART_receive
 
-NO UNDEFINED SYMBOLS
+UNDEFINED SYMBOLS
+__fixunssfsi
