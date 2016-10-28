@@ -115,7 +115,6 @@ void AngularController(void *pvParameters)
 	memcpy(y_k1, y_k, 3*sizeof(float));
 	memcpy(r_k1, r_k, 3*sizeof(float));
 	
-			
 }
 
 // void LEDnotBlink(void *pvNotParameters)
