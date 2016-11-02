@@ -79,7 +79,7 @@ Gy=Kx/(m*s);
 %sisotool(Gy)
 C_ydot=0.19912;
 
-Kz=-2*kth*w1_bar^2;
+Kz=-2*kth*w1_bar*4;
 Gz=Kz/(m*s);
 %sisotool(Gz)
 C_zdot=-0.5*(0.2*s+1)/(0.13*s+1);

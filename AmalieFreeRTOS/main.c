@@ -13,12 +13,16 @@
 #include "FreeRTOSConfig.h"
 
 #define LED_DDR DDRE
-
 #define LED PORTE
+
+#define FOSC 1843200// Clock Speed
+#define BAUD 9600
+#define (MYUBRR FOSC/16/BAUD-1)
 
 void vApplicationIdleHook( void );
 
 void AngularController(void *pvParameters);
+void USART_Init(unsigned int ubrr);
 
 //void LEDnotBlink(void *pvNotParameters);
 
@@ -50,14 +54,21 @@ void AngularController(void *pvParameters);
 
 int main()
 {
-	
+	// Initialization
 	LED_DDR = 0xFF;
-  
+	USART_Init(MYUBRR);
+
 	xTaskCreate(AngularController, "AngularController", 500, NULL, configMAX_PRIORITIES-1, NULL);
 
 	vTaskStartScheduler();
 	
-  return 0;
+	return 0;
+}
+
+
+void vApplicationIdleHook(void) //Når FreeRTOS ikke har en task den skal lave
+{
+	//vCoRoutineSchedule();
 }
 
 
@@ -117,9 +128,9 @@ void AngularController(void *pvParameters)
 	
 }
 
+
 // void LEDnotBlink(void *pvNotParameters)
 // {
-
 	// while(1)
 	// {
 		// if (xSemaphoreTake(xSemaphore, 100 ))
@@ -130,13 +141,19 @@ void AngularController(void *pvParameters)
 				// LED = 0xFF;
 				// xSemaphoreGive(xSemaphore);
 			// }
-
 				// vTaskDelay(1000);
-		
 	// }
 // }
-void vApplicationIdleHook( void ) //Når FreeRTOS ikke har en task den skal lave
-{
-		//vCoRoutineSchedule();
 
-}
+
+void USART_Init(unsigned int ubrr){
+	/* Set baud rate */
+	UBRRH = (unsigned char)(ubrr >> 8);
+	UBRRL = (unsigned char)ubrr;
+	/* Enable receiver and transmitter */
+	UCSRB = (1 << RXEN) | (1 << TXEN);
+	/* Set frame format: 8data, 2stop bit */
+	UCSRC = (1 << USBS) | (3 << UCSZ0);
+} // USART_Init
+
+

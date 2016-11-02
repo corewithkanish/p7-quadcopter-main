@@ -189,3 +189,16 @@ for i=1:1:21
            package(i)=uint8(a);
     end 
 end
+
+S1 = serial('COM4', 'BaudRate', 9600, 'Terminator', 'CR', 'StopBit', 1, 'Parity', 'None'); 
+fopen(S1);
+
+% for i=1:1:21
+    fwrite(S1,package);
+% end
+
+fclose(S1);
+delete(S1);
+clear S1;
+
+
