@@ -33,7 +33,8 @@ SOURCES = $(FILENAME).c
  SOURCES += freertos/tasks.c
  SOURCES += freertos/serial/serial.c
  SOURCES += freertos/portable/MemMang/heap_3.c
-SOURCES += freertos/timers.c
+ SOURCES += freertos/timers.c
+ SOURCES += functions.c
 
  FOLDERS = -Ifreertos
  FOLDERS += -Ifreertos/include
