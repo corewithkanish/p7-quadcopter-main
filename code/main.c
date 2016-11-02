@@ -24,7 +24,7 @@ int main(void)
 		{
 			duty0 = duty0 + 1;
 		}
-		else duty0 = 0;
+		else duty0 = duty_final;
 		_delay_ms(10);
 	}
 
