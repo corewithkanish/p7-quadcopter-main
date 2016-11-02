@@ -1,4 +1,7 @@
 #include <string.h>
+#include <avr/io.h>
+
+#include "functions.h"
 
 const int L[3] = {0, 0, 0};
 const float B1[4] = {0.0, 0.0, 0.0, 0.0};
@@ -19,6 +22,7 @@ float y_k1[3] 	= {0.0, 0.0, 0.0};
 float r_k1[3] 	= {0.0, 0.0, 0.0};
 float r_k[3] 	= {0.0, 0.0, 0.0};
 float x2_k1[3] 	= {0.0, 0.0, 0.0};
+float u_z = 0;
 
 void AngularController(void)
 {
@@ -67,10 +71,96 @@ void AngularController(void)
 			
 	}	
 		
-	memcpy(u_k1, u_k, 4*sizeof(float));
-	memcpy(x2_k1, x2_k, 3*sizeof(float));
-	memcpy(y_k1, y_k, 3*sizeof(float));
-	memcpy(r_k1, r_k, 3*sizeof(float));
+	// memcpy(u_k1, u_k, 4*sizeof(float));
+	// memcpy(x2_k1, x2_k, 3*sizeof(float));
+	// memcpy(y_k1, y_k, 3*sizeof(float));
+	// memcpy(r_k1, r_k, 3*sizeof(float));
   
   return;
 }
+
+
+void ApplyVelocities(void)
+{
+  //---test code-----------------
+  int i = 0;
+  for( i=0; i<4; i++ )
+  {
+    u_k1[i] = 0;
+  }
+  u_z = 0;
+  //-----------------------------
+  
+  float add_z = 0;
+  float sum_u_k1 = 0;
+  unsigned int duty0, duty1, duty2, duty3;
+  
+  sum_u_k1 = u_k1[0] + u_k1[1] + u_k1[2] + u_k1[3];
+  
+  add_z = ( u_z - sum_u_k1 )/4;
+  
+  for( i=0; i<4; i++ )
+  {
+    u_k1[i] = u_k1[i] + add_z + EQU_SPEED;
+  }
+
+  duty0 = (unsigned int)( u_k1[0] *0.1563 + 118.21 );
+  duty1 = (unsigned int)( u_k1[1] *0.1563 + 118.21 );
+  duty2 = (unsigned int)( u_k1[2] *0.1563 + 118.21 );
+  duty3 = (unsigned int)( u_k1[3] *0.1563 + 118.21 );
+  
+  // duty0 = 128;
+  // duty1 = 128;
+  // duty2 = 128;
+  // duty3 = 128;
+  
+  // while(1)
+  // {
+    // Set_PWM_duty( 128, 128, 128, 128 );
+  // }
+  
+  Set_PWM_duty( duty0, duty1, duty2, duty3 );
+  
+}
+
+
+void PWM_init(int initial_duty)
+{
+	// Timer 0
+	TCCR0A = 0b10000001; // Control A: non-inverting signal on pin A (then the duty goes from 0 to 256), pin B disconnected, phase correct mode (7)
+	TCCR0B = 0b00000011; // Control B: prescaler by 64
+
+	OCR0A = initial_duty; // Compare register (from 0 to 256)
+
+	DDRB = 0b10000000; //Set pin B7(13) as output pin
+	TCNT0 = 0; // Clear counter register just in case
+
+	// Timer 4
+	TCCR4A = 0b10101001; // Control A: non-inverting signal on pins A,B and C (then the duty goes from 0 to 256), phase correct mode with 8 bits (7)
+	TCCR4B = 0b00000011; // Control B: prescaler by 64
+
+	OCR4AL = initial_duty; // Low compare registers to initial duty (from 0 to 256)
+	OCR4BL = initial_duty;
+	OCR4CL = initial_duty;
+
+	OCR4AH = 0; // High compare registers to 0
+	OCR4BH = 0;
+	OCR4CH = 0;
+
+	DDRH = 0b00111000; //Set pins H3, H4 and H5 (6, 7 and 8) as output pins
+	TCNT4L = 0; // Clear counter registers just in case
+	TCNT4H = 0;
+
+	return;
+}
+
+void Set_PWM_duty(int duty0, int duty4A, int duty4B, int duty4C)
+{
+	OCR0A  = duty0;
+	OCR4AL = duty4A; 
+	OCR4BL = duty4B;
+	OCR4CL = duty4C;
+	return;
+}
+
+
