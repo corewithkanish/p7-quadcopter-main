@@ -24,17 +24,17 @@ int main()
     PWM_init(0);
     init = 10;
   }
-  
-  // while(1)
-  // {
-    // Set_PWM_duty( 128, 128, 128, 128 );
-  // }
- 
-	xTaskCreate(Controllers, "Controllers", 500, NULL, configMAX_PRIORITIES-1, NULL);
 
+	xTaskCreate(Controllers, "Controllers", 500, NULL, configMAX_PRIORITIES-1, NULL);
 	vTaskStartScheduler();
 	
-  return 0;
+	return 0;
+}
+
+
+void vApplicationIdleHook(void) //Når FreeRTOS ikke har en task den skal lave
+{
+	//vCoRoutineSchedule();
 }
 
 
@@ -44,9 +44,9 @@ void Controllers(void *pvParameters)
 	ApplyVelocities();
 }
 
+
 // void LEDnotBlink(void *pvNotParameters)
 // {
-
 	// while(1)
 	// {
 		// if (xSemaphoreTake(xSemaphore, 100 ))
@@ -57,11 +57,10 @@ void Controllers(void *pvParameters)
 				// LED = 0xFF;
 				// xSemaphoreGive(xSemaphore);
 			// }
-
 				// vTaskDelay(1000);
-		
 	// }
 // }
+
 void vApplicationIdleHook( void ) //Når FreeRTOS ikke har en task den skal lave
 {
 		// vCoRoutineSchedule();

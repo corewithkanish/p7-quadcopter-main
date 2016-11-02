@@ -4,17 +4,17 @@ clc
 
 % Parameters
 
-m  = 1.004;           % Mass [kg]
+m  = 0.996;           % Mass [kg]
 Fg = 9.81 * m;      % Gravity force[N]
 
 Jx = 0.0107;           % Inertia around body x-axis [km搶2]
 Jy = 0.0107;           % Inertia around body y-axis [km搶2]
-Jz = 0.0214;           % Inertia around body z-axis [km搶2]
+Jz = 0.02135;           % Inertia around body z-axis [km搶2]
 
-L = 0.19;           % Distance between center of the quadcopter and center of each motor [m]
+L = 0.225;           % Distance between center of the quadcopter and center of each motor [m]
 
-kth =  1.5e-5;        % Speed of the motor -> thrust force [N新/rad]
-kd =  6e-7;       % Speed of the motor -> drag torque by proppeller [N搶新/rad]
+kth =  5.316868e-5;        % Speed of the motor -> thrust force [N新/rad]
+kd =  9.423327e-7;       % Speed of the motor -> drag torque by proppeller [N搶新/rad]
 
 w1_bar=sqrt(Fg/kth/4);
 w2_bar=sqrt(Fg/kth/4);
