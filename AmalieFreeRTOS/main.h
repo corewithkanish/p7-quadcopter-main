@@ -5,6 +5,7 @@
 void vApplicationIdleHook( void );
 
 void Controllers(void *pvParameters);
+void Dummy(void *pvParameters);
 
 //void LEDnotBlink(void *pvNotParameters);
 

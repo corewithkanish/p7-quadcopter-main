@@ -468,18 +468,18 @@
  551               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 port.c
-C:\Users\NIELSS~1\AppData\Local\Temp/ccmzlLP9.s:2      *ABS*:0000003f __SREG__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccmzlLP9.s:3      *ABS*:0000003e __SP_H__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccmzlLP9.s:4      *ABS*:0000003d __SP_L__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccmzlLP9.s:5      *ABS*:00000034 __CCP__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccmzlLP9.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccmzlLP9.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccmzlLP9.s:18     .text:00000000 pxPortInitialiseStack
-C:\Users\NIELSS~1\AppData\Local\Temp/ccmzlLP9.s:146    .text:00000092 xPortStartScheduler
-C:\Users\NIELSS~1\AppData\Local\Temp/ccmzlLP9.s:231    .text:00000106 vPortEndScheduler
-C:\Users\NIELSS~1\AppData\Local\Temp/ccmzlLP9.s:243    .text:00000108 vPortYieldFromTick
-C:\Users\NIELSS~1\AppData\Local\Temp/ccmzlLP9.s:359    .text:000001c2 __vector_17
-C:\Users\NIELSS~1\AppData\Local\Temp/ccmzlLP9.s:378    .text:000001c8 vPortYield
+C:\Users\USUARIO\AppData\Local\Temp/cc7f2hxL.s:2      *ABS*:0000003f __SREG__
+C:\Users\USUARIO\AppData\Local\Temp/cc7f2hxL.s:3      *ABS*:0000003e __SP_H__
+C:\Users\USUARIO\AppData\Local\Temp/cc7f2hxL.s:4      *ABS*:0000003d __SP_L__
+C:\Users\USUARIO\AppData\Local\Temp/cc7f2hxL.s:5      *ABS*:00000034 __CCP__
+C:\Users\USUARIO\AppData\Local\Temp/cc7f2hxL.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\USUARIO\AppData\Local\Temp/cc7f2hxL.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\USUARIO\AppData\Local\Temp/cc7f2hxL.s:18     .text:00000000 pxPortInitialiseStack
+C:\Users\USUARIO\AppData\Local\Temp/cc7f2hxL.s:146    .text:00000092 xPortStartScheduler
+C:\Users\USUARIO\AppData\Local\Temp/cc7f2hxL.s:231    .text:00000106 vPortEndScheduler
+C:\Users\USUARIO\AppData\Local\Temp/cc7f2hxL.s:243    .text:00000108 vPortYieldFromTick
+C:\Users\USUARIO\AppData\Local\Temp/cc7f2hxL.s:359    .text:000001c2 __vector_17
+C:\Users\USUARIO\AppData\Local\Temp/cc7f2hxL.s:378    .text:000001c8 vPortYield
 
 UNDEFINED SYMBOLS
 pxCurrentTCB

@@ -117,19 +117,19 @@
  180               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 heap_1.c
-C:\Users\NIELSS~1\AppData\Local\Temp/ccIels4X.s:2      *ABS*:0000003f __SREG__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccIels4X.s:3      *ABS*:0000003e __SP_H__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccIels4X.s:4      *ABS*:0000003d __SP_L__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccIels4X.s:5      *ABS*:00000034 __CCP__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccIels4X.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccIels4X.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccIels4X.s:18     .text:00000000 vPortFree
-C:\Users\NIELSS~1\AppData\Local\Temp/ccIels4X.s:31     .text:00000002 vPortInitialiseBlocks
+C:\Users\USUARIO\AppData\Local\Temp/ccVHbEBv.s:2      *ABS*:0000003f __SREG__
+C:\Users\USUARIO\AppData\Local\Temp/ccVHbEBv.s:3      *ABS*:0000003e __SP_H__
+C:\Users\USUARIO\AppData\Local\Temp/ccVHbEBv.s:4      *ABS*:0000003d __SP_L__
+C:\Users\USUARIO\AppData\Local\Temp/ccVHbEBv.s:5      *ABS*:00000034 __CCP__
+C:\Users\USUARIO\AppData\Local\Temp/ccVHbEBv.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\USUARIO\AppData\Local\Temp/ccVHbEBv.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\USUARIO\AppData\Local\Temp/ccVHbEBv.s:18     .text:00000000 vPortFree
+C:\Users\USUARIO\AppData\Local\Temp/ccVHbEBv.s:31     .text:00000002 vPortInitialiseBlocks
                              .bss:00000000 xNextFreeByte
-C:\Users\NIELSS~1\AppData\Local\Temp/ccIels4X.s:46     .text:0000000c xPortGetFreeHeapSize
-C:\Users\NIELSS~1\AppData\Local\Temp/ccIels4X.s:66     .text:00000020 pvPortMalloc
-C:\Users\NIELSS~1\AppData\Local\Temp/ccIels4X.s:129    .bss:00000002 pucAlignedHeap.1629
-C:\Users\NIELSS~1\AppData\Local\Temp/ccIels4X.s:130    .bss:00000004 ucHeap
+C:\Users\USUARIO\AppData\Local\Temp/ccVHbEBv.s:46     .text:0000000c xPortGetFreeHeapSize
+C:\Users\USUARIO\AppData\Local\Temp/ccVHbEBv.s:66     .text:00000020 pvPortMalloc
+C:\Users\USUARIO\AppData\Local\Temp/ccVHbEBv.s:129    .bss:00000002 pucAlignedHeap.1629
+C:\Users\USUARIO\AppData\Local\Temp/ccVHbEBv.s:130    .bss:00000004 ucHeap
 
 UNDEFINED SYMBOLS
 vTaskSuspendAll
