@@ -7,6 +7,7 @@ s=tf('s');
 
 Kx=-kth*(w1_bar^2+w2_bar^2+w3_bar^2+w4_bar^2);
 Gx=Kx/(m*s);
+bode(Gx)
 %sisotool(Gx)
 C_xdot=-0.19912;
 
