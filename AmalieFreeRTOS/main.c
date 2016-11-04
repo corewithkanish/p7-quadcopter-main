@@ -12,10 +12,18 @@
 #include "portmacro.h"
 #include "FreeRTOSConfig.h"
 
+
+
 int main()
 {
-	// Initialization
-	LED_DDR = 0xFF;
+  static int init = 0;
+  LED_DDR = 0x01;
+  
+  if( init == 0 )
+  {
+    PWM_init(0);
+    init = 10;
+  }
 
 	xTaskCreate(Controllers, "Controllers", 500, NULL, configMAX_PRIORITIES-1, NULL);
 	vTaskStartScheduler();
@@ -32,8 +40,8 @@ void vApplicationIdleHook(void) //Når FreeRTOS ikke har en task den skal lave
 
 void Controllers(void *pvParameters)
 {
-  void AngularController(void);
-	
+  AngularController();
+	ApplyVelocities();
 }
 
 
@@ -53,4 +61,13 @@ void Controllers(void *pvParameters)
 	// }
 // }
 
+void vApplicationIdleHook( void ) //Når FreeRTOS ikke har en task den skal lave
+{
+		// vCoRoutineSchedule();
 
+    while(1)
+    {
+      LED = 0x01;
+    }
+    
+}
