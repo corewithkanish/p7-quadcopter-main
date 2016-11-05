@@ -129,7 +129,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x2574
+.text           0x00000000     0x259a
  *(.vectors)
  .vectors       0x00000000       0xe4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
                 0x00000000                __vectors
@@ -239,113 +239,113 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
                 0x00000126                __vector_18
                 0x00000126                __vector_20
                 0x00000126                __vector_42
- .text          0x0000012a       0x5e main.o
-                0x0000012a                ledTest
-                0x00000158                main
-                0x00000156                vApplicationIdleHook
- .text          0x00000188       0x9e ParTest/ParTest.o
-                0x00000198                vParTestToggleLED
-                0x000001de                vParTestSetLED
-                0x00000188                vParTestInitialise
- .text          0x00000226      0x216 serial/serial.o
-                0x00000226                vSerialClose
-                0x0000035c                xSerialPutChar
-                0x00000242                __vector_37
-                0x00000398                xSerialGetChar
-                0x000002d0                __vector_36
-                0x000003ac                xSerialPortInitMinimal
- .text          0x0000043c      0x2d4 regtest.o
-                0x0000043c                xAreRegTestTasksStillRunning
-                0x000006d4                vStartRegTestTasks
- .text          0x00000710      0xe58 ../../Source/tasks.o
-                0x000010ec                vTaskPlaceOnUnorderedEventList
-                0x00000744                pcTaskGetName
-                0x000011c6                vTaskEndScheduler
-                0x000011a2                vTaskPlaceOnEventList
-                0x0000071c                xTaskGetTickCount
-                0x00000aae                xTaskRemoveFromEventList
-                0x0000124a                vTaskDelete
-                0x000007e4                xTaskCheckForTimeOut
-                0x0000103c                ulTaskNotifyTake
-                0x00000710                vTaskSuspendAll
-                0x00000732                xTaskGetTickCountFromISR
-                0x00000882                xTaskNotifyStateClear
-                0x0000075a                vTaskSwitchContext
-                0x00000f2e                xTaskNotifyWait
-                0x0000073e                uxTaskGetNumberOfTasks
-                0x00000cc0                xTaskGenericNotify
-                0x00001144                vTaskDelayUntil
-                0x0000094e                xTaskGenericNotifyFromISR
-                0x00000a46                xTaskRemoveFromUnorderedEventList
-                0x00000d94                xTaskResumeAll
-                0x00001518                vTaskStartScheduler
-                0x0000084a                vTaskMissedYield
-                0x00000b2e                xTaskIncrementTick
-                0x00001326                xTaskCreate
-                0x0000111e                vTaskDelay
-                0x000007ce                vTaskSetTimeOutState
-                0x00000852                uxTaskResetEventItemValue
-                0x000008ac                vTaskNotifyGiveFromISR
- .text          0x00001568      0x818 ../../Source/queue.o
-                0x000016ae                xQueueCRReceiveFromISR
-                0x00001900                xQueueGenericSendFromISR
-                0x00001724                xQueueCRSendFromISR
-                0x00001684                xQueuePeekFromISR
-                0x000017ec                xQueueCRSend
-                0x00001858                vQueueDelete
-                0x00001b56                xQueueGenericSend
-                0x00001762                xQueueCRReceive
-                0x0000185e                xQueueReceiveFromISR
-                0x00001d30                xQueueGenericCreate
-                0x00001578                uxQueueSpacesAvailable
-                0x000015a2                xQueueIsQueueFullFromISR
-                0x00001568                uxQueueMessagesWaiting
-                0x000019e2                xQueueGenericReceive
-                0x00001cac                xQueueGenericReset
-                0x0000158c                uxQueueMessagesWaitingFromISR
-                0x00001592                xQueueIsQueueEmptyFromISR
-                0x000018ba                xQueueGiveFromISR
- .text          0x00001d80      0x11e ../../Source/list.o
-                0x00001da8                vListInsertEnd
-                0x00001da0                vListInitialiseItem
-                0x00001d80                vListInitialise
-                0x00001e4a                uxListRemove
-                0x00001de6                vListInsert
- .text          0x00001e9e      0x37e ../../Source/croutine.o
-                0x00001e9e                xCoRoutineRemoveFromEventList
-                0x00002128                xCoRoutineCreate
-                0x00001eee                vCoRoutineSchedule
-                0x000020ae                vCoRoutineAddToDelayedList
- .text          0x0000221c       0x84 ../../Source/portable/MemMang/heap_1.o
-                0x00002228                xPortGetFreeHeapSize
-                0x0000221c                vPortFree
-                0x0000223c                pvPortMalloc
-                0x0000221e                vPortInitialiseBlocks
- .text          0x000022a0      0x27a ../../Source/portable/GCC/ATMega323/port.o
-                0x00002332                xPortStartScheduler
-                0x000023a8                vPortYieldFromTick
-                0x000023a6                vPortEndScheduler
-                0x00002462                __vector_17
-                0x00002468                vPortYield
-                0x000022a0                pxPortInitialiseStack
- .text          0x0000251a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
- .text          0x0000251a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
- .text          0x0000251a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
- .text          0x0000251a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(memcpy.o)
-                0x0000251a                . = ALIGN (0x2)
+ .text          0x0000012a       0x84 main.o
+                0x00000130                ledTest
+                0x00000166                main
+                0x0000012a                vApplicationIdleHook
+ .text          0x000001ae       0x9e ParTest/ParTest.o
+                0x000001be                vParTestToggleLED
+                0x00000204                vParTestSetLED
+                0x000001ae                vParTestInitialise
+ .text          0x0000024c      0x216 serial/serial.o
+                0x0000024c                vSerialClose
+                0x00000382                xSerialPutChar
+                0x00000268                __vector_37
+                0x000003be                xSerialGetChar
+                0x000002f6                __vector_36
+                0x000003d2                xSerialPortInitMinimal
+ .text          0x00000462      0x2d4 regtest.o
+                0x00000462                xAreRegTestTasksStillRunning
+                0x000006fa                vStartRegTestTasks
+ .text          0x00000736      0xe58 ../../Source/tasks.o
+                0x00001112                vTaskPlaceOnUnorderedEventList
+                0x0000076a                pcTaskGetName
+                0x000011ec                vTaskEndScheduler
+                0x000011c8                vTaskPlaceOnEventList
+                0x00000742                xTaskGetTickCount
+                0x00000ad4                xTaskRemoveFromEventList
+                0x00001270                vTaskDelete
+                0x0000080a                xTaskCheckForTimeOut
+                0x00001062                ulTaskNotifyTake
+                0x00000736                vTaskSuspendAll
+                0x00000758                xTaskGetTickCountFromISR
+                0x000008a8                xTaskNotifyStateClear
+                0x00000780                vTaskSwitchContext
+                0x00000f54                xTaskNotifyWait
+                0x00000764                uxTaskGetNumberOfTasks
+                0x00000ce6                xTaskGenericNotify
+                0x0000116a                vTaskDelayUntil
+                0x00000974                xTaskGenericNotifyFromISR
+                0x00000a6c                xTaskRemoveFromUnorderedEventList
+                0x00000dba                xTaskResumeAll
+                0x0000153e                vTaskStartScheduler
+                0x00000870                vTaskMissedYield
+                0x00000b54                xTaskIncrementTick
+                0x0000134c                xTaskCreate
+                0x00001144                vTaskDelay
+                0x000007f4                vTaskSetTimeOutState
+                0x00000878                uxTaskResetEventItemValue
+                0x000008d2                vTaskNotifyGiveFromISR
+ .text          0x0000158e      0x818 ../../Source/queue.o
+                0x000016d4                xQueueCRReceiveFromISR
+                0x00001926                xQueueGenericSendFromISR
+                0x0000174a                xQueueCRSendFromISR
+                0x000016aa                xQueuePeekFromISR
+                0x00001812                xQueueCRSend
+                0x0000187e                vQueueDelete
+                0x00001b7c                xQueueGenericSend
+                0x00001788                xQueueCRReceive
+                0x00001884                xQueueReceiveFromISR
+                0x00001d56                xQueueGenericCreate
+                0x0000159e                uxQueueSpacesAvailable
+                0x000015c8                xQueueIsQueueFullFromISR
+                0x0000158e                uxQueueMessagesWaiting
+                0x00001a08                xQueueGenericReceive
+                0x00001cd2                xQueueGenericReset
+                0x000015b2                uxQueueMessagesWaitingFromISR
+                0x000015b8                xQueueIsQueueEmptyFromISR
+                0x000018e0                xQueueGiveFromISR
+ .text          0x00001da6      0x11e ../../Source/list.o
+                0x00001dce                vListInsertEnd
+                0x00001dc6                vListInitialiseItem
+                0x00001da6                vListInitialise
+                0x00001e70                uxListRemove
+                0x00001e0c                vListInsert
+ .text          0x00001ec4      0x37e ../../Source/croutine.o
+                0x00001ec4                xCoRoutineRemoveFromEventList
+                0x0000214e                xCoRoutineCreate
+                0x00001f14                vCoRoutineSchedule
+                0x000020d4                vCoRoutineAddToDelayedList
+ .text          0x00002242       0x84 ../../Source/portable/MemMang/heap_1.o
+                0x0000224e                xPortGetFreeHeapSize
+                0x00002242                vPortFree
+                0x00002262                pvPortMalloc
+                0x00002244                vPortInitialiseBlocks
+ .text          0x000022c6      0x27a ../../Source/portable/GCC/ATMega323/port.o
+                0x00002358                xPortStartScheduler
+                0x000023ce                vPortYieldFromTick
+                0x000023cc                vPortEndScheduler
+                0x00002488                __vector_17
+                0x0000248e                vPortYield
+                0x000022c6                pxPortInitialiseStack
+ .text          0x00002540        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
+ .text          0x00002540        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .text          0x00002540        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
+ .text          0x00002540        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(memcpy.o)
+                0x00002540                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x0000251a       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
-                0x0000251a                __udivmodsi4
- .text.libgcc   0x0000255e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
- .text.libgcc   0x0000255e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00002540       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_udivmodsi4.o)
+                0x00002540                __udivmodsi4
+ .text.libgcc   0x00002584        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .text.libgcc   0x00002584        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_clear_bss.o)
  .text.avr-libc
-                0x0000255e       0x12 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(memcpy.o)
-                0x0000255e                memcpy
-                0x00002570                . = ALIGN (0x2)
+                0x00002584       0x12 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6\libc.a(memcpy.o)
+                0x00002584                memcpy
+                0x00002596                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00002570        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
-                0x00002570                exit
-                0x00002570                _exit
+ .fini9         0x00002596        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+                0x00002596                exit
+                0x00002596                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -364,11 +364,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00002570        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
+ .fini0         0x00002596        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a(_exit.o)
  *(.fini0)
-                0x00002574                _etext = .
+                0x0000259a                _etext = .
 
-.data           0x00800200       0x18 load address 0x00002574
+.data           0x00800200       0x18 load address 0x0000259a
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800200        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr6/crtm2560.o
@@ -418,8 +418,8 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  *(.bss*)
  *(COMMON)
                 0x00800894                PROVIDE (__bss_end, .)
-                0x00002574                __data_load_start = LOADADDR (.data)
-                0x0000258c                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000259a                __data_load_start = LOADADDR (.data)
+                0x000025b2                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800894        0x0
                 0x00800894                PROVIDE (__noinit_start, .)
@@ -524,45 +524,45 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  .debug_pubnames
                 0x0000076d       0x90 ../../Source/portable/GCC/ATMega323/port.o
 
-.debug_info     0x00000000     0x2fce
+.debug_info     0x00000000     0x3019
  *(.debug_info)
- .debug_info    0x00000000      0x1a6 main.o
- .debug_info    0x000001a6      0x10f ParTest/ParTest.o
- .debug_info    0x000002b5      0x294 serial/serial.o
- .debug_info    0x00000549      0x10e regtest.o
- .debug_info    0x00000657     0x1145 ../../Source/tasks.o
- .debug_info    0x0000179c      0xd22 ../../Source/queue.o
- .debug_info    0x000024be      0x2b5 ../../Source/list.o
- .debug_info    0x00002773      0x50e ../../Source/croutine.o
- .debug_info    0x00002c81      0x15b ../../Source/portable/MemMang/heap_1.o
- .debug_info    0x00002ddc      0x1f2 ../../Source/portable/GCC/ATMega323/port.o
+ .debug_info    0x00000000      0x1f1 main.o
+ .debug_info    0x000001f1      0x10f ParTest/ParTest.o
+ .debug_info    0x00000300      0x294 serial/serial.o
+ .debug_info    0x00000594      0x10e regtest.o
+ .debug_info    0x000006a2     0x1145 ../../Source/tasks.o
+ .debug_info    0x000017e7      0xd22 ../../Source/queue.o
+ .debug_info    0x00002509      0x2b5 ../../Source/list.o
+ .debug_info    0x000027be      0x50e ../../Source/croutine.o
+ .debug_info    0x00002ccc      0x15b ../../Source/portable/MemMang/heap_1.o
+ .debug_info    0x00002e27      0x1f2 ../../Source/portable/GCC/ATMega323/port.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0xc72
+.debug_abbrev   0x00000000      0xc74
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x124 main.o
- .debug_abbrev  0x00000124       0x93 ParTest/ParTest.o
- .debug_abbrev  0x000001b7       0xd2 serial/serial.o
- .debug_abbrev  0x00000289       0xce regtest.o
- .debug_abbrev  0x00000357      0x28a ../../Source/tasks.o
- .debug_abbrev  0x000005e1      0x1d3 ../../Source/queue.o
- .debug_abbrev  0x000007b4       0xdf ../../Source/list.o
- .debug_abbrev  0x00000893      0x1cd ../../Source/croutine.o
- .debug_abbrev  0x00000a60       0xfa ../../Source/portable/MemMang/heap_1.o
- .debug_abbrev  0x00000b5a      0x118 ../../Source/portable/GCC/ATMega323/port.o
+ .debug_abbrev  0x00000000      0x126 main.o
+ .debug_abbrev  0x00000126       0x93 ParTest/ParTest.o
+ .debug_abbrev  0x000001b9       0xd2 serial/serial.o
+ .debug_abbrev  0x0000028b       0xce regtest.o
+ .debug_abbrev  0x00000359      0x28a ../../Source/tasks.o
+ .debug_abbrev  0x000005e3      0x1d3 ../../Source/queue.o
+ .debug_abbrev  0x000007b6       0xdf ../../Source/list.o
+ .debug_abbrev  0x00000895      0x1cd ../../Source/croutine.o
+ .debug_abbrev  0x00000a62       0xfa ../../Source/portable/MemMang/heap_1.o
+ .debug_abbrev  0x00000b5c      0x118 ../../Source/portable/GCC/ATMega323/port.o
 
-.debug_line     0x00000000     0x2f86
+.debug_line     0x00000000     0x2fc1
  *(.debug_line)
- .debug_line    0x00000000      0x188 main.o
- .debug_line    0x00000188      0x11d ParTest/ParTest.o
- .debug_line    0x000002a5      0x260 serial/serial.o
- .debug_line    0x00000505      0x8d6 regtest.o
- .debug_line    0x00000ddb      0xca4 ../../Source/tasks.o
- .debug_line    0x00001a7f      0xa88 ../../Source/queue.o
- .debug_line    0x00002507      0x255 ../../Source/list.o
- .debug_line    0x0000275c      0x368 ../../Source/croutine.o
- .debug_line    0x00002ac4      0x16c ../../Source/portable/MemMang/heap_1.o
- .debug_line    0x00002c30      0x356 ../../Source/portable/GCC/ATMega323/port.o
+ .debug_line    0x00000000      0x1c3 main.o
+ .debug_line    0x000001c3      0x11d ParTest/ParTest.o
+ .debug_line    0x000002e0      0x260 serial/serial.o
+ .debug_line    0x00000540      0x8d6 regtest.o
+ .debug_line    0x00000e16      0xca4 ../../Source/tasks.o
+ .debug_line    0x00001aba      0xa88 ../../Source/queue.o
+ .debug_line    0x00002542      0x255 ../../Source/list.o
+ .debug_line    0x00002797      0x368 ../../Source/croutine.o
+ .debug_line    0x00002aff      0x16c ../../Source/portable/MemMang/heap_1.o
+ .debug_line    0x00002c6b      0x356 ../../Source/portable/GCC/ATMega323/port.o
 
 .debug_frame    0x00000000      0x600
  *(.debug_frame)
@@ -577,40 +577,40 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr6\libgcc.a
  .debug_frame   0x00000540       0x50 ../../Source/portable/MemMang/heap_1.o
  .debug_frame   0x00000590       0x70 ../../Source/portable/GCC/ATMega323/port.o
 
-.debug_str      0x00000000     0x1414
+.debug_str      0x00000000     0x142a
  *(.debug_str)
- .debug_str     0x00000000      0x11a main.o
-                                0x153 (size before relaxing)
- .debug_str     0x0000011a       0x6e ParTest/ParTest.o
-                                0x13e (size before relaxing)
- .debug_str     0x00000188      0x11d serial/serial.o
-                                0x215 (size before relaxing)
- .debug_str     0x000002a5       0x6c regtest.o
-                                0x151 (size before relaxing)
- .debug_str     0x00000311      0x8ef ../../Source/tasks.o
-                                0xa25 (size before relaxing)
- .debug_str     0x00000c00      0x390 ../../Source/queue.o
-                                0x5e6 (size before relaxing)
- .debug_str     0x00000f90       0xa8 ../../Source/list.o
-                                0x227 (size before relaxing)
- .debug_str     0x00001038      0x25d ../../Source/croutine.o
-                                0x447 (size before relaxing)
- .debug_str     0x00001295       0xa2 ../../Source/portable/MemMang/heap_1.o
-                                0x181 (size before relaxing)
- .debug_str     0x00001337       0xdd ../../Source/portable/GCC/ATMega323/port.o
-                                0x207 (size before relaxing)
+ .debug_str     0x00000000      0x130 main.o
+                                0x169 (size before relaxing)
+ .debug_str     0x00000130       0x6e ParTest/ParTest.o
+                                0x154 (size before relaxing)
+ .debug_str     0x0000019e      0x11d serial/serial.o
+                                0x22b (size before relaxing)
+ .debug_str     0x000002bb       0x6c regtest.o
+                                0x167 (size before relaxing)
+ .debug_str     0x00000327      0x8ef ../../Source/tasks.o
+                                0xa3b (size before relaxing)
+ .debug_str     0x00000c16      0x390 ../../Source/queue.o
+                                0x5fc (size before relaxing)
+ .debug_str     0x00000fa6       0xa8 ../../Source/list.o
+                                0x23d (size before relaxing)
+ .debug_str     0x0000104e      0x25d ../../Source/croutine.o
+                                0x45d (size before relaxing)
+ .debug_str     0x000012ab       0xa2 ../../Source/portable/MemMang/heap_1.o
+                                0x197 (size before relaxing)
+ .debug_str     0x0000134d       0xdd ../../Source/portable/GCC/ATMega323/port.o
+                                0x21d (size before relaxing)
 
-.debug_loc      0x00000000     0x1e22
+.debug_loc      0x00000000     0x1e32
  *(.debug_loc)
- .debug_loc     0x00000000       0x98 main.o
- .debug_loc     0x00000098       0xa1 ParTest/ParTest.o
- .debug_loc     0x00000139      0x1a3 serial/serial.o
- .debug_loc     0x000002dc      0xc32 ../../Source/tasks.o
- .debug_loc     0x00000f0e      0xb71 ../../Source/queue.o
- .debug_loc     0x00001a7f      0x138 ../../Source/list.o
- .debug_loc     0x00001bb7      0x1d0 ../../Source/croutine.o
- .debug_loc     0x00001d87       0x60 ../../Source/portable/MemMang/heap_1.o
- .debug_loc     0x00001de7       0x3b ../../Source/portable/GCC/ATMega323/port.o
+ .debug_loc     0x00000000       0xa8 main.o
+ .debug_loc     0x000000a8       0xa1 ParTest/ParTest.o
+ .debug_loc     0x00000149      0x1a3 serial/serial.o
+ .debug_loc     0x000002ec      0xc32 ../../Source/tasks.o
+ .debug_loc     0x00000f1e      0xb71 ../../Source/queue.o
+ .debug_loc     0x00001a8f      0x138 ../../Source/list.o
+ .debug_loc     0x00001bc7      0x1d0 ../../Source/croutine.o
+ .debug_loc     0x00001d97       0x60 ../../Source/portable/MemMang/heap_1.o
+ .debug_loc     0x00001df7       0x3b ../../Source/portable/GCC/ATMega323/port.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -771,6 +771,7 @@ vQueueDelete                                      ../../Source/queue.o
 vSerialClose                                      serial/serial.o
 vStartRegTestTasks                                regtest.o
 vTaskDelay                                        ../../Source/tasks.o
+                                                  main.o
 vTaskDelayUntil                                   ../../Source/tasks.o
 vTaskDelete                                       ../../Source/tasks.o
 vTaskEndScheduler                                 ../../Source/tasks.o

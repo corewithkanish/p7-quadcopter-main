@@ -1,4 +1,4 @@
-%%
+
 clear 
 close all 
 clc
@@ -7,17 +7,17 @@ clc
 header = 255;
 
 % Angular Positions
-roll=-2.55;
+roll=2.55;
 pitch=-2.55;
-yaw=-2.55;
+yaw=-1.34;
 
 roll=round(roll*100);
 pitch=round(pitch*100);
 yaw=round(yaw*100);
 
 % Translational Positions
-x=-5110;
-y=-5110;
+x=5110;
+y=3110;
 z=-5110;
 
 x=round(x/10);
@@ -26,8 +26,8 @@ z=round(z/10);
 
 % Translational References
 xref=-5110;
-yref=-5110;
-zref=-5110;
+yref=5110;
+zref=410;
 
 xref=round(xref/10);
 yref=round(yref/10);
@@ -35,8 +35,8 @@ zref=round(zref/10);
 
 % Translational Velocities
 xdot=-10230;
-ydot=-10230;
-zdot=-10230;
+ydot=10230;
+zdot=1023;
 
 xdot=round(xdot/10);
 ydot=round(ydot/10);
@@ -189,3 +189,17 @@ for i=1:1:21
            package(i)=uint8(a);
     end 
 end
+
+S1 = serial('COM5', 'BaudRate', 9600, 'Terminator', 'CR', 'StopBit', 1, 'Parity', 'None'); 
+fopen(S1);
+
+for i=1:1:50
+    fwrite(S1,package)
+    pause(0.05);
+end
+
+fclose(S1);
+delete(S1);
+clear S1;
+
+

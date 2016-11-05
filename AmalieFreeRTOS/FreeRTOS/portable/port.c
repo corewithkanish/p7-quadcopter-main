@@ -93,7 +93,7 @@ Changes from V2.6.0
 #define portCLEAR_COUNTER_ON_MATCH				( ( uint8_t ) 0x08 )
 #define portPRESCALE_64							( ( uint8_t ) 0x03 )
 #define portCLOCK_PRESCALER						( ( uint32_t ) 64 )
-#define portCOMPARE_MATCH_A_INTERRUPT_ENABLE	( ( uint8_t ) 0x10 )
+#define portCOMPARE_MATCH_A_INTERRUPT_ENABLE	( ( uint8_t ) 0x02 )
 
 /*-----------------------------------------------------------*/
 
@@ -440,6 +440,7 @@ uint8_t ucHighByte, ucLowByte;
 	ucLowByte = TIMSK1;
 	ucLowByte |= portCOMPARE_MATCH_A_INTERRUPT_ENABLE;
 	TIMSK1 = ucLowByte;
+
 }
 /*-----------------------------------------------------------*/
 

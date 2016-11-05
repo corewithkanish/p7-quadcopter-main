@@ -6,150 +6,191 @@
    6               	__tmp_reg__ = 0
    7               	__zero_reg__ = 1
   15               	.Ltext0:
-  16               	.global	ledTest
-  18               	ledTest:
-  19               	.LFB7:
+  16               	.global	vApplicationIdleHook
+  18               	vApplicationIdleHook:
+  19               	.LFB11:
   20               	.LM1:
-  21               	.LVL0:
-  22               	/* prologue: function */
-  23               	/* frame size = 0 */
-  24               	.LM2:
-  25 0000 8FEF      		ldi r24,lo8(-1)
-  26               	.LVL1:
-  27 0002 8DB9      		out 45-32,r24
-  28               	.LM3:
-  29 0004 4FEF      		ldi r20,lo8(-1)
-  30               	.LBB18:
-  31               	.LBB19:
-  32               	.LBB20:
-  33               	.LBB21:
-  34               	.LM4:
-  35 0006 20E9      		ldi r18,lo8(400)
-  36 0008 31E0      		ldi r19,hi8(400)
-  37               	.LVL2:
-  38               	.L4:
-  39               	.LBE21:
-  40               	.LBE20:
-  41               	.LBE19:
-  42               	.LBE18:
-  43               	.LM5:
-  44 000a 4EB9      		out 46-32,r20
-  45 000c 88E8      		ldi r24,lo8(5000)
-  46 000e 93E1      		ldi r25,hi8(5000)
-  47               	.LVL3:
-  48               	.L2:
-  49               	.LBB25:
-  50               	.LBB24:
-  51               	.LBB23:
-  52               	.LBB22:
-  53               	.LM6:
-  54 0010 F901      		movw r30,r18
-  55               	.LVL4:
-  56               	/* #APP */
-  57               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
-  58 0012 3197      		1: sbiw r30,1
-  59 0014 01F4      		brne 1b
-  60               	 ;  0 "" 2
-  61               	/* #NOAPP */
-  62               	.LBE22:
-  63               	.LBE23:
-  64               	.LM7:
-  65 0016 0197      		sbiw r24,1
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 81E0      		ldi r24,lo8(1)
+  25 0002 8EB9      		out 46-32,r24
+  26               	/* epilogue start */
+  27               	.LM3:
+  28 0004 0895      		ret
+  29               	.LFE11:
+  31               	.global	ledTest
+  33               	ledTest:
+  34               	.LFB7:
+  35               	.LM4:
+  36               	.LVL0:
+  37 0006 1F93      		push r17
+  38 0008 CF93      		push r28
+  39 000a DF93      		push r29
+  40               	/* prologue: function */
+  41               	/* frame size = 0 */
+  42               	.LM5:
+  43 000c 11E0      		ldi r17,lo8(1)
+  44               	.LBB24:
+  45               	.LBB25:
+  46               	.LBB26:
+  47               	.LBB27:
+  48               	.LM6:
+  49 000e C0E9      		ldi r28,lo8(400)
+  50 0010 D1E0      		ldi r29,hi8(400)
+  51               	.L6:
+  52               	.LBE27:
+  53               	.LBE26:
+  54               	.LBE25:
+  55               	.LBE24:
+  56               	.LM7:
+  57 0012 1EB9      		out 46-32,r17
+  58 0014 88E8      		ldi r24,lo8(5000)
+  59 0016 93E1      		ldi r25,hi8(5000)
+  60               	.LVL1:
+  61               	.L4:
+  62               	.LBB31:
+  63               	.LBB30:
+  64               	.LBB29:
+  65               	.LBB28:
   66               	.LM8:
-  67 0018 01F4      		brne .L2
-  68               	.LBE24:
-  69               	.LBE25:
-  70               	.LM9:
-  71 001a 1EB8      		out 46-32,__zero_reg__
-  72 001c 88E8      		ldi r24,lo8(5000)
-  73 001e 93E1      		ldi r25,hi8(5000)
-  74               	.LVL5:
-  75               	.L3:
-  76               	.LBB26:
-  77               	.LBB27:
-  78               	.LBB28:
-  79               	.LBB29:
-  80               	.LM10:
-  81 0020 F901      		movw r30,r18
-  82               	.LVL6:
-  83               	/* #APP */
-  84               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
-  85 0022 3197      		1: sbiw r30,1
-  86 0024 01F4      		brne 1b
-  87               	 ;  0 "" 2
-  88               	/* #NOAPP */
-  89               	.LBE29:
-  90               	.LBE28:
-  91               	.LM11:
-  92 0026 0197      		sbiw r24,1
+  67 0018 FE01      		movw r30,r28
+  68               	.LVL2:
+  69               	/* #APP */
+  70               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+  71 001a 3197      		1: sbiw r30,1
+  72 001c 01F4      		brne 1b
+  73               	 ;  0 "" 2
+  74               	/* #NOAPP */
+  75               	.LBE28:
+  76               	.LBE29:
+  77               	.LM9:
+  78 001e 0197      		sbiw r24,1
+  79               	.LM10:
+  80 0020 01F4      		brne .L4
+  81               	.LBE30:
+  82               	.LBE31:
+  83               	.LM11:
+  84 0022 1EB8      		out 46-32,__zero_reg__
+  85 0024 88E8      		ldi r24,lo8(5000)
+  86 0026 93E1      		ldi r25,hi8(5000)
+  87               	.LVL3:
+  88               	.L5:
+  89               	.LBB32:
+  90               	.LBB33:
+  91               	.LBB34:
+  92               	.LBB35:
   93               	.LM12:
-  94 0028 01F4      		brne .L3
-  95 002a 00C0      		rjmp .L4
-  96               	.LBE27:
-  97               	.LBE26:
-  98               	.LFE7:
- 100               	.global	vApplicationIdleHook
- 102               	vApplicationIdleHook:
- 103               	.LFB11:
+  94 0028 FE01      		movw r30,r28
+  95               	.LVL4:
+  96               	/* #APP */
+  97               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+  98 002a 3197      		1: sbiw r30,1
+  99 002c 01F4      		brne 1b
+ 100               	 ;  0 "" 2
+ 101               	/* #NOAPP */
+ 102               	.LBE35:
+ 103               	.LBE34:
  104               	.LM13:
- 105               	/* prologue: function */
- 106               	/* frame size = 0 */
- 107               	/* epilogue start */
- 108               	.LM14:
- 109 002c 0895      		ret
- 110               	.LFE11:
- 112               		.data
- 113               	.LC0:
- 114 0000 5465 7374 		.string	"Testing"
- 114      696E 6700 
- 115               		.text
- 116               	.global	main
- 118               	main:
- 119               	.LFB6:
- 120               	.LM15:
- 121 002e EF92      		push r14
- 122 0030 FF92      		push r15
- 123 0032 0F93      		push r16
- 124               	/* prologue: function */
- 125               	/* frame size = 0 */
- 126               	.LM16:
- 127 0034 80E0      		ldi r24,lo8(gs(ledTest))
- 128 0036 90E0      		ldi r25,hi8(gs(ledTest))
- 129 0038 60E0      		ldi r22,lo8(.LC0)
- 130 003a 70E0      		ldi r23,hi8(.LC0)
- 131 003c 4AEA      		ldi r20,lo8(170)
- 132 003e 50E0      		ldi r21,hi8(170)
- 133 0040 20E0      		ldi r18,lo8(0)
- 134 0042 30E0      		ldi r19,hi8(0)
- 135 0044 03E0      		ldi r16,lo8(3)
- 136 0046 EE24      		clr r14
- 137 0048 FF24      		clr r15
- 138 004a 0E94 0000 		call xTaskCreate
- 139               	.LM17:
- 140 004e 0E94 0000 		call vTaskStartScheduler
- 141               	.LM18:
- 142 0052 80E0      		ldi r24,lo8(0)
- 143 0054 90E0      		ldi r25,hi8(0)
- 144               	/* epilogue start */
- 145 0056 0F91      		pop r16
- 146 0058 FF90      		pop r15
- 147 005a EF90      		pop r14
- 148 005c 0895      		ret
- 149               	.LFE6:
- 191               	.Letext0:
+ 105 002e 0197      		sbiw r24,1
+ 106               	.LM14:
+ 107 0030 01F4      		brne .L5
+ 108               	.LBE33:
+ 109               	.LBE32:
+ 110               	.LM15:
+ 111 0032 84E6      		ldi r24,lo8(100)
+ 112 0034 90E0      		ldi r25,hi8(100)
+ 113               	.LVL5:
+ 114 0036 0E94 0000 		call vTaskDelay
+ 115               	.LVL6:
+ 116 003a 00C0      		rjmp .L6
+ 117               	.LFE7:
+ 119               		.data
+ 120               	.LC0:
+ 121 0000 5465 7374 		.string	"Testing"
+ 121      696E 6700 
+ 122               		.text
+ 123               	.global	main
+ 125               	main:
+ 126               	.LFB6:
+ 127               	.LM16:
+ 128 003c EF92      		push r14
+ 129 003e FF92      		push r15
+ 130 0040 0F93      		push r16
+ 131               	/* prologue: function */
+ 132               	/* frame size = 0 */
+ 133               	.LM17:
+ 134 0042 80E0      		ldi r24,lo8(gs(ledTest))
+ 135 0044 90E0      		ldi r25,hi8(gs(ledTest))
+ 136 0046 60E0      		ldi r22,lo8(.LC0)
+ 137 0048 70E0      		ldi r23,hi8(.LC0)
+ 138 004a 4AEA      		ldi r20,lo8(170)
+ 139 004c 50E0      		ldi r21,hi8(170)
+ 140 004e 20E0      		ldi r18,lo8(0)
+ 141 0050 30E0      		ldi r19,hi8(0)
+ 142 0052 03E0      		ldi r16,lo8(3)
+ 143 0054 EE24      		clr r14
+ 144 0056 FF24      		clr r15
+ 145 0058 0E94 0000 		call xTaskCreate
+ 146               	.LM18:
+ 147 005c 8FEF      		ldi r24,lo8(-1)
+ 148 005e 8DB9      		out 45-32,r24
+ 149               	.LM19:
+ 150 0060 1EB8      		out 46-32,__zero_reg__
+ 151 0062 88E8      		ldi r24,lo8(5000)
+ 152 0064 93E1      		ldi r25,hi8(5000)
+ 153               	.LVL7:
+ 154               	.LBB36:
+ 155               	.LBB37:
+ 156               	.LBB38:
+ 157               	.LBB39:
+ 158               	.LM20:
+ 159 0066 20E9      		ldi r18,lo8(400)
+ 160 0068 31E0      		ldi r19,hi8(400)
+ 161               	.L11:
+ 162 006a F901      		movw r30,r18
+ 163               	.LVL8:
+ 164               	/* #APP */
+ 165               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 166 006c 3197      		1: sbiw r30,1
+ 167 006e 01F4      		brne 1b
+ 168               	 ;  0 "" 2
+ 169               	/* #NOAPP */
+ 170               	.LBE39:
+ 171               	.LBE38:
+ 172               	.LM21:
+ 173 0070 0197      		sbiw r24,1
+ 174               	.LM22:
+ 175 0072 01F4      		brne .L11
+ 176               	.LBE37:
+ 177               	.LBE36:
+ 178               	.LM23:
+ 179 0074 0E94 0000 		call vTaskStartScheduler
+ 180               	.LVL9:
+ 181               	.LM24:
+ 182 0078 80E0      		ldi r24,lo8(0)
+ 183 007a 90E0      		ldi r25,hi8(0)
+ 184               	/* epilogue start */
+ 185 007c 0F91      		pop r16
+ 186 007e FF90      		pop r15
+ 187 0080 EF90      		pop r14
+ 188 0082 0895      		ret
+ 189               	.LFE6:
+ 231               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\NIELSS~1\AppData\Local\Temp/ccSSKaYU.s:2      *ABS*:0000003f __SREG__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccSSKaYU.s:3      *ABS*:0000003e __SP_H__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccSSKaYU.s:4      *ABS*:0000003d __SP_L__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccSSKaYU.s:5      *ABS*:00000034 __CCP__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccSSKaYU.s:6      *ABS*:00000000 __tmp_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccSSKaYU.s:7      *ABS*:00000001 __zero_reg__
-C:\Users\NIELSS~1\AppData\Local\Temp/ccSSKaYU.s:18     .text:00000000 ledTest
-C:\Users\NIELSS~1\AppData\Local\Temp/ccSSKaYU.s:102    .text:0000002c vApplicationIdleHook
-C:\Users\NIELSS~1\AppData\Local\Temp/ccSSKaYU.s:118    .text:0000002e main
+C:\Users\USUARIO\AppData\Local\Temp/ccJQaGVA.s:2      *ABS*:0000003f __SREG__
+C:\Users\USUARIO\AppData\Local\Temp/ccJQaGVA.s:3      *ABS*:0000003e __SP_H__
+C:\Users\USUARIO\AppData\Local\Temp/ccJQaGVA.s:4      *ABS*:0000003d __SP_L__
+C:\Users\USUARIO\AppData\Local\Temp/ccJQaGVA.s:5      *ABS*:00000034 __CCP__
+C:\Users\USUARIO\AppData\Local\Temp/ccJQaGVA.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\USUARIO\AppData\Local\Temp/ccJQaGVA.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\USUARIO\AppData\Local\Temp/ccJQaGVA.s:18     .text:00000000 vApplicationIdleHook
+C:\Users\USUARIO\AppData\Local\Temp/ccJQaGVA.s:33     .text:00000006 ledTest
+C:\Users\USUARIO\AppData\Local\Temp/ccJQaGVA.s:125    .text:0000003c main
 
 UNDEFINED SYMBOLS
+vTaskDelay
 xTaskCreate
 vTaskStartScheduler
 __do_copy_data

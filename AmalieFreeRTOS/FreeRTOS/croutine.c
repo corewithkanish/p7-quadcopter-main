@@ -319,6 +319,7 @@ CRCB_t *pxCRCB;
 
 void vCoRoutineSchedule( void )
 {
+	PORTE = 0x00;
 	/* See if any co-routines readied by events need moving to the ready lists. */
 	prvCheckPendingReadyList();
 
