@@ -1,11 +1,14 @@
 #define LED_DDR DDRE
-
 #define LED PORTE
+
+#define FOSC 16000000// Clock Speed
+#define BAUD 9600
+#define MYUBRR FOSC/16/BAUD-1
 
 void vApplicationIdleHook( void );
 
 void Controllers(void *pvParameters);
-void Dummy(void *pvParameters);
+void Comunication(void *pvParameters);
 
 //void LEDnotBlink(void *pvNotParameters);
 

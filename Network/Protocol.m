@@ -193,9 +193,10 @@ end
 S1 = serial('COM5', 'BaudRate', 9600, 'Terminator', 'CR', 'StopBit', 1, 'Parity', 'None'); 
 fopen(S1);
 
-    fwrite(S1,package);
-    pause(0.1);
-    fread(S1)
+for i=1:1:50
+    fwrite(S1,package)
+    pause(0.05);
+end
 
 fclose(S1);
 delete(S1);
