@@ -8,7 +8,8 @@ s=tf('s');
 Kx=-kth*(w1_bar^2+w2_bar^2+w3_bar^2+w4_bar^2);
 Gx=Kx/(m*s);
 FigHandle = figure('Position', [100, 100, 800, 400]);
-bode(Gx)
+%bode(Gx);
+%step(Gx);
 xlim([0.01 100]);
 grid minor;
 %sisotool(Gx)
@@ -24,7 +25,8 @@ s=tf('s');
 Ky=kth*(w1_bar^2+w2_bar^2+w3_bar^2+w4_bar^2);
 Gy=Ky/(m*s);
 FigHandle = figure('Position', [100, 100, 800, 400]);
-bode(Gy)
+%step(Gy);
+%bode(Gy);
 xlim([0.01 100]);
 grid minor;
 %sisotool(Gy)
@@ -40,7 +42,8 @@ s=tf('s');
 Kz=-2*kth*w1_bar^2;
 Gz=Kz/(m*s);
 FigHandle = figure('Position', [100, 100, 800, 400]);
-bode(Gz)
+%step(Gz)
+%bode(Gz)
 xlim([0.01 100]);
 grid minor;
 %sisotool(Gz)
