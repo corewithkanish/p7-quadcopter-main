@@ -19,7 +19,7 @@ const float Fint4[6] = {-90.4, -62.3, 1876.7};
 
 // Initialization and definitions of variables
 float u_k1[4] 	= {0.0, 0.0, 0.0, 0.0};
-float y_k[3] 	= {0.0, 0.0, 0.0};	
+float y_k[3] 	= {0.0, 0.0, 0.0};
 float y_k1[3] 	= {0.0, 0.0, 0.0};
 float r_k1[3] 	= {0.0, 0.0, 0.0};
 float r_k[3] 	= {0.0, 0.0, 0.0};
@@ -34,57 +34,62 @@ float vel[3] = { 0.0, 0.0, 0.0};
 
 void AngularController(void)
 {
-	float x_intk[3] = {0.0, 0.0, 0.0};
-	float x2_k[3] = {0.0, 0.0, 0.0};
-	float u_k[4] = {0.0, 0.0, 0.0, 0.0};
-	
+	float x_intk[3] = { 0.0, 0.0, 0.0 };
+	float x2_k[3] = { 0.0, 0.0, 0.0 };
+
 	int i = 0;
-	
-	for(i; i < 4; i++)
+
+	for (i; i < 3; i++)
 	{
-		if (i < 3)
 		{
 			x_intk[i] = y_k1[i] - r_k1[i];
-			
-			switch (i) 
+
+			switch (i)
 			{
-				case 0:
-					x2_k[i] = L[i] * x2_k1[i] + B1[0]*u_k1[0] + B1[1]*u_k1[1] + B1[2]*u_k1[2] + B1[3]*u_k1[3] - L[i]*y_k[i];
-				 break;
-				case 1:
-					x2_k[i] = L[i] * x2_k1[i] + B2[0]*u_k1[0] + B2[1]*u_k1[1] + B2[2]*u_k1[2] + B2[3]*u_k1[3] - L[i]*y_k[i];
-				 break;
-				case 2:
-					x2_k[i] = L[i] * x2_k1[i] + B3[0]*u_k1[0] + B3[1]*u_k1[1] + B3[2]*u_k1[2] + B3[3]*u_k1[3] - L[i]*y_k[i];
-				 break;
+			case 0:
+				x2_k[i] = L[i] * x2_k1[i] + B1[0] * u_k1[0] + B1[1] * u_k1[1] + B1[2] * u_k1[2] + B1[3] * u_k1[3] - L[i] * y_k[i];
+				break;
+			case 1:
+				x2_k[i] = L[i] * x2_k1[i] + B2[0] * u_k1[0] + B2[1] * u_k1[1] + B2[2] * u_k1[2] + B2[3] * u_k1[3] - L[i] * y_k[i];
+				break;
+			case 2:
+				x2_k[i] = L[i] * x2_k1[i] + B3[0] * u_k1[0] + B3[1] * u_k1[1] + B3[2] * u_k1[2] + B3[3] * u_k1[3] - L[i] * y_k[i];
+				break;
 			}
 		}
-		
+	}
+
+	i = 0;
+	for (i; i < 4; i++)
+	{
 		switch (i)
 		{
-			
-			case 0:
-				u_k[i] = F1[0]*y_k[0] + F1[1]*y_k[1] + F1[2]*y_k[2] + F1[3]*x2_k[0] + F1[4]*x2_k[1] + F1[5]*x2_k[2] + Fint1[0]*x_intk[0] + Fint1[1]*x_intk[1] + Fint1[2]*x_intk[2];
-			 break;
-			case 1:
-				u_k[i] = F2[0]*y_k[0] + F2[1]*y_k[1] + F2[2]*y_k[2] + F2[3]*x2_k[0] + F2[4]*x2_k[1] + F2[5]*x2_k[2] + Fint2[0]*x_intk[0] + Fint2[1]*x_intk[1] + Fint2[2]*x_intk[2];
-			 break;
-			case 2:
-				u_k[i] = F3[0]*y_k[0] + F3[1]*y_k[1] + F3[2]*y_k[2] + F3[3]*x2_k[0] + F3[4]*x2_k[1] + F3[5]*x2_k[2] + Fint3[0]*x_intk[0] + Fint3[1]*x_intk[1] + Fint3[2]*x_intk[2];
-			 break;
-			case 3:
-				u_k[i] = F4[0]*y_k[0] + F4[1]*y_k[1] + F4[2]*y_k[2] + F4[3]*x2_k[0] + F4[4]*x2_k[1] + F4[5]*x2_k[2] + Fint4[0]*x_intk[0] + Fint4[1]*x_intk[1] + Fint4[2]*x_intk[2];
-			 break;
+		case 0:
+			u_k1[i] = F1[0] * y_k[0] + F1[1] * y_k[1] + F1[2] * y_k[2] + F1[3] * x2_k[0] + F1[4] * x2_k[1] + F1[5] * x2_k[2] + Fint1[0] * x_intk[0] + Fint1[1] * x_intk[1] + Fint1[2] * x_intk[2];
+			break;
+		case 1:
+			u_k1[i] = F2[0] * y_k[0] + F2[1] * y_k[1] + F2[2] * y_k[2] + F2[3] * x2_k[0] + F2[4] * x2_k[1] + F2[5] * x2_k[2] + Fint2[0] * x_intk[0] + Fint2[1] * x_intk[1] + Fint2[2] * x_intk[2];
+			break;
+		case 2:
+			u_k1[i] = F3[0] * y_k[0] + F3[1] * y_k[1] + F3[2] * y_k[2] + F3[3] * x2_k[0] + F3[4] * x2_k[1] + F3[5] * x2_k[2] + Fint3[0] * x_intk[0] + Fint3[1] * x_intk[1] + Fint3[2] * x_intk[2];
+			break;
+		case 3:
+			u_k1[i] = F4[0] * y_k[0] + F4[1] * y_k[1] + F4[2] * y_k[2] + F4[3] * x2_k[0] + F4[4] * x2_k[1] + F4[5] * x2_k[2] + Fint4[0] * x_intk[0] + Fint4[1] * x_intk[1] + Fint4[2] * x_intk[2];
+			break;
 		}
-			
-	}	
-		
-	// memcpy(u_k1, u_k, 4*sizeof(float));
-	// memcpy(x2_k1, x2_k, 3*sizeof(float));
-	// memcpy(y_k1, y_k, 3*sizeof(float));
-	// memcpy(r_k1, r_k, 3*sizeof(float));
-  
-  return;
+	}
+
+	y_k1[0] = y_k[0];
+	y_k1[1] = y_k[1];
+	y_k1[2] = y_k[2];
+	r_k1[0] = r_k[0];
+	r_k1[1] = r_k[1];
+	r_k1[2] = r_k[2];
+	x2_k1[0] = x2_k[0];
+	x2_k1[1] = x2_k[1];
+	x2_k1[2] = x2_k[2];
+
+	return;
 }
 
 
@@ -93,11 +98,11 @@ void AngularController(void)
 void ApplyVelocities(void)
 {
 	//---test code-----------------
-	int i = 0;
-	for( i=0; i<4; i++ )
-	{
-		u_k1[i] = 0;
-	}
+	//int i = 0;
+	//for( i=0; i<4; i++ )
+	//{
+	//	u_k1[i] = 0;
+	//}
 	u_z = 0;
 	//-----------------------------
 	
@@ -109,7 +114,8 @@ void ApplyVelocities(void)
 	
 	add_z = ( u_z - sum_u_k1 )/4;
 	
-	for( i=0; i<4; i++ )
+	int i = 0;
+	for( i; i<4; i++ )
 	{
 		u_k1[i] = u_k1[i] + add_z + EQU_SPEED;
 	}
@@ -119,15 +125,22 @@ void ApplyVelocities(void)
 	duty2 = (unsigned int)( u_k1[2] *0.1563 + 118.21 );
 	duty3 = (unsigned int)( u_k1[3] *0.1563 + 118.21 );
   
-	// duty0 = 128;
-	// duty1 = 128;
-	// duty2 = 128;
-	// duty3 = 128;
-
-	// while(1)
-	// {
-		// Set_PWM_duty( 128, 128, 128, 128 );
-	// }
+	if (duty0 > 255)
+		duty0 = 255;
+	if (duty1 > 255)
+		duty1 = 255;
+	if (duty2 > 255)
+		duty2 = 255;
+	if (duty3 > 255)
+		duty3 = 255;
+	if (duty0 < 128)
+		duty0 = 128;
+	if (duty1 < 128)
+		duty1 = 128;
+	if (duty2 < 128)
+		duty2 = 128;
+	if (duty3 < 128)
+		duty3 = 128;
 
 	Set_PWM_duty( duty0, duty1, duty2, duty3 );
 }

@@ -12,24 +12,30 @@
 #include "portmacro.h"
 #include "FreeRTOSConfig.h"
 
+#define DUTY 170
 
 int main()
 {
 	// Initialization
 	LED_DDR |= 0x18;
-	//PWM_init(0);
+	PWM_init(0);
 	USART_Init(MYUBRR);
 
 	// Task Creation
-	//xTaskCreate(Controllers, "Control", 1000, NULL, configMAX_PRIORITIES - 1, NULL);
-	xTaskCreate(Comunication, "Com", 1000, NULL, configMAX_PRIORITIES - 2, NULL);
+	xTaskCreate(Controllers, "Control", 1000, NULL, configMAX_PRIORITIES - 1, NULL);
+	//xTaskCreate(Comunication, "Com", 1000, NULL, configMAX_PRIORITIES - 2, NULL);
 
 	//LED |= (~0x00);
-	//_delay_ms(500);
+	_delay_ms(1000);
+	Set_PWM_duty(128, 128, 128, 128);
+	_delay_ms(5000);
+	while (1)
+	{
+		Set_PWM_duty(DUTY, 128, 128, 128);
+	}
 
 	// Scheduler Start
-	vTaskStartScheduler();
-	
+	//vTaskStartScheduler();
 	return 0;
 }
 
@@ -41,8 +47,8 @@ void Controllers(void *pvParameters)
 
 	while (1)
 	{
-		_delay_ms(10);
-		AngularController();
+		//_delay_ms(10);
+		//AngularController();
 		ApplyVelocities();
 		vTaskDelayUntil(&xLastWakeTime, 50);
 	}
