@@ -19,7 +19,7 @@ const float Fint4[6] = {-90.4, -62.3, 1876.7};
 
 // Initialization and definitions of variables
 float u_k1[4] 	= {0.0, 0.0, 0.0, 0.0};
-float y_k[3] 	= {0.0, 0.0, 0.0};
+float y_k[3] 	= {-0.01, 0.0, 0.0};
 float y_k1[3] 	= {0.0, 0.0, 0.0};
 float r_k1[3] 	= {0.0, 0.0, 0.0};
 float r_k[3] 	= {0.0, 0.0, 0.0};
@@ -43,7 +43,6 @@ void AngularController(void)
 	{
 		{
 			x_intk[i] = y_k1[i] - r_k1[i];
-
 			switch (i)
 			{
 			case 0:
@@ -57,7 +56,7 @@ void AngularController(void)
 				break;
 			}
 		}
-	}
+	}.
 
 	i = 0;
 	for (i; i < 4; i++)
@@ -103,27 +102,28 @@ void ApplyVelocities(void)
 	//{
 	//	u_k1[i] = 0;
 	//}
-	u_z = 0;
+	//u_z = 0;
 	//-----------------------------
 	
 	float add_z = 0;
 	float sum_u_k1 = 0;
+	float uk[4] = { 0, 0, 0, 0 };
 	unsigned int duty0, duty1, duty2, duty3;
 	
 	sum_u_k1 = u_k1[0] + u_k1[1] + u_k1[2] + u_k1[3];
 	
-	add_z = ( u_z - sum_u_k1 )/4;
+	add_z = 0;// (u_z - sum_u_k1) / 4;
 	
 	int i = 0;
 	for( i; i<4; i++ )
 	{
-		u_k1[i] = u_k1[i] + add_z + EQU_SPEED;
+		uk[i] = u_k1[i] + add_z + EQU_SPEED;
 	}
 
-	duty0 = (unsigned int)( u_k1[0] *0.1563 + 118.21 );
-	duty1 = (unsigned int)( u_k1[1] *0.1563 + 118.21 );
-	duty2 = (unsigned int)( u_k1[2] *0.1563 + 118.21 );
-	duty3 = (unsigned int)( u_k1[3] *0.1563 + 118.21 );
+	duty0 = (unsigned int)( uk[0] *0.1563 + 118.21 );
+	duty1 = (unsigned int)( uk[1] *0.1563 + 118.21 );
+	duty2 = (unsigned int)( uk[2] *0.1563 + 118.21 );
+	duty3 = (unsigned int)( uk[3] *0.1563 + 118.21 );
   
 	if (duty0 > 255)
 		duty0 = 255;

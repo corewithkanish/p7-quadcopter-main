@@ -13,8 +13,8 @@ Jz = 0.02135;           % Inertia around body z-axis [km搶2]
 
 L = 0.225;           % Distance between center of the quadcopter and center of each motor [m]
 
-kth =  5.316868e-5;        % Speed of the motor -> thrust force [N新/rad]
-kd =  9.423327e-7;       % Speed of the motor -> drag torque by proppeller [N搶新/rad]
+kth =  1.32922e-5;        % Speed of the motor -> thrust force [N新/rad]
+kd =  9.39741e-7;       % Speed of the motor -> drag torque by proppeller [N搶新/rad]
 
 w1_bar=sqrt(Fg/kth/4);
 w2_bar=sqrt(Fg/kth/4);

@@ -13,6 +13,8 @@
 #include "FreeRTOSConfig.h"
 
 #define DUTY 170
+int count = 0;
+float u_k1[4];
 
 int main()
 {
@@ -28,14 +30,14 @@ int main()
 	//LED |= (~0x00);
 	_delay_ms(1000);
 	Set_PWM_duty(128, 128, 128, 128);
-	_delay_ms(5000);
-	while (1)
-	{
-		Set_PWM_duty(DUTY, 128, 128, 128);
-	}
+	_delay_ms(10000);
+	//while (1)
+	//{
+	//	Set_PWM_duty(DUTY, 128, 128, 128);
+	//}
 
 	// Scheduler Start
-	//vTaskStartScheduler();
+	vTaskStartScheduler();
 	return 0;
 }
 
@@ -48,12 +50,34 @@ void Controllers(void *pvParameters)
 	while (1)
 	{
 		//_delay_ms(10);
-		//AngularController();
-		ApplyVelocities();
+		if (count<500)
+		{
+			AngularController();
+			count++;
+			ApplyVelocities();
+			if (u_k1[3] < 0)
+			{
+				USART_Transmit('n');
+				USART_Transmit('n');
+				USART_Transmit(-u_k1[3]);
+			}
+			else
+			{
+				USART_Transmit('p');
+				USART_Transmit('p');
+				USART_Transmit(u_k1[3]);
+			}
+		}
+		else
+		{
+
+			Set_PWM_duty(128, 128, 128, 128);
+			count = 600;
+		}
+
 		vTaskDelayUntil(&xLastWakeTime, 50);
 	}
 	vTaskDelete(NULL);
-
 }
 
 
@@ -70,7 +94,6 @@ void Comunication(void *pvParameters)
 			GetPackage();
 			//USART_Transmit(128);
 			//LED = 0x00;
-
 		}
 			//PORTE &= (~0x08);
 		//else
