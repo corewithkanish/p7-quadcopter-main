@@ -1,7 +1,3 @@
-clear 
-close all
-clc
-
 % Parameters
 
 m  = 0.996;           % Mass [kg]

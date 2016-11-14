@@ -1,4 +1,5 @@
 #define EQU_SPEED 214.34
+#define T 0.05
 
 void AngularController(void);
 void ApplyVelocities(void);

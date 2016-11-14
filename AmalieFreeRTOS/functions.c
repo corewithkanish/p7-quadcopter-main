@@ -20,10 +20,12 @@ const float Fint4[6] = {-90.4, -62.3, 1876.7};
 // Initialization and definitions of variables
 float u_k1[4] 	= {0.0, 0.0, 0.0, 0.0};
 float y_k[3] 	= {-0.01, 0.0, 0.0};
-float y_k1[3] 	= {0.0, 0.0, 0.0};
-float r_k1[3] 	= {0.0, 0.0, 0.0};
 float r_k[3] 	= {0.0, 0.0, 0.0};
 float x2_k1[3] 	= {0.0, 0.0, 0.0};
+float xint_k1 = { 0.0, 0.0, 0.0 };
+float e_k1 = { 0.0, 0.0, 0.0 };
+float o_k1 = { 0.0, 0.0, 0.0 };
+float oint_k1 = { 0.0, 0.0, 0.0 };
 float u_z = 0;
 float pos[3] = { 0.0, 0.0, 0.0};
 float pos_ref[3] = { 0.0, 0.0, 0.0};
@@ -34,7 +36,7 @@ float vel[3] = { 0.0, 0.0, 0.0};
 
 void AngularController(void)
 {
-	float x_intk[3] = { 0.0, 0.0, 0.0 };
+	float xint_k[3] = { 0.0, 0.0, 0.0 };
 	float x2_k[3] = { 0.0, 0.0, 0.0 };
 
 	int i = 0;
@@ -42,21 +44,29 @@ void AngularController(void)
 	for (i; i < 3; i++)
 	{
 		{
-			x_intk[i] = y_k1[i] - r_k1[i];
+			// Calculation of xint
+			e_k[i] = y_k[i] - r_k[i];
+			//if sat
+			//	e_k[i] = 0;
+			xint_k[i] = T / 2 * (e_k[i] + e_k1[i]) + xint_k1[i];
+
+			// Estimation of the angular velocities
 			switch (i)
 			{
 			case 0:
-				x2_k[i] = L[i] * x2_k1[i] + B1[0] * u_k1[0] + B1[1] * u_k1[1] + B1[2] * u_k1[2] + B1[3] * u_k1[3] - L[i] * y_k[i];
+				o_k[i] = L[i] * x2_k1[i] + B1[0] * u_k1[0] + B1[1] * u_k1[1] + B1[2] * u_k1[2] + B1[3] * u_k1[3];
 				break;
 			case 1:
-				x2_k[i] = L[i] * x2_k1[i] + B2[0] * u_k1[0] + B2[1] * u_k1[1] + B2[2] * u_k1[2] + B2[3] * u_k1[3] - L[i] * y_k[i];
+				o_k[i] = L[i] * x2_k1[i] + B2[0] * u_k1[0] + B2[1] * u_k1[1] + B2[2] * u_k1[2] + B2[3] * u_k1[3];
 				break;
 			case 2:
-				x2_k[i] = L[i] * x2_k1[i] + B3[0] * u_k1[0] + B3[1] * u_k1[1] + B3[2] * u_k1[2] + B3[3] * u_k1[3] - L[i] * y_k[i];
+				o_k[i] = L[i] * x2_k1[i] + B3[0] * u_k1[0] + B3[1] * u_k1[1] + B3[2] * u_k1[2] + B3[3] * u_k1[3];
 				break;
 			}
+			oint_k = T / 2 * (o_k[i] + o_k1[i]) + oint_k1[i];
+			x2_k[i] = oint_k[i] - L[i] * y_k[i];
 		}
-	}.
+	}
 
 	i = 0;
 	for (i; i < 4; i++)
@@ -64,26 +74,32 @@ void AngularController(void)
 		switch (i)
 		{
 		case 0:
-			u_k1[i] = F1[0] * y_k[0] + F1[1] * y_k[1] + F1[2] * y_k[2] + F1[3] * x2_k[0] + F1[4] * x2_k[1] + F1[5] * x2_k[2] + Fint1[0] * x_intk[0] + Fint1[1] * x_intk[1] + Fint1[2] * x_intk[2];
+			u_k1[i] = F1[0] * y_k[0] + F1[1] * y_k[1] + F1[2] * y_k[2] + F1[3] * x2_k[0] + F1[4] * x2_k[1] + F1[5] * x2_k[2] + Fint1[0] * xint_k[0] + Fint1[1] * xint_k[1] + Fint1[2] * xint_k[2];
 			break;
 		case 1:
-			u_k1[i] = F2[0] * y_k[0] + F2[1] * y_k[1] + F2[2] * y_k[2] + F2[3] * x2_k[0] + F2[4] * x2_k[1] + F2[5] * x2_k[2] + Fint2[0] * x_intk[0] + Fint2[1] * x_intk[1] + Fint2[2] * x_intk[2];
+			u_k1[i] = F2[0] * y_k[0] + F2[1] * y_k[1] + F2[2] * y_k[2] + F2[3] * x2_k[0] + F2[4] * x2_k[1] + F2[5] * x2_k[2] + Fint2[0] * xint_k[0] + Fint2[1] * xint_k[1] + Fint2[2] * xint_k[2];
 			break;
 		case 2:
-			u_k1[i] = F3[0] * y_k[0] + F3[1] * y_k[1] + F3[2] * y_k[2] + F3[3] * x2_k[0] + F3[4] * x2_k[1] + F3[5] * x2_k[2] + Fint3[0] * x_intk[0] + Fint3[1] * x_intk[1] + Fint3[2] * x_intk[2];
+			u_k1[i] = F3[0] * y_k[0] + F3[1] * y_k[1] + F3[2] * y_k[2] + F3[3] * x2_k[0] + F3[4] * x2_k[1] + F3[5] * x2_k[2] + Fint3[0] * xint_k[0] + Fint3[1] * xint_k[1] + Fint3[2] * xint_k[2];
 			break;
 		case 3:
-			u_k1[i] = F4[0] * y_k[0] + F4[1] * y_k[1] + F4[2] * y_k[2] + F4[3] * x2_k[0] + F4[4] * x2_k[1] + F4[5] * x2_k[2] + Fint4[0] * x_intk[0] + Fint4[1] * x_intk[1] + Fint4[2] * x_intk[2];
+			u_k1[i] = F4[0] * y_k[0] + F4[1] * y_k[1] + F4[2] * y_k[2] + F4[3] * x2_k[0] + F4[4] * x2_k[1] + F4[5] * x2_k[2] + Fint4[0] * xint_k[0] + Fint4[1] * xint_k[1] + Fint4[2] * xint_k[2];
 			break;
 		}
 	}
 
-	y_k1[0] = y_k[0];
-	y_k1[1] = y_k[1];
-	y_k1[2] = y_k[2];
-	r_k1[0] = r_k[0];
-	r_k1[1] = r_k[1];
-	r_k1[2] = r_k[2];
+	e_k1[0] = e_k[0];
+	e_k1[1] = e_k[1];
+	e_k1[2] = e_k[2];
+	xint_k1[0] = xint_k[0];
+	xint_k1[1] = xint_k[1];
+	xint_k1[2] = xint_k[2];
+	o_k1[0] = o_k[0];
+	o_k1[1] = o_k[1];
+	o_k1[2] = o_k[2];
+	oint_k1[0] = oint_k[0];
+	oint_k1[1] = oint_k[1];
+	oint_k1[2] = oint_k[2];
 	x2_k1[0] = x2_k[0];
 	x2_k1[1] = x2_k[1];
 	x2_k1[2] = x2_k[2];

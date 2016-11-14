@@ -12,7 +12,6 @@
 #include "portmacro.h"
 #include "FreeRTOSConfig.h"
 
-#define DUTY 170
 int count = 0;
 float u_k1[4];
 
@@ -25,7 +24,7 @@ int main()
 
 	// Task Creation
 	xTaskCreate(Controllers, "Control", 1000, NULL, configMAX_PRIORITIES - 1, NULL);
-	//xTaskCreate(Comunication, "Com", 1000, NULL, configMAX_PRIORITIES - 2, NULL);
+	xTaskCreate(Comunication, "Com", 1000, NULL, configMAX_PRIORITIES - 2, NULL);
 
 	//LED |= (~0x00);
 	_delay_ms(1000);
@@ -33,7 +32,7 @@ int main()
 	_delay_ms(10000);
 	//while (1)
 	//{
-	//	Set_PWM_duty(DUTY, 128, 128, 128);
+	//	Set_PWM_duty(170, 128, 128, 128);
 	//}
 
 	// Scheduler Start
