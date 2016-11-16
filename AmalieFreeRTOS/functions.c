@@ -1,36 +1,36 @@
 #include <string.h>
 #include <avr/io.h>
+#include <util/delay.h>
 
 #include "functions.h"
 
 // Constant matrices
-const int L[3] = {-50.0, -60.0, -70.0};
-const float B1[4] = { 0.0, -0.4793, 0.0, 0.4793 };
-const float B2[4] = { 0.4793, 0.0, -0.4793, 0.0 };
-const float B3[4] = { 0.0189, -0.0189, 0.0189, -0.0189 };
-const float F1[6] = {-22.7, -70.1, -112.7, -2.0, -15.4, -216.3};
-const float F2[6] = {110.7, -22.0, 1126.1, 19.0, -2.0, 216.6};
-const float F3[6] = {-21.1, 115.4, -126.0, -1.9, 19.4, -216.6};
-const float F4[6] = {-66.8, -23.2, 112.7, -15.1, -2.1, 216.3};
-const float Fint1[6] = {-61.4, -99.6, -1876.9};
-const float Fint2[6] = {208.5, -58.4, 1885.8};
-const float Fint3[6] = {-56.8, 220.4, 1885.7};
-const float Fint4[6] = {-90.4, -62.3, 1876.7};
+const int L[3] = {-60.0, -70.0, -80.0};
+const float B1[4] = { 0.0, -0.2396, 0.0, 0.2396 };
+const float B2[4] = { 0.2396, 0.0, -0.2396, 0.0 };
+const float B3[4] = { 0.0377, -0.0377, 0.0377, -0.0377 };
+const float F1[6] = {-0.6, -1615, -5182.5, 0, -100.7, -321.3 };
+const float F2[6] = { 1611.5, -1, 5182.4, 100.6, 0, 321.3 };
+const float F3[6] = { 25.5, 1646, - 5192.5, 0.8, 101.6, -321.6 };
+const float F4[6] = { -1636.4, -30, 5192.5, -101.4, -0.9, 321.6 };
+const float Fint1[6] = { -7, - 8609, -27804 };
+const float Fint2[6] = { 8583, -12, 27806 };
+const float Fint3[6] = { 206, 8871, -27888 };
+const float Fint4[6] = { -8782, -249, 27886 };
 
 // Initialization and definitions of variables
 float u_k1[4] 	= {0.0, 0.0, 0.0, 0.0};
-float y_k[3] 	= {-0.01, 0.0, 0.0};
+float y_k[3] 	= {-0.00001, 0.0, 0.0};
 float r_k[3] 	= {0.0, 0.0, 0.0};
 float x2_k1[3] 	= {0.0, 0.0, 0.0};
-float xint_k1 = { 0.0, 0.0, 0.0 };
-float e_k1 = { 0.0, 0.0, 0.0 };
-float o_k1 = { 0.0, 0.0, 0.0 };
-float oint_k1 = { 0.0, 0.0, 0.0 };
+float xint_k1[3] = { 0.0, 0.0, 0.0 };
+float e_k1[3] = { 0.0, 0.0, 0.0 };
+float o_k1[3] = { 0.0, 0.0, 0.0 };
+float oint_k1[3] = { 0.0, 0.0, 0.0 };
 float u_z = 0;
 float pos[3] = { 0.0, 0.0, 0.0};
 float pos_ref[3] = { 0.0, 0.0, 0.0};
 float vel[3] = { 0.0, 0.0, 0.0};
-
 
 //------------------------------- Controller Functions ----------------------//
 
@@ -38,10 +38,12 @@ void AngularController(void)
 {
 	float xint_k[3] = { 0.0, 0.0, 0.0 };
 	float x2_k[3] = { 0.0, 0.0, 0.0 };
+	float o_k[3] = { 0.0, 0.0, 0.0 };
+	float oint_k[3] = { 0.0, 0.0, 0.0 };
+	float e_k[3] = { 0.0, 0.0, 0.0 };
+	int i;
 
-	int i = 0;
-
-	for (i; i < 3; i++)
+	for (i=0; i < 3; i++)
 	{
 		{
 			// Calculation of xint
@@ -63,13 +65,12 @@ void AngularController(void)
 				o_k[i] = L[i] * x2_k1[i] + B3[0] * u_k1[0] + B3[1] * u_k1[1] + B3[2] * u_k1[2] + B3[3] * u_k1[3];
 				break;
 			}
-			oint_k = T / 2 * (o_k[i] + o_k1[i]) + oint_k1[i];
+			oint_k[i] = T / 2 * (o_k[i] + o_k1[i]) + oint_k1[i];
 			x2_k[i] = oint_k[i] - L[i] * y_k[i];
 		}
 	}
 
-	i = 0;
-	for (i; i < 4; i++)
+	for (i = 0; i < 4; i++)
 	{
 		switch (i)
 		{
@@ -130,16 +131,16 @@ void ApplyVelocities(void)
 	
 	add_z = 0;// (u_z - sum_u_k1) / 4;
 	
-	int i = 0;
-	for( i; i<4; i++ )
+	int i;
+	for (i = 0; i<4; i = i + 1)
 	{
 		uk[i] = u_k1[i] + add_z + EQU_SPEED;
 	}
 
 	duty0 = (unsigned int)( uk[0] *0.1563 + 118.21 );
-	duty1 = (unsigned int)( uk[1] *0.1563 + 118.21 );
-	duty2 = (unsigned int)( uk[2] *0.1563 + 118.21 );
-	duty3 = (unsigned int)( uk[3] *0.1563 + 118.21 );
+	duty1 = (unsigned int)(uk[1] * 0.1563 + 118.21);
+	duty2 = (unsigned int)(uk[2] * 0.1563 + 118.21);
+	duty3 = (unsigned int)(uk[3] * 0.1563 + 118.21);
   
 	if (duty0 > 255)
 		duty0 = 255;
@@ -159,6 +160,8 @@ void ApplyVelocities(void)
 		duty3 = 128;
 
 	Set_PWM_duty( duty0, duty1, duty2, duty3 );
+	//USART_Transmit((duty3&0xFF00)>>8);
+	//USART_Transmit(duty3 & 0x00FF);
 }
 
 
@@ -207,19 +210,25 @@ void Set_PWM_duty(int duty0, int duty4A, int duty4B, int duty4C)
 int CheckPackageArrival(void)
 {
 	int pack = 1;
-
+	//_delay_ms(10);
+	//LED = 0xFF;
 	int i = 0;
 	while (i < 3)
 	{
-		if (USART_Receive() == 255)
+		if (USART_Receive() == 254)
+		{
+			//LED = 0xFF;
 			i++;
+			//LED = 0x00;
+		}
 		else
 		{
 			pack = 0;
 			i = 3;
 		}
 	}
-
+	//_delay_ms(10);
+	//LED = 0x00;
 	return pack;
 }
 
@@ -233,11 +242,13 @@ void GetPackage(void)
 	long checksum = 0;
 	int sign = -1;
 
-	int i = 0;
-	for (i; i < 18; i++)
+	int i;
+	LED = 0xFF;
+	for (i=0; i < 18; i++)
 	{
 		dummy[i] = USART_Receive();
 	}
+	//LED = 0x00;
 
 	parts[0] |= ((((long)dummy[0]) << 16) | (((long)dummy[1]) << 8) | (((long)dummy[2])));
 	parts[1] |= ((((long)dummy[3]) << 16) | (((long)dummy[4]) << 8) | (((long)dummy[5])));
@@ -258,7 +269,6 @@ void GetPackage(void)
 
 	if ((sum + checksum) == 0x00FFFFFF)
 	{
-		PORTE |= 0x10;
 		//----------- Roll --------------
 		if (dummy[0] & 0x80)
 			sign = -1;
@@ -335,7 +345,6 @@ void GetPackage(void)
 		//// Test code
 		//if (vel[2] == 1.02)
 		//	USART_Transmit(dummy[1]);
-		PORTE &= (~0x10);
 	}
 	
 	return;

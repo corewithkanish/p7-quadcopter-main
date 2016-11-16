@@ -1,4 +1,6 @@
 
+run Parameters.m
+
 % State-Space Representation of the Angle Equations
 A=[0 0 0 1 0 0;
     0 0 0 0 1 0;
@@ -34,7 +36,7 @@ Ae=[A zeros(size(A,1),size(C,1));
         C zeros(size(C,1),size(C,1))];
 Be=[B; zeros(size(C,1),size(B,2))];
 
-Fe=-place(Ae,Be,[[-4 -4.2 -4.3 -4.4 -4.5 -4.6] [-7.7 -7.8 -7.9]]); % Place uses the form A-BF
+Fe=-place(Ae,Be,[[-9 -9.2 -9.3 -9.4 -9.5 -9.6] [-10.7 -10.8 -10.9]]); % Place uses the form A-BF
 F=Fe(:,1:size(A,2));
 F1=F(:,1:3);
 F2=F(:,4:6);
@@ -58,7 +60,7 @@ B2=B(4:6,:);
 C1=C(:,1:3);
 C2=C(:,4:6);
 
-Lobs=(-place(A22',A12',[-60 -70 -80]))';  % Place uses the form A-BF. If we have A22+L*A12 -----> A22'+A12'*(-L)'
+Lobs=(-place(A22',A12',[-20 -25 -30]))';  % Place uses the form A-BF. If we have A22+L*A12 -----> A22'+A12'*(-L)'
 
 LA12=Lobs*A12;
 
@@ -77,3 +79,7 @@ Ccl=[C1 zeros(size(C1,1),size(A12+B1*F2,2)) zeros(size(C1,1),size(A12+B1*F2,2))]
 Dcl=0;
 
 system_cl=ss(Acl,Bcl,Ccl,Dcl);
+%step(system_cl);
+%impulse(system_cl);
+%bode(system_cl)
+

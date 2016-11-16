@@ -1,5 +1,5 @@
-#define LED_DDR DDRE
-#define LED PORTE
+#define LED_DDR DDRC
+#define LED PORTC
 
 #define FOSC 16000000// Clock Speed
 #define BAUD 9600

@@ -18,21 +18,34 @@ float u_k1[4];
 int main()
 {
 	// Initialization
-	LED_DDR |= 0x18;
-	PWM_init(0);
+
+	//PWM_init(0);
 	USART_Init(MYUBRR);
-
+	LED_DDR = 0xFF;
+	LED = 0x00;
 	// Task Creation
-	xTaskCreate(Controllers, "Control", 1000, NULL, configMAX_PRIORITIES - 1, NULL);
+	//xTaskCreate(Controllers, "Control", 1000, NULL, configMAX_PRIORITIES - 1, NULL);
 	xTaskCreate(Comunication, "Com", 1000, NULL, configMAX_PRIORITIES - 2, NULL);
-
-	//LED |= (~0x00);
-	_delay_ms(1000);
-	Set_PWM_duty(128, 128, 128, 128);
-	_delay_ms(10000);
 	//while (1)
 	//{
-	//	Set_PWM_duty(170, 128, 128, 128);
+	//	LED = 0xFF;
+	//	_delay_ms(1000);
+	//	LED = 0x00;
+	//	_delay_ms(1000);
+	//}
+
+	//LED |= (~0x00);
+	//_delay_ms(1000);
+	//int duty = 128;
+	//Set_PWM_duty(duty, duty, duty, duty);
+	//_delay_ms(10000);
+	//int i = 0;
+	//while (i<10)
+	//{
+	//	Set_PWM_duty(duty, duty, duty, duty);
+	//	duty += 5;
+	//	i++;
+	//	_delay_ms(1000);
 	//}
 
 	// Scheduler Start
@@ -49,30 +62,31 @@ void Controllers(void *pvParameters)
 	while (1)
 	{
 		//_delay_ms(10);
-		if (count<500)
-		{
+		//if (count<500)
+		//{
 			AngularController();
 			count++;
 			ApplyVelocities();
-			if (u_k1[3] < 0)
-			{
-				USART_Transmit('n');
-				USART_Transmit('n');
-				USART_Transmit(-u_k1[3]);
-			}
-			else
-			{
-				USART_Transmit('p');
-				USART_Transmit('p');
-				USART_Transmit(u_k1[3]);
-			}
-		}
-		else
-		{
+			//if (u_k1[3] < 0)
+			//{
+				//USART_Transmit('n');
+				//USART_Transmit('n');
 
-			Set_PWM_duty(128, 128, 128, 128);
-			count = 600;
-		}
+			//}
+			//else
+			//{
+				//USART_Transmit('p');
+				//USART_Transmit('p');
+			//	USART_Transmit(u_k1[3]);
+			//}
+			//Set_PWM_duty(185, 185, 185, 185);
+		//}
+		//else
+		//{
+
+		//	Set_PWM_duty(128, 128, 128, 128);
+		//	count = 600;
+		//}
 
 		vTaskDelayUntil(&xLastWakeTime, 50);
 	}
@@ -92,6 +106,7 @@ void Comunication(void *pvParameters)
 			//LED = 0xFF;
 			GetPackage();
 			//USART_Transmit(128);
+			//_delay_ms(10);
 			//LED = 0x00;
 		}
 			//PORTE &= (~0x08);
