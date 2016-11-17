@@ -210,16 +210,12 @@ void Set_PWM_duty(int duty0, int duty4A, int duty4B, int duty4C)
 int CheckPackageArrival(void)
 {
 	int pack = 1;
-	//_delay_ms(10);
-	//LED = 0xFF;
 	int i = 0;
 	while (i < 3)
 	{
-		if (USART_Receive() == 254)
+		if (USART_Receive() == 255)
 		{
-			//LED = 0xFF;
 			i++;
-			//LED = 0x00;
 		}
 		else
 		{
@@ -227,8 +223,6 @@ int CheckPackageArrival(void)
 			i = 3;
 		}
 	}
-	//_delay_ms(10);
-	//LED = 0x00;
 	return pack;
 }
 
@@ -248,7 +242,7 @@ void GetPackage(void)
 	{
 		dummy[i] = USART_Receive();
 	}
-	//LED = 0x00;
+	LED = 0x00;
 
 	parts[0] |= ((((long)dummy[0]) << 16) | (((long)dummy[1]) << 8) | (((long)dummy[2])));
 	parts[1] |= ((((long)dummy[3]) << 16) | (((long)dummy[4]) << 8) | (((long)dummy[5])));
@@ -353,8 +347,8 @@ void GetPackage(void)
 
 void USART_Init(unsigned int ubrr){
 	/* Set baud rate */
-	UBRR0H = (unsigned char)(ubrr >> 8);
-	UBRR0L = (unsigned char)ubrr;
+	UBRR0H = (unsigned char) (ubrr >> 8);
+	UBRR0L = (unsigned char) ubrr;
 	/* Enable receiver and transmitter */
 	UCSR0B = (1 << RXEN0) | (1 << TXEN0);
 	/* Set frame format: 8data, 2stop bit */
