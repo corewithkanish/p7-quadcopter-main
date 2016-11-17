@@ -97,6 +97,7 @@
 #define configUSE_16_BIT_TICKS		1
 #define configIDLE_SHOULD_YIELD		1
 #define configQUEUE_REGISTRY_SIZE	0
+#define configUSE_MUTEXES			1
 
 /* Co-routine definitions. */
 #define configUSE_CO_ROUTINES 		0
@@ -105,7 +106,7 @@
 /* Set the following definitions to 1 to include the API function, or zero
 to exclude the API function. */
 
-#define INCLUDE_vTaskPrioritySet		0
+#define INCLUDE_vTaskPrioritySet		1
 #define INCLUDE_uxTaskPriorityGet		0
 #define INCLUDE_vTaskDelete				1
 #define INCLUDE_vTaskCleanUpResources	0

@@ -190,12 +190,13 @@ for i=1:1:21
     end 
 end
 
-S1 = serial('COM5', 'BaudRate', 9600, 'Terminator', 'CR', 'StopBit', 1, 'Parity', 'None'); 
+S1 = serial('COM5', 'BaudRate', 19200, 'Terminator', 'CR', 'StopBit', 1, 'Parity', 'None'); 
 fopen(S1);
 
-for i=1:1:50
+for i=1:1:5000
     fwrite(S1,package)
-    pause(0.05);
+    %disp(package)
+    pause(0.01);
 end
 
 fclose(S1);

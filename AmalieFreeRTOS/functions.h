@@ -1,5 +1,7 @@
-#define EQU_SPEED 214.34
+#define EQU_SPEED 200 //429
 #define T 0.05
+
+#define LED PORTC
 
 void AngularController(void);
 void ApplyVelocities(void);
