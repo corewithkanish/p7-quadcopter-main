@@ -1,8 +1,10 @@
 #define LED_DDR DDRC
 #define LED PORTC
+#define LED2_DDR DDRK
+#define LED2 PORTK
 
 #define FOSC 16000000// Clock Speed
-#define BAUD 19200
+#define BAUD 38400
 #define MYUBRR FOSC/16/BAUD-1
 
 void vApplicationIdleHook( void );
