@@ -9,15 +9,14 @@ const int L[3] = {-20.0, -25.0, -30.0};
 const float B1[4] = { 0.0, -0.2396, 0.0, 0.2396 };
 const float B2[4] = { 0.2396, 0.0, -0.2396, 0.0 };
 const float B3[4] = { 0.0377, -0.0377, 0.0377, -0.0377 };
-const float F1[6] = {4.99, -21.41, -81.9, 1.38, -12.46, -42.1};
-const float F2[6] = {17.53, 2.42, 78.76, 11.05, 0.8, 41.2};
-const float F3[6] = {11.38, 23.7, -81.01, 2.8, 12.45, -41.69};
-const float F4[6] = {-33.9, -4.72, 84.15, -15.24, -0.79, 42.59};
-const float Fint1[6] = { 4.45, -10.79, -49.44};
-const float Fint2[6] = { 8.21, 1.67, 46.82};
-const float Fint3[6] = { 10.82, 14.53, -49.15};
-const float Fint4[6] = { -23.48, -5.42, 51.77};
-//const int L[3] = { -20.0, -25.0, -30.0 };
+//const float F1[6] = {4.99, -21.41, -81.9, 1.38, -12.46, -42.1};
+//const float F2[6] = {17.53, 2.42, 78.76, 11.05, 0.8, 41.2};
+//const float F3[6] = {11.38, 23.7, -81.01, 2.8, 12.45, -41.69};
+//const float F4[6] = {-33.9, -4.72, 84.15, -15.24, -0.79, 42.59};
+//const float Fint1[6] = { 4.45, -10.79, -49.44};
+//const float Fint2[6] = { 8.21, 1.67, 46.82};
+//const float Fint3[6] = { 10.82, 14.53, -49.15};
+//const float Fint4[6] = { -23.48, -5.42, 51.77};
 //const float F1[6] = { -23.06, -247.76, -652.3, -2.024, -39.57, -114.17};
 //const float F2[6] = {246.26, 12.79, 656.46, 39.45, 1.13, 114.52};
 //const float F3[6] = {-34.97, 215.24, -648.57, -3, 36.74, -113.82};
@@ -26,6 +25,14 @@ const float Fint4[6] = { -23.48, -5.42, 51.77};
 //const float Fint2[6] = {507.6, 35.7, 1247.8};
 //const float Fint3[6] = {-101.3, 419.6, -1225.6};
 //const float Fint4[6] = {-341.2, 56.8, 1213.3};
+const float F1[6] = { 0.5093, -53.0121, -184.2485, 0.1639, -19.0614, -62.4148 };
+const float F2[6] = { 55.7409, -0.5521, 183.7521, 19.3977, -0.0762, 62.3137 };
+const float F3[6] = { 6.0556, 59.8087, -185.9189, 0.8748, 19.9562, -62.6295 };
+const float F4[6] = { -62.3058, -6.2445, 186.4153, -20.4365, -0.8187, 62.7305 };
+const float Fint1[6] = { 0.3230, -46.1654, -173.7414 };
+const float Fint2[6] = { 50.7657, -0.9423, 173.1422 };
+const float Fint3[6] = { 9.4407, 57.3360, -176.5251 };
+const float Fint4[6] = { -60.5294, -10.2283, 177.1243 };
 
 // Initialization and definitions of variables
 float u_k1[4] 	= {0.0, 0.0, 0.0, 0.0};
@@ -40,8 +47,8 @@ float u_z = 0;
 float pos[3] = { 0.0, 0.0, 0.0};
 float pos_ref[3] = { 0.0, 0.0, 0.0};
 float vel[3] = { 0.0, 0.0, 0.0};
-int sat = 0;
-int reading = 0;
+short sat = 0;
+short reading = 0;
 
 //------------------------------- Controller Functions ----------------------//
 
@@ -195,8 +202,8 @@ void ApplyVelocities(void)
 		sat = 1;
 	}
 
-	//Set_PWM_duty(165, 165, 165, 165);
-	Set_PWM_duty( duty0, duty1, duty2, duty3 );
+	Set_PWM_duty(165, 165, 165, 165);
+	//Set_PWM_duty( 128, duty1, 128, duty3 );
 	//USART_Transmit((duty3&0xFF00)>>8);
 	//USART_Transmit(duty3 & 0x00FF);
 }
@@ -266,6 +273,7 @@ int CheckPackageArrival(void)
 
 void GetPackage(void)
 {
+	
 	//LED = 0xFF;
 	unsigned char dummy[18] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	unsigned long parts[5] = { 0, 0, 0, 0, 0 };
@@ -274,15 +282,14 @@ void GetPackage(void)
 	int sign = -1;
 
 	int i;
-	
+	reading = 1;
 	for (i=0; i < 18; i++)
 	{
 		//vTaskSuspendAll();
 		dummy[i] = USART_Receive();
 		//xTaskResumeAll();
 	}
-	//_delay_ms(5);
-	//LED = 0x00;
+	reading = 0;
 
 	parts[0] |= ((((long)dummy[0]) << 16) | (((long)dummy[1]) << 8) | (((long)dummy[2])));
 	parts[1] |= ((((long)dummy[3]) << 16) | (((long)dummy[4]) << 8) | (((long)dummy[5])));

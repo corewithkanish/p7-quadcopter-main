@@ -14,7 +14,12 @@
 
 int count = 0;
 float u_k1[4];
-int reading;
+short reading;
+int pack1 = 0;
+int pack2 = 0;
+int pack1_ok = 0;
+int pack2_ok = 0;
+float y_k[3];
 xTaskHandle xHandle;
 //SemaphoreHandle_t xSemaphore = NULL;
 
@@ -75,26 +80,45 @@ void Controllers(void *pvParameters)
 
 	while (1)
 	{
-				if (count<400)
-				{
-				LED = 0xFF;
-				AngularController();
-				count++;
-				ApplyVelocities();
-				LED = 0x00;
-				}
-				else
-				{
-					Set_PWM_duty(128, 128, 128, 128);
-					count = 1200;
-				}
-				if (reading)
-				{
-					vTaskDelete(xHandle);
-					xTaskCreate(Comunication, "Com", 1000, NULL, configMAX_PRIORITIES - 2, &xHandle);
-					reading = 0;
-				}
-				vTaskDelayUntil(&xLastWakeTime, 35);
+		if (count < 600)
+		{
+			LED = 0xFF;
+			AngularController();
+			count++;
+			ApplyVelocities();
+			LED = 0x00;
+			//if (y_k[2] == 1)
+			//	receiving = 0;
+			//if (receiving == 1)
+			//{
+			//	if (pack1_ok < 255)
+			//		pack1_ok++;
+			//	else
+			//	{
+			//		pack1_ok = 0;
+			//		pack2_ok++;
+			//	}
+			//}
+
+		}
+		else
+		{
+			Set_PWM_duty(128, 128, 128, 128);
+			count = 6000;
+			//USART_Transmit(pack2);
+			//USART_Transmit(pack1);
+			//USART_Transmit(pack2_ok);
+			//USART_Transmit(pack1_ok);
+			//while (1);
+		}
+		if (reading)
+		{
+			vTaskDelete(xHandle);
+			xTaskCreate(Comunication, "Com", 1000, NULL, configMAX_PRIORITIES - 2, &xHandle);
+			reading = 0;
+			LED2 = 0x00;
+		}
+		vTaskDelayUntil(&xLastWakeTime, 35);
 	}
 	vTaskDelete(NULL);
 }
@@ -108,11 +132,17 @@ void Comunication(void *pvParameters)
 		pack = CheckPackageArrival();
 		if (pack)
 		{
-			reading = 1;
 			//vTaskSuspendAll();
 			GetPackage();
 			//xTaskResumeAll();
-			reading = 0;
+			//reading = 0;
+			//if (pack1 < 255)
+			//	pack1++;
+			//else
+			//{
+			//	pack1 = 0;
+			//	pack2++;
+			//}
 		}
 	}
 	vTaskDelete(NULL);
