@@ -3,7 +3,7 @@ clear
 clc
 
 run TotalController.m
-t=20;
+t=30;
 x_ref_time=0.1;
 x_ref=1;
 y_ref_time=5;
@@ -23,7 +23,7 @@ plot(z.Time, z.Data, 'Color', '[0 0 1]','lineWidth', 1.2);
 plot(zref.Time, zref.Data, 'Color','[0 0 0.5]', 'lineStyle', '--','lineWidth', 1.2);
 grid on;
 grid minor;
-title('Translational Control in the Non-Linear System');
+title('Position Translational Controllers');
 xlabel('Time [s]');
 ylabel('Translational Position [m]');
 legend('x','x Reference', 'y','y Reference', 'z', 'z Reference','Location','southeast');
@@ -37,7 +37,7 @@ plot(pitch.Time, pitch.Data, 'Color', '[0 1 0]','lineWidth', 1.2);
 plot(pitch_ref.Time, pitch_ref.Data,'Color','[0 0.5 0]', 'lineStyle', '--','lineWidth', 1.2);
 grid on;
 grid minor;
-title('Control Action in the Non-Linear System');
+title('Control Action for x and y Position Controllers');
 xlabel('Time [s]');
 ylabel('Angle [rad]');
 legend('Roll','Roll Reference', 'Pitch','Pitch Reference','Location','southeast');
@@ -47,7 +47,7 @@ plot(w_sum.Time, w_sum.Data,'lineWidth', 1.2);
 hold on;
 grid on;
 grid minor;
-title('Control Action in the Non-Linear System');
+title('Control Action for the z Position Controller');
 xlabel('Time [s]');
 ylabel('Sum of rotational speeds in the motors [rad/s]');
 

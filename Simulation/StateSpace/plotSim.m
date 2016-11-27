@@ -3,7 +3,7 @@ clear
 clc
 
 run StateSpace.m
-t=6;
+t=9;
 roll_time=0.5;
 roll_ref=0.5;
 pitch_time=2;
@@ -23,7 +23,7 @@ plot(yaw.Time, yaw.Data, 'Color', '[0 0 1]','lineWidth', 1.2);
 plot(yaw_ref.Time, yaw_ref.Data, 'Color','[0 0 0.5]', 'lineStyle', '--','lineWidth', 1.2);
 grid on;
 grid minor;
-title('Attitude Control in the Non-Linear System');
+title('Attitude Controller Response');
 xlabel('Time [s]');
 ylabel('Angle [rad]');
 
@@ -37,7 +37,7 @@ plot(w3.Time, w3.Data, 'Color', '[0 1 0]','lineWidth', 1.2);
 plot(w4.Time, w4.Data,'Color','[0 0 0.5]','lineWidth', 1.2);
 grid on;
 grid minor;
-title('Control Action in the Non-Linear System');
+title('Control Action for the Attitude Controller');
 xlabel('Time [s]');
 ylabel('Motor Rotational Speed [rad/s]');
 
