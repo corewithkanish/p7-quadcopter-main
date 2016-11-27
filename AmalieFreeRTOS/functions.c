@@ -5,22 +5,38 @@
 #include "functions.h"
 
 // Constant matrices
-const int L[3] = {-60.0, -70.0, -80.0};
+const int L[3] = {-20.0, -25.0, -30.0};
 const float B1[4] = { 0.0, -0.2396, 0.0, 0.2396 };
 const float B2[4] = { 0.2396, 0.0, -0.2396, 0.0 };
 const float B3[4] = { 0.0377, -0.0377, 0.0377, -0.0377 };
-const float F1[6] = {-0.6, -1615, -5182.5, 0, -100.7, -321.3 };
-const float F2[6] = { 1611.5, -1, 5182.4, 100.6, 0, 321.3 };
-const float F3[6] = { 25.5, 1646, - 5192.5, 0.8, 101.6, -321.6 };
-const float F4[6] = { -1636.4, -30, 5192.5, -101.4, -0.9, 321.6 };
-const float Fint1[6] = { -7, - 8609, -27804 };
-const float Fint2[6] = { 8583, -12, 27806 };
-const float Fint3[6] = { 206, 8871, -27888 };
-const float Fint4[6] = { -8782, -249, 27886 };
+//const float F1[6] = {4.99, -21.41, -81.9, 1.38, -12.46, -42.1};
+//const float F2[6] = {17.53, 2.42, 78.76, 11.05, 0.8, 41.2};
+//const float F3[6] = {11.38, 23.7, -81.01, 2.8, 12.45, -41.69};
+//const float F4[6] = {-33.9, -4.72, 84.15, -15.24, -0.79, 42.59};
+//const float Fint1[6] = { 4.45, -10.79, -49.44};
+//const float Fint2[6] = { 8.21, 1.67, 46.82};
+//const float Fint3[6] = { 10.82, 14.53, -49.15};
+//const float Fint4[6] = { -23.48, -5.42, 51.77};
+//const float F1[6] = { -23.06, -247.76, -652.3, -2.024, -39.57, -114.17};
+//const float F2[6] = {246.26, 12.79, 656.46, 39.45, 1.13, 114.52};
+//const float F3[6] = {-34.97, 215.24, -648.57, -3, 36.74, -113.82};
+//const float F4[6] = {-188.24, 19.72, 644.4, -34.43, 1.7, 113.47};
+//const float Fint1[6] = {-65.1, -512.1, -1234.4};
+//const float Fint2[6] = {507.6, 35.7, 1247.8};
+//const float Fint3[6] = {-101.3, 419.6, -1225.6};
+//const float Fint4[6] = {-341.2, 56.8, 1213.3};
+const float F1[6] = { 0.5093, -53.0121, -184.2485, 0.1639, -19.0614, -62.4148 };
+const float F2[6] = { 55.7409, -0.5521, 183.7521, 19.3977, -0.0762, 62.3137 };
+const float F3[6] = { 6.0556, 59.8087, -185.9189, 0.8748, 19.9562, -62.6295 };
+const float F4[6] = { -62.3058, -6.2445, 186.4153, -20.4365, -0.8187, 62.7305 };
+const float Fint1[6] = { 0.3230, -46.1654, -173.7414 };
+const float Fint2[6] = { 50.7657, -0.9423, 173.1422 };
+const float Fint3[6] = { 9.4407, 57.3360, -176.5251 };
+const float Fint4[6] = { -60.5294, -10.2283, 177.1243 };
 
 // Initialization and definitions of variables
 float u_k1[4] 	= {0.0, 0.0, 0.0, 0.0};
-float y_k[3] 	= {-0.00001, 0.0, 0.0};
+float y_k[3] 	= {0.0, 0.0, 0.0};
 float r_k[3] 	= {0.0, 0.0, 0.0};
 float x2_k1[3] 	= {0.0, 0.0, 0.0};
 float xint_k1[3] = { 0.0, 0.0, 0.0 };
@@ -31,6 +47,8 @@ float u_z = 0;
 float pos[3] = { 0.0, 0.0, 0.0};
 float pos_ref[3] = { 0.0, 0.0, 0.0};
 float vel[3] = { 0.0, 0.0, 0.0};
+short sat = 0;
+short reading = 0;
 
 //------------------------------- Controller Functions ----------------------//
 
@@ -48,8 +66,8 @@ void AngularController(void)
 		{
 			// Calculation of xint
 			e_k[i] = y_k[i] - r_k[i];
-			//if sat
-			//	e_k[i] = 0;
+			if (sat)
+				e_k[i] = 0;
 			xint_k[i] = T / 2 * (e_k[i] + e_k1[i]) + xint_k1[i];
 
 			// Estimation of the angular velocities
@@ -137,29 +155,55 @@ void ApplyVelocities(void)
 		uk[i] = u_k1[i] + add_z + EQU_SPEED;
 	}
 
-	duty0 = (unsigned int)( uk[0] *0.1563 + 118.21 );
+	duty0 = (unsigned int)(uk[0] * 0.1563 + 118.21 );
 	duty1 = (unsigned int)(uk[1] * 0.1563 + 118.21);
 	duty2 = (unsigned int)(uk[2] * 0.1563 + 118.21);
 	duty3 = (unsigned int)(uk[3] * 0.1563 + 118.21);
   
-	if (duty0 > 255)
-		duty0 = 255;
-	if (duty1 > 255)
-		duty1 = 255;
-	if (duty2 > 255)
-		duty2 = 255;
-	if (duty3 > 255)
-		duty3 = 255;
-	if (duty0 < 128)
-		duty0 = 128;
-	if (duty1 < 128)
-		duty1 = 128;
-	if (duty2 < 128)
-		duty2 = 128;
-	if (duty3 < 128)
-		duty3 = 128;
+	sat = 0;
+	if (duty0 > DUTY_MAX)
+	{
+		duty0 = DUTY_MAX;
+		sat = 1;
+	}
+	if (duty1 > DUTY_MAX)
+	{
+		duty1 = DUTY_MAX;
+		sat = 1;
+}
+	if (duty2 > DUTY_MAX)
+	{
+		duty2 = DUTY_MAX;
+		sat = 1;
+	}
+	if (duty3 > DUTY_MAX)
+	{
+		duty3 = DUTY_MAX;
+		sat = 1;
+	}
+	if (duty0 < DUTY_MIN)
+	{
+		duty0 = DUTY_MIN;
+		sat = 1;
+	}
+	if (duty1 < DUTY_MIN)
+	{
+		duty1 = DUTY_MIN;
+		sat = 1;
+	}
+	if (duty2 < DUTY_MIN)
+	{
+		duty2 = DUTY_MIN;
+		sat = 1;
+	}
+	if (duty3 < DUTY_MIN)
+	{
+		duty3 = DUTY_MIN;
+		sat = 1;
+	}
 
-	Set_PWM_duty( duty0, duty1, duty2, duty3 );
+	Set_PWM_duty(165, 165, 165, 165);
+	//Set_PWM_duty( 128, duty1, 128, duty3 );
 	//USART_Transmit((duty3&0xFF00)>>8);
 	//USART_Transmit(duty3 & 0x00FF);
 }
@@ -229,7 +273,8 @@ int CheckPackageArrival(void)
 
 void GetPackage(void)
 {
-
+	
+	//LED = 0xFF;
 	unsigned char dummy[18] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	unsigned long parts[5] = { 0, 0, 0, 0, 0 };
 	unsigned long sum = 0;
@@ -237,12 +282,14 @@ void GetPackage(void)
 	int sign = -1;
 
 	int i;
-	LED = 0xFF;
+	reading = 1;
 	for (i=0; i < 18; i++)
 	{
+		//vTaskSuspendAll();
 		dummy[i] = USART_Receive();
+		//xTaskResumeAll();
 	}
-	LED = 0x00;
+	reading = 0;
 
 	parts[0] |= ((((long)dummy[0]) << 16) | (((long)dummy[1]) << 8) | (((long)dummy[2])));
 	parts[1] |= ((((long)dummy[3]) << 16) | (((long)dummy[4]) << 8) | (((long)dummy[5])));
@@ -263,6 +310,7 @@ void GetPackage(void)
 
 	if ((sum + checksum) == 0x00FFFFFF)
 	{
+		LED2 = 0xFF;
 		//----------- Roll --------------
 		if (dummy[0] & 0x80)
 			sign = -1;
@@ -339,15 +387,16 @@ void GetPackage(void)
 		//// Test code
 		//if (vel[2] == 1.02)
 		//	USART_Transmit(dummy[1]);
+		LED2 = 0x00;
 	}
-	
+	//LED = 0x00;
 	return;
 }
 
 
 void USART_Init(unsigned int ubrr){
 	/* Set baud rate */
-	UBRR0H = (unsigned char) (ubrr >> 8);
+	UBRR0H = (unsigned char)(ubrr >> 8);
 	UBRR0L = (unsigned char) ubrr;
 	/* Enable receiver and transmitter */
 	UCSR0B = (1 << RXEN0) | (1 << TXEN0);
