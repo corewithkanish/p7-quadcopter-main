@@ -11,13 +11,14 @@ run StateSpace.m
 
 %----------------- Translational Velocity controller ----------------------
 s=tf('s');
-C_xdot=-0.17;
-C_ydot=0.17;
+C_xdot=-0.05;
+C_ydot=0.05;
 C_zdot=-201*(s+0.8)/s;
+K_zdot=-201;
+Z_zdot=-0.8;
 
-C_x=0.55;
-C_y=0.55;
+C_x=0.3;
+C_y=0.3;
 C_z=0.9;
-
 T=0.035;
 C_zdot_d=c2d(C_zdot,T,'tustin');

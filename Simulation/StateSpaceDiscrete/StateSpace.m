@@ -36,7 +36,7 @@ Ae=[A zeros(size(A,1),size(C,1));
         C zeros(size(C,1),size(C,1))];
 Be=[B; zeros(size(C,1),size(B,2))];
 
-Fe=-place(Ae,Be,[[-2 -2.2 -2.3 -2.4 -2.5 -2.6] [-4.7 -4.8 -4.9]]); % Place uses the form A-BF
+Fe=-place(Ae,Be,[[-3 -3.2 -3.3 -3.4 -3.5 -3.6] [-3.7 -3.8 -3.9]]); % Place uses the form A-BF
 F=Fe(:,1:size(A,2));
 F1=F(:,1:3);
 F2=F(:,4:6);

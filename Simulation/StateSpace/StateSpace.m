@@ -60,7 +60,7 @@ B2=B(4:6,:);
 C1=C(:,1:3);
 C2=C(:,4:6);
 
-Lobs=(-place(A22',A12',[-10 -11 -12]))';  % Place uses the form A-BF. If we have A22+L*A12 -----> A22'+A12'*(-L)'
+Lobs=(-place(A22',A12',[-20 -25 -30]))';  % Place uses the form A-BF. If we have A22+L*A12 -----> A22'+A12'*(-L)'
 
 LA12=Lobs*A12;
 

@@ -1,33 +1,32 @@
+%% -------- Velocity Controller ------------------------------------------
 close all
 clear
 clc
-
 run TotalController.m
 t=20;
-x_ref_time=0.1;
-x_ref=1;
-y_ref_time=5;
-y_ref=1;
-z_ref_time=10;
-z_ref=1;
-sim('TotalControllerSim.slx')
+xdot_ref_time=0.1;
+xdot_ref=1;
+ydot_ref_time=5;
+ydot_ref=1;
+zdot_ref_time=10;
+zdot_ref=1;
+sim('VelocityControllerSim.slx')
 
-%-------- Non-Linear Model ------------------------------------------------
 figure
-plot(x.Time, x.Data, 'Color', '[1 0 0]','lineWidth', 1.2);
+plot(xdot.Time, xdot.Data, 'Color', '[1 0 0]','lineWidth', 1.2);
 hold on;
-plot(xref.Time, xref.Data, 'Color','[0.5 0 0]', 'lineStyle', '--','lineWidth', 1.2);
-plot(y.Time, y.Data, 'Color', '[0 1 0]','lineWidth', 1.2);
-plot(yref.Time, yref.Data,'Color','[0 0.5 0]', 'lineStyle', '--','lineWidth', 1.2);
-plot(z.Time, z.Data, 'Color', '[0 0 1]','lineWidth', 1.2);
-plot(zref.Time, zref.Data, 'Color','[0 0 0.5]', 'lineStyle', '--','lineWidth', 1.2);
+plot(xdotref.Time, xdotref.Data, 'Color','[0.5 0 0]', 'lineStyle', '--','lineWidth', 1.2);
+plot(ydot.Time, ydot.Data, 'Color', '[0 1 0]','lineWidth', 1.2);
+plot(ydotref.Time, ydotref.Data,'Color','[0 0.5 0]', 'lineStyle', '--','lineWidth', 1.2);
+plot(zdot.Time, zdot.Data, 'Color', '[0 0 1]','lineWidth', 1.2);
+plot(zdotref.Time, zdotref.Data, 'Color','[0 0 0.5]', 'lineStyle', '--','lineWidth', 1.2);
 grid on;
 grid minor;
-title('Translational Control in the Non-Linear System');
+title('Velocity Translational Controllers');
 xlabel('Time [s]');
-ylabel('Translational Position [m]');
-legend('x','x Reference', 'y','y Reference', 'z', 'z Reference','Location','southeast');
-ylim([-0.2 1.2])
+ylabel('Translational Velocity [m/s]');
+legend('xdot','xdot Reference', 'ydot','ydot Reference', 'zdot', 'zdot Reference','Location','southeast');
+%ylim([-0.2 1.2])
 
 figure
 plot(roll.Time, roll.Data, 'Color', '[1 0 0]','lineWidth', 1.2);
@@ -37,7 +36,7 @@ plot(pitch.Time, pitch.Data, 'Color', '[0 1 0]','lineWidth', 1.2);
 plot(pitch_ref.Time, pitch_ref.Data,'Color','[0 0.5 0]', 'lineStyle', '--','lineWidth', 1.2);
 grid on;
 grid minor;
-title('Control Action in the Non-Linear System');
+title('Control Action for x and y Velocity Controllers');
 xlabel('Time [s]');
 ylabel('Angle [rad]');
 legend('Roll','Roll Reference', 'Pitch','Pitch Reference','Location','southeast');
@@ -47,12 +46,25 @@ plot(w_sum.Time, w_sum.Data,'lineWidth', 1.2);
 hold on;
 grid on;
 grid minor;
-title('Control Action in the Non-Linear System');
+title('Control Action for the z Velocity Controller');
 xlabel('Time [s]');
 ylabel('Sum of rotational speeds in the motors [rad/s]');
 
 
-%------------ Linear Model ------------------------------------------------
+%% ------------ Position Controller --------------------------------------
+close all
+clear
+clc
+run TotalController.m
+t=30;
+xdot_ref_time=0.1;
+xdot_ref=1;
+ydot_ref_time=5;
+ydot_ref=1;
+zdot_ref_time=10;
+zdot_ref=1;
+sim('TotalControllerSim.slx')
+
 figure
 plot(x_lin.Time, x_lin.Data, 'Color', '[1 0 0]','lineWidth', 1.2);
 hold on;
