@@ -1,0 +1,60 @@
+Jonas paper
+
+
+Overall assessment:			
+
+
+It is well written and the figures are clear to understand. The flow is nice, and the reader felt well informed during the entire paper.
+
+
+General comments:
+
+
+E-mail addresses could be included in the header. Maybe the specific address is not necessary.
+The paper is generally well structured.
+
+
+Note, we think, that when you are going to write the results section, the content and structure of the presented results  must reflect the subsections within the method section. 
+
+
+Specific comments:		
+
+
+Section I - 2nd column - 3rd paragraph: “[...] this paper is a proof of concept.”
+Suggestion: “[...] this prototype is a proof of concept.”
+
+
+Section II - 
+Note: It is considered good practice to use a header, or implement the subsections as sections instead.
+
+
+Section II A - 1st column - 1st paragraph: “[...] drives as precise in the tracks [...]”
+Suggestion: “drive” instead of “drives”. Maybe use “route” instead of “tracks”.
+
+
+Section II A - 1st column - 3rd paragraph: “[...] from one waypoint the to next in a straight line.”
+Suggestion: “to the” instead and “next one” instead only “next”.
+
+
+Section II B - 2nd column - 1st paragraph: “It ensures no packet loss if a connection is available.”
+Note: TCP does not ensure no packet loss. 
+
+
+Section II E.1 - 2nd column - 1st paragraph: “[...] and thereby there should always be a way to obtain the same state for TB2.”
+Suggestion: “and it should therefore be possible to obtain the same state for TB2.”
+
+
+Section II E.1 - 2nd column - 1st paragraph: “[...] approach will handle take the dynamics [...]”
+Suggestion: Remove handle.
+
+
+Section II E.2 - 2nd column - 1st paragraph: “This as the following:”
+Suggestion: Remove.
+
+
+Section II E.2 - 1st column - after figure 7: “[...] every run-through, since the system [...]”
+Suggestion: “[...] every run-through, as the system [...]”
+
+
+Section II F - 1st column - 1st paragraph: “[...] route that the TB1, such that [...]”
+Suggestion: “[...] route for the TB1, such that [...]”
