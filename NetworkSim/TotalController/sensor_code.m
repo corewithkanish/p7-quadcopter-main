@@ -14,12 +14,23 @@
 function [exectime,data] = sensor_code(seg,data)
     switch seg,
     case 1,
-        data.u = ttAnalogIn(1);
-        exectime = 0.03; % Delay on the system
+        data.u(1) = ttAnalogIn(1);
+        data.u(2) = ttAnalogIn(2);
+        data.u(3) = ttAnalogIn(3);
+        data.u(4) = ttAnalogIn(4);
+        data.u(5) = ttAnalogIn(5);
+        data.u(6) = ttAnalogIn(6);
+        data.u(7) = ttAnalogIn(7);
+        data.u(8) = ttAnalogIn(8);
+        data.u(9) = ttAnalogIn(9);
+        mean_time=0.03;  % Mean delay time
+        exectime=-log(1-rand(1))*mean_time % Delay on the system - exponential distribution
     case 2,
-        ttSendMsg(2, data.u, 21*8, 1);  % send msg to drone, node 2
+        ttSendMsg(2, data.u, 1, 1);  % send msg to drone, node 2
                                      % ttSendMsg(receiver, data, length, priority)
-        ttAnalogOut(1,data.u);
+        %disp(data.u)
+        %ttAnalogOut(1,data.u(1));
+        %ttAnalogOut(2,data.u(2));
         exectime = -1;
     end
 

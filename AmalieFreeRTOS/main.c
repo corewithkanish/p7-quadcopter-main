@@ -14,21 +14,27 @@
 
 int count = 0;
 float u_k1[4];
+short reading;
+float y_k[3];
 xTaskHandle xHandle;
-SemaphoreHandle_t xSemaphore = NULL;
+//SemaphoreHandle_t xSemaphore = NULL;
 
 int main()
 {
 	// Initialization
 	PWM_init(0);
 	USART_Init(MYUBRR);
+	//ADC_Init();
 	LED_DDR = 0xFF;
 	LED = 0x00;
+	LED2_DDR = 0xFF;
+	LED2 = 0x00;
 
 	// Task Creation
-	xSemaphore = xSemaphoreCreateMutex();
-	xTaskCreate(Controllers, "Control", 1000, NULL, configMAX_PRIORITIES - 2, NULL );
-	xTaskCreate(Comunication, "Com", 1000, NULL, configMAX_PRIORITIES - 3, NULL);
+	//xSemaphore = xSemaphoreCreateMutex();
+	xTaskCreate(Controllers, "Control", 1000, NULL, configMAX_PRIORITIES - 1, NULL );
+	xTaskCreate(Comunication, "Com", 1000, NULL, configMAX_PRIORITIES - 2, &xHandle);
+
 	//while (1)
 	//{
 	//	LED = 0xFF;
@@ -37,18 +43,37 @@ int main()
 	//	_delay_ms(1000);
 	//}
 
-	//LED |= (~0x00);
-	//_delay_ms(1000);
-	//int duty = 128;
-	//Set_PWM_duty(duty, duty, duty, duty);
-	//_delay_ms(10000);
-	//int i = 0;
-	//while (i<10)
+	LED |= (~0x00);
+	_delay_ms(1000);
+	int duty = 128;
+	Set_PWM_duty(duty, duty, duty, duty);
+	_delay_ms(10000);
+	Set_PWM_duty(DUTY_INIT, DUTY_INIT, DUTY_INIT, DUTY_INIT);
+	_delay_ms(1000);
+
+	//while (1)
 	//{
 	//	Set_PWM_duty(duty, duty, duty, duty);
-	//	duty += 5;
-	//	i++;
 	//	_delay_ms(1000);
+	//	duty -= 5;
+	//	if (duty < 128)
+	//		duty = 128;
+	//}
+
+
+	//unsigned char dummy[21] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	//int i = 0;
+	//while (1)
+	//{
+	//	//LED = 0xFF;
+	//	for (i = 0; i < 1; i++)
+	//	{
+	//		dummy[i] = USART_Receive();
+	//	}
+	//	for (i = 0; i < 1; i++)
+	//	{
+	//		USART_Transmit(dummy[i]);
+	//	}
 	//}
 
 	// Scheduler Start
@@ -64,40 +89,27 @@ void Controllers(void *pvParameters)
 
 	while (1)
 	{
-		if (xSemaphore != NULL)
+		if (count < 1200)
 		{
-			/* See if we can obtain the semaphore.  If the semaphore is not
-			available wait 10 ticks to see if it becomes free. */
-			if (xSemaphoreTake(xSemaphore, (TickType_t)10) == pdTRUE)
-			{
-				/* We were able to obtain the semaphore and can now access the
-				shared resource. */
-
-				//if (count<500)
-				//{
-				//LED = 0xFF;
-				AngularController();
-				count++;
-				ApplyVelocities();
-				//LED = 0x00;
-				//}
-				//else
-				//{
-				//	Set_PWM_duty(128, 128, 128, 128);
-				//	count = 600;
-				//}
-				xSemaphoreGive(xSemaphore);
-				vTaskDelayUntil(&xLastWakeTime, 20);
-				/* We have finished accessing the shared resource.  Release the
-				semaphore. */
-			}
-			else
-			{
-				/* We could not obtain the semaphore and can therefore not access
-				the shared resource safely. */
-			}
+			LED = 0xFF;
+			AngularController();
+			count++;
+			ApplyVelocities();
+			LED = 0x00;
 		}
-		
+		else
+		{
+			Set_PWM_duty(128, 128, 128, 128);
+			count = 6000;
+		}
+		if (reading)
+		{
+			vTaskDelete(xHandle);
+			xTaskCreate(Comunication, "Com", 1000, NULL, configMAX_PRIORITIES - 2, &xHandle);
+			reading = 0;
+			LED2 = 0x00;
+		}
+		vTaskDelayUntil(&xLastWakeTime, 35);
 	}
 	vTaskDelete(NULL);
 }
@@ -111,27 +123,9 @@ void Comunication(void *pvParameters)
 		pack = CheckPackageArrival();
 		if (pack)
 		{
-			if (xSemaphore != NULL)
-			{
-				/* See if we can obtain the semaphore.  If the semaphore is not
-				available wait 10 ticks to see if it becomes free. */
-				if (xSemaphoreTake(xSemaphore, (TickType_t)10) == pdTRUE)
-				{
-					/* We were able to obtain the semaphore and can now access the
-					shared resource. */
-					GetPackage();
-					/* We have finished accessing the shared resource.  Release the
-					semaphore. */
-					xSemaphoreGive(xSemaphore);
-				}
-				else
-				{
-					/* We could not obtain the semaphore and can therefore not access
-					the shared resource safely. */
-				}
-			}
-			//vTaskPrioritySet(NULL, configMAX_PRIORITIES - 1);
-			//vTaskPrioritySet(NULL, configMAX_PRIORITIES - 3);
+			//vTaskSuspendAll();
+			GetPackage();
+			//xTaskResumeAll();
 		}
 	}
 	vTaskDelete(NULL);
