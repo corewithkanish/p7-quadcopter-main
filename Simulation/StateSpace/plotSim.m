@@ -3,7 +3,7 @@ clear
 clc
 
 run StateSpace.m
-t=9;
+t=20;
 roll_time=0.5;
 roll_ref=0.5;
 pitch_time=2;
