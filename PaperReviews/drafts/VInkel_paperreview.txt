@@ -1,0 +1,37 @@
+General Assessment:
+It is not finished, and therefore an overall impression is hard to draw. However the language and tone is nice.
+
+General commets:
+Figure texts should not state “that it shows, …” , it should simply state ‘what is in the figure’. 
+Do not start a sentence with a variable. Then write: the variable, X, is … 
+
+Consistency with spacing between word and source. 
+
+
+Specific comments:
+Headline information: include your email adresses.
+Leave out address of the department, that can easily be googled.
+
+I-Introduction: Arrows missing on the figure
+
+II.A- Physical System Description: Seta does not decide, the maximum overshoot is given/related by seta …
+
+
+II.A - 
+Model derivation should not lead to model with numbers - that should be in results we believe. Same goes for the simulation figure. It is still a result. 
+
+Unless the focus is entirely on the control system, then one may argue, that model is method as a way of obtaining the control system, and therefore the model with values does not belong in results. However I disagree, as the group estimate parameters for the model themselves, making it a somewhat result. 
+
+II.B. 
+Name AND source? Jesper Viese Knudsen. Should it not be just the source? 
+
+
+III. Controller:
+
+Matrices must be fat ink or with an arrow above to indicate it is matrices. 
+When mentioned in the text, it shall be in math mode to have it in italic
+
+
+
+Acknowledgement: 
+Remember to send the final edition of the paper to the persons, to accept the acknowledgements. Otherwise you cannot write them in the paper. 

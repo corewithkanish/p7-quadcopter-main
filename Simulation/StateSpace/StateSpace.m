@@ -35,12 +35,33 @@ rank(controllability);
 Ae=[A zeros(size(A,1),size(C,1));
         C zeros(size(C,1),size(C,1))];
 Be=[B; zeros(size(C,1),size(B,2))];
+Ce=[C zeros(3)];
+% Fe=-place(Ae,Be,[[-4 -4.02 -4.03 -4.05 -4.07 -4.09] [-4.11 -4.13 -4.15]]); % Place uses the form A-BF
+% F=Fe(:,1:size(A,2));
+% F1=F(:,1:3);
+% F2=F(:,4:6);
+% FI=Fe(:,size(A,2)+1:size(Fe,2));
 
-Fe=-place(Ae,Be,[[-9 -9.2 -9.3 -9.4 -9.5 -9.6] [-10.7 -10.8 -10.9]]); % Place uses the form A-BF
+Qx=[1/0.3^2 0 0 0 0 0 0 0 0 ;
+    0 1/0.3^2 0 0 0 0 0 0 0 ;
+    0 0 1/0.3^2 0 0 0 0 0 0 ;
+    0 0 0 1/3^2 0 0 0 0 0 ;
+    0 0 0 0 1/3^2 0 0 0 0 ;
+    0 0 0 0 0 1/3^2 0 0 0 ;
+    0 0 0 0 0 0 1/0.3^2 0 0 ;
+    0 0 0 0 0 0 0 1/0.3^2 0 ;
+    0 0 0 0 0 0 0 0 1/0.3^2];
+Qu=[1/50^2 0 0 0;
+    0 1/50^2 0 0;
+    0 0 1/50^2 0;
+    0 0 0 1/50^2];
+sys_e=ss(Ae,Be,Ce,0);
+Fe=-lqr(sys_e,Qx,Qu);
 F=Fe(:,1:size(A,2));
 F1=F(:,1:3);
 F2=F(:,4:6);
 FI=Fe(:,size(A,2)+1:size(Fe,2));
+
 
 % Reduced Order Observer 
 observability=[C;
@@ -60,7 +81,7 @@ B2=B(4:6,:);
 C1=C(:,1:3);
 C2=C(:,4:6);
 
-Lobs=(-place(A22',A12',[-20 -25 -30]))';  % Place uses the form A-BF. If we have A22+L*A12 -----> A22'+A12'*(-L)'
+Lobs=(-place(A22',A12',[-11 -12 -13]))';  % Place uses the form A-BF. If we have A22+L*A12 -----> A22'+A12'*(-L)'
 
 LA12=Lobs*A12;
 

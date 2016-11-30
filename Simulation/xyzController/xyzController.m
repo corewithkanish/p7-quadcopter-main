@@ -4,7 +4,7 @@ close all
 clc
 
 run Parameters.m
-run attitudeController.m
+run StateSpace.m
 roll_ref=0;
 pitch_ref=1;
 sim('attitudeControllerSim')
