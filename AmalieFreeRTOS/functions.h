@@ -6,6 +6,9 @@
 #define DUTY_INIT 160
 #define DUTY_MAX_DIFF 30
 
+#define U_MAX 466
+#define U_MIN -366
+
 #define LED PORTC
 #define LED2 PORTK
 
