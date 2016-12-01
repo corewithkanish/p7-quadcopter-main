@@ -1,0 +1,65 @@
+%implementing document formatting:
+\input{preamble.tex}
+\usepackage{enumitem}
+\setlist{leftmargin=5.5mm}
+%Vectors
+\renewcommand{\vec}[1]{\boldsymbol{\mathbf{#1}}}
+
+\begin{document}
+\renewcommand\chaptername{KAPITEL}
+\renewcommand\contentsname{Indhold}
+\renewcommand\figurename{Figur}
+\renewcommand\tablename{Tabel}
+
+\section*{Review of Paper on\\
+Automated Convoying of Trucks Utilizing Waypoints\\
+\small Wednesday, 30th of November 2016}
+\subsection{Overall Assessment}
+The paper is well written and the figures are clear to understand. The flow is nice, and the reader felt well informed during the entire paper.
+\vspace{-6pt}
+\subsection{General Comments}
+E-mail addresses could be included in the header. Maybe the specific address is not necessary.\\
+
+\vspace{-7pt}\noindent
+The paper is generally well structured.\\
+
+\vspace{-7pt}\noindent
+We think, that when you are going to write the results section, the content and structure of the presented results  must reflect the subsections within the method section. \\
+
+\vspace{-7pt}\noindent
+Since the language of the paper is American English, the headline should appear with capital letters for the important words, same as in the title of these corrections.
+\vspace{-6pt}
+\subsection{Specific Comments}
+\begin{itemize}
+  \item[-] Section I - 2nd column - 3rd paragraph: "[...] this paper is a proof of concept."\\
+  \textbf{Suggestion:} "[...] this prototype is a proof of concept."
+
+  \item[-] Section II - \\
+	\textbf{Note:} It is considered good practice to use a header, or implement the subsections as sections instead.
+
+  \item[-] Section II A - 1st column - 1st paragraph: "[...] drives as precise in the tracks [...]"\\
+  \textbf{Suggestion:} "drive" instead of "drives". Maybe use "route" instead of "tracks".
+
+  \item[-] Section II A - 1st column - 3rd paragraph: "[...] from one waypoint the to next in a straight line."\\
+	\textbf{Suggestion:} "to the" instead and "next one" instead only "next".
+
+	\item[-] Section II B - 2nd column - 1st paragraph: "It ensures no packet loss if a connection is available."\\
+	\textbf{Note:} TCP does not ensure no packet loss. 
+
+	\item[-] Section II E.1 - 2nd column - 1st paragraph: "[...] and thereby there should always be a way to obtain the same state for TB2."\\
+	\textbf{Suggestion:} "and it should therefore be possible to obtain the same state for TB2."
+
+	\item[-] Section II E.1 - 2nd column - 1st paragraph: "[...] approach will handle take the dynamics [...]"\\
+	\textbf{Suggestion:} Remove handle.
+
+	\item[-] Section II E.2 - 2nd column - 1st paragraph: "This as the following:"\\
+	\textbf{Suggestion:} Remove.
+
+	\item[-] Section II E.2 - 1st column - after figure 7: "[...] every run-through, since the system [...]"\\
+	\textbf{Suggestion:} "[...] every run-through, as the system [...]"
+
+	\item[-] Section II F - 1st column - 1st paragraph: "[...] route that the TB1, such that [...]"\\
+	\textbf{Suggestion:} "[...] route for the TB1, such that [...]"
+\end{itemize}
+
+\end{document}

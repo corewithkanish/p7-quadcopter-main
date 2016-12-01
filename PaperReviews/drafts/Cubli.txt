@@ -1,0 +1,134 @@
+Cubli
+
+
+Overall assessment:		
+This is a good paper, the flow of information works really well. It may seem like a lot of corrections, however, the bigger more important things in the paper seem correct and is well put.
+
+
+General comments:
+You have chosen to only list your names in the paper. We suggest to include university, study direction and e-mail addresses. 
+
+
+The structure of section IV could be more organized. The section appears as a very long header, since subsections are included. We suggest more subsections or none at all.
+
+
+Section IV. Network subsection A: The header of this section is named “Description of communication protocol”. This should be changed, since the reader may understand it as you want to describe the communication protocol UDP. 
+
+
+Section IV. Network subsection B: This subsection containing one sentence is to short. Either you write some more or you merge it with another subsection.
+
+
+The labels for the graphs utilized in the paper should be increased in size.
+
+
+Some graphs does not have a frame all the way around, figure 7 and 9 does.
+
+
+It seems weird to have as section header, for example section VI Test/Measurement and then immediately after have a subsection. It makes the section header superfluous. You should more into the structure of the sections and the headers.
+
+
+If a section header is on another page than the body text, the header should be put on the same page. An example of this can be seen in Section VII. Here half a sentence and the header is on a page for it self. This should move down to its body tekst.
+
+
+The Appendix is only two figures, since they take up the space anyway, maybe it would be better to just place the figures where they are referred.
+
+
+Specific comments:
+
+
+Abstract - “[...] using the Lagrange equation.”
+Note: Lagrange equation is ambiguous, Lagrange mechanics, as you use later, is a better term.
+
+
+Section I - 1st column - 4th paragraph - “[...] can function as an extension of a main unit.”
+Suggestion: “[...] can function as an extension of a main unit.”
+
+
+Section I - 2nd column - 1st paragraph - “Section V presents the TrueTime model of the network control.”
+Suggestion: “Section V presents the model of the network control using TrueTime.”
+
+
+Section II - 2nd column - 2nd paragraph - “The operation of the system is that the controller determines the torque [...]”
+Suggestion: “The objective for the controller is to determine the torque [...]”
+
+
+Section II - 2nd column - 1st paragraph - “[...] such as the Newton’s Law of motion [3] and rotation in or Kanes equation [4].”
+Thoughts: Something seem strange in the “in or” part. 
+
+
+Section II A - 2nd column - 1st paragraph - “[...] the Lagrange’s equation is used to obtain an energy model of the Cubli.”
+Suggestion: “[...] the lagrangian mechanics are used to obtain an energy model of the Cubli.” 
+
+
+Section II B - 2nd column - 1st paragraph - “[...] the linearization of the equation (5) [...]”
+Suggestion: “[...] the linearization of equation (5) [...]”
+
+
+Section II B - 2nd column - 1st paragraph - “That yields that [...]”
+Suggestion: “This yields [...]”
+
+
+Section III - 2nd column - 4th paragraph - “[...] unit circle of the z domain, what makes the chosen poles as:”
+Suggestion: “[...] unit circle of the z domain.”
+
+
+Section III - 2nd column - 5th paragraph - “[...] feedback gain matrix F being as follows:”
+Suggestion: “[...] feedback gain matrix F is as follows:”
+
+
+Section IV - 2nd column - 1st paragraph - “ Networked control systems involves that [...]”
+Suggestion: “ Networked control systems involves [...]”
+
+
+Section IV - 2nd column - 1st paragraph - “The structure of a such system using a Ethernet network is shown in Fig.3”
+Suggestion: “The structure of such a system using an Ethernet network is shown in Fig.3”
+
+
+Section V - 2nd column - 2nd paragraph - “[...] wireless network represented by the third block in Fig.5.”
+Note: It is not clear which block on the diagram is considered the third.
+Note: The diagram in figure 5 is presumably taken from matlab, for a paper it might be worthwhile to draw a more clean version which conveys only the relevant information.
+
+
+Section V - 2nd column - 2nd paragraph - “Looking at the result from the comparison the TrueTime model [...]”
+Suggestion: “Looking at the result from the comparison, the TrueTime model [...]”
+Thoughts: Without the comma, this sentence has a completely different meaning. Even with the comma, the sentence might still be misunderstood as if the comparison could be used to predict behaviour.
+
+
+Section V A - 1st column - 1st paragraph - “To validate the state-space model, the fall test is used”
+Suggestion: “To validate the state-space model, a fall test is used”
+
+
+Section V A - 1st column - 1st paragraph - “The model Cubli’s behavior is simulated [...]”
+Suggestion: “The model of the Cubli’s behaviour is simulated [...]”
+
+
+Section VI A - 1st column - 2nd paragraph - “Looking at Fig.6 shows that the [...]”
+Suggestion: “Fig.6 shows that the [...]”
+
+
+Section VI B - 1st column - 1st paragraph - “[...] to the model implemented TrueTime.”
+Suggestion: “[...] to the model implemented in TrueTime.”
+
+
+Section VI D - 1st column - 2nd paragraph - “The distribution of the packet RTT can be seen in Fig.9.”
+Suggestion: Since this is the first mention of RTT, “The distribution of the packet Round-Trip Time (RTT) can be seen in Fig.9.”
+
+
+Section VI - 1st column - 2nd paragraph - “[...] RRT of a packet is 3.3 ms”
+Thoughts: RRT should have been RTT?
+
+
+Section VI - 1st column - 1st paragraph - 
+Suggestion: Figure 9 should be placed where the matching description is at, as in the same section at least.
+
+
+Section VII - column 2 - paragraph 2 - “The fact that the packets arriving later than the listening are discarded puts the maximum delay that can be handled continuously at this time threshold.”
+Thoughts: Rewrite sentence, it is confusing.
+
+
+Appendix B -
+Thoughts: Figure 10 is nice in some ways, and would probably work well in a report, however, for a paper it gets very small and ends up being more confusing than helpful - maybe a simpler more standard timing diagram could be used to convey the desired information.
+
+
+Section IV - column 1 - paragraph 3: “[...] since each variable is coded on 8 bytes.”
+Thought: Do you really need 8 bytes for each variable?  

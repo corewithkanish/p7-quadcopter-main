@@ -1,0 +1,109 @@
+Networked control for water distribution
+
+
+Overall assessment:		
+
+
+General comments:
+Variable index that is short for a word/meaning must be written in mathrm mode, to make the index regular text instead of italic
+
+
+The itemize labels. We think there is a correlation between content and the H and T and L. However we would like it to be clear to the reader, what it means.
+Examples: The hydraulic model, H, …… (then you know the assumptions are related to this)
+Or: make a \textbf{Hydraulic model assumptions} before the list of assumptions.
+Or: The hydraulic model, shortened H, ….
+
+
+It is often unclear what the variables represent. Example: figure 2, q_0, q_1, q_2.  It is written after eq (2). It should be mention the first time it is used and not later.
+
+
+Suggestion: make use of indent, as it would be nice for the reader to have paragraphs, as it makes it more structured to read. 
+
+
+Vector notation must be implemented. I.e. bold ink for vectors and matrices.
+
+
+Results: 
+All capital letters in table captions. It should simply be written as figure text is.
+
+
+Minima or minimum - examples: “Finding a global minima in [...]” “[...] guaranteed to find the global minima.”
+Suggestion: We suggest “minimum” instead of “minima” under the assumption that there is only one global minimum.
+
+
+Specific comments:
+
+
+Section I - 1st column - 1st paragraph - “[...] buildings represents big part of [...].”
+“[...] buildings represents a big part of [...]”
+
+
+
+
+Section I: stuff stuff Pricing do something
+
+
+
+
+
+
+Section I - 2nd column - 1st paragraph - “[...] saving energy in typical Danish district heat networks.”
+Suggestion: “[...] saving energy in typical Danish district heating networks.”
+
+
+Section I - 2nd column - 1st paragraph - “[...] heat-energy flows Q_a,1 and Q_a,2, into the rooms that equals the heat-energy flows Q_r,1 and Q_r,2 out of [...]”
+Note: It is not clear what the two subscripts, a and r, stands for. This should also be clear when looking at Fig. 1.
+
+
+Section I - 2nd column - 1st paragraph - “Since this kind of systems mostly operate in steady state, the cost of the transient response of the system is small compared to the cost of steady state operation.”
+Thoughts: This sentence could be more clear. If understood correctly, the two things compared are the cost of steady state and the cost of the behaviour from one steady state reference to another. This could be written more explicitly. 
+Suggestion: These kinds of systems mostly operates in steady state, as a thermostat is changed rarely. For this reason the cost related to the transient response of the system, i.e. when changing the thermostat, is small compared to the cost of steady state operation, when observing the system for a longer time period.
+
+
+Section I - 2nd column - 1st paragraph - “Notation: In the following, [...]”
+Thoughts: We think this information is redundant considering the mathematical level and the presumed audience. The space could be used for other more pressing explanations.
+
+
+Section II - 1st column - 1st paragraph - To make a model of the system the modelling is split into three parts: a model of the hydralic part of the system, a model of the thermal part and finally a combined model to yield a complete model of the system.
+Suggestion: 5 model words in one sentence - could be refracted. “hydralic” should be “hydraulic”.
+
+
+Section II - 1st column - 1st paragraph - H3 - “The length of the pipes is sufficiently long, meaning that pressure drops due to form resistance, such as pipe bends, elbows and pipe fitting, can be lumped into the pipe model.”
+Thoughts: We see what has been done from the figures, however the reasoning behind the assumptions is unclear. We cannot see the direct relation between what you write in H3 and what you actually want to do and communicate to the reader. Furthermore, why can it be assumed, what effect there is when the pressure drops? What does the pipe length mean in this relation and the effect? It is to unclear.
+
+
+Section II - Figure 2 and 3 must be 90 degrees counter clockwise to be in same orientation as figure 1, as it is otherwise counter intuitive. Especially with figure 2.
+
+
+Section II - 1st column - 1st paragraph - “[...] the pipe section [h^2 mbar / m3, h^2 bar/m^6], q is the volumetric flow  [...]”
+Thoughts: The units can be confusing, to clarify, the individual units could be specified, such that, when used together it would seem more coherent.
+Suggestion: This is taken from another paper as an example: “Lastly, the units used to express the flow [m3/s] and pressure [Pa] are converted to [m3/h] and [Bar], respectively.”
+Note: In one unit millibar is used, mbar, and in the other bar is used, we think it should be bar in both.
+
+
+Section II- 1st column - 1st paragraph: [...] of the controllable valve [%].
+Suggestion: As % is not a unit, maybe it would be better to write: [...] is the opening degree, in percentages, of the controllable valve. 
+
+
+Figure 3: Suggestion: Make the variables smaller to be able to place them more accurately - it appears scrambled and confusing as it is now.
+
+
+Section II - 1st column: spelling: thru = through
+Grammar note: Through and thru are different spellings of the same word. Thru is the less preferred form, however, and it might be considered out of place outside the most informal contexts. If you’re writing for school or for a job application, for instance, through is definitely the safer choice. [http://grammarist.com/spelling/through-thru/]
+
+
+Section II - 1st column- 1st paragraph: OBS: “Time delays are modelled by The time delays in the transportation of the hot water depend on the water flows in the pipes. In this project the time delays is modelled as shown in (11) [3].”
+
+
+Section III - 2nd column - 1st paragraph - “[...] steady state [DKK/s], N is the [...]”
+Thoughts: DKK/s is presented as a standard unit. We do not think this is technically correct.
+
+
+Section V - 2nd column - 1st paragraph - Itemize						
+Thoughts: This fits better as figure text. However this will make the figure text too long. Consider if it can be implemented as figure text somehow. 
+
+
+References: “Fjernvarmeforsyning af lavenergiområder,”
+Suggestion: There is a comma at the end of each title in the references. Maybe this could be removed.
+
+

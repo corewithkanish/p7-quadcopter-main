@@ -1,0 +1,68 @@
+%implementing document formatting:
+\input{preamble.tex}
+\usepackage{enumitem}
+\setlist{leftmargin=5.5mm}
+%Vectors
+\renewcommand{\vec}[1]{\boldsymbol{\mathbf{#1}}}
+\begin{document}
+\renewcommand\chaptername{KAPITEL}
+\renewcommand\contentsname{Indhold}
+\renewcommand\figurename{Figur}
+\renewcommand\tablename{Tabel}
+
+\section*{Review of Paper on\\
+Teleoperation of Surgical Robot using Force Feedback\\
+\small Wednesday, 30th of November 2016}
+\subsection{General Assessment}
+Interesting project and generally well written. Keep it short, focus on what you do in the project.
+
+\subsection{General Comments}
+As a reader, we are left with a feeling, that there is a lot of repetition. The introduction can be shortened and be more on point. The content is nice though.\\
+
+\vspace{-7pt}\noindent
+Numbers less than 11 must be written with letters.\\
+
+\vspace{-7pt}\noindent
+Be consistent with periods/full stop in figure texts.\\
+
+\vspace{-7pt}\noindent
+It is "in" figure and not "on" figure.\\
+
+\vspace{-7pt}\noindent
+Include sources when theory is stated.\\
+
+\vspace{-7pt}\noindent
+Concerning the figures of the given setup and your test setup: We prefer it as functional diagrams rather than pictures (except figure 3). What do you want the reader to gain from the figures?\\
+
+\vspace{-7pt}\noindent
+Concerning last paragraph of the discussion: We would prefer it removed and brought in an additional section after the conclusion called "Future Work", as safety has not been in the scope of your project.
+
+\subsection{Specific Comments}
+\begin{itemize}
+	\item[-] Abstract: \\
+           \textbf{Suggestion:} Present the advantages of using robots and MIS before presenting the use of haptic feedback and the challenges of it. 
+
+	\item[-] Section II A - 2nd column - 1st paragraph: "[...] arms with 6 - 7 actuated DOF each." \\
+           \textbf{Suggestion:} Write degrees of freedom (DOF) the first time
+
+	\item[-] Section II A: "System Overview" and "A entire setup"
+	         There should either be a top for the section, or it should not be followed by a subsection.
+
+	\item[-] Section II: \\
+           \textbf{Suggestion:} A lot of space is spend describing the given system, rather than your work. We suggest to shorten it, as it is not the focus of the paper. 
+
+	\item[-] Section II - 1st column - 3rd paragraph: "[...] (or EndoWrist, more precisely), [...]"\\
+           \textbf{Suggestion:} Change the brackets to commas. 
+
+	\item[-] Section III - 1st column - 3rd paragraph: "In this manner, the feedback vector is transformed from Cartesian space to a task space in which the chosen actions form a basis."\\
+           \textbf{Thoughts:} We are unsure what you mean by this. Please elaborate with explanation.\\
+           \textbf{Suggestion:} We prefer operational space, or a more intuitive explanation of what task space is.
+\pagebreak
+	\item[-] Section III B, 1st column - 5th paragraph: "A piecewise linear expression is made from the 340 mA sample and up and can be seen on equation(12)". \\
+           \textbf{Note:} The approximation is not linear, but affine, since it does not pass through origin.\\
+           \textbf{Suggestions:} Maybe include some more explanation here too. For 340 mA, make a reference to figure 6. Figure 4 is presented in subsection B, but is referred to in subsection C. We suggest moving it to subsection C.
+
+	\item[-] Section IV: \\
+           \textbf{Thoughts:} The protocol section is not needed. It is not curriculum. Communication should consider delays and noise and computation priority within the micro controller. How the packages are structured is not the focus of this semester. Cut it out and write about delays and include perhaps a bit budget. Last paragraph of the section starts well - what does it conclude. We suggest you expand the last paragraph and make it the focus of the section. 
+\end{itemize}
+\end{document}

@@ -2,9 +2,9 @@ clear
 clc
 close all
 
-T=0.03;
 run StateSpace.m
-sim('state_feedback.slx')
+
+T=0.035;
 
 Lx = diag(Lobs);
 B1 = B2(1,:);%[ 0.0, -0.2396, 0.0, 0.2396 ];
@@ -18,7 +18,7 @@ Fint1 = FI(1,:);%[ -7, - 8609, -27804 ];
 Fint2 = FI(2,:);%[ 8583, -12, 27806 ];
 Fint3 = FI(3,:);%[ 206, 8871, -27888 ];
 Fint4 = FI(4,:);%[ -8782, -249, 27886 ];
-
+sim('state_feedback.slx')
 u_k1 	= [0.0, 0.0, 0.0, 0.0];
 y_k 	= [0.0, 0.0, 0.0];
 r_k 	= [0.0, 0.0, 0.0];

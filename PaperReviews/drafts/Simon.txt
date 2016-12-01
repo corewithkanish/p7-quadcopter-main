@@ -1,0 +1,54 @@
+Simon paper
+
+Overall assessment:		
+Interesting project. Keep it short, focus on what you do in the project.
+
+General comments:
+As a reader, we sit back with a feeling, that there is a lot of repetition. The introduction can be shortened and be more on point. The content is nice though.
+
+Note: Numbers less than 11 must be written with letters.
+Note: Be consistent with periods/full stop in figure texts.
+Note: It is IN figure X not ON figure. 
+Note: include sources when theory are stated.
+Note: The figures of the given setup and your test setup  - we prefer it as functional diagrams rather than pictures (except figure 3). What do you want the reader to gain from the figures - it is not clear from the pictures. 
+
+Specific comments:	
+Abstract: 
+Suggestion: present the advantages of using robots and MIS before presenting the use of haptic feedback and the challenges of it. 
+
+Section II - system overview - “[...] arms with 6 - 7 actuated DOF each.”
+Suggestion: Write degrees of freedom (DOF) the first time
+
+Section II - system overview - 
+Don’t bring System overview and subsection A. Entire setup without written a top in between. 
+
+Section II - system overview -
+Suggestion: Almost the two first pages are spend on describing the given system, rather than your work. We suggest to shorten it, as it is not the focus of the paper. 
+
+Section II - system overview - “[...] (or EndoWrist, more precisely), [...]”
+Suggestion: Change the brackets to commas. 
+
+Section III Force estimation:		
+“In this manner, the feedback vector is transformed from Cartesian space to a task space in which the chosen actions form a basis.” 
+Thoughts: We are unsure what you mean by this. Please elaborate with explanation.
+Suggestion: We prefer operational space, or a more intuitive explanation of what task space is.  
+
+Section III - Force Estimation, B, parameter identification		
+“A piecewise linear expression is made from the 340 mA sample and up and can be seen on equation(12)”.
+Note: The approximation is not linear, but affine, since it does not pass through origin.
+Suggestions: Maybe include some more explanation here too. For 340 mA, make a reference to figure 6.		
+Figure 4 is in subsection B, but is referred to in subsection C. Move it.  
+
+IV - communication: 
+The protocol section is not needed. It is not curriculum. Communication should consider delays and noise and computation priority within the micro controller.
+How the packages are structured is not the focus of this semester. Cut it out and write about delays and include perhaps a bit budget.
+Last paragraph of the section starts well - what does it conclude. We suggest you expand the last paragraph and make it the focus of the section. 
+
+V. Results:
+One subsection in results. Communication - what about controller. The section does not seem to be finished. 
+From this it seems as you have only improved the bandwidth. 
+
+VI- Discussion :
+Seems as the paper has been written as the progress of the project is at the moment. There is a lot of expectation - how does the control system work - must be presented in results and commented in discussion before hand in.
+
+The last paragraph of the discussion, we would prefer it removed and brought in an additional section after the conclusion called “Future Work” - as safety has not been in the scope of your project.
