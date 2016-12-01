@@ -3,6 +3,11 @@ close all;
 
 run Parameters.m
 
+w_max=230;
+w_min=-360;
+ts=0.08;
+motor_tau=ts/3;
+
 step_x=-1;
 step_y=1;
 step_z=0.5;

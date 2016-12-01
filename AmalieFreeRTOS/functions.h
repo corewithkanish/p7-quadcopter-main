@@ -1,13 +1,13 @@
 #define EQU_SPEED 429
 #define T 0.035
 
-#define DUTY_MAX 255
+#define DUTY_MAX 221
 #define DUTY_MIN 128
 #define DUTY_INIT 160
 #define DUTY_MAX_DIFF 30
 
-#define U_MAX 466
-#define U_MIN -366
+#define U_MAX 230
+#define U_MIN -360
 
 #define LED PORTC
 #define LED2 PORTK

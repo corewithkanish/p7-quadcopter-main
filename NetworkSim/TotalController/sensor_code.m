@@ -23,8 +23,11 @@ function [exectime,data] = sensor_code(seg,data)
         data.u(7) = ttAnalogIn(7);
         data.u(8) = ttAnalogIn(8);
         data.u(9) = ttAnalogIn(9);
-        mean_time=0.03;  % Mean delay time
-        exectime=-log(1-rand(1))*mean_time % Delay on the system - exponential distribution
+        data.u(10) = ttAnalogIn(10);
+        data.u(11) = ttAnalogIn(11);
+        data.u(12) = ttAnalogIn(12);
+        max_time=0.0506; 
+        exectime=max_time; % Delay on the system 
     case 2,
         ttSendMsg(2, data.u, 1, 1);  % send msg to drone, node 2
                                      % ttSendMsg(receiver, data, length, priority)

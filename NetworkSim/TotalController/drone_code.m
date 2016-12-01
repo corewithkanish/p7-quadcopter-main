@@ -27,6 +27,9 @@ function [exectime,data] = drone_code(seg,data)
             ttAnalogOut(7,msg.data(7))
             ttAnalogOut(8,msg.data(8))
             ttAnalogOut(9,msg.data(9))
+            ttAnalogOut(10,msg.data(10))
+            ttAnalogOut(11,msg.data(11))
+            ttAnalogOut(12,msg.data(12))
         end
         exectime = 0.0000001; % Delay on the system
     case 2,

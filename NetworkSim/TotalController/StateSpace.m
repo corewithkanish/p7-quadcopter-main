@@ -33,8 +33,27 @@ rank(controllability);
 Ae=[A zeros(size(A,1),size(C,1));
         C zeros(size(C,1),size(C,1))];
 Be=[B; zeros(size(C,1),size(B,2))];
-
-Fe=-place(Ae,Be,[[-6 -6.2 -6.4 -6.6 -5.8 -5] [-5.6 -5.2 -5.4]]); % Place uses the form A-BF
+Ce=[C zeros(3)];
+% Fe=-place(Ae,Be,[[-3 -3.2 -3.3 -3.4 -3.5 -3.6] [-3.7 -3.8 -3.9]]); % Place uses the form A-BF
+% F=Fe(:,1:size(A,2));
+% F1=F(:,1:3);
+% F2=F(:,4:6);
+% FI=Fe(:,size(A,2)+1:size(Fe,2));
+Qx=[1/0.2^2 0 0 0 0 0 0 0 0 ;
+    0 1/0.2^2 0 0 0 0 0 0 0 ;
+    0 0 1/0.2^2 0 0 0 0 0 0 ;
+    0 0 0 1/0.5^2 0 0 0 0 0 ;
+    0 0 0 0 1/0.5^2 0 0 0 0 ;
+    0 0 0 0 0 1/0.5^2 0 0 0 ;
+    0 0 0 0 0 0 1/0.2^2 0 0 ;
+    0 0 0 0 0 0 0 1/0.2^2 0 ;
+    0 0 0 0 0 0 0 0 1/0.2^2];
+Qu=[1/5^2 0 0 0;
+    0 1/5^2 0 0;
+    0 0 1/5^2 0;
+    0 0 0 1/5^2];
+sys_e=ss(Ae,Be,Ce,0);
+Fe=-lqr(sys_e,Qx,Qu);
 F=Fe(:,1:size(A,2));
 F1=F(:,1:3);
 F2=F(:,4:6);
@@ -58,7 +77,7 @@ B2=B(4:6,:);
 C1=C(:,1:3);
 C2=C(:,4:6);
 
-Lobs=(-place(A22',A12',[-20 -25 -30]))';  % Place uses the form A-BF. If we have A22+L*A12 -----> A22'+A12'*(-L)'
+Lobs=(-place(A22',A12',[-15 -17 -19]))';  % Place uses the form A-BF. If we have A22+L*A12 -----> A22'+A12'*(-L)'
 
 LA12=Lobs*A12;
 
