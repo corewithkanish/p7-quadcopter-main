@@ -122,11 +122,11 @@ The lifetime of the car can be expressed by its probability density function see
 \end{flalign}
 \subsection{Case 1}
 For the first case, the reliability, cumulative and probability functions for the lifetime of the network can be found. The first one obtained is the reliability function and it is found by multiplying the individual reliabilities for the two switches as they are connected in series, see \autoref{fig:case1}, and they have independent probabilities of failing. 
-%\begin{figure}[H]
-%	\includegraphics[width = .4\textwidth]{case1}
-%	\caption{Switch diagram for case 1}
-%	\label{fig:case1}
-%\end{figure}
+\begin{figure}[H]
+	\includegraphics[width = .4\textwidth]{case1}
+	\caption{Switch diagram for case 1}
+	\label{fig:case1}
+\end{figure}
 
 \begin{flalign}
 	R_{\mathrm{n}}(t)&=R_1(t)R_2(t)=e^{-\lambda t}e^{-\lambda t}=e^{-2\lambda  t}\label{eq:reliabilitycase1} \\
@@ -144,11 +144,11 @@ To find the probability of the network failing before the rest of the car does, 
 The result of this integral gave a probability of 0.0668 of the network failing before the rest of the car.
 \subsection{Case 2 a}
 In case 2 a, one of the switches is duplicated as seen in \autoref{fig:case2a}. Even though the method is the same, the reliability, cumulative and probability functions change as now there is one more switch in the network. 
-%\begin{figure}[H]
-%	\includegraphics[width = .4\textwidth]{case2a}
-%	\caption{Switch diagram for case 2 a}
-%	\label{fig:case2a}
-%\end{figure}
+\begin{figure}[H]
+	\includegraphics[width = .4\textwidth]{case2a}
+	\caption{Switch diagram for case 2 a}
+	\label{fig:case2a}
+\end{figure}
 \begin{flalign}
 	R_{\mathrm{n}}(t)&=R_2(R_1(t)+R_3(t)-R_1(t)R_3(t))=e^{-\lambda t}\left(2e^{-\lambda t}-e^{-2\lambda  t}\right)= 2e^{-2\lambda  t} - e^{-3 \lambda t} \label{eq:reliabilitycase2a} \\
 	F_{\mathrm{n}}(t)&=1-R_{\mathrm{n}}(t)= 1-2e^{-2\lambda  t} + e^{-3 \lambda t}\label{eq:cumulativecase2a}  \\
@@ -159,11 +159,11 @@ The integral is done in the same way as seen in \autoref{eq:integralcase1} but i
 
 \subsection{Case 2 b}
 In the last case, both switches are duplicated. The structure is shown in \autoref{fig:case2b}. Again, the reliability, cumulative and probability functions change and they need to be re-calculated taking into account the new combination of series and parallel connection. This is shown in \autoref{eq:reliabilitycase2b} and \ref{eq:cumulativecase2b} and \ref{eq:probabilitycase2b}.
-%\begin{figure}[H]
-%	\includegraphics[width = .4\textwidth]{case2b}
-%	\caption{Switch diagram for case 2 b}
-%	\label{fig:case2b}
-%\end{figure}
+\begin{figure}[H]
+	\includegraphics[width = .4\textwidth]{case2b}
+	\caption{Switch diagram for case 2 b}
+	\label{fig:case2b}
+\end{figure}
 \begin{flalign}
 	R_{\mathrm{n}}(t)&=(R_1(t)+R_3(t)-R_1(t)R_2(t))(R_2(t)+R_4(t)-R_2(t)R_4(t))=\label{eq:reliabilitycase2b} \\
 			&\left(2e^{-\lambda t}-e^{-2\lambda  t}\right)\left(2e^{-\lambda t}-e^{-2\lambda  t}\right)=\left(4e^{-2\lambda t}-4e^{-3\lambda t}+e^{-4\lambda t}\right)\nonumber\\
