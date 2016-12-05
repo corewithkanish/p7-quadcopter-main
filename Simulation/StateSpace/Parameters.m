@@ -16,8 +16,8 @@ L = 0.225;           % Distance between center of the quadcopter and center of e
 kth =  1.32922e-5;        % Speed of the motor -> thrust force [N·s/rad]
 kd =  9.39741e-7;       % Speed of the motor -> drag torque by proppeller [N·m·s/rad]
 
-w1_bar=sqrt(Fg/kth/4)+1;
-w2_bar=sqrt(Fg/kth/4)+1;
-w3_bar=sqrt(Fg/kth/4)+1;
-w4_bar=sqrt(Fg/kth/4)+1;
+w1_bar=sqrt(Fg/kth/4);
+w2_bar=sqrt(Fg/kth/4);
+w3_bar=sqrt(Fg/kth/4);
+w4_bar=sqrt(Fg/kth/4);
 

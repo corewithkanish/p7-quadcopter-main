@@ -53,11 +53,11 @@ int main()
 
 	//while (1)
 	//{
-	//	Set_PWM_duty(duty, duty, duty, duty);
-	//	_delay_ms(1000);
-	//	duty -= 5;
-	//	if (duty < 128)
-	//		duty = 128;
+	//	Set_PWM_duty(duty, 128, 128, 128);
+	//	_delay_ms(500);
+	//	duty += 10;
+	//	if (duty >221)
+	//		duty = 221;
 	//}
 
 
@@ -89,7 +89,7 @@ void Controllers(void *pvParameters)
 
 	while (1)
 	{
-		if (count < 1200)
+		if (1)
 		{
 			LED = 0xFF;
 			AngularController();
