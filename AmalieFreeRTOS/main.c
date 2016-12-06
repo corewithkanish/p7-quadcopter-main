@@ -25,10 +25,10 @@ int main()
 	PWM_init(0);
 	USART_Init(MYUBRR);
 	//ADC_Init();
-	LED_DDR = 0xFF;
-	LED = 0x00;
-	LED2_DDR = 0xFF;
-	LED2 = 0x00;
+	//LED_DDR = 0xFF;
+	//LED = 0x00;
+	//LED2_DDR = 0xFF;
+	//LED2 = 0x00;
 
 	// Task Creation
 	//xSemaphore = xSemaphoreCreateMutex();
@@ -43,21 +43,39 @@ int main()
 	//	_delay_ms(1000);
 	//}
 
-	LED |= (~0x00);
+	//LED |= (~0x00);
 	_delay_ms(1000);
 	int duty = 128;
 	Set_PWM_duty(duty, duty, duty, duty);
 	_delay_ms(10000);
-	Set_PWM_duty(DUTY_INIT, DUTY_INIT, DUTY_INIT, DUTY_INIT);
-	_delay_ms(1000);
+	//Set_PWM_duty(DUTY_INIT, DUTY_INIT, DUTY_INIT, DUTY_INIT);
+	//_delay_ms(1000);
 
+	//while (count<40)
+	//{
+	//	Set_PWM_duty(duty, duty, duty, duty);
+	//	_delay_ms(500);
+	//	if (reading)
+	//	{
+	//		duty = DUTY_INIT + count;
+	//		reading = 0;
+	//	}
+	//	else
+	//	{
+	//		duty = DUTY_INIT - count;
+	//		reading = 1;
+	//	}
+	//	count += 2;
+
+	//	if (duty > 254)
+	//		duty = 254;
+	//	if (duty < 128)
+	//		duty = 128;
+	//}
 	//while (1)
 	//{
-	//	Set_PWM_duty(duty, 128, 128, 128);
-	//	_delay_ms(500);
-	//	duty += 10;
-	//	if (duty >221)
-	//		duty = 221;
+	//	duty = 128;
+	//	Set_PWM_duty(duty, duty, duty, duty);
 	//}
 
 
@@ -89,13 +107,13 @@ void Controllers(void *pvParameters)
 
 	while (1)
 	{
-		if (1)
+		if (count<4000)
 		{
-			LED = 0xFF;
-			AngularController();
+			//LED = 0xFF;
+			Controller();
 			count++;
 			ApplyVelocities();
-			LED = 0x00;
+			//LED = 0x00;
 		}
 		else
 		{
@@ -107,7 +125,7 @@ void Controllers(void *pvParameters)
 			vTaskDelete(xHandle);
 			xTaskCreate(Comunication, "Com", 1000, NULL, configMAX_PRIORITIES - 2, &xHandle);
 			reading = 0;
-			LED2 = 0x00;
+			//LED2 = 0x00;
 		}
 		vTaskDelayUntil(&xLastWakeTime, 35);
 	}

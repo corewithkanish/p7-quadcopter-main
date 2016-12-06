@@ -1,11 +1,12 @@
 #include <string.h>
 #include <avr/io.h>
 #include <util/delay.h>
+#include <math.h>
 
 #include "functions.h"
 
 // Constant matrices
-const float L[3] = { -10.0, -11.0, -12.0 };
+const float L[3] = { -11.0, -12.0, -13.0 };
 const float B1[4] = { 0.0, -0.2396, 0.0, 0.2396 };
 const float B2[4] = { 0.2396, 0.0, -0.2396, 0.0 };
 const float B3[4] = { 0.0377, -0.0377, 0.0377, -0.0377 };
@@ -119,7 +120,7 @@ const float B3[4] = { 0.0377, -0.0377, 0.0377, -0.0377 };
 //const float Fint2[3] = { 117.8511, 0.0000, 83.3333 };
 //const float Fint3[3] = { 0.0000, 117.8511, -83.3333 };
 //const float Fint4[3] = { -117.8511, 0.0000, 83.3333 };
-//const float F1[6] = { 0.0000, -155.4185, -121.7479, -0.0000, -43.5550, -47.2686 };  // 
+//const float F1[6] = { 0.0000, -155.4185, -121.7479, -0.0000, -43.5550, -47.2686 };  //The one that works best 
 //const float F2[6] = { 155.4185, 0.0000, 121.7479, 43.5550, 0.0000, 47.2686 };
 //const float F3[6] = { -0.0000, 155.4185, -121.7479, 0.0000, 43.5550, -47.2686 };
 //const float F4[6] = { -155.4185, 0.0000, 121.7479, -43.5550, 0.0000, 47.2686 };
@@ -127,19 +128,36 @@ const float B3[4] = { 0.0377, -0.0377, 0.0377, -0.0377 };
 //const float Fint2[3] = { 117.8511, 0.0000, 83.3333 };
 //const float Fint3[3] = { 0.0000, 117.8511, -83.3333 };
 //const float Fint4[3] = { -117.8511, 0.0000, 83.3333 };
-const float F1[6] = { 0.0000, -97.3270, -43.9427, 0.0000, -51.2675, -26.1192 };  // LQR designed with TrueTime
-const float F2[6] = { 97.3270, 0.0000, 43.9427, 51.2675, -0.0000, 26.1192 };
-const float F3[6] = { -0.0000, 97.3270, -43.9427, -0.0000, 51.2675, -26.1192 };
-const float F4[6] = { -97.3270, 0.0000, 43.9427, -51.2675, 0.0000, 26.1192 };
-const float Fint1[3] = { -0.0000, -70.7107, -25.0000 };
-const float Fint2[3] = { 70.7107, 0.0000, 25.0000 };
-const float Fint3[3] = { 0.0000, 70.7107, -25.0000 };
-const float Fint4[3] = { -70.7107, -0.0000, 25.0000 };
+const float F1[6] = { 0.0000, -163.0571, -200.0359, 0.0000, -53.8762, -71.7659 };
+const float F2[6] = { 163.0571, 0.0000, 200.0359, 53.8762, 0.0000, 71.7659 };
+const float F3[6] = { 0.0000, 163.0571, -200.0359, 0.0000, 53.8762, -71.7659 };
+const float F4[6] = { -163.0571, 0.0000, 200.0359, -53.8762, 0.0000, 71.7659 };
+const float Fint1[3] = { 0.0000, -117.8511, -10.0000 };
+const float Fint2[3] = { 117.8511, 0.0000, 10.0000 };
+const float Fint3[3] = { 0.0000, 117.8511, -10.0000 };
+const float Fint4[3] = { -117.8511, 0.0000, 10.000 };
+//const float F1[6] = { 0.0000, -163.0571, -133.5460, 0.0000, -53.8762, -65.3406 };  //
+//const float F2[6] = { 163.0571, -0.0000, 133.5460, 53.8762, 0.0000, 65.3406 };
+//const float F3[6] = { 0.0000, 163.0571, -133.5460, 0.0000, 53.8762, -65.3406 };
+//const float F4[6] = { -163.0571, - 0.0000,  133.5460, - 53.8762 ,   0.0000 ,  65.3406 };
+//const float Fint1[3] = { 0.0000, -117.8511, -83.3333 };
+//const float Fint2[3] = { 117.851	1, 0.0000, 83.3333 };
+//const float Fint3[3] = { 0.0000, 117.8511, -83.3333 };
+//const float Fint4[3] = { -117.8511, 0.0000, 83.3333 };
+//const float F1[6] = { -0.0000, -163.0571, -229.3125, -0.0000, -53.8762, -74.4193 };  //
+//const float F2[6] = { 163.0571, -0.0000, 229.3125, 53.8762, 0.0000, 74.4193 };
+//const float F3[6] = { 0.0000, 163.0571, -229.3125, 0.0000, 53.8762, -74.4193 };
+//const float F4[6] = { -163.0571, -0.0000, 229.3125, -53.8762, -0.0000, 74.4193 };
+//const float Fint1[3] = { -0.0000, -117.8511, -166.6667 };
+//const float Fint2[3] = { 117.8511, 0.0000, 166.6667 };
+//const float Fint3[3] = { 0.0000, 117.8511, -166.6667 };
+//const float Fint4[3] = { -117.8511, -0.0000, 166.6667 };
+
 
 // Initialization and definitions of variables
 float u_k1[4] = { 0.0, 0.0, 0.0, 0.0 };
 float y_k[3] = { 0.0, 0.0, 0.0 };
-float r_k[3] = { 0.0, 0.0, 0.0 };
+float r_k[3] = { 0.3, 0.0, 0.0 };
 float x2_k1[3] = { 0.0, 0.0, 0.0 };
 float xint_k1[3] = { 0.0, 0.0, 0.0 };
 float e_k1[3] = { 0.0, 0.0, 0.0 };
@@ -151,7 +169,7 @@ float pos_ref[3] = { 0.0, 0.0, 0.0 };
 float vel[3] = { 0.0, 0.0, 0.0 };
 float pos_e_k1[3] = { 0.0, 0.0, 0.0 };
 float vel_ref_k1[3] = { 0.0, 0.0, 0.0 };
-short sat = 0;
+short sat[4] = { 0, 0, 0, 0 };
 short reading = 0;
 short low_level = 0;
 float battery = 11.1;
@@ -160,7 +178,7 @@ unsigned int duty_old[4] = { DUTY_INIT, DUTY_INIT, DUTY_INIT, DUTY_INIT };
 
 //------------------------------- Controller Functions ----------------------//
 
-void AngularController(void)
+void Controller(void)
 {
 	float pos_e_k[3] = { 0.0, 0.0, 0.0 };
 	float vel_ref_k[3] = { 0.0, 0.0, 0.0 };
@@ -210,63 +228,88 @@ void AngularController(void)
 
 	if (u_k1[0] > U_MAX)
 		u_k1[0] = U_MAX;
+
 	if (u_k1[0] < U_MIN)
 		u_k1[0] = U_MIN;
+
 	if (u_k1[1] > U_MAX)
 		u_k1[1] = U_MAX;
+
 	if (u_k1[1] < U_MIN)
 		u_k1[1] = U_MIN;
+
 	if (u_k1[2] > U_MAX)
 		u_k1[2] = U_MAX;
+
 	if (u_k1[2] < U_MIN)
 		u_k1[2] = U_MIN;
+
 	if (u_k1[3] > U_MAX)
 		u_k1[3] = U_MAX;
+
 	if (u_k1[3] < U_MIN)
 		u_k1[3] = U_MIN;
 
-	for (i=0; i < 3; i++)
+	for (i = 0; i < 3; i++)
 	{
+		// Calculation of xint
+		e_k[i] = y_k[i] - r_k[i];
+		switch (i)
 		{
-			// Calculation of xint
-			e_k[i] = y_k[i] - r_k[i];
-			if (sat)
+		case 1:
+		{
+			if (sat[1] || sat[3])
 				e_k[i] = 0;
-			xint_k[i] = T / 2 * (e_k[i] + e_k1[i]) + xint_k1[i];
-
-			// Estimation of the angular velocities
-			switch (i)
-			{
-			case 0:
-				o_k[i] = L[i] * x2_k1[i] + B1[0] * u_k1[0] + B1[1] * u_k1[1] + B1[2] * u_k1[2] + B1[3] * u_k1[3];
-				break;
-			case 1:
-				o_k[i] = L[i] * x2_k1[i] + B2[0] * u_k1[0] + B2[1] * u_k1[1] + B2[2] * u_k1[2] + B2[3] * u_k1[3];
-				break;
-			case 2:
-				o_k[i] = L[i] * x2_k1[i] + B3[0] * u_k1[0] + B3[1] * u_k1[1] + B3[2] * u_k1[2] + B3[3] * u_k1[3];
-				break;
-			}
-			oint_k[i] = T / 2 * (o_k[i] + o_k1[i]) + oint_k1[i];
-			x2_k[i] = oint_k[i] - L[i] * y_k[i];
 		}
+			break;
+		case 1:
+		{
+			if (sat[0] || sat[2])
+				e_k[i] = 0;
+		}
+			break;
+		case 1:
+		{
+			if (sat[0] || sat[1] || sat[2] || sat[3])
+				e_k[i] = 0;
+		}
+			break;
+		}
+		xint_k[i] = T / 2 * (e_k[i] + e_k1[i]) + xint_k1[i];
+
+		// Estimation of the angular velocities
+		switch (i)
+		{
+		case 0:
+			o_k[0] = L[0] * x2_k1[0] + B1[0] * u_k1[0] + B1[1] * u_k1[1] + B1[2] * u_k1[2] + B1[3] * u_k1[3];
+			break;
+		case 1:
+			o_k[1] = L[1] * x2_k1[1] + B2[0] * u_k1[0] + B2[1] * u_k1[1] + B2[2] * u_k1[2] + B2[3] * u_k1[3];
+			break;
+		case 2:
+			o_k[2] = L[2] * x2_k1[2] + B3[0] * u_k1[0] + B3[1] * u_k1[1] + B3[2] * u_k1[2] + B3[3] * u_k1[3];
+			break;
+		}
+		oint_k[i] = T / 2 * (o_k[i] + o_k1[i]) + oint_k1[i];
+		x2_k[i] = oint_k[i] - L[i] * y_k[i];
 	}
+
 
 	for (i = 0; i < 4; i++)
 	{
 		switch (i)
 		{
 		case 0:
-			u_k1[i] = F1[0] * y_k[0] + F1[1] * y_k[1] + F1[2] * y_k[2] + F1[3] * x2_k[0] + F1[4] * x2_k[1] + F1[5] * x2_k[2] + Fint1[0] * xint_k[0] + Fint1[1] * xint_k[1] + Fint1[2] * xint_k[2];
+			u_k1[0] = F1[0] * y_k[0] + F1[1] * y_k[1] + F1[2] * y_k[2] + F1[3] * x2_k[0] + F1[4] * x2_k[1] + F1[5] * x2_k[2] + Fint1[0] * xint_k[0] + Fint1[1] * xint_k[1] + Fint1[2] * xint_k[2];
 			break;
 		case 1:
-			u_k1[i] = F2[0] * y_k[0] + F2[1] * y_k[1] + F2[2] * y_k[2] + F2[3] * x2_k[0] + F2[4] * x2_k[1] + F2[5] * x2_k[2] + Fint2[0] * xint_k[0] + Fint2[1] * xint_k[1] + Fint2[2] * xint_k[2];
+			u_k1[1] = F2[0] * y_k[0] + F2[1] * y_k[1] + F2[2] * y_k[2] + F2[3] * x2_k[0] + F2[4] * x2_k[1] + F2[5] * x2_k[2] + Fint2[0] * xint_k[0] + Fint2[1] * xint_k[1] + Fint2[2] * xint_k[2];
 			break;
 		case 2:
-			u_k1[i] = F3[0] * y_k[0] + F3[1] * y_k[1] + F3[2] * y_k[2] + F3[3] * x2_k[0] + F3[4] * x2_k[1] + F3[5] * x2_k[2] + Fint3[0] * xint_k[0] + Fint3[1] * xint_k[1] + Fint3[2] * xint_k[2];
+			u_k1[2] = F3[0] * y_k[0] + F3[1] * y_k[1] + F3[2] * y_k[2] + F3[3] * x2_k[0] + F3[4] * x2_k[1] + F3[5] * x2_k[2] + Fint3[0] * xint_k[0] + Fint3[1] * xint_k[1] + Fint3[2] * xint_k[2];
 			break;
 		case 3:
-			u_k1[i] = F4[0] * y_k[0] + F4[1] * y_k[1] + F4[2] * y_k[2] + F4[3] * x2_k[0] + F4[4] * x2_k[1] + F4[5] * x2_k[2] + Fint4[0] * xint_k[0] + Fint4[1] * xint_k[1] + Fint4[2] * xint_k[2];
+			u_k1[3] = F4[0] * y_k[0] + F4[1] * y_k[1] + F4[2] * y_k[2] + F4[3] * x2_k[0] + F4[4] * x2_k[1] + F4[5] * x2_k[2] + Fint4[0] * xint_k[0] + Fint4[1] * xint_k[1] + Fint4[2] * xint_k[2];
 			break;
 		}
 	}
@@ -297,46 +340,46 @@ void AngularController(void)
 
 void ApplyVelocities(void)
 {
-	//---test code-----------------
-	//int i = 0;
-	//for( i=0; i<4; i++ )
-	//{
-	//	u_k1[i] = 0;
-	//}
-	//u_z = 0;
-	//-----------------------------
-
 	float add_z = 0;
 	float sum_u_k1 = 0;
 	float uk[4] = { 0, 0, 0, 0 };
-	unsigned int duty[4] = { 0, 0, 0, 0 };
+	int duty[4] = { 0, 0, 0, 0 };
 	unsigned int diff = 0;
+	float h [4] = { 0, 0, 0, 0 };
 	int i;
 
+	// Calculate height of each propeller
+		h[0] = H + LENGTH*y_k[1];
+		h[2] = H - LENGTH*y_k[1];
+		h[1] = H - LENGTH*y_k[0];
+		h[3] = H + LENGTH*y_k[0];
+
+	// Mix the needed rotational speeds for the motors
 	sum_u_k1 = u_k1[0] + u_k1[1] + u_k1[2] + u_k1[3];
 
 	add_z = 0;// (u_z - sum_u_k1) / 4;
 
-	sat = 0;
 
-	for (i = 0; i<4; i = i + 1)
+	for (i = 0; i<4; i++)
 	{
+		sat[i] = 0;
+		//uk[i] = (1.0 + (0.5*K / ((H0 + h[i] + 0.03)*(H0 + h[i] + 0.03))))*
 		uk[i] = u_k1[i] + add_z + EQU_SPEED;
-		//uk[i] = EQU_SPEED;
+		//uk[i] = (1.0 + (0.5*K / ((H0 + h[i] + 0.03)*(H0 + h[i] + 0.03))))*(396);
 
-		duty[i] = (unsigned int)(uk[i] * 0.1563 + 118.21);
+		duty[i] = (int)(uk[i] * 0.1598 + 122.79);// (uk[i] * 0.1563 + 118.21);
 
 		if (duty[i]> DUTY_MAX)
 		{
 			duty[i] = DUTY_MAX;
-			sat = 1;
+			sat[i] = 1;
 		}
 		else 
 		{
 			if (duty[i] < DUTY_MIN)
 			{
 				duty[i] = DUTY_MIN;
-				sat = 1;
+				sat[i] = 1;
 			}
 		}
 
@@ -360,7 +403,7 @@ void ApplyVelocities(void)
 	//}
 
 	//Set_PWM_duty(165, 165, 165, 165);
-	Set_PWM_duty( duty[0], duty[1], duty[2], duty[3] );
+	Set_PWM_duty((char)duty[0], (char)duty[1], (char)duty[2], (char)duty[3]);
 	//Set_PWM_duty(duty0, 128, duty2, 128);
 }
 
@@ -396,7 +439,7 @@ void PWM_init(int initial_duty)
 }
 
 
-void Set_PWM_duty(int duty0, int duty4A, int duty4B, int duty4C)
+void Set_PWM_duty(char duty0, char duty4A, char duty4B, char duty4C)
 {
 	OCR0A  = duty0;
 	OCR4AL = duty4A; 
@@ -466,7 +509,7 @@ void GetPackage(void)
 
 	if ((sum + checksum) == 0x00FFFFFF)
 	{
-		LED2 = 0xFF;
+		//LED2 = 0xFF;
 		//----------- Roll --------------
 		if (dummy[0] & 0x80)
 			sign = -1;
@@ -543,7 +586,7 @@ void GetPackage(void)
 		//// Test code
 		//if (vel[2] == 1.02)
 		//	USART_Transmit(dummy[1]);
-		LED2 = 0x00;
+		//LED2 = 0x00;
 	}
 	//LED = 0x00;
 	return;
