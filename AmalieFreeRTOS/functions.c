@@ -132,10 +132,10 @@ const float F1[6] = { 0.0000, -163.0571, -200.0359, 0.0000, -53.8762, -71.7659 }
 const float F2[6] = { 163.0571, 0.0000, 200.0359, 53.8762, 0.0000, 71.7659 };
 const float F3[6] = { 0.0000, 163.0571, -200.0359, 0.0000, 53.8762, -71.7659 };
 const float F4[6] = { -163.0571, 0.0000, 200.0359, -53.8762, 0.0000, 71.7659 };
-const float Fint1[3] = { 0.0000, -117.8511, -10.0000 };
-const float Fint2[3] = { 117.8511, 0.0000, 10.0000 };
-const float Fint3[3] = { 0.0000, 117.8511, -10.0000 };
-const float Fint4[3] = { -117.8511, 0.0000, 10.000 };
+const float Fint1[3] = { 0.0000, -117.8511, -125.0000 };
+const float Fint2[3] = { 117.8511, 0.0000, 125.0000 };
+const float Fint3[3] = { 0.0000, 117.8511, -125.0000 };
+const float Fint4[3] = { -117.8511, 0.0000, 125.000 };
 //const float F1[6] = { 0.0000, -163.0571, -133.5460, 0.0000, -53.8762, -65.3406 };  //
 //const float F2[6] = { 163.0571, -0.0000, 133.5460, 53.8762, 0.0000, 65.3406 };
 //const float F3[6] = { 0.0000, 163.0571, -133.5460, 0.0000, 53.8762, -65.3406 };
@@ -157,7 +157,7 @@ const float Fint4[3] = { -117.8511, 0.0000, 10.000 };
 // Initialization and definitions of variables
 float u_k1[4] = { 0.0, 0.0, 0.0, 0.0 };
 float y_k[3] = { 0.0, 0.0, 0.0 };
-float r_k[3] = { 0.3, 0.0, 0.0 };
+float r_k[3] = { 0.0, 0.0, 0.05 };
 float x2_k1[3] = { 0.0, 0.0, 0.0 };
 float xint_k1[3] = { 0.0, 0.0, 0.0 };
 float e_k1[3] = { 0.0, 0.0, 0.0 };
@@ -181,6 +181,7 @@ unsigned int duty_old[4] = { DUTY_INIT, DUTY_INIT, DUTY_INIT, DUTY_INIT };
 void Controller(void)
 {
 	float pos_e_k[3] = { 0.0, 0.0, 0.0 };
+	float vel_e_k[3] = { 0.0, 0.0, 0.0 };
 	float vel_ref_k[3] = { 0.0, 0.0, 0.0 };
 	float xint_k[3] = { 0.0, 0.0, 0.0 };
 	float x2_k[3] = { 0.0, 0.0, 0.0 };
@@ -192,36 +193,38 @@ void Controller(void)
 	//------------Translational Controller-----------------//
 	//if low_level
 	//	pos_ref[3] = 0;
-	//for (i = 0; i > 3; i++)
-	//{
-	//	switch i:
-	//	{
-	//		case 1
-	//		{
-	//			pos_e_k[i] = pos_ref[i] - pos[i];
-	//			vel_ref_k[i] = Pxdot*pos_e_k[i];
-	//			vel_e_k[i] = vel_ref_k[i] - vel[i];
-	//			r_k[i] = Px*vel_e_k[i];
-	//			break
-	//		}
-	//		case 2
-	//		{
-	//			pos_e_k[i] = pos_ref[i] - pos[i];
-	//			vel_ref_k[i] = Pydot*pos_e_k[i];
-	//			vel_e_k[i] = vel_ref_k[i] - vel[i];
-	//			r_k[i] = Py*vel_e_k[i];
-	//			break
-	//		}
-	//		case 3
-	//		{
-	//			pos_e_k[i] = pos_ref[i] - pos[i];
-	//			vel_ref_k[i] = -208.8*pos_e_k[i] + 198.2*pos_e_k1[i] + vel_ref_k1[i];
-	//			vel_e_k[i] = vel_ref_k[i] - vel[i];
-	//			r_k[i] = Pz*vel_e_k[i];
-	//			break
-	//		}
-	//	}
-	//}
+	for (i = 0; i > 3; i++)
+	{
+		switch (i)
+		{
+		case 1:
+			{
+				//pos_e_k[i] = pos_ref[i] - pos[i];
+				//vel_ref_k[i] = Px*pos_e_k[i];
+				//vel_e_k[i] = vel_ref_k[i] - vel[i];
+				//r_k[i] = Pxdot*vel_e_k[i];
+			}
+			break;
+		case 2:
+			{
+				//pos_e_k[i] = pos_ref[i] - pos[i];
+				//vel_ref_k[i] = Py*pos_e_k[i];
+				//vel_e_k[i] = vel_ref_k[i] - vel[i];
+				//r_k[i] = Pydot*vel_e_k[i];
+			}
+			break;
+		case 3:
+			{
+				pos_e_k[i] = pos_ref[i] - pos[i];
+				if (sat[0] || sat[1] || sat[2] || sat[3])
+					pos_e_k[i] = 0;
+				vel_ref_k[i] =0.5*pos_e_k[i];
+				vel_e_k[i] = vel_ref_k[i] - vel[i];
+				u_z = -208.8*vel_e_k[i] + 198.2*vel_e_k1[i] + u_z;
+			}
+			break;
+		}
+	}
 
 
 	//------------Angular Controller-----------------//
@@ -252,11 +255,11 @@ void Controller(void)
 
 	for (i = 0; i < 3; i++)
 	{
-		// Calculation of xint
+		//// Calculation of xint
 		e_k[i] = y_k[i] - r_k[i];
 		switch (i)
 		{
-		case 1:
+		case 0:
 		{
 			if (sat[1] || sat[3])
 				e_k[i] = 0;
@@ -268,14 +271,14 @@ void Controller(void)
 				e_k[i] = 0;
 		}
 			break;
-		case 1:
+		case 2:
 		{
 			if (sat[0] || sat[1] || sat[2] || sat[3])
 				e_k[i] = 0;
 		}
 			break;
 		}
-		xint_k[i] = T / 2 * (e_k[i] + e_k1[i]) + xint_k1[i];
+		xint_k[i] = T / 2.0 * (e_k[i] + e_k1[i]) + xint_k1[i];
 
 		// Estimation of the angular velocities
 		switch (i)
@@ -290,7 +293,7 @@ void Controller(void)
 			o_k[2] = L[2] * x2_k1[2] + B3[0] * u_k1[0] + B3[1] * u_k1[1] + B3[2] * u_k1[2] + B3[3] * u_k1[3];
 			break;
 		}
-		oint_k[i] = T / 2 * (o_k[i] + o_k1[i]) + oint_k1[i];
+		oint_k[i] = T / 2.0 * (o_k[i] + o_k1[i]) + oint_k1[i];
 		x2_k[i] = oint_k[i] - L[i] * y_k[i];
 	}
 
@@ -314,8 +317,9 @@ void Controller(void)
 		}
 	}
 
-	//pos_e_k1[2] = pos_e_k[2];
-	//vel_ref_k1[2] = vel_ref_k[2];
+	vel_e_k1[0] = vel_e_k[0];
+	vel_e_k1[1] = vel_e_k[1];
+	vel_e_k1[2] = vel_e_k[2];
 
 	e_k1[0] = e_k[0];
 	e_k1[1] = e_k[1];
@@ -349,17 +353,16 @@ void ApplyVelocities(void)
 	int i;
 
 	// Calculate height of each propeller
-		h[0] = H + LENGTH*y_k[1];
-		h[2] = H - LENGTH*y_k[1];
-		h[1] = H - LENGTH*y_k[0];
-		h[3] = H + LENGTH*y_k[0];
+		//h[0] = H + LENGTH*y_k[1];
+		//h[2] = H - LENGTH*y_k[1];
+		//h[1] = H - LENGTH*y_k[0];
+		//h[3] = H + LENGTH*y_k[0];
 
 	// Mix the needed rotational speeds for the motors
 	sum_u_k1 = u_k1[0] + u_k1[1] + u_k1[2] + u_k1[3];
 
-	add_z = 0;// (u_z - sum_u_k1) / 4;
-
-
+	add_z = (u_z - sum_u_k1) / 4.0;
+	
 	for (i = 0; i<4; i++)
 	{
 		sat[i] = 0;
@@ -394,7 +397,6 @@ void ApplyVelocities(void)
 		//}
 			
 	}
-
 
 	//battery = (float)ADC_read()*15/255;
 	//if battery<10
@@ -527,7 +529,7 @@ void GetPackage(void)
 			sign = -1;
 		else
 			sign = 1;
-		y_k[2] = sign*(float)((((dummy[2] << 3) & 0xF8) | ((dummy[3] >> 5) & 0x07))) / 100;
+		y_k[2] = sign*(float)((((dummy[2] << 3) & 0xF8) | ((dummy[3] >> 5) & 0x07))) / 500;
 		//----------- x --------------
 		if (dummy[3] & 0x10)
 			sign = -1;

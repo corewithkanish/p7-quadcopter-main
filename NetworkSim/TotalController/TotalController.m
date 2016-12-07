@@ -7,7 +7,7 @@ run xyzController.m
 
 w_max=230;
 w_min=-161;
-ts=0.001;
+ts=0;
 motor_tau=ts/3;
 
 step_x=-1;

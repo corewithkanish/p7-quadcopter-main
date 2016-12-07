@@ -48,8 +48,8 @@ int main()
 	int duty = 128;
 	Set_PWM_duty(duty, duty, duty, duty);
 	_delay_ms(10000);
-	//Set_PWM_duty(DUTY_INIT, DUTY_INIT, DUTY_INIT, DUTY_INIT);
-	//_delay_ms(1000);
+	Set_PWM_duty(DUTY_INIT, DUTY_INIT, DUTY_INIT, DUTY_INIT);
+	_delay_ms(1000);
 
 	//while (count<40)
 	//{
