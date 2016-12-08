@@ -68,6 +68,7 @@ where $b = P_\mathrm{w} = 160$ since the time offset is set to zero to model wor
 %\end{where}
 %
 %
+
 \subsection{Electronic Speed Control (ESC) Data Arrival}
 The staircase arrival model for the wheel sensor data is
 \begin{flalign}
@@ -91,17 +92,56 @@ The affine arrival model for the wheel sensor data is
 \end{flalign}
 where $b = P_\mathrm{ESC} = 64$ since the time offset is set to zero to model worst case.
 
-\subsection{Service Model}
-The curve for the service model, $r(t)$, is seen in \autoref{fig:arrivalCurves}. The model is linear and defined by the capabilities of the CAN Bus with a rate of \SI{1}{Mbps}.
-
-
+\begin{figure}[H]
+	\captionbox
+	{
+		Arrival curves for the four wheels and service curve for the CAN-bus.
+		\label{fig:ArrivalCurvesWheels}
+	}
+	{
+		\includegraphics[width=.46\textwidth]{figures/ArrivalCurvesWheels}
+	}
+	\hspace{5pt}
+	\captionbox
+	{
+		Arrival curves for the ESC and service curve for the CAN-bus.
+		\label{fig:ArrivalCurvesESC}
+	}
+	{
+		\includegraphics[width=.46\textwidth]{figures/ArrivalCurvesESC}
+	}
+\end{figure}
 \section{Token Filter}
 
 \begin{figure}[H]
-  \includegraphics[width = .4\textwidth]{tokenFilter}
-  \caption{Token filter}
-  \label{fig:tokenFilter}
+	\includegraphics[width = .4\textwidth]{tokenFilter}
+	\caption{Token filter}
+	\label{fig:tokenFilter}
 \end{figure}
+%
+\begin{figure}[H]
+	\captionbox
+	{
+		Arrival curves for the Multimedia and service curve for the CAN-bus.
+		\label{fig:ArrivalCurvesMultimedia}
+	}
+	{
+		\includegraphics[width=.46\textwidth]{figures/ArrivalCurvesMultimedia}
+	}
+	\hspace{5pt}
+	\captionbox
+	{
+		Arrival curves for the RC and service curve for the CAN-bus.
+		\label{fig:ArrivalCurvesRC}
+	}
+	{
+		\includegraphics[width=.46\textwidth]{figures/ArrivalCurvesRC}
+	}
+\end{figure}
+%
+\subsection{Service Model}
+The curve for the service model, $r(t)$, is seen in \autoref{fig:arrivalCurves}. The model is linear and defined by the capabilities of the CAN Bus with a rate of \SI{1}{Mbps}.
+
 
 \section{Reliability}
 The failure rate can be translated to be in fails/year. This is done in \autoref{eq:failrate}.
@@ -123,7 +163,7 @@ The lifetime of the car can be expressed by its probability density function see
 \subsection{Case 1}
 For the first case, the reliability, cumulative and probability functions for the lifetime of the network can be found. The first one obtained is the reliability function and it is found by multiplying the individual reliabilities for the two switches as they are connected in series, see \autoref{fig:case1}, and they have independent probabilities of failing. 
 \begin{figure}[H]
-	\includegraphics[width = .4\textwidth]{case1}
+	\includegraphics[width = .2\textwidth]{case1}
 	\caption{Switch diagram for case 1}
 	\label{fig:case1}
 \end{figure}
