@@ -6,7 +6,7 @@
 #define FOSC 16000000// Clock Speed
 #define BAUD 38400
 #define MYUBRR FOSC/16/BAUD-1
-#define DUTY_INIT 160
+#define DUTY_INIT 175
 
 void vApplicationIdleHook( void );
 
@@ -16,5 +16,3 @@ void Comunication(void *pvParameters);
 //void LEDnotBlink(void *pvNotParameters);
 
 //SemaphoreHandle_t xSemaphore;
-
-//initialise Matrices (allocate space (Use Calloc))

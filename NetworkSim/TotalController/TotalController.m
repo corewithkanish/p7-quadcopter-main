@@ -2,10 +2,12 @@ clear ;
 close all;
 
 run Parameters.m
+run StateSpace.m
+run xyzController.m
 
 w_max=230;
-w_min=-360;
-ts=0.08;
+w_min=-161;
+ts=0;
 motor_tau=ts/3;
 
 step_x=-1;
@@ -29,14 +31,3 @@ input_z=[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ...
     -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6...
     -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7].';
 
-run StateSpace.m
-
-%----------------- Translational Velocity controller ----------------------
-s=tf('s');
-C_xdot=-0.1;
-C_ydot=0.1;
-C_zdot=-0.5*(0.2*s+1)/(0.13*s+1);
-
-C_x=0.5;
-C_y=0.5;
-C_z=0.9;

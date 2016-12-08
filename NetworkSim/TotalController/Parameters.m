@@ -11,9 +11,9 @@ Jx = 0.0107;           % Inertia around body x-axis [km·m2]
 Jy = 0.0107;           % Inertia around body y-axis [km·m2]
 Jz = 0.02135;           % Inertia around body z-axis [km·m2]
 
-Jx_changed = Jx*5;           
-Jy_changed = Jy*3;      
-Jz_changed = Jz*2;  
+Jx_changed = Jx;           
+Jy_changed = Jy;      
+Jz_changed = Jz;  
 
 L = 0.225;           % Distance between center of the quadcopter and center of each motor [m]
 

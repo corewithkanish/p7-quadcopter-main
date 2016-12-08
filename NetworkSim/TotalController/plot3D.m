@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 %3D graph
 close all;
