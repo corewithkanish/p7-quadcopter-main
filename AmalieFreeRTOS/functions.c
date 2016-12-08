@@ -128,22 +128,22 @@ const float B3[4] = { 0.0377, -0.0377, 0.0377, -0.0377 };
 //const float Fint2[3] = { 117.8511, 0.0000, 83.3333 };
 //const float Fint3[3] = { 0.0000, 117.8511, -83.3333 };
 //const float Fint4[3] = { -117.8511, 0.0000, 83.3333 };
-const float F1[6] = { 0.0000, -163.0571, -200.0359, 0.0000, -53.8762, -71.7659 };
-const float F2[6] = { 163.0571, 0.0000, 200.0359, 53.8762, 0.0000, 71.7659 };
-const float F3[6] = { 0.0000, 163.0571, -200.0359, 0.0000, 53.8762, -71.7659 };
-const float F4[6] = { -163.0571, 0.0000, 200.0359, -53.8762, 0.0000, 71.7659 };
-const float Fint1[3] = { 0.0000, -117.8511, -125.0000 };
-const float Fint2[3] = { 117.8511, 0.0000, 125.0000 };
-const float Fint3[3] = { 0.0000, 117.8511, -125.0000 };
-const float Fint4[3] = { -117.8511, 0.0000, 125.000 };
-//const float F1[6] = { 0.0000, -163.0571, -133.5460, 0.0000, -53.8762, -65.3406 };  //
-//const float F2[6] = { 163.0571, -0.0000, 133.5460, 53.8762, 0.0000, 65.3406 };
-//const float F3[6] = { 0.0000, 163.0571, -133.5460, 0.0000, 53.8762, -65.3406 };
-//const float F4[6] = { -163.0571, - 0.0000,  133.5460, - 53.8762 ,   0.0000 ,  65.3406 };
-//const float Fint1[3] = { 0.0000, -117.8511, -83.3333 };
-//const float Fint2[3] = { 117.851	1, 0.0000, 83.3333 };
-//const float Fint3[3] = { 0.0000, 117.8511, -83.3333 };
-//const float Fint4[3] = { -117.8511, 0.0000, 83.3333 };
+// const float F1[6] = { 0.0000, -163.0571, -200.0359, 0.0000, -53.8762, -71.7659 }; //best so far, works on stick
+// const float F2[6] = { 163.0571, 0.0000, 200.0359, 53.8762, 0.0000, 71.7659 };
+// const float F3[6] = { 0.0000, 163.0571, -200.0359, 0.0000, 53.8762, -71.7659 };
+// const float F4[6] = { -163.0571, 0.0000, 200.0359, -53.8762, 0.0000, 71.7659 };
+// const float Fint1[3] = { 0.0000, -117.8511, -125.0000 };
+// const float Fint2[3] = { 117.8511, 0.0000, 125.0000 };
+// const float Fint3[3] = { 0.0000, 117.8511, -125.0000 };
+// const float Fint4[3] = { -117.8511, 0.0000, 125.000 };
+const float F1[6] = {  0.0000 ,-165.1476, -223.3527,   0.0000 , -44.0357,  -68.5229};  //
+const float F2[6] = {165.1476   , 0.0000  ,223.3527  , 44.0357   , 0.0000  , 68.5229};
+const float F3[6] = { 0.0000 , 165.1476, -223.3527 ,   0.0000 ,  44.0357 , -68.5229};
+const float F4[6] = {  -165.1476 ,  0.0000  ,223.3527,  -44.0357,   0.0000  , 68.5229 };
+const float Fint1[3] = { 0.0000 ,-220.9709 ,-250.0000 };
+const float Fint2[3] = { 220.9709  ,  0.0000 , 250.0000 };
+const float Fint3[3] = { 0.0000 , 220.9709 ,-250.0000 };
+const float Fint4[3] = { -220.9709 ,  0.0000  ,250.0000 };
 //const float F1[6] = { -0.0000, -163.0571, -229.3125, -0.0000, -53.8762, -74.4193 };  //
 //const float F2[6] = { 163.0571, -0.0000, 229.3125, 53.8762, 0.0000, 74.4193 };
 //const float F3[6] = { 0.0000, 163.0571, -229.3125, 0.0000, 53.8762, -74.4193 };
@@ -182,7 +182,8 @@ void Controller(void)
 {
 	float pos_e_k[3] = { 0.0, 0.0, 0.0 };
 	float vel_e_k[3] = { 0.0, 0.0, 0.0 };
-	float vel_ref_k[3] = { 0.0, 0.0, 0.0 };
+	float vel_e_k1[3] = { 0.0, 0.0, 0.0 };
+  float vel_ref_k[3] = { 0.0, 0.0, 0.0 };
 	float xint_k[3] = { 0.0, 0.0, 0.0 };
 	float x2_k[3] = { 0.0, 0.0, 0.0 };
 	float o_k[3] = { 0.0, 0.0, 0.0 };
@@ -197,7 +198,7 @@ void Controller(void)
 	{
 		switch (i)
 		{
-		case 1:
+		case 0:
 			{
 				//pos_e_k[i] = pos_ref[i] - pos[i];
 				//vel_ref_k[i] = Px*pos_e_k[i];
@@ -205,7 +206,7 @@ void Controller(void)
 				//r_k[i] = Pxdot*vel_e_k[i];
 			}
 			break;
-		case 2:
+		case 1:
 			{
 				//pos_e_k[i] = pos_ref[i] - pos[i];
 				//vel_ref_k[i] = Py*pos_e_k[i];
@@ -213,13 +214,14 @@ void Controller(void)
 				//r_k[i] = Pydot*vel_e_k[i];
 			}
 			break;
-		case 3:
+		case 2:
 			{
-				pos_e_k[i] = pos_ref[i] - pos[i];
-				if (sat[0] || sat[1] || sat[2] || sat[3])
-					pos_e_k[i] = 0;
-				vel_ref_k[i] =0.5*pos_e_k[i];
+				// pos_e_k[i] = pos_ref[i] - pos[i];   
+				// vel_ref_k[i] =0.5*pos_e_k[i];
+        vel_ref_k[i] = 0;
 				vel_e_k[i] = vel_ref_k[i] - vel[i];
+        if (sat[0] || sat[1] || sat[2] || sat[3])
+					vel_e_k[i] = 0;
 				u_z = -208.8*vel_e_k[i] + 198.2*vel_e_k1[i] + u_z;
 			}
 			break;
@@ -404,8 +406,8 @@ void ApplyVelocities(void)
 	//	low_level = 1;
 	//}
 
-	//Set_PWM_duty(165, 165, 165, 165);
-	Set_PWM_duty((char)duty[0], (char)duty[1], (char)duty[2], (char)duty[3]);
+	//Set_PWM_duty(200, 200, 200, 200);
+	Set_PWM_duty((char)duty[0], (char)duty[1], (char)duty[2], (char)duty[3]); //controller
 	//Set_PWM_duty(duty0, 128, duty2, 128);
 }
 

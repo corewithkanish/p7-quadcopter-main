@@ -1,4 +1,4 @@
-#define EQU_SPEED 406
+#define EQU_SPEED 40
 #define T 0.035
 
 #define DUTY_MAX 225
