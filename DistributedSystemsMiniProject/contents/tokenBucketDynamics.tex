@@ -45,32 +45,91 @@ The mean queue length, mean waiting time and packet loss probability are given b
 \end{flalign}
 
 \subsection{Rear Camera}
-The $H$ matrix in the case of the rear camera is $9\time9$ and can be seen in \autoref{}
-\begin{flalign}
-H_{RC}=
-  \begin{bmatrix}
-    A_0 & A_1 & A_2 & A_3 & A_4 & A_5 & A_6 & A_7 & 1-\sum_{0}^{7}A_j  \\
-    A_0 & A_1 & A_2 & A_3 & A_4 & A_5 & A_6 & A_7 & 1-\sum_{0}^{7}A_j \\
-    0   & A_0 & A_1 & A_2 & A_3 & A_4 & A_5 & A_6 & 1-\sum_{0}^{6}A_j \\
-    0   & 0   & A_0 & A_1 & A_2 & A_3 & A_4 & A_5 & 1-\sum_{0}^{5}A_j \\
-    0   & 0   & 0   & A_0 & A_1 & A_2 & A_3 & A_4 & 1-\sum_{0}^{4}A_j \\
-    0   & 0   & 0   & 0   & A_0 & A_1 & A_2 & A_3 & 1-\sum_{0}^{3}A_j \\
-    0   & 0   & 0   & 0   & 0   & A_0 & A_1 & A_2 & 1-\sum_{0}^{2}A_j \\
-    0   & 0   & 0   & 0   & 0   & 0   & A_0 & A_1 & 1-\sum_{0}^{1}A_j \\
-    0   & 0   & 0   & 0   & 0   & 0   & 0   & A_0 & 1-A_0
-  \end{bmatrix}
-\end{flalign}
+The $H$ matrix in the case of the rear camera is $9\time9$ as the queue can hold a maximum of 8 packets. The mean queue length, mean waiting time and Packet Loss Probability is found following the procedure above.
 
+The estimated queue lengths and mean delay has been found using the TrueTime Simulation by averaging the diferent variables in a 50 seconds simulation. These are seen below.
+\begin{flalign}
+	\bar{Q}=0.0391\ \mathrm{packets}  \nonumber\\
+	\bar{W}=0.00073\ \mathrm{s} \nonumber\\
+	Q_{\mathrm{max}}=5\ \mathrm{packets}  \nonumber\\
+	W_{\mathrm{max}}=0.0717\ \mathrm{s} \nonumber\\
+\end{flalign}
+The figures below show how the queue and the delay evolved in the simulation.
+%\begin{figure}[H]
+%	\captionbox
+%	{
+%		Queue length of the rear camera in the simulation.
+%		\label{fig:queueRC}
+%	}
+%	{
+%		\includegraphics[width=.46\textwidth]{figures/queueRC}
+%	}
+%	\hspace{5pt}
+%	\captionbox
+%	{
+%		Waiting time of the rear camera in the simulation.
+%		\label{fig:timeRC}
+%	}
+%	{
+%		\includegraphics[width=.46\textwidth]{figures/timeRC}
+%	}
+%\end{figure}
+
+
+%\begin{flalign}
+%H_{RC}=
+%  \begin{bmatrix}
+%    A_0 & A_1 & A_2 & A_3 & A_4 & A_5 & A_6 & A_7 & 1-\sum_{0}^{7}A_j  \\
+%    A_0 & A_1 & A_2 & A_3 & A_4 & A_5 & A_6 & A_7 & 1-\sum_{0}^{7}A_j \\
+%    0   & A_0 & A_1 & A_2 & A_3 & A_4 & A_5 & A_6 & 1-\sum_{0}^{6}A_j \\
+%    0   & 0   & A_0 & A_1 & A_2 & A_3 & A_4 & A_5 & 1-\sum_{0}^{5}A_j \\
+%    0   & 0   & 0   & A_0 & A_1 & A_2 & A_3 & A_4 & 1-\sum_{0}^{4}A_j \\
+%    0   & 0   & 0   & 0   & A_0 & A_1 & A_2 & A_3 & 1-\sum_{0}^{3}A_j \\
+%    0   & 0   & 0   & 0   & 0   & A_0 & A_1 & A_2 & 1-\sum_{0}^{2}A_j \\
+%    0   & 0   & 0   & 0   & 0   & 0   & A_0 & A_1 & 1-\sum_{0}^{1}A_j \\
+%    0   & 0   & 0   & 0   & 0   & 0   & 0   & A_0 & 1-A_0
+%  \end{bmatrix}
+%\end{flalign}
 
 \subsection{Multimedia System}
+In the multimedia case, the $H$ matrix is $6\time6$ as the queue length is 5. The analytical values for the mean queue length, mean waiting time and packet loss probability are found similarly as for the multimedia.
+
+The estimated queue lengths and mean delay has been found using the TrueTime Simulation following the same procedure as for the rear camera.
 \begin{flalign}
-H_{multimedia}=
-\begin{bmatrix}
-A_0 & A_1 & A_2 & A_3 & A_4 & 1-\sum_{0}^{4}A_j  \\
-A_0 & A_1 & A_2 & A_3 & A_4 & 1-\sum_{0}^{4}A_j \\
-0   & A_0 & A_1 & A_2 & A_3 & 1-\sum_{0}^{3}A_j \\
-0   & 0   & A_0 & A_1 & A_2 & 1-\sum_{0}^{2}A_j \\
-0   & 0   & 0   & A_0 & A_1 & 1-\sum_{0}^{1}A_j \\
-0   & 0   & 0   & 0   & A_0 & 1-A_0
-\end{bmatrix}
+	\bar{Q}=0.1389\ \mathrm{packets}  \nonumber\\
+	\bar{W}=0.0032\ \mathrm{s} \nonumber\\
+	Q_{\mathrm{max}}=5\ \mathrm{packets}  \nonumber\\
+	W_{\mathrm{max}}=0.1\ \mathrm{s} \nonumber\\
 \end{flalign}
+
+The figures below show how the queue and the delay evolved in the simulation.
+%\begin{figure}[H]
+%	\captionbox
+%	{
+%		Queue length of the rear camera in the simulation.
+%		\label{fig:queueMultimedia}
+%	}
+%	{
+%		\includegraphics[width=.46\textwidth]{figures/queueMultimedia}
+%	}
+%	\hspace{5pt}
+%	\captionbox
+%	{
+%		Waiting time of the rear camera in the simulation.
+%		\label{fig:timeMultimedia}
+%	}
+%	{
+%		\includegraphics[width=.46\textwidth]{figures/timeMultimedia}
+%	}
+\end{figure}
+%\begin{flalign}
+%H_{multimedia}=
+%\begin{bmatrix}
+%A_0 & A_1 & A_2 & A_3 & A_4 & 1-\sum_{0}^{4}A_j  \\
+%A_0 & A_1 & A_2 & A_3 & A_4 & 1-\sum_{0}^{4}A_j \\
+%0   & A_0 & A_1 & A_2 & A_3 & 1-\sum_{0}^{3}A_j \\
+%0   & 0   & A_0 & A_1 & A_2 & 1-\sum_{0}^{2}A_j \\
+%0   & 0   & 0   & A_0 & A_1 & 1-\sum_{0}^{1}A_j \\
+%0   & 0   & 0   & 0   & A_0 & 1-A_0
+%\end{bmatrix}
+%\end{flalign}
