@@ -136,14 +136,14 @@ const float B3[4] = { 0.0377, -0.0377, 0.0377, -0.0377 };
 // const float Fint2[3] = { 117.8511, 0.0000, 125.0000 };
 // const float Fint3[3] = { 0.0000, 117.8511, -125.0000 };
 // const float Fint4[3] = { -117.8511, 0.0000, 125.000 };
-const float F1[6] = {  0.0000 ,-165.1476, -223.3527,   0.0000 , -44.0357,  -68.5229};  //
-const float F2[6] = {165.1476   , 0.0000  ,223.3527  , 44.0357   , 0.0000  , 68.5229};
-const float F3[6] = { 0.0000 , 165.1476, -223.3527 ,   0.0000 ,  44.0357 , -68.5229};
-const float F4[6] = {  -165.1476 ,  0.0000  ,223.3527,  -44.0357,   0.0000  , 68.5229 };
-const float Fint1[3] = { 0.0000 ,-220.9709 ,-250.0000 };
-const float Fint2[3] = { 220.9709  ,  0.0000 , 250.0000 };
-const float Fint3[3] = { 0.0000 , 220.9709 ,-250.0000 };
-const float Fint4[3] = { -220.9709 ,  0.0000  ,250.0000 };
+const float F1[6] = { 0.0000, -165.1476, -223.3527, 0.0000, -44.0357, -68.5229 };  //
+const float F2[6] = { 165.1476, 0.0000, 223.3527, 44.0357, 0.0000, 68.5229 };
+const float F3[6] = { 0.0000, 165.1476, -223.3527, 0.0000, 44.0357, -68.5229 };
+const float F4[6] = { -165.1476, 0.0000, 223.3527, -44.0357, 0.0000, 68.5229 };
+const float Fint1[3] = { 0.0000, -220.9709, -250.0000 };
+const float Fint2[3] = { 220.9709, 0.0000, 250.0000 };
+const float Fint3[3] = { 0.0000, 220.9709, -250.0000 };
+const float Fint4[3] = { -220.9709, 0.0000, 250.0000 };
 //const float F1[6] = { -0.0000, -163.0571, -229.3125, -0.0000, -53.8762, -74.4193 };  //
 //const float F2[6] = { 163.0571, -0.0000, 229.3125, 53.8762, 0.0000, 74.4193 };
 //const float F3[6] = { 0.0000, 163.0571, -229.3125, 0.0000, 53.8762, -74.4193 };
@@ -170,6 +170,7 @@ float vel[3] = { 0.0, 0.0, 0.0 };
 float pos_e_k1[3] = { 0.0, 0.0, 0.0 };
 float vel_ref_k1[3] = { 0.0, 0.0, 0.0 };
 short sat[4] = { 0, 0, 0, 0 };
+short sat_z = 0;
 short reading = 0;
 short low_level = 0;
 float battery = 11.1;
@@ -183,19 +184,21 @@ void Controller(void)
 	float pos_e_k[3] = { 0.0, 0.0, 0.0 };
 	float vel_e_k[3] = { 0.0, 0.0, 0.0 };
 	float vel_e_k1[3] = { 0.0, 0.0, 0.0 };
-  float vel_ref_k[3] = { 0.0, 0.0, 0.0 };
+	float vel_ref_k[3] = { 0.0, 0.0, 0.0 };
 	float xint_k[3] = { 0.0, 0.0, 0.0 };
 	float x2_k[3] = { 0.0, 0.0, 0.0 };
 	float o_k[3] = { 0.0, 0.0, 0.0 };
 	float oint_k[3] = { 0.0, 0.0, 0.0 };
 	float e_k[3] = { 0.0, 0.0, 0.0 };
-	int i;
+	int i = 0;
 
 	//------------Translational Controller-----------------//
 	//if low_level
 	//	pos_ref[3] = 0;
-	for (i = 0; i > 3; i++)
+	
+	for (i = 0; i < 3; i=i+1)
 	{
+		
 		switch (i)
 		{
 		case 0:
@@ -215,19 +218,35 @@ void Controller(void)
 			}
 			break;
 		case 2:
-			{
-				// pos_e_k[i] = pos_ref[i] - pos[i];   
-				// vel_ref_k[i] =0.5*pos_e_k[i];
-        vel_ref_k[i] = 0;
-				vel_e_k[i] = vel_ref_k[i] - vel[i];
-        if (sat[0] || sat[1] || sat[2] || sat[3])
-					vel_e_k[i] = 0;
-				u_z = -208.8*vel_e_k[i] + 198.2*vel_e_k1[i] + u_z;
+		{
+
+			pos_e_k[i] = pos_ref[i] - pos[i];
+			vel_ref_k[i] =0.5*pos_e_k[i];
+			//vel_ref_k[i] = 0;
+			vel_e_k[i] = vel_ref_k[i] - vel[i];
+			if (sat[0] || sat[1] || sat[2] || sat[3] || sat_z)
+				vel_e_k[i] = 0;
+			
+			u_z = -208.8*vel_e_k[i] + 198.2*vel_e_k1[i] + u_z;
+			//u_z = -121.3*vel_e_k[i] + 118.7*vel_e_k1[i] + u_z;
+			//u_z = -305.3*vel_e_k[i] + 294.8*vel_e_k1[i] + u_z;
+			sat_z = 0;
+
+			if (u_z > UZ_MAX){
+				u_z = UZ_MAX;
+				sat_z = 1;
 			}
+			if (u_z <UZ_MIN){
+				u_z = UZ_MIN;
+				sat_z = 1;
+			}
+			}
+
 			break;
 		}
+		
 	}
-
+	
 
 	//------------Angular Controller-----------------//
 
@@ -326,6 +345,7 @@ void Controller(void)
 	e_k1[0] = e_k[0];
 	e_k1[1] = e_k[1];
 	e_k1[2] = e_k[2];
+
 	xint_k1[0] = xint_k[0];
 	xint_k1[1] = xint_k[1];
 	xint_k1[2] = xint_k[2];
@@ -351,7 +371,7 @@ void ApplyVelocities(void)
 	float uk[4] = { 0, 0, 0, 0 };
 	int duty[4] = { 0, 0, 0, 0 };
 	unsigned int diff = 0;
-	float h [4] = { 0, 0, 0, 0 };
+	//float h [4] = { 0, 0, 0, 0 };
 	int i;
 
 	// Calculate height of each propeller
