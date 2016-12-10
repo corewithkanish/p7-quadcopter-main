@@ -22,8 +22,8 @@ xdot_ref_time=0.5;
 xdot_ref_step=1;
 ydot_ref_time=2.5;
 ydot_ref_step=1;
-zdot_ref_time=0.5;
-zdot_ref_step=1;
+zdot_ref_time=0;
+zdot_ref_step=-1;
 x_ref_time=0;
 x_ref_step=0;
 y_ref_time=0;
@@ -56,13 +56,14 @@ figure
 plot(zdot.Time, zdot.Data, 'Color', '[0 0 1]','lineWidth', 1.2);
 hold on
 plot(zdot_ref.Time, zdot_ref.Data, 'Color','[0 0 0.5]', 'lineStyle', '--','lineWidth', 1.2);
+set(gca,'YDir','reverse');
 grid on;
 grid minor;
 title('Velocity Translational Controller in z_I  Direction');
 xlabel('Time [s]');
 ylabel('Translational Velocity [m/s]');
 legend( 'zdot', 'zdot Reference','Location','southeast');
-xlim([0 6])
+axis([ -.5 6 -1.2 0.2 ])
 
 figure
 plot(roll.Time, roll.Data, 'Color', '[0 1 0]','lineWidth', 1.2);
@@ -85,7 +86,7 @@ grid minor;
 title('Control Action for the z_I Velocity Controller');
 xlabel('Time [s]');
 ylabel('Sum of rotational speeds in the motors [rad/s]');
-xlim([0 6])
+axis([ -.5 6 -50 300 ])
 
 
 %% ------- Closed loop bode for velocity Controller ---------------------------------
@@ -134,8 +135,8 @@ x_ref_time=0.5;
 x_ref_step=5;
 y_ref_time=2.5;
 y_ref_step=5;
-z_ref_time=0.1;
-z_ref_step=5;
+z_ref_time=0;
+z_ref_step=-1;
 xdot_ref_time=0;
 xdot_ref_step=0;
 ydot_ref_time=0;
@@ -185,26 +186,26 @@ plot(z.Time, z.Data, 'Color', '[0 0 1]','lineWidth', 1.2);
 hold on
 plot(z_ref.Time, z_ref.Data, 'Color','[0 0 0.5]', 'lineStyle', '--','lineWidth', 1.2);
 grid on;
+set(gca,'YDir','reverse');
 grid minor;
-title('Velocity Translational Controllers in z_I Direction');
+title('Position Translational Controllers in z_I Direction');
 xlabel('Time [s]');
 ylabel('Translational Position [m]');
 legend('z', 'z Reference','Location','southeast');
-ylim([-1 6])
-xlim([0 10])
+axis([ -.5 8 -1.2 0.2 ])
 
 figure
 plot(zdot.Time, zdot.Data, 'Color', '[0 0 1]','lineWidth', 1.2);
 hold on
 plot(zdot_ref.Time, zdot_ref.Data, 'Color','[0 0 0.5]', 'lineStyle', '--','lineWidth', 1.2);
 grid on;
+set(gca,'YDir','reverse');
 grid minor;
 title('Control Action for z_I Position Controller');
 xlabel('Time [s]');
 ylabel('Translational Velocity [m/s]');
 legend( 'zdot', 'zdot Reference','Location','northeast');
-xlim([0 10])
-
+axis([ -.5 8 -1.2 0.2 ])
 
 %% ------- Open loop bode for position Controller ---------------------------------
 close all
