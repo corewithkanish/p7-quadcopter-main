@@ -13,11 +13,11 @@ As time approaches infinity, $P_n$ converges. This converged vector of probabili
 
 To be able to calculate the mean queue length, mean waiting time and the packet loss probability, it is necessary to find $\Pi$, that gives the converged probabilities of each of the queue.
     
-This is done solving \autoref{eq:pieq} and forcing $\sum_{i=0}^{L} \Pi$ (L is the queue length) to be 1.
+This is done solving \autoref{eq:pieq} and forcing $\sum_{i=0}^{L} \Pi$ to be 1 (L is the queue length).
 
 The first step is to calculate H. It contains the probabilities of moving among the different states in the queue. Since the queue lengths are sampled each token period, $\frac{1}{T_r}$, the probabilities for a number of packets arriving can be calculated as
 \begin{flalign}
-    A_a=P(a_n=j)=\frac{(\lambda \frac{1}{T_r})^j}{\lambda !} \exp(-\lambda \frac{1}{T_r})
+    A_j=P(a_n=j)=\frac{(\lambda \frac{1}{T_r})^j}{j!} \exp(-\lambda \frac{1}{T_r})
 \end{flalign}
 %
 where $a_n$ is the number of arrivals from a Poisson stream in the service
@@ -45,9 +45,9 @@ The mean queue length, mean waiting time and packet loss probability are given b
 \end{flalign}
 
 \subsection{Rear Camera}
-The $H$ matrix in the case of the rear camera is $9\time9$ as the queue can hold a maximum of 8 packets. The mean queue length, mean waiting time and Packet Loss Probability is found following the procedure above.
+The $H$ matrix in the case of the rear camera is $9\times9$ as the queue can hold a maximum of 8 packets. The mean queue length, mean waiting time and Packet Loss Probability is found following the procedure above.
 
-The estimated queue lengths and mean delay has been found using the TrueTime Simulation by averaging the diferent variables in a 50 seconds simulation. These are seen below.
+The estimated queue lengths and mean delay have been found using the TrueTime Simulation by averaging their values in a 50 seconds simulation. These are seen below.
 \begin{flalign}
 	\bar{Q}=0.0391\ \mathrm{packets}  \nonumber\\
 	\bar{W}=0.00073\ \mathrm{s} \nonumber\\
@@ -55,25 +55,25 @@ The estimated queue lengths and mean delay has been found using the TrueTime Sim
 	W_{\mathrm{max}}=0.0717\ \mathrm{s} \nonumber\\
 \end{flalign}
 The figures below show how the queue and the delay evolved in the simulation.
-%\begin{figure}[H]
-%	\captionbox
-%	{
-%		Queue length of the rear camera in the simulation.
-%		\label{fig:queueRC}
-%	}
-%	{
-%		\includegraphics[width=.46\textwidth]{figures/queueRC}
-%	}
-%	\hspace{5pt}
-%	\captionbox
-%	{
-%		Waiting time of the rear camera in the simulation.
-%		\label{fig:timeRC}
-%	}
-%	{
-%		\includegraphics[width=.46\textwidth]{figures/timeRC}
-%	}
-%\end{figure}
+\begin{figure}[H]
+	\captionbox
+	{
+		Queue length of the rear camera in the simulation.
+		\label{fig:queueRC}
+	}
+	{
+		\includegraphics[width=.46\textwidth]{figures/queueRC}
+	}
+	\hspace{5pt}
+	\captionbox
+	{
+		Waiting time of the rear camera in the simulation.
+		\label{fig:timeRC}
+	}
+	{
+		\includegraphics[width=.46\textwidth]{figures/timeRC}
+	}
+\end{figure}
 
 
 %\begin{flalign}
@@ -92,9 +92,9 @@ The figures below show how the queue and the delay evolved in the simulation.
 %\end{flalign}
 
 \subsection{Multimedia System}
-In the multimedia case, the $H$ matrix is $6\time6$ as the queue length is 5. The analytical values for the mean queue length, mean waiting time and packet loss probability are found similarly as for the multimedia.
+In the multimedia case, the $H$ matrix is $6\times6$ as the queue length is 5. The analytical values for the mean queue length, mean waiting time and packet loss probability are found similarly as for the multimedia.
 
-The estimated queue lengths and mean delay has been found using the TrueTime Simulation following the same procedure as for the rear camera.
+The estimated queue lengths and mean delay have been found using the TrueTime Simulation following the same procedure as for the rear camera.
 \begin{flalign}
 	\bar{Q}=0.1389\ \mathrm{packets}  \nonumber\\
 	\bar{W}=0.0032\ \mathrm{s} \nonumber\\
@@ -103,24 +103,24 @@ The estimated queue lengths and mean delay has been found using the TrueTime Sim
 \end{flalign}
 
 The figures below show how the queue and the delay evolved in the simulation.
-%\begin{figure}[H]
-%	\captionbox
-%	{
-%		Queue length of the rear camera in the simulation.
-%		\label{fig:queueMultimedia}
-%	}
-%	{
-%		\includegraphics[width=.46\textwidth]{figures/queueMultimedia}
-%	}
-%	\hspace{5pt}
-%	\captionbox
-%	{
-%		Waiting time of the rear camera in the simulation.
-%		\label{fig:timeMultimedia}
-%	}
-%	{
-%		\includegraphics[width=.46\textwidth]{figures/timeMultimedia}
-%	}
+\begin{figure}[H]
+	\captionbox
+	{
+		Queue length of the rear camera in the simulation.
+		\label{fig:queueMultimedia}
+	}
+	{
+		\includegraphics[width=.46\textwidth]{figures/queueMultimedia}
+	}
+	\hspace{5pt}
+	\captionbox
+	{
+		Waiting time of the rear camera in the simulation.
+		\label{fig:timeMultimedia}
+	}
+	{
+		\includegraphics[width=.46\textwidth]{figures/timeMultimedia}
+	}
 \end{figure}
 %\begin{flalign}
 %H_{multimedia}=

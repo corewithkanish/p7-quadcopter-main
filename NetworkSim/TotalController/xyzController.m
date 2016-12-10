@@ -20,11 +20,11 @@ Gy=1/s;
 %sisotool(Gy);
 Cy=0.3;
 
-Kz=-2*kth*w1_bar^2;
+Kz=-2*kth*w1_bar;
 Gzdot=Kz/(m*s);
 %sisotool(Gzdot);
-Czdot=-201.8*(s+0.8)/s;
+Czdot=-280*(s+0.8)/s;
 
 Gz=1/s;
 %sisotool(Gz);
-Cz=0.5;
+Cz=1;
