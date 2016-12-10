@@ -1,4 +1,4 @@
-#define EQU_SPEED 40
+#define EQU_SPEED 410
 #define T 0.035
 
 #define DUTY_MAX 225
@@ -6,8 +6,10 @@
 #define DUTY_INIT 175
 #define DUTY_MAX_DIFF 30
 
-#define U_MAX 238
-#define U_MIN -168
+#define U_MAX 104.55
+#define U_MIN -62.2
+#define UZ_MIN -480
+#define UZ_MAX 480
 
 #define LENGTH 0.225
 #define H 0.422
