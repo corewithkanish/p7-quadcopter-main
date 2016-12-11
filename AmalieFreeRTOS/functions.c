@@ -171,6 +171,8 @@ float pos_e_k1[3] = { 0.0, 0.0, 0.0 };
 float vel_ref_k1[3] = { 0.0, 0.0, 0.0 };
 short sat[4] = { 0, 0, 0, 0 };
 short sat_z = 0;
+short sat_angle_roll = 0;
+short sat_angle_pitch = 0;
 short reading = 0;
 short low_level = 0;
 float battery = 11.1;
@@ -198,49 +200,75 @@ void Controller(void)
 	
 	for (i = 0; i < 3; i=i+1)
 	{
-		
 		switch (i)
 		{
 		case 0:
 			{
-				//pos_e_k[i] = pos_ref[i] - pos[i];
-				//vel_ref_k[i] = Px*pos_e_k[i];
-				//vel_e_k[i] = vel_ref_k[i] - vel[i];
-				//r_k[i] = Pxdot*vel_e_k[i];
+			pos_e_k[i] = pos_ref[i] - pos[i];
+			vel_ref_k[i] = 0.3*pos_e_k[i];
+			//vel_ref_k[i] = 0;
+			vel_e_k[i] = vel_ref_k[i] - vel[i];
+			//if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_roll)
+			//	vel_e_k[i] = 0;
+			//r_k[i] =- 0.08*vel_e_k[i] + 0.08*vel_e_k1[i] + r_k[i];
+			r_k[i] =- 0.12*vel_e_k[i];
+			sat_angle_roll = 0;
+			if (r_k[i] > MAX_ANGLE){
+				r_k[i] = MAX_ANGLE;
+				sat_angle_roll = 1;
+			}
+			if (r_k[i] <MIN_ANGLE){
+				r_k[i] = MIN_ANGLE;
+				sat_angle_roll = 1;
+			}
 			}
 			break;
 		case 1:
 			{
-				//pos_e_k[i] = pos_ref[i] - pos[i];
-				//vel_ref_k[i] = Py*pos_e_k[i];
-				//vel_e_k[i] = vel_ref_k[i] - vel[i];
-				//r_k[i] = Pydot*vel_e_k[i];
+			pos_e_k[i] = pos_ref[i] - pos[i];
+			vel_ref_k[i] = 0.3*pos_e_k[i];
+			//vel_ref_k[i] = 0;
+			vel_e_k[i] = vel_ref_k[i] - vel[i];
+		//if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_pitch)
+				//vel_e_k[i] = 0;
+			//r_k[i] = 0.08*vel_e_k[i] - 0.08*vel_e_k1[i] + r_k[i];
+			r_k[i] = 0.12*vel_e_k[i];
+			sat_angle_pitch = 0;
+
+			if (r_k[i] > MAX_ANGLE){
+				r_k[i] = MAX_ANGLE;
+				sat_angle_pitch = 1;
+			}
+			if (r_k[i] <MIN_ANGLE){
+				r_k[i] = MIN_ANGLE;
+				sat_angle_pitch = 1;
+			}
 			}
 			break;
 		case 2:
 		{
-
-			pos_e_k[i] = pos_ref[i] - pos[i];
-			vel_ref_k[i] =0.5*pos_e_k[i];
-			//vel_ref_k[i] = 0;
-			vel_e_k[i] = vel_ref_k[i] - vel[i];
-			if (sat[0] || sat[1] || sat[2] || sat[3] || sat_z)
-				vel_e_k[i] = 0;
-			
-			u_z = -208.8*vel_e_k[i] + 198.2*vel_e_k1[i] + u_z;
-			//u_z = -121.3*vel_e_k[i] + 118.7*vel_e_k1[i] + u_z;
-			//u_z = -305.3*vel_e_k[i] + 294.8*vel_e_k1[i] + u_z;
-			sat_z = 0;
-
-			if (u_z > UZ_MAX){
-				u_z = UZ_MAX;
-				sat_z = 1;
-			}
-			if (u_z <UZ_MIN){
-				u_z = UZ_MIN;
-				sat_z = 1;
-			}
-			}
+			//pos_e_k[i] = pos_ref[i] - pos[i];
+			//vel_ref_k[i] = 0.5*pos_e_k[i];
+			//			//vel_ref_k[i] = 0;
+			//	vel_e_k[i] = vel_ref_k[i] - vel[i];
+			//if (sat[0] || sat[1] || sat[2] || sat[3] || sat_z)
+			//	 vel_e_k[i] = 0;
+			//
+			//	u_z = -208.8*vel_e_k[i] + 198.2*vel_e_k1[i] + u_z;
+			//			//u_z = -121.3*vel_e_k[i] + 118.7*vel_e_k1[i] + u_z;
+			//				//u_z = -305.3*vel_e_k[i] + 294.8*vel_e_k1[i] + u_z;
+			//	sat_z = 0;
+			//
+			//if (u_z > UZ_MAX){
+			//	u_z = UZ_MAX;
+			//	sat_z = 1;
+			//}
+			//if (u_z <UZ_MIN){
+			//	u_z = UZ_MIN;
+			//	sat_z = 1;
+			//	
+			//}
+		}
 
 			break;
 		}

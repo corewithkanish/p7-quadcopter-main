@@ -10,6 +10,9 @@
 #define U_MIN -62.2
 #define UZ_MIN -480
 #define UZ_MAX 480
+#define MAX_ANGLE 0.12
+#define MIN_ANGLE -0.12
+
 
 #define LENGTH 0.225
 #define H 0.422
