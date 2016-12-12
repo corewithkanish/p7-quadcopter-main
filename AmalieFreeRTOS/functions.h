@@ -1,4 +1,4 @@
-#define EQU_SPEED 410
+#define EQU_SPEED 435
 #define T 0.035
 
 #define DUTY_MAX 225
@@ -10,8 +10,8 @@
 #define U_MIN -62.2
 #define UZ_MIN -480
 #define UZ_MAX 480
-#define MAX_ANGLE 0.12
-#define MIN_ANGLE -0.12
+#define MAX_ANGLE 0.30
+#define MIN_ANGLE -0.30
 
 
 #define LENGTH 0.225

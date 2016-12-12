@@ -100,8 +100,10 @@ z_ref_time=0;
 z_ref_step=0;
 roll_init=0;
 roll_step=1;
+roll_ref_time=0;
 pitch_init=0;
 pitch_step=1;
+pitch_ref_time=0.5;
 yaw_init=0;
 yaw_step=0;
 
