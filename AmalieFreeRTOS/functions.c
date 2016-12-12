@@ -5,6 +5,8 @@
 
 #include "functions.h"
 
+int count;
+int kill = 0;
 // Constant matrices
 const float L[3] = { -11.0, -12.0, -13.0 };
 const float B1[4] = { 0.0, -0.2396, 0.0, 0.2396 };
@@ -171,6 +173,8 @@ float pos_e_k1[3] = { 0.0, 0.0, 0.0 };
 float vel_ref_k1[3] = { 0.0, 0.0, 0.0 };
 short sat[4] = { 0, 0, 0, 0 };
 short sat_z = 0;
+short sat_angle_roll = 0;
+short sat_angle_pitch = 0;
 short reading = 0;
 short low_level = 0;
 float battery = 11.1;
@@ -198,49 +202,76 @@ void Controller(void)
 	
 	for (i = 0; i < 3; i=i+1)
 	{
-		
 		switch (i)
 		{
 		case 0:
 			{
-				//pos_e_k[i] = pos_ref[i] - pos[i];
-				//vel_ref_k[i] = Px*pos_e_k[i];
-				//vel_e_k[i] = vel_ref_k[i] - vel[i];
-				//r_k[i] = Pxdot*vel_e_k[i];
+			//pos_e_k[i] = pos_ref[i] - pos[i];
+			//vel_ref_k[i] = 0.3*pos_e_k[i];
+			////vel_ref_k[i] = 0;
+			//vel_e_k[i] = vel_ref_k[i] - vel[i];
+			//if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_pitch)
+			//	vel_e_k[i] = 0;
+			//r_k[1] =-0.08*vel_e_k[i] + 0.08*vel_e_k1[i] + r_k[1];
+			////r_k[1] =- 0.5*vel_e_k[i];
+			//sat_angle_roll = 0;
+			//if (r_k[1] > MAX_ANGLE){
+			//	r_k[1] = MAX_ANGLE;
+			//	sat_angle_roll = 1;
+			//}
+			//if (r_k[1] < MIN_ANGLE){
+			//	r_k[1] = MIN_ANGLE;
+			//	sat_angle_roll = 1;
+			//}
 			}
 			break;
 		case 1:
-			{
-				//pos_e_k[i] = pos_ref[i] - pos[i];
-				//vel_ref_k[i] = Py*pos_e_k[i];
-				//vel_e_k[i] = vel_ref_k[i] - vel[i];
-				//r_k[i] = Pydot*vel_e_k[i];
-			}
+		{
+		//	pos_e_k[i] = pos_ref[i] - pos[i];
+		//	vel_ref_k[i] = 0.3*pos_e_k[i];
+		//	//vel_ref_k[i] = 0;
+		//	vel_e_k[i] = vel_ref_k[i] - vel[i];
+		//if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_roll)
+		//		vel_e_k[i] = 0;
+		//	r_k[0] = 0.08*vel_e_k[i] - 0.08*vel_e_k1[i] + r_k[0];
+		//	//r_k[0] = 0.12*vel_e_k[i];
+		//	sat_angle_pitch = 0;
+
+		//	if (r_k[0] > MAX_ANGLE){
+		//		r_k[0] = MAX_ANGLE;
+		//		sat_angle_pitch = 1;
+		//	}
+		//	if (r_k[0] < MIN_ANGLE){
+		//		r_k[0] = MIN_ANGLE;
+		//		sat_angle_pitch = 1;
+		//	}
+		}
 			break;
 		case 2:
 		{
-
-			pos_e_k[i] = pos_ref[i] - pos[i];
-			vel_ref_k[i] =0.5*pos_e_k[i];
-			//vel_ref_k[i] = 0;
-			vel_e_k[i] = vel_ref_k[i] - vel[i];
-			if (sat[0] || sat[1] || sat[2] || sat[3] || sat_z)
-				vel_e_k[i] = 0;
-			
-			u_z = -208.8*vel_e_k[i] + 198.2*vel_e_k1[i] + u_z;
-			//u_z = -121.3*vel_e_k[i] + 118.7*vel_e_k1[i] + u_z;
-			//u_z = -305.3*vel_e_k[i] + 294.8*vel_e_k1[i] + u_z;
-			sat_z = 0;
-
-			if (u_z > UZ_MAX){
-				u_z = UZ_MAX;
-				sat_z = 1;
-			}
-			if (u_z <UZ_MIN){
-				u_z = UZ_MIN;
-				sat_z = 1;
-			}
-			}
+			//pos_e_k[i] = pos_ref[i] - pos[i];
+			//vel_ref_k[i] = 0.5*pos_e_k[i];
+			//			//vel_ref_k[i] = 0;
+			//	vel_e_k[i] = vel_ref_k[i] - vel[i];
+			////if (sat[0] || sat[1] || sat[2] || sat[3] || sat_z)
+			////	 vel_e_k[i] = 0;
+			//
+			//	//u_z = -208.8*vel_e_k[i] + 198.2*vel_e_k1[i] + u_z;
+			//	//u_z = -121.3*vel_e_k[i] + 118.7*vel_e_k1[i] + u_z;
+			//	//u_z = -305.3*vel_e_k[i] + 294.8*vel_e_k1[i] + u_z;
+			//	u_z = -200*vel_e_k[i];
+			//	sat_z = 0;
+			//
+			//if (u_z > UZ_MAX){
+			//	u_z = UZ_MAX;
+			//	sat_z = 1;
+			//}
+			//if (u_z < UZ_MIN){
+			//	u_z = UZ_MIN;
+			//	sat_z = 1;
+			//	
+			//}
+		}
 
 			break;
 		}
@@ -330,7 +361,13 @@ void Controller(void)
 			u_k1[1] = F2[0] * y_k[0] + F2[1] * y_k[1] + F2[2] * y_k[2] + F2[3] * x2_k[0] + F2[4] * x2_k[1] + F2[5] * x2_k[2] + Fint2[0] * xint_k[0] + Fint2[1] * xint_k[1] + Fint2[2] * xint_k[2];
 			break;
 		case 2:
+		{
 			u_k1[2] = F3[0] * y_k[0] + F3[1] * y_k[1] + F3[2] * y_k[2] + F3[3] * x2_k[0] + F3[4] * x2_k[1] + F3[5] * x2_k[2] + Fint3[0] * xint_k[0] + Fint3[1] * xint_k[1] + Fint3[2] * xint_k[2];
+			//if (count > 1000 && count < 1005)
+			//{
+			//	u_k1[2] += 200;
+			//}
+		}
 			break;
 		case 3:
 			u_k1[3] = F4[0] * y_k[0] + F4[1] * y_k[1] + F4[2] * y_k[2] + F4[3] * x2_k[0] + F4[4] * x2_k[1] + F4[5] * x2_k[2] + Fint4[0] * xint_k[0] + Fint4[1] * xint_k[1] + Fint4[2] * xint_k[2];
@@ -425,9 +462,11 @@ void ApplyVelocities(void)
 	//{
 	//	low_level = 1;
 	//}
-
-	//Set_PWM_duty(200, 200, 200, 200);
-	Set_PWM_duty((char)duty[0], (char)duty[1], (char)duty[2], (char)duty[3]); //controller
+	//Set_PWM_duty(128, 128, 160, 128);
+	if (kill)
+		Set_PWM_duty(128,128,128,128); //controller
+	else
+		Set_PWM_duty((char)duty[0], (char)duty[1], (char)duty[2], (char)duty[3]); //controller
 	//Set_PWM_duty(duty0, 128, duty2, 128);
 }
 
@@ -480,14 +519,33 @@ int CheckPackageArrival(void)
 	int i = 0;
 	while (i < 3)
 	{
-		if (USART_Receive() == 255)
-		{
-			i++;
+		if (i < 2){
+			if (USART_Receive() == 255 && (i == 0 and i == 1))
+			{
+				i++;
+			}
+			else
+			{
+				pack = 0;
+				i = 3;
+			}
 		}
-		else
-		{
-			pack = 0;
-			i = 3;
+		if (i == 2){
+			if(USART_Receive() == 255)
+			{
+				i++;
+				kill=1
+			}
+			else{
+				if (USART_Receive() == 254){
+					i++;
+					kill = 0
+				}
+				else{
+					pack = 0;
+					i = 3;
+				}
+			}
 		}
 	}
 	return pack;

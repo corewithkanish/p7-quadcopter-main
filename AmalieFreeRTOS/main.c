@@ -13,6 +13,7 @@
 #include "FreeRTOSConfig.h"
 
 int count = 0;
+int kill;
 float u_k1[4];
 short reading;
 float y_k[3];
