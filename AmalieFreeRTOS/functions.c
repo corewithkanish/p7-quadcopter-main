@@ -7,6 +7,12 @@
 
 int count;
 int kill = 0;
+// Code for acceptande test 2
+int countold = 0;
+int countcontrol = 0;
+int fl = 0;
+//////////
+
 // Constant matrices
 const float L[3] = { -11.0, -12.0, -13.0 };
 const float B1[4] = { 0.0, -0.2396, 0.0, 0.2396 };
@@ -196,6 +202,13 @@ void Controller(void)
 	float e_k[3] = { 0.0, 0.0, 0.0 };
 	int i = 0;
 
+	////Code for acceptance test 2
+	if (fl)
+		countercontrol++;
+	if ((vel[2] == vel_old) && (fl))
+		counterold++;
+	else
+		vel_old = vel[2];
 	//------------Translational Controller-----------------//
 	//if low_level
 	//	pos_ref[3] = 0;
@@ -669,6 +682,10 @@ void GetPackage(void)
 		//if (vel[2] == 1.02)
 		//	USART_Transmit(dummy[1]);
 		//LED2 = 0x00;
+		if (vel[2] <= 9.99)
+			fl = 1;
+		else
+			fl = 0;
 	}
 	//LED = 0x00;
 	return;
