@@ -18,12 +18,12 @@ clear
 clc
 run TotalController.m
 t=20;
-xdot_ref_time=0.5;
+xdot_ref_time=0;
 xdot_ref_step=1;
-ydot_ref_time=2.5;
-ydot_ref_step=1;
+ydot_ref_time=0;
+ydot_ref_step=0;
 zdot_ref_time=0;
-zdot_ref_step=-1;
+zdot_ref_step=1;
 x_ref_time=0;
 x_ref_step=0;
 y_ref_time=0;
@@ -32,8 +32,10 @@ z_ref_time=0;
 z_ref_step=0;
 roll_init=0;
 roll_step=0;
+roll_ref_time=0;
 pitch_init=0;
 pitch_step=0;
+pitch_ref_time=0;
 yaw_init=0;
 yaw_step=0;
 
@@ -43,40 +45,42 @@ figure
 plot(xdot.Time, xdot.Data, 'Color', '[1 0 0]','lineWidth', 1.2);
 hold on;
 plot(xdot_ref.Time, xdot_ref.Data, 'Color','[0.5 0 0]', 'lineStyle', '--','lineWidth', 1.2);
-plot(ydot.Time, ydot.Data, 'Color', '[0 1 0]','lineWidth', 1.2);
-plot(ydot_ref.Time, ydot_ref.Data,'Color','[0 0.5 0]', 'lineStyle', '--','lineWidth', 1.2);
+% plot(ydot.Time, ydot.Data, 'Color', '[0 1 0]','lineWidth', 1.2);
+% plot(ydot_ref.Time, ydot_ref.Data,'Color','[0 0.5 0]', 'lineStyle', '--','lineWidth', 1.2);
 grid on;
 grid minor;
-title('Velocity Translational Controllers in x_I and y_I Directions');
+title('Velocity Translational Controller in x_I Direction');
 xlabel('Time [s]');
 ylabel('Translational Velocity [m/s]');
-legend('xdot','xdot Reference', 'ydot','ydot Reference','Location','southeast');
+legend('xdot','xdot Reference','Location','southeast');
+xlim([0 15])
 
 figure
 plot(zdot.Time, zdot.Data, 'Color', '[0 0 1]','lineWidth', 1.2);
 hold on
 plot(zdot_ref.Time, zdot_ref.Data, 'Color','[0 0 0.5]', 'lineStyle', '--','lineWidth', 1.2);
-set(gca,'YDir','reverse');
 grid on;
 grid minor;
 title('Velocity Translational Controller in z_I  Direction');
 xlabel('Time [s]');
 ylabel('Translational Velocity [m/s]');
 legend( 'zdot', 'zdot Reference','Location','southeast');
-axis([ -.5 6 -1.2 0.2 ])
+axis([ 0 6 0 1.2 ])
 
 figure
-plot(roll.Time, roll.Data, 'Color', '[0 1 0]','lineWidth', 1.2);
-hold on;
-plot(roll_ref.Time, roll_ref.Data, 'Color','[0 0.5 0]', 'lineStyle', '--','lineWidth', 1.2);
+% plot(roll.Time, roll.Data, 'Color', '[0 1 0]','lineWidth', 1.2);
+% hold on;
+% plot(roll_ref.Time, roll_ref.Data, 'Color','[0 0.5 0]', 'lineStyle', '--','lineWidth', 1.2);
 plot(pitch.Time, pitch.Data, 'Color', '[1 0 0]','lineWidth', 1.2);
+hold on
 plot(pitch_ref.Time, pitch_ref.Data,'Color','[0.5 0 0]', 'lineStyle', '--','lineWidth', 1.2);
 grid on;
 grid minor;
-title('Control Action for x_I and y_I Velocity Controllers');
+title('Control Action for x_I Velocity Controller');
 xlabel('Time [s]');
 ylabel('Angle [rad]');
-legend('Roll','Roll Reference', 'Pitch','Pitch Reference','Location','southeast');
+legend('Pitch','Pitch Reference','Location','southeast');
+xlim([0 15])
 
 figure
 plot(wsum.Time, wsum.Data,'lineWidth', 1.2);
@@ -86,7 +90,7 @@ grid minor;
 title('Control Action for the z_I Velocity Controller');
 xlabel('Time [s]');
 ylabel('Sum of rotational speeds in the motors [rad/s]');
-axis([ -.5 6 -50 300 ])
+xlim([0 6])
 
 
 %% ------- Closed loop bode for velocity Controller ---------------------------------
@@ -131,12 +135,12 @@ clear
 clc
 run TotalController.m
 t=30;
-x_ref_time=0.5;
-x_ref_step=5;
+x_ref_time=0;
+x_ref_step=1;
 y_ref_time=2.5;
-y_ref_step=5;
+y_ref_step=0;
 z_ref_time=0;
-z_ref_step=-1;
+z_ref_step=1;
 xdot_ref_time=0;
 xdot_ref_step=0;
 ydot_ref_time=0;
@@ -145,8 +149,10 @@ zdot_ref_time=0;
 zdot_ref_step=0;
 roll_init=0;
 roll_step=0;
+roll_ref_time=0;
 pitch_init=0;
 pitch_step=0;
+pitch_ref_time=0;
 yaw_init=0;
 yaw_step=0;
 
@@ -156,29 +162,28 @@ figure
 plot(x.Time, x.Data, 'Color', '[1 0 0]','lineWidth', 1.2);
 hold on;
 plot(x_ref.Time, x_ref.Data, 'Color','[0.5 0 0]', 'lineStyle', '--','lineWidth', 1.2);
-plot(y.Time, y.Data, 'Color', '[0 1 0]','lineWidth', 1.2);
-plot(y_ref.Time, y_ref.Data,'Color','[0 0.5 0]', 'lineStyle', '--','lineWidth', 1.2);
+% plot(y.Time, y.Data, 'Color', '[0 1 0]','lineWidth', 1.2);
+% plot(y_ref.Time, y_ref.Data,'Color','[0 0.5 0]', 'lineStyle', '--','lineWidth', 1.2);
 grid on;
 grid minor;
-title('Velocity Translational Controllers in x_I and y_I Directions');
+title('Position Translational Controller in x_I Direction');
 xlabel('Time [s]');
 ylabel('Translational Position [m]');
-legend('x','x Reference', 'y','y Reference','Location','southeast');
+legend('x','x Reference','Location','southeast');
 xlim([0 20])
-ylim([-1 6])
 
 figure
 plot(xdot.Time, xdot.Data, 'Color', '[1 0 0]','lineWidth', 1.2);
 hold on;
 plot(xdot_ref.Time, xdot_ref.Data, 'Color','[0.5 0 0]', 'lineStyle', '--','lineWidth', 1.2);
-plot(ydot.Time, ydot.Data, 'Color', '[0 1 0]','lineWidth', 1.2);
-plot(ydot_ref.Time, ydot_ref.Data,'Color','[0 0.5 0]', 'lineStyle', '--','lineWidth', 1.2);
+% plot(ydot.Time, ydot.Data, 'Color', '[0 1 0]','lineWidth', 1.2);
+% plot(ydot_ref.Time, ydot_ref.Data,'Color','[0 0.5 0]', 'lineStyle', '--','lineWidth', 1.2);
 grid on;
 grid minor;
-title('Control Action for x_I and y_I Position Controllers');
+title('Control Action for x_I Position Controller');
 xlabel('Time [s]');
 ylabel('Translational Velocity [m/s]');
-legend('xdot','xdot Reference', 'ydot','ydot Reference','Location','northeast');
+legend('xdot','xdot Reference','Location','northeast');
 xlim([0 20])
 
 figure
@@ -186,26 +191,24 @@ plot(z.Time, z.Data, 'Color', '[0 0 1]','lineWidth', 1.2);
 hold on
 plot(z_ref.Time, z_ref.Data, 'Color','[0 0 0.5]', 'lineStyle', '--','lineWidth', 1.2);
 grid on;
-set(gca,'YDir','reverse');
 grid minor;
 title('Position Translational Controllers in z_I Direction');
 xlabel('Time [s]');
 ylabel('Translational Position [m]');
 legend('z', 'z Reference','Location','southeast');
-axis([ -.5 8 -1.2 0.2 ])
+xlim([0 8])
 
 figure
 plot(zdot.Time, zdot.Data, 'Color', '[0 0 1]','lineWidth', 1.2);
 hold on
-plot(zdot_ref.Time, zdot_ref.Data, 'Color','[0 0 0.5]', 'lineStyle', '--','lineWidth', 1.2);
+plot(zdot_ref.Time, zdot_ref.Data, 'Color','[0 0 1]', 'lineStyle', '--','lineWidth', 1.2);
 grid on;
-set(gca,'YDir','reverse');
 grid minor;
 title('Control Action for z_I Position Controller');
 xlabel('Time [s]');
 ylabel('Translational Velocity [m/s]');
 legend( 'zdot', 'zdot Reference','Location','northeast');
-axis([ -.5 8 -1.2 0.2 ])
+xlim([0 8])
 
 %% ------- Open loop bode for position Controller ---------------------------------
 close all
