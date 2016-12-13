@@ -5,14 +5,6 @@
 
 #include "functions.h"
 
-int count;
-int kill = 0;
-// Code for acceptande test 2
-int countold = 0;
-int countcontrol = 0;
-int fl = 0;
-//////////
-
 // Constant matrices
 const float L[3] = { -11.0, -12.0, -13.0 };
 const float B1[4] = { 0.0, -0.2396, 0.0, 0.2396 };
@@ -185,7 +177,15 @@ short reading = 0;
 short low_level = 0;
 float battery = 11.1;
 unsigned int duty_old[4] = { DUTY_INIT, DUTY_INIT, DUTY_INIT, DUTY_INIT };
+float vel_old = 0;
 
+int count;
+int kill = 0;
+// Code for acceptande test 2
+int counterold = 0;
+int countercontrol = 0;
+int fl = 0;
+//////////
 
 //------------------------------- Controller Functions ----------------------//
 
@@ -218,7 +218,7 @@ void Controller(void)
 		switch (i)
 		{
 		case 0:
-			{
+		{
 			//pos_e_k[i] = pos_ref[i] - pos[i];
 			//vel_ref_k[i] = 0.3*pos_e_k[i];
 			////vel_ref_k[i] = 0;
@@ -236,28 +236,28 @@ void Controller(void)
 			//	r_k[1] = MIN_ANGLE;
 			//	sat_angle_roll = 1;
 			//}
-			}
+		}
 			break;
 		case 1:
 		{
-		//	pos_e_k[i] = pos_ref[i] - pos[i];
-		//	vel_ref_k[i] = 0.3*pos_e_k[i];
-		//	//vel_ref_k[i] = 0;
-		//	vel_e_k[i] = vel_ref_k[i] - vel[i];
-		//if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_roll)
-		//		vel_e_k[i] = 0;
-		//	r_k[0] = 0.08*vel_e_k[i] - 0.08*vel_e_k1[i] + r_k[0];
-		//	//r_k[0] = 0.12*vel_e_k[i];
-		//	sat_angle_pitch = 0;
+			//	pos_e_k[i] = pos_ref[i] - pos[i];
+			//	vel_ref_k[i] = 0.3*pos_e_k[i];
+			//	//vel_ref_k[i] = 0;
+			//	vel_e_k[i] = vel_ref_k[i] - vel[i];
+			//if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_roll)
+			//		vel_e_k[i] = 0;
+			//	r_k[0] = 0.08*vel_e_k[i] - 0.08*vel_e_k1[i] + r_k[0];
+			//	//r_k[0] = 0.12*vel_e_k[i];
+			//	sat_angle_pitch = 0;
 
-		//	if (r_k[0] > MAX_ANGLE){
-		//		r_k[0] = MAX_ANGLE;
-		//		sat_angle_pitch = 1;
-		//	}
-		//	if (r_k[0] < MIN_ANGLE){
-		//		r_k[0] = MIN_ANGLE;
-		//		sat_angle_pitch = 1;
-		//	}
+			//	if (r_k[0] > MAX_ANGLE){
+			//		r_k[0] = MAX_ANGLE;
+			//		sat_angle_pitch = 1;
+			//	}
+			//	if (r_k[0] < MIN_ANGLE){
+			//		r_k[0] = MIN_ANGLE;
+			//		sat_angle_pitch = 1;
+			//	}
 		}
 			break;
 		case 2:
@@ -532,8 +532,9 @@ int CheckPackageArrival(void)
 	int i = 0;
 	while (i < 3)
 	{
-		if (i < 2){
-			if (USART_Receive() == 255 && (i == 0 and i == 1))
+		if (i < 2)
+		{
+			if (USART_Receive() == 255)
 			{
 				i++;
 			}
@@ -543,16 +544,19 @@ int CheckPackageArrival(void)
 				i = 3;
 			}
 		}
-		if (i == 2){
+		if (i == 2)
+		{
 			if(USART_Receive() == 255)
 			{
 				i++;
-				kill=1
+				kill = 1;
 			}
-			else{
-				if (USART_Receive() == 254){
+			else
+			{
+				if (USART_Receive() == 254)
+				{
 					i++;
-					kill = 0
+					kill = 0;
 				}
 				else{
 					pack = 0;

@@ -12,9 +12,11 @@
 #include "portmacro.h"
 #include "FreeRTOSConfig.h"
 
-int count = 0;
-int countold = 0;
-int countcontrol = 0;
+int count=0;
+int counterold;
+int countercontrol;
+char c_low = 0;
+char c_high = 0;
 int kill;
 float u_k1[4];
 short reading;
