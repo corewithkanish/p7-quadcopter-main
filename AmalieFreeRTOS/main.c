@@ -13,6 +13,8 @@
 #include "FreeRTOSConfig.h"
 
 int count = 0;
+int countold = 0;
+int countcontrol = 0;
 int kill;
 float u_k1[4];
 short reading;
@@ -103,12 +105,14 @@ int main()
 
 void Controllers(void *pvParameters)
 {
+	c_low = 0;
+	c_high = 0;
 	portTickType xLastWakeTime;
 	xLastWakeTime = xTaskGetTickCount();
 
 	while (1)
 	{
-		if (count<4000)
+		if (count<3000)
 		{
 			//LED = 0xFF;
 			Controller();
@@ -119,6 +123,14 @@ void Controllers(void *pvParameters)
 		else
 		{
 			Set_PWM_duty(128, 128, 128, 128);
+			c_low=(char)(countercontrol && 0x00FF);
+			c_high = (char)((countercontrol && 0xFF00) >> 8);
+			USART_Transmit(c_high);
+			USART_Transmit(c_low);
+			c_low = (char)(counterold && 0x00FF);
+			c_high = (char)((counterold && 0xFF00) >> 8);
+			USART_Transmit(c_high);
+			USART_Transmit(c_low);
 			count = 6000;
 		}
 		if (reading)
