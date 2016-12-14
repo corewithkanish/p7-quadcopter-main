@@ -30,17 +30,17 @@ Tstep=0.3;
 %     -0.5 -0.5 -0.5 -0.5 -0.5 -0.5 -0.5 -0.5 -0.5 -0.5 -0.5 -0.5 -0.5 -0.5 -0.5 -0.5...
 %     -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6 -0.6...
 %     -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7 -0.7].';
+n=10;
 
-% n=10;
-% input_x=[zeros(1,n) ones(1,n) ones(1,n) ones(1,n) ones(1,n) ones(1,n) ones(1,n)...
-%     ones(1,n) zeros(1,n) zeros(1,n) zeros(1,n) zeros(1,n) zeros(1,n) zeros(1,n)].';
-% input_y=[zeros(1,n) zeros(1,n) zeros(1,n) zeros(1,n) ones(1,n) ones(1,n) ones(1,n)...
-%     ones(1,n) ones(1,n) ones(1,n) zeros(1,n) zeros(1,n) zeros(1,n)].';
-% input_z=[-0.1*ones(1,n) -0.1*ones(1,n) -0.1*ones(1,n) -0.1*ones(1,n) -0.1*ones(1,n)...
-%      -0.1*ones(1,n) -0.1*ones(1,n) zeros(1,n) zeros(1,n) zeros(1,n) zeros(1,n)...
-%      zeros(1,n) zeros(1,n) zeros(1,n)].';
+input_z=0:0.01:1;
+input_x=cos(input_z)].';
+input_y=[zeros(1,n) zeros(1,n) zeros(1,n) zeros(1,n) ones(1,n) ones(1,n) ones(1,n)...
+    ones(1,n) ones(1,n) ones(1,n) zeros(1,n) zeros(1,n) zeros(1,n)].';
+input_z=[-0.1*ones(1,n) -0.1*ones(1,n) -0.1*ones(1,n) -0.1*ones(1,n) -0.1*ones(1,n)...
+     -0.1*ones(1,n) -0.1*ones(1,n) zeros(1,n) zeros(1,n) zeros(1,n) zeros(1,n)...
+     zeros(1,n) zeros(1,n) zeros(1,n)].';
+
  
-input_z=[0:-0.1:-10 -10*ones(1,20)];
-input_x=cos(input_z);
-input_y=sin(input_z);
- 
+ x(t) = \cos(t),\,
+{\displaystyle y(t)=\sin(t),\,} y(t) = \sin(t),\,
+{\displaystyle z(t)=t.\,} z(t) = t.\,

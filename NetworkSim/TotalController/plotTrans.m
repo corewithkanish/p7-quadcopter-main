@@ -83,13 +83,15 @@ legend('Pitch','Pitch Reference','Location','southeast');
 xlim([0 15])
 
 figure
-plot(wsum.Time, wsum.Data,'lineWidth', 1.2);
-hold on;
+plot(wsum.Time, wsum.Data-4*w1_bar, 'Color', '[0 0 1]','lineWidth', 1.2);
+hold on
+plot(wsum_ref.Time, wsum_ref.Data,'Color','[0 0 0.5]', 'lineStyle', '--','lineWidth', 1.2);
 grid on;
 grid minor;
 title('Control Action for the z_I Velocity Controller');
 xlabel('Time [s]');
 ylabel('Sum of rotational speeds in the motors [rad/s]');
+legend('\omega_{sum}','\omega_{sum} Reference','Location','southeast');
 xlim([0 6])
 
 
