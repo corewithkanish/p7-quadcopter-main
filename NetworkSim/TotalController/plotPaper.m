@@ -187,3 +187,24 @@ title('Step Response of the Translational Position Controller','FontSize',...
 h = legend('$x_{\mathrm{I}}$', '$x_{\mathrm{I}}$ Reference','$y_{\mathrm{I}}$',...
     '$y_{\mathrm{I}}$ Reference','$z_{\mathrm{I}}$', '$z_{\mathrm{I}}$ Reference','Location','SouthEast');
 set(h,'FontSize',font-3,'Interpreter','Latex');
+
+%% Reference in pitch
+load pitchRefFinal
+font=13;
+line=0.5;
+t=[0 7 7 50];
+step_pitch=[0 0 0.2 0.2];
+figure
+plot(t,step_pitch,'Color',[0 0 0.1],'LineStyle','--', 'Linewidth',1.5)
+hold on
+plot(0:0.015:30,Ang(2,2000:4000),'Color',[0 0 0.5], 'Linewidth',line)
+plot(0:0.015:30,Ang(1,2000:4000),'Color',[0 0.5 0], 'Linewidth',line)
+plot(0:0.015:30,Ang(3,2000:4000)-0.05,'Color',[0.5 0 0], 'Linewidth',line)
+xlim([0,30])
+xlabel('Time [s]','FontSize',font,'Interpreter','Latex')
+ylabel('Angle [rad]','FontSize',font,'Interpreter','Latex')
+title('Reference Tracking in Pitch','FontSize',font,'Interpreter','Latex')
+h = legend('Pitch Reference','Pitch','Roll','Yaw','Location','SouthEast');
+set(h,'FontSize',font-2,'Interpreter','Latex');
+grid on
+grid minor

@@ -42,14 +42,14 @@ yaw_step=0;
 sim('TotalControllerSimOld.slx')
 
 figure
-plot(xdot.Time, xdot.Data, 'Color', '[1 0 0]','lineWidth', 1.2);
+plot(xdot.Time, xdot.Data, 'Color', '[0 0 1]','lineWidth', 1.2);
 hold on;
-plot(xdot_ref.Time, xdot_ref.Data, 'Color','[0.5 0 0]', 'lineStyle', '--','lineWidth', 1.2);
+plot(xdot_ref.Time, xdot_ref.Data, 'Color','[0 0 0.5]', 'lineStyle', '--','lineWidth', 1.2);
 % plot(ydot.Time, ydot.Data, 'Color', '[0 1 0]','lineWidth', 1.2);
 % plot(ydot_ref.Time, ydot_ref.Data,'Color','[0 0.5 0]', 'lineStyle', '--','lineWidth', 1.2);
 grid on;
 grid minor;
-title('Velocity Translational Controller in x_I Direction');
+title('Translational Velocity Controller in x_I Direction');
 xlabel('Time [s]');
 ylabel('Translational Velocity [m/s]');
 legend('xdot','xdot Reference','Location','southeast');
@@ -61,7 +61,7 @@ hold on
 plot(zdot_ref.Time, zdot_ref.Data, 'Color','[0 0 0.5]', 'lineStyle', '--','lineWidth', 1.2);
 grid on;
 grid minor;
-title('Velocity Translational Controller in z_I  Direction');
+title('Translational Velocity Controller in z_I  Direction');
 xlabel('Time [s]');
 ylabel('Translational Velocity [m/s]');
 legend( 'zdot', 'zdot Reference','Location','southeast');
@@ -71,9 +71,9 @@ figure
 % plot(roll.Time, roll.Data, 'Color', '[0 1 0]','lineWidth', 1.2);
 % hold on;
 % plot(roll_ref.Time, roll_ref.Data, 'Color','[0 0.5 0]', 'lineStyle', '--','lineWidth', 1.2);
-plot(pitch.Time, pitch.Data, 'Color', '[1 0 0]','lineWidth', 1.2);
+plot(pitch.Time, pitch.Data, 'Color', '[0 0 1]','lineWidth', 1.2);
 hold on
-plot(pitch_ref.Time, pitch_ref.Data,'Color','[0.5 0 0]', 'lineStyle', '--','lineWidth', 1.2);
+plot(pitch_ref.Time, pitch_ref.Data,'Color','[0 0 0.5]', 'lineStyle', '--','lineWidth', 1.2);
 grid on;
 grid minor;
 title('Control Action for x_I Velocity Controller');
@@ -93,7 +93,6 @@ xlabel('Time [s]');
 ylabel('Sum of rotational speeds in the motors [rad/s]');
 legend('\omega_{sum}','\omega_{sum} Reference','Location','southeast');
 xlim([0 6])
-
 
 %% ------- Closed loop bode for velocity Controller ---------------------------------
 close all
@@ -168,7 +167,7 @@ plot(x_ref.Time, x_ref.Data, 'Color','[0.5 0 0]', 'lineStyle', '--','lineWidth',
 % plot(y_ref.Time, y_ref.Data,'Color','[0 0.5 0]', 'lineStyle', '--','lineWidth', 1.2);
 grid on;
 grid minor;
-title('Position Translational Controller in x_I Direction');
+title('Translational Position Controller in x_I Direction');
 xlabel('Time [s]');
 ylabel('Translational Position [m]');
 legend('x','x Reference','Location','southeast');
@@ -194,7 +193,7 @@ hold on
 plot(z_ref.Time, z_ref.Data, 'Color','[0 0 0.5]', 'lineStyle', '--','lineWidth', 1.2);
 grid on;
 grid minor;
-title('Position Translational Controllers in z_I Direction');
+title('Translational Position Controllers in z_I Direction');
 xlabel('Time [s]');
 ylabel('Translational Position [m]');
 legend('z', 'z Reference','Location','southeast');

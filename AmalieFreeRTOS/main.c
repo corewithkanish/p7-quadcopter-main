@@ -125,12 +125,12 @@ void Controllers(void *pvParameters)
 		else
 		{
 			Set_PWM_duty(128, 128, 128, 128);
-			c_low=(char)(countercontrol && 0x00FF);
-			c_high = (char)((countercontrol && 0xFF00) >> 8);
+			c_low=(char)(countercontrol & 0x00FF);
+			c_high = (char)((countercontrol & 0xFF00) >> 8);
 			USART_Transmit(c_high);
 			USART_Transmit(c_low);
-			c_low = (char)(counterold && 0x00FF);
-			c_high = (char)((counterold && 0xFF00) >> 8);
+			c_low = (char)(counterold & 0x00FF);
+			c_high = (char)((counterold & 0xFF00) >> 8);
 			USART_Transmit(c_high);
 			USART_Transmit(c_low);
 			count = 6000;

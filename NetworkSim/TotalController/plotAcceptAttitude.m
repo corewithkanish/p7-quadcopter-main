@@ -1,13 +1,15 @@
 %% Back to equilibrium
-load attitudeAcceptTestStick
+close all
 
-font=13;
 figure
-plot(0:0.015:30,Ang(1,692:2692),'Color',[0 0.5 0], 'Linewidth',1.2)
+load eqRefFinal
+line=0.5;
+font=13;
+plot(0:0.015:22.5,Ang(1,2000:3500),'Color',[0 0 0.5], 'Linewidth',line)
 hold on
-plot(0:0.015:30,Ang(2,692:2692),'Color',[0 0 0.5], 'Linewidth',1.2)
-plot(0:0.015:30,Ang(3,692:2692)-0.05,'Color',[0.5 0 0], 'Linewidth',1.2)
-xlim([0,18])
+plot(0:0.015:22.5,Ang(2,2000:3500),'Color',[0 0.5 0], 'Linewidth',line)
+plot(0:0.015:22.5,Ang(3,2000:3500)-0.05,'Color',[0.5 0 0], 'Linewidth',line)
+xlim([0,20])
 xlabel('Time [s]','FontSize',font)
 ylabel('Angle [rad]','FontSize',font)
 title('Stabilization of the Attitude around Equilibrium','FontSize',font)
@@ -17,15 +19,17 @@ grid on
 grid minor
 
 %% Reference in roll
-load rollRefeAcceptTestStick
+load rollRefFinal
+line=0.5;
 font=13;
-t=[0 2.5 2.5 25];
-step_roll=[-0.51 -0.51 0.2 0.2];
+t=[0 6 6 50];
+step_roll=[0 0 0.2 0.2];
 figure
-plot(0:0.015:25.5,Ang(1,192:1892),'Color',[0 0 0.5], 'Linewidth',1.2)
+plot(0:0.015:22.5,Ang(1,2300:3800),'Color',[0 0 0.5], 'Linewidth',line)
 hold on
-plot(t,step_roll,'Color',[0.5 0 0],'LineStyle','--', 'Linewidth',1.2)
-xlim([0,18])
+plot(t,step_roll,'Color',[0.5 0 0],'LineStyle','--', 'Linewidth',1.5)
+xlim([0,22])
+ylim([-0.05 0.3])
 xlabel('Time [s]','FontSize',font)
 ylabel('Angle [rad]','FontSize',font)
 title('Reference Tracking in Roll','FontSize',font)
@@ -35,13 +39,15 @@ grid on
 grid minor
 
 %% Reference in roll - Other angles
-load rollRefeAcceptTestStick
+load rollRefFinal
 font=13;
-%figure
-plot(0:0.015:25.5,Ang(2,192:1892),'Color',[0 0.5 0], 'Linewidth',1.2)
+line=0.5;
+figure
+plot(0:0.015:22.5,Ang(2,2300:3800),'Color',[0 0.5 0], 'Linewidth',line)
 hold on
-plot(0:0.015:25.5,Ang(3,192:1892)-0.05,'Color',[0.5 0 0], 'Linewidth',1.2)
-xlim([0,18])
+plot(0:0.015:22.5,Ang(3,2300:3800)-0.05,'Color',[0.5 0 0], 'Linewidth',line)
+xlim([0,22])
+ylim([-0.3 0.3])
 xlabel('Time [s]','FontSize',font)
 ylabel('Angle [rad]','FontSize',font)
 title('Reference Tracking in Roll','FontSize',font)
@@ -51,15 +57,16 @@ grid on
 grid minor
 
 %% Reference in pitch
-load pitchRefeAcceptTestStick
+load pitchRefFinal
 font=13;
-t=[0 3.85 3.85 25];
-step_pitch=[-0.69 -0.69 0.2 0.2];
+line=0.5;
+t=[0 7 7 50];
+step_pitch=[0 0 0.2 0.2];
 figure
-plot(0:0.015:25.5,Ang(2,192:1892),'Color',[0 0 0.5], 'Linewidth',1.2)
+plot(0:0.015:30,Ang(2,2000:4000),'Color',[0 0.5 0], 'Linewidth',line)
 hold on
-plot(t,step_pitch,'Color',[0.5 0 0],'LineStyle','--', 'Linewidth',1.2)
-xlim([0,18])
+plot(t,step_pitch,'Color',[0.5 0 0],'LineStyle','--', 'Linewidth',1.5)
+xlim([0,30])
 xlabel('Time [s]','FontSize',font)
 ylabel('Angle [rad]','FontSize',font)
 title('Reference Tracking in Pitch','FontSize',font)
@@ -69,13 +76,14 @@ grid on
 grid minor
 
 %% Reference in pitch - Other angles
-load pitchRefeAcceptTestStick
+load pitchRefFinal
 font=13;
+line=0.5;
 figure
-plot(0:0.015:25.5,Ang(1,192:1892),'Color',[0 0.5 0], 'Linewidth',1.2)
+plot(0:0.015:30,Ang(1,2000:4000),'Color',[0 0 0.5], 'Linewidth',line)
 hold on
-plot(0:0.015:25.5,Ang(3,192:1892)-0.05,'Color',[0.5 0 0], 'Linewidth',1.2)
-xlim([0,18])
+plot(0:0.015:30,Ang(3,2000:4000)-0.05,'Color',[0.5 0 0], 'Linewidth',line)
+xlim([0,30])
 ylim([-0.3 0.3])
 xlabel('Time [s]','FontSize',font)
 ylabel('Angle [rad]','FontSize',font)

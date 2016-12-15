@@ -123,8 +123,8 @@ C1=C(:,1:3);
 C2=C(:,4:6);
 
 %Lobs=(-place(A22',A12',[-31 -32 -33]))';  % Place uses the form A-BF. If we have A22+L*A12 -----> A22'+A12'*(-L)'
-%Lobs=(-place(A22',A12',[-11 -12 -13]))';  % Place uses the form A-BF. If we have A22+L*A12 -----> A22'+A12'*(-L)'
-Lobs=(-place(A22',A12',[-5 -6 -7]))';  % Place uses the form A-BF. If we have A22+L*A12 -----> A22'+A12'*(-L)'
+Lobs=(-place(A22',A12',[-11 -12 -13]))';  % Place uses the form A-BF. If we have A22+L*A12 -----> A22'+A12'*(-L)'
+%Lobs=(-place(A22',A12',[-5 -6 -7]))';  % Place uses the form A-BF. If we have A22+L*A12 -----> A22'+A12'*(-L)'
 
 LA12=Lobs*A12;
 

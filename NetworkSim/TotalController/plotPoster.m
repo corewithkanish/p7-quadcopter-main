@@ -31,9 +31,6 @@ line=1.2;
 font=14;
 plot3(x.Data,y.Data,z.Data,'Color','[0 0 0.5]','lineWidth',line)
 hold on
-xvec=[0 0 1 1 1 0 0];
-yvec=[0 0 0 1 1 1 0];
-zvec=[0 -0.1 -0.1 -0.1 0 0 0];
 plot3(input_x,input_y,input_z,'Color','[0.5 0 0]','lineWidth',line, 'lineStyle','--')
 axis([-1.2 1.2 -1.2 1.2 -11 1])
 grid on
@@ -42,9 +39,9 @@ set(gca,'ZDir','Reverse')
 set(gca,'YDir','Reverse')
 grid on
 grid minor
-xlabel('$x$ Position [m]','FontSize',font,'Interpreter','Latex')
-ylabel('$y$ Position [m]','FontSize',font,'Interpreter','Latex')
-zlabel('$z$ Position [m]','FontSize',font,'Interpreter','Latex')
+xlabel('$x$ [m]','FontSize',font,'Interpreter','Latex')
+ylabel('$y$ [m]','FontSize',font,'Interpreter','Latex')
+zlabel('$z$ [m]','FontSize',font,'Interpreter','Latex')
 title('Trajectory using the Translational Controllers','FontSize',font,'Interpreter','Latex')
 h = legend('Trajectory', 'Reference','Location','NorthEast');
 set(h,'FontSize',font-2,'Interpreter','Latex');
@@ -174,9 +171,28 @@ ylim([0 1.1])
 grid on
 grid minor
 xlabel('Time [s]','FontSize',font,'Interpreter','Latex')
-ylabel('Angle [rad]','FontSize',font,'Interpreter','Latex')
+ylabel('Position [m]','FontSize',font,'Interpreter','Latex')
 title('Step Response in $z$','FontSize',font,'Interpreter','Latex')
 h = legend('$z$', '$z$ Reference','Location','SouthEast');
 set(h,'FontSize',font-1,'Interpreter','Latex');
 
-
+%% Reference in pitch
+load pitchRefFinal
+font=13;
+line=0.5;
+t=[0 7 7 50];
+step_pitch=[0 0 0.2 0.2];
+figure
+plot(t,step_pitch,'Color',[0 0 0.1],'LineStyle','--', 'Linewidth',1.5)
+hold on
+plot(0:0.015:30,Ang(2,2000:4000),'Color',[0 0 0.5], 'Linewidth',line)
+plot(0:0.015:30,Ang(1,2000:4000),'Color',[0 0.5 0], 'Linewidth',line)
+plot(0:0.015:30,Ang(3,2000:4000)-0.05,'Color',[0.5 0 0], 'Linewidth',line)
+xlim([0,30])
+xlabel('Time [s]','FontSize',font,'Interpreter','Latex')
+ylabel('Angle [rad]','FontSize',font,'Interpreter','Latex')
+title('Reference Tracking in Pitch','FontSize',font,'Interpreter','Latex')
+h = legend('Pitch Reference','Pitch','Roll','Yaw','Location','SouthEast');
+set(h,'FontSize',font-2,'Interpreter','Latex');
+grid on
+grid minor
