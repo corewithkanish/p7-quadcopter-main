@@ -164,9 +164,9 @@ float e_k1[3] = { 0.0, 0.0, 0.0 };
 float o_k1[3] = { 0.0, 0.0, 0.0 };
 float oint_k1[3] = { 0.0, 0.0, 0.0 };
 float u_z = 0;
-float pos[3] = { 0.0, 0.0, 0.0 };
+float position[3] = { 0.0, 0.0, 0.0 };
 float pos_ref[3] = { 0.0, 0.0, 0.0 };
-float vel[3] = { 0.0, 0.0, 0.0 };
+float velocity[3] = { 0.0, 0.0, 10 };
 float pos_e_k1[3] = { 0.0, 0.0, 0.0 };
 float vel_ref_k1[3] = { 0.0, 0.0, 0.0 };
 short sat[4] = { 0, 0, 0, 0 };
@@ -177,14 +177,14 @@ short reading = 0;
 short low_level = 0;
 float battery = 11.1;
 unsigned int duty_old[4] = { DUTY_INIT, DUTY_INIT, DUTY_INIT, DUTY_INIT };
-float vel_old = 0;
+float vel_old = 9;
 
 int count;
 int kill = 0;
 // Code for acceptande test 2
 int counterold = 0;
 int countercontrol = 0;
-int fl = 0;
+int flaag = 0;
 //////////
 
 //------------------------------- Controller Functions ----------------------//
@@ -203,12 +203,12 @@ void Controller(void)
 	int i = 0;
 
 	////Code for acceptance test 2
-	if (fl)
-		countercontrol++;
-	if ((vel[2] == vel_old) && (fl))
-		counterold++;
+	if (flaag)
+		countercontrol=countercontrol+1;
+	if ((velocity[2] == vel_old) && flaag)
+		counterold=counterold + 1;
 	else
-		vel_old = vel[2];
+		vel_old = velocity[2];
 	//------------Translational Controller-----------------//
 	//if low_level
 	//	pos_ref[3] = 0;
@@ -219,10 +219,10 @@ void Controller(void)
 		{
 		case 0:
 		{
-			//pos_e_k[i] = pos_ref[i] - pos[i];
+			//pos_e_k[i] = pos_ref[i] - position[i];
 			//vel_ref_k[i] = 0.3*pos_e_k[i];
 			////vel_ref_k[i] = 0;
-			//vel_e_k[i] = vel_ref_k[i] - vel[i];
+			//vel_e_k[i] = vel_ref_k[i] - velocity[i];
 			//if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_pitch)
 			//	vel_e_k[i] = 0;
 			//r_k[1] =-0.08*vel_e_k[i] + 0.08*vel_e_k1[i] + r_k[1];
@@ -240,10 +240,10 @@ void Controller(void)
 			break;
 		case 1:
 		{
-			//	pos_e_k[i] = pos_ref[i] - pos[i];
+			//	pos_e_k[i] = pos_ref[i] - position[i];
 			//	vel_ref_k[i] = 0.3*pos_e_k[i];
 			//	//vel_ref_k[i] = 0;
-			//	vel_e_k[i] = vel_ref_k[i] - vel[i];
+			//	vel_e_k[i] = vel_ref_k[i] - velocity[i];
 			//if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_roll)
 			//		vel_e_k[i] = 0;
 			//	r_k[0] = 0.08*vel_e_k[i] - 0.08*vel_e_k1[i] + r_k[0];
@@ -262,10 +262,10 @@ void Controller(void)
 			break;
 		case 2:
 		{
-			//pos_e_k[i] = pos_ref[i] - pos[i];
+			//pos_e_k[i] = pos_ref[i] - position[i];
 			//vel_ref_k[i] = 0.5*pos_e_k[i];
 			//			//vel_ref_k[i] = 0;
-			//	vel_e_k[i] = vel_ref_k[i] - vel[i];
+			//	vel_e_k[i] = vel_ref_k[i] - velocity[i];
 			////if (sat[0] || sat[1] || sat[2] || sat[3] || sat_z)
 			////	 vel_e_k[i] = 0;
 			//
@@ -470,10 +470,7 @@ void ApplyVelocities(void)
 	//	low_level = 1;
 	//}
 	//Set_PWM_duty(128, 128, 160, 128);
-	if (kill)
-		Set_PWM_duty(128,128,128,128); //controller
-	else
-		Set_PWM_duty((char)duty[0], (char)duty[1], (char)duty[2], (char)duty[3]); //controller
+	Set_PWM_duty((char)duty[0], (char)duty[1], (char)duty[2], (char)duty[3]); //controller
 	//Set_PWM_duty(duty0, 128, duty2, 128);
 }
 
@@ -526,37 +523,15 @@ int CheckPackageArrival(void)
 	int i = 0;
 	while (i < 3)
 	{
-		if (i < 2)
+
+		if (USART_Receive() == 255)
 		{
-			if (USART_Receive() == 255)
-			{
-				i++;
-			}
-			else
-			{
-				pack = 0;
-				i = 3;
-			}
+			i++;
 		}
-		if (i == 2)
+		else
 		{
-			if(USART_Receive() == 255)
-			{
-				i++;
-				kill = 1;
-			}
-			else
-			{
-				if (USART_Receive() == 254)
-				{
-					i++;
-					kill = 0;
-				}
-				else{
-					pack = 0;
-					i = 3;
-				}
-			}
+			pack = 0;
+			i = 3;
 		}
 	}
 	return pack;
@@ -626,19 +601,19 @@ void GetPackage(void)
 			sign = -1;
 		else
 			sign = 1;
-		pos[0] = sign*(float)((((((int)dummy[3]) << 5) & 0x01E0) | ((dummy[4] >> 3) & 0x1F))) / 100;
+		position[0] = sign*(float)((((((int)dummy[3]) << 5) & 0x01E0) | ((dummy[4] >> 3) & 0x1F))) / 100;
 		//----------- y --------------
 		if (dummy[4] & 0x04)
 			sign = -1;
 		else
 			sign = 1;
-		pos[1] = sign*(float)((((((int)dummy[4]) << 7) & 0x0180) | ((dummy[5] >> 1) & 0x7F))) / 100;
+		position[1] = sign*(float)((((((int)dummy[4]) << 7) & 0x0180) | ((dummy[5] >> 1) & 0x7F))) / 100;
 		//----------- z --------------
 		if (dummy[5] & 0x01)
 			sign = -1;
 		else
 			sign = 1;
-		pos[2] = sign*(float)((((((int)dummy[6]) << 1) & 0x01FF) | ((dummy[7] >> 7) & 0x01))) / 100;
+		position[2] = sign*(float)((((((int)dummy[6]) << 1) & 0x01FF) | ((dummy[7] >> 7) & 0x01))) / 100;
 		//----------- xref --------------
 		if (dummy[7] & 0x40)
 			sign = -1;
@@ -662,28 +637,28 @@ void GetPackage(void)
 			sign = -1;
 		else
 			sign = 1;
-		vel[0] = sign*(float)((((((int)dummy[11]) << 2) & 0x03FE) | ((dummy[12] >> 6) & 0x03))) / 100;
+		velocity[0] = sign*(float)((((((int)dummy[11]) << 2) & 0x03FE) | ((dummy[12] >> 6) & 0x03))) / 100;
 		//----------- ydot --------------
 		if (dummy[12] & 0x20)
 			sign = -1;
 		else
 			sign = 1;
-		vel[1] = sign*(float)((((((int)dummy[12]) << 5) & 0x03E0) | ((dummy[13] >> 3) & 0x1F))) / 100;
+		velocity[1] = sign*(float)((((((int)dummy[12]) << 5) & 0x03E0) | ((dummy[13] >> 3) & 0x1F))) / 100;
 		//----------- zdot --------------
 		if (dummy[13] & 0x04)
 			sign = -1;
 		else
 			sign = 1;
-		vel[2] = sign*(float)(((((int)dummy[13]) << 8) & 0x0300) | dummy[14]) / 100;
-
+		velocity[2] = sign*(float)(((((int)dummy[13]) << 8) & 0x0300) | dummy[14])/100 ;
 		//// Test code
-		//if (vel[2] == 1.02)
+		//if (velocity[2] == 1.02)
 		//	USART_Transmit(dummy[1]);
 		//LED2 = 0x00;
-		if (vel[2] <= 9.99)
-			fl = 1;
-		else
-			fl = 0;
+		flaag = 0;
+		if (velocity[2] < 9.99)
+			flaag = 1;
+		//if (velocity[2] == 1.3)
+		//	counterold++;
 	}
 	//LED = 0x00;
 	return;

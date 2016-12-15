@@ -38,7 +38,7 @@ int main()
 	// Task Creation
 	//xSemaphore = xSemaphoreCreateMutex();
 	xTaskCreate(Controllers, "Control", 1000, NULL, configMAX_PRIORITIES - 1, NULL );
-	xTaskCreate(Comunication, "Com", 1000, NULL, configMAX_PRIORITIES - 2, &xHandle);
+	xTaskCreate(Communication, "Com", 1000, NULL, configMAX_PRIORITIES - 2, &xHandle);
 
 	//while (1)
 	//{
@@ -52,7 +52,7 @@ int main()
 	_delay_ms(1000);
 	int duty = 128;
 	Set_PWM_duty(duty, duty, duty, duty);
-	_delay_ms(10000);
+	//_delay_ms(10000);
 	Set_PWM_duty(DUTY_INIT, DUTY_INIT, DUTY_INIT, DUTY_INIT);
 	_delay_ms(1000);
 
@@ -114,7 +114,7 @@ void Controllers(void *pvParameters)
 
 	while (1)
 	{
-		if (count<3000)
+		if (count<500)
 		{
 			//LED = 0xFF;
 			Controller();
@@ -138,7 +138,7 @@ void Controllers(void *pvParameters)
 		if (reading)
 		{
 			vTaskDelete(xHandle);
-			xTaskCreate(Comunication, "Com", 1000, NULL, configMAX_PRIORITIES - 2, &xHandle);
+			xTaskCreate(Communication, "Com", 1000, NULL, configMAX_PRIORITIES - 2, &xHandle);
 			reading = 0;
 			//LED2 = 0x00;
 		}
@@ -148,7 +148,7 @@ void Controllers(void *pvParameters)
 }
 
 
-void Comunication(void *pvParameters)
+void Communication(void *pvParameters)
 {
 	while (1)
 	{
