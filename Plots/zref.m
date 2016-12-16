@@ -17,6 +17,6 @@ grid minor
 set(gca,'FontSize',font-3);
 xlabel('Time [s]','FontSize',font,'Interpreter','Latex')
 ylabel('Position [m]','FontSize',font,'Interpreter','Latex')
-title('Step Response in $z$','FontSize',font,'Interpreter','Latex')
-h = legend('$z$', '$z$ Reference','Location','SouthEast');
-set(h,'FontSize',font-1,'Interpreter','Latex');
+%title('Step Response in $z$','FontSize',font,'Interpreter','Latex')
+%h = legend('$z$', '$z$ Reference','Location','SouthEast');
+%set(h,'FontSize',font-1,'Interpreter','Latex');
