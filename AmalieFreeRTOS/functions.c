@@ -166,7 +166,7 @@ float oint_k1[3] = { 0.0, 0.0, 0.0 };
 float u_z = 0;
 float position[3] = { 0.0, 0.0, 0.0 };
 float pos_ref[3] = { 0.0, 0.0, 0.0 };
-float velocity[3] = { 0.0, 0.0, 10 };
+float velcake[3] = { 0.0, 0.0, 10 };
 float pos_e_k1[3] = { 0.0, 0.0, 0.0 };
 float vel_ref_k1[3] = { 0.0, 0.0, 0.0 };
 short sat[4] = { 0, 0, 0, 0 };
@@ -180,12 +180,11 @@ unsigned int duty_old[4] = { DUTY_INIT, DUTY_INIT, DUTY_INIT, DUTY_INIT };
 float vel_old = 9;
 
 int count;
-int kill = 0;
 // Code for acceptande test 2
 int counterold = 0;
 int countercontrol = 0;
 int flaag = 0;
-//////////
+
 
 //------------------------------- Controller Functions ----------------------//
 
@@ -203,15 +202,14 @@ void Controller(void)
 	int i = 0;
 
 	////Code for acceptance test 2
-	if (flaag)
-		countercontrol=countercontrol+1;
-	if ((velocity[2] == vel_old) && flaag)
-		counterold=counterold + 1;
-	else
-		vel_old = velocity[2];
+	//if (flaag)
+	//	countercontrol=countercontrol+1;
+	//if ((velcake[2] == vel_old) && flaag)
+	//	counterold=counterold + 1;
+	//else
+	//	vel_old = velcake[2];
+
 	//------------Translational Controller-----------------//
-	//if low_level
-	//	pos_ref[3] = 0;
 	
 	for (i = 0; i < 3; i=i+1)
 	{
@@ -219,79 +217,77 @@ void Controller(void)
 		{
 		case 0:
 		{
-			//pos_e_k[i] = pos_ref[i] - position[i];
-			//vel_ref_k[i] = 0.3*pos_e_k[i];
-			////vel_ref_k[i] = 0;
-			//vel_e_k[i] = vel_ref_k[i] - velocity[i];
-			//if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_pitch)
-			//	vel_e_k[i] = 0;
-			//r_k[1] =-0.08*vel_e_k[i] + 0.08*vel_e_k1[i] + r_k[1];
-			////r_k[1] =- 0.5*vel_e_k[i];
-			//sat_angle_roll = 0;
-			//if (r_k[1] > MAX_ANGLE){
-			//	r_k[1] = MAX_ANGLE;
-			//	sat_angle_roll = 1;
-			//}
-			//if (r_k[1] < MIN_ANGLE){
-			//	r_k[1] = MIN_ANGLE;
-			//	sat_angle_roll = 1;
-			//}
+			pos_e_k[i] = pos_ref[i] - position[i];
+			vel_ref_k[i] = 0.3*pos_e_k[i];
+			//vel_ref_k[i] = 0;
+			vel_e_k[i] = vel_ref_k[i] - velcake[i];
+			if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_pitch)
+				vel_e_k[i] = 0;
+			r_k[1] = -0.08*vel_e_k[i] + 0.08*vel_e_k1[i] + r_k[1];
+			//r_k[1] =- 0.5*vel_e_k[i];
+			sat_angle_roll = 0;
+			if (r_k[1] > MAX_ANGLE){
+				r_k[1] = MAX_ANGLE;
+				sat_angle_roll = 1;
+			}
+			if (r_k[1] < MIN_ANGLE){
+				r_k[1] = MIN_ANGLE;
+				sat_angle_roll = 1;
+			}
 		}
 			break;
 		case 1:
 		{
-			//	pos_e_k[i] = pos_ref[i] - position[i];
-			//	vel_ref_k[i] = 0.3*pos_e_k[i];
-			//	//vel_ref_k[i] = 0;
-			//	vel_e_k[i] = vel_ref_k[i] - velocity[i];
-			//if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_roll)
-			//		vel_e_k[i] = 0;
-			//	r_k[0] = 0.08*vel_e_k[i] - 0.08*vel_e_k1[i] + r_k[0];
-			//	//r_k[0] = 0.12*vel_e_k[i];
-			//	sat_angle_pitch = 0;
+			pos_e_k[i] = pos_ref[i] - position[i];
+			vel_ref_k[i] = 0.3*pos_e_k[i];
+			//vel_ref_k[i] = 0;
+			vel_e_k[i] = vel_ref_k[i] - velcake[i];
+			if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_roll)
+				vel_e_k[i] = 0;
+			r_k[0] = 0.08*vel_e_k[i] - 0.08*vel_e_k1[i] + r_k[0];
+			//r_k[0] = 0.12*vel_e_k[i];
+			sat_angle_pitch = 0;
 
-			//	if (r_k[0] > MAX_ANGLE){
-			//		r_k[0] = MAX_ANGLE;
-			//		sat_angle_pitch = 1;
-			//	}
-			//	if (r_k[0] < MIN_ANGLE){
-			//		r_k[0] = MIN_ANGLE;
-			//		sat_angle_pitch = 1;
-			//	}
+			if (r_k[0] > MAX_ANGLE){
+				r_k[0] = MAX_ANGLE;
+				sat_angle_pitch = 1;
+			}
+			if (r_k[0] < MIN_ANGLE){
+				r_k[0] = MIN_ANGLE;
+				sat_angle_pitch = 1;
+			}
 		}
 			break;
 		case 2:
 		{
-			//pos_e_k[i] = pos_ref[i] - position[i];
-			//vel_ref_k[i] = 0.5*pos_e_k[i];
-			//			//vel_ref_k[i] = 0;
-			//	vel_e_k[i] = vel_ref_k[i] - velocity[i];
-			////if (sat[0] || sat[1] || sat[2] || sat[3] || sat_z)
-			////	 vel_e_k[i] = 0;
-			//
-			//	//u_z = -208.8*vel_e_k[i] + 198.2*vel_e_k1[i] + u_z;
-			//	//u_z = -121.3*vel_e_k[i] + 118.7*vel_e_k1[i] + u_z;
-			//	//u_z = -305.3*vel_e_k[i] + 294.8*vel_e_k1[i] + u_z;
-			//	u_z = -200*vel_e_k[i];
-			//	sat_z = 0;
-			//
-			//if (u_z > UZ_MAX){
-			//	u_z = UZ_MAX;
-			//	sat_z = 1;
-			//}
-			//if (u_z < UZ_MIN){
-			//	u_z = UZ_MIN;
-			//	sat_z = 1;
-			//	
-			//}
+			pos_e_k[i] = pos_ref[i] - position[i];
+			vel_ref_k[i] = 0.5*pos_e_k[i];
+						//vel_ref_k[i] = 0;
+			vel_e_k[i] = vel_ref_k[i] - velcake[i];
+			//if (sat[0] || sat[1] || sat[2] || sat[3] || sat_z)
+			//	 vel_e_k[i] = 0;
+			
+				u_z = -208.8*vel_e_k[i] + 198.2*vel_e_k1[i] + u_z;
+				//u_z = -121.3*vel_e_k[i] + 118.7*vel_e_k1[i] + u_z;
+				//u_z = -305.3*vel_e_k[i] + 294.8*vel_e_k1[i] + u_z;
+			//u_z = -200*vel_e_k[i];
+			sat_z = 0;
+			
+			if (u_z > UZ_MAX){
+				u_z = UZ_MAX;
+				sat_z = 1;
+			}
+			if (u_z < UZ_MIN){
+				u_z = UZ_MIN;
+				sat_z = 1;
+				
+			}
 		}
-
 			break;
 		}
 		
 	}
 	
-
 	//------------Angular Controller-----------------//
 
 	if (u_k1[0] > U_MAX)
@@ -362,7 +358,7 @@ void Controller(void)
 		x2_k[i] = oint_k[i] - L[i] * y_k[i];
 	}
 
-
+	// Calculation of the control actions
 	for (i = 0; i < 4; i++)
 	{
 		switch (i)
@@ -403,7 +399,7 @@ void Controller(void)
 	x2_k1[1] = x2_k[1];
 	x2_k1[2] = x2_k[2];
 	return;
-}
+} //Controller
 
 
 //--------------------- PWM Functions ----------------------------------------//
@@ -415,14 +411,7 @@ void ApplyVelocities(void)
 	float uk[4] = { 0, 0, 0, 0 };
 	int duty[4] = { 0, 0, 0, 0 };
 	unsigned int diff = 0;
-	//float h [4] = { 0, 0, 0, 0 };
 	int i;
-
-	// Calculate height of each propeller
-		//h[0] = H + LENGTH*y_k[1];
-		//h[2] = H - LENGTH*y_k[1];
-		//h[1] = H - LENGTH*y_k[0];
-		//h[3] = H + LENGTH*y_k[0];
 
 	// Mix the needed rotational speeds for the motors
 	sum_u_k1 = u_k1[0] + u_k1[1] + u_k1[2] + u_k1[3];
@@ -432,9 +421,7 @@ void ApplyVelocities(void)
 	for (i = 0; i<4; i++)
 	{
 		sat[i] = 0;
-		//uk[i] = (1.0 + (0.5*K / ((H0 + h[i] + 0.03)*(H0 + h[i] + 0.03))))*
 		uk[i] = u_k1[i] + add_z + EQU_SPEED;
-		//uk[i] = (1.0 + (0.5*K / ((H0 + h[i] + 0.03)*(H0 + h[i] + 0.03))))*(396);
 
 		duty[i] = (int)(uk[i] * 0.1598 + 122.79);// (uk[i] * 0.1563 + 118.21);
 
@@ -464,15 +451,8 @@ void ApplyVelocities(void)
 			
 	}
 
-	//battery = (float)ADC_read()*15/255;
-	//if battery<10
-	//{
-	//	low_level = 1;
-	//}
-	//Set_PWM_duty(128, 128, 160, 128);
-	Set_PWM_duty((char)duty[0], (char)duty[1], (char)duty[2], (char)duty[3]); //controller
-	//Set_PWM_duty(duty0, 128, duty2, 128);
-}
+	Set_PWM_duty((char)duty[0], (char)duty[1], (char)duty[2], (char)duty[3]);
+} //ApplyVelocities
 
 
 void PWM_init(int initial_duty)
@@ -503,7 +483,7 @@ void PWM_init(int initial_duty)
 	TCNT4H = 0;
 
 	return;
-}
+} //PWM_init
 
 
 void Set_PWM_duty(char duty0, char duty4A, char duty4B, char duty4C)
@@ -513,7 +493,7 @@ void Set_PWM_duty(char duty0, char duty4A, char duty4B, char duty4C)
 	OCR4BL = duty4B;
 	OCR4CL = duty4C;
 	return;
-}
+} //Set_PWM_duty
 
 //--------------------- Comunication Functions ----------------------------------------//
 
@@ -523,7 +503,6 @@ int CheckPackageArrival(void)
 	int i = 0;
 	while (i < 3)
 	{
-
 		if (USART_Receive() == 255)
 		{
 			i++;
@@ -535,7 +514,7 @@ int CheckPackageArrival(void)
 		}
 	}
 	return pack;
-}
+} //CheckPackageArrival
 
 
 void GetPackage(void)
@@ -551,11 +530,8 @@ void GetPackage(void)
 	int i;
 	reading = 1;
 	for (i=0; i < 18; i++)
-	{
-		//vTaskSuspendAll();
 		dummy[i] = USART_Receive();
-		//xTaskResumeAll();
-	}
+
 	reading = 0;
 
 	parts[0] |= ((((long)dummy[0]) << 16) | (((long)dummy[1]) << 8) | (((long)dummy[2])));
@@ -569,15 +545,9 @@ void GetPackage(void)
 
 	checksum |= ((((long)dummy[15]) << 16) | (((long)dummy[16]) << 8) | (((long)dummy[17])));
 
-	//Test code
-	//if (sum == 0x00FFFFFF)
-	//{
-	//	USART_Transmit(dummy[3]);
-	//}
-
 	if ((sum + checksum) == 0x00FFFFFF)
 	{
-		//LED2 = 0xFF;
+		LED2 = 0xFF;
 		//----------- Roll --------------
 		if (dummy[0] & 0x80)
 			sign = -1;
@@ -637,32 +607,32 @@ void GetPackage(void)
 			sign = -1;
 		else
 			sign = 1;
-		velocity[0] = sign*(float)((((((int)dummy[11]) << 2) & 0x03FE) | ((dummy[12] >> 6) & 0x03))) / 100;
+		velcake[0] = sign*(float)((((((int)dummy[11]) << 2) & 0x03FE) | ((dummy[12] >> 6) & 0x03))) / 100;
 		//----------- ydot --------------
 		if (dummy[12] & 0x20)
 			sign = -1;
 		else
 			sign = 1;
-		velocity[1] = sign*(float)((((((int)dummy[12]) << 5) & 0x03E0) | ((dummy[13] >> 3) & 0x1F))) / 100;
+		velcake[1] = sign*(float)((((((int)dummy[12]) << 5) & 0x03E0) | ((dummy[13] >> 3) & 0x1F))) / 100;
 		//----------- zdot --------------
 		if (dummy[13] & 0x04)
 			sign = -1;
 		else
 			sign = 1;
-		velocity[2] = sign*(float)(((((int)dummy[13]) << 8) & 0x0300) | dummy[14])/100 ;
+		velcake[2] = sign*(float)(((((int)dummy[13]) << 8) & 0x0300) | dummy[14])/100 ;
 		//// Test code
-		//if (velocity[2] == 1.02)
+		//if (velcake[2] == 1.02)
 		//	USART_Transmit(dummy[1]);
 		//LED2 = 0x00;
-		flaag = 0;
-		if (velocity[2] < 9.99)
-			flaag = 1;
-		//if (velocity[2] == 1.3)
+		//flaag = 0;
+		//if (velcake[2] < 9.99)
+		//	flaag = 1;
+		//if (velcake[2] == 1.3)
 		//	counterold++;
+		LED = 0x00;
 	}
-	//LED = 0x00;
 	return;
-}
+} //GetPackage
 
 
 void USART_Init(unsigned int ubrr){
@@ -693,7 +663,7 @@ void USART_Transmit(unsigned char data)
 		;
 	/* Put data into buffer, sends the data */
 	UDR0 = data;
-}
+} //USART_Transmit
 
 
 //--------------------- ADC Functions ----------------------------------------//
