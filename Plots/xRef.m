@@ -15,6 +15,6 @@ grid on
 grid minor
 xlabel('Time [s]','FontSize',font,'Interpreter','Latex')
 ylabel('Position [m]','FontSize',font,'Interpreter','Latex')
-title('Step Response in $x$','FontSize',font,'Interpreter','Latex')
-h = legend('$x$', '$x$ Reference','Location','SouthEast');
+%title('Step Response in $x$','FontSize',font,'Interpreter','Latex')
+%h = legend('$x$', '$x$ Reference','Location','SouthEast');
 set(h,'FontSize',font-1,'Interpreter','Latex');
