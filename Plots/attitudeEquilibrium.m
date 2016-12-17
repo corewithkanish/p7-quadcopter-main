@@ -5,7 +5,7 @@ clc
 run Parameters
 load attitudeEquilibrium
 
-FigHandle = figure('Position', [100, 100, 600, 375]);
+figure%FigHandle = figure('Position', [100, 100, 600, 375]);
 plot(roll.Time, roll.Data, 'Color', '[0 0 1]','lineWidth', 1.2);
 hold on;
 plot(pitch.Time, pitch.Data, 'Color', '[0 1 0]','lineWidth', 1.2);
@@ -16,6 +16,7 @@ title('Response of an Attitude Controller','Fontsize',12);
 xlabel('Time [s]','Fontsize',12);
 ylabel('Angle [rad]','Fontsize',12);
 xlim([0 4])
+ylim([-0.4 0.3])
 legend('Roll', 'Pitch','Yaw','Location','southeast');
 
 
