@@ -114,25 +114,25 @@ void Controllers(void *pvParameters)
 
 	while (1)
 	{
-		if (count<500)
+		if (count<1500)
 		{
-			//LED = 0xFF;
+			LED = 0xFF;
 			Controller();
 			count++;
 			ApplyVelocities();
-			//LED = 0x00;
+			LED = 0x00;
 		}
 		else
 		{
 			Set_PWM_duty(128, 128, 128, 128);
-			c_low=(char)(countercontrol & 0x00FF);
-			c_high = (char)((countercontrol & 0xFF00) >> 8);
-			USART_Transmit(c_high);
-			USART_Transmit(c_low);
-			c_low = (char)(counterold & 0x00FF);
-			c_high = (char)((counterold & 0xFF00) >> 8);
-			USART_Transmit(c_high);
-			USART_Transmit(c_low);
+			//c_low=(char)(countercontrol & 0x00FF);
+			//c_high = (char)((countercontrol & 0xFF00) >> 8);
+			//USART_Transmit(c_high);
+			//USART_Transmit(c_low);
+			//c_low = (char)(counterold & 0x00FF);
+			//c_high = (char)((counterold & 0xFF00) >> 8);
+			//USART_Transmit(c_high);
+			//USART_Transmit(c_low);
 			count = 6000;
 		}
 		if (reading)
@@ -155,11 +155,7 @@ void Communication(void *pvParameters)
 		int pack = 0;
 		pack = CheckPackageArrival();
 		if (pack)
-		{
-			//vTaskSuspendAll();
 			GetPackage();
-			//xTaskResumeAll();
-		}
 	}
 	vTaskDelete(NULL);
 }
