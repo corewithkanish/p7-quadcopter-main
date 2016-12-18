@@ -118,11 +118,11 @@ void Controllers(void *pvParameters)
 	{
 		if (count<500)
 		{
-			LED = 0xFF;
+			//LED = 0xFF;
 			Controller();
 			count++;
 			ApplyVelocities();
-			LED = 0x00;
+			//LED = 0x00;
 		}
 		else
 		{
@@ -162,7 +162,7 @@ void Communication(void *pvParameters)
 		int pack = 0;
 		pack = CheckPackageArrival();
 		if (pack)
-			GetPackage();
+      GetPackage();
 	}
 	vTaskDelete(NULL);
 }
