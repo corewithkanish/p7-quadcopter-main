@@ -9,7 +9,7 @@ FigHandle = figure('Position', [100, 100, 600, 375]);
 plot(roll.Time, roll.Data, 'Color', '[0 0 1]','lineWidth', 1.2);
 grid on;
 grid minor;
-xlim([0 5])
+xlim([0 3])
 title('Step Response of the Attitude Controller in Roll','Fontsize',12);
 xlabel('Time [s]','Fontsize',12);
 ylabel('Angle [rad]','Fontsize',12);
@@ -20,7 +20,7 @@ subplot(2,2,1)
 plot(w1.Time(50:end),w1.Data(50:end), 'Color', '[1 0 0]','lineWidth', 1.2)
 xlabel('Time [s]','Fontsize',12)
 ylabel('\omega_1 [rad/s]','Fontsize',12)
-xlim([0 5])
+xlim([0 3])
 grid on
 grid minor
 

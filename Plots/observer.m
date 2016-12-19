@@ -14,7 +14,7 @@ grid on;
 grid minor;
 title('Response of an Attitude Controller','Fontsize',12);
 xlabel('Time [s]','Fontsize',12);
-ylabel('Angle [rad]','Fontsize',12);
+ylabel('Angular Velocity [rad/s]','Fontsize',12);
 xlim([0 4])
 legend('Roll', 'Pitch','Yaw','Location','southeast');
 
@@ -27,7 +27,7 @@ grid on;
 grid minor;
 title('Estimation of the Roll Angular Velocity','Fontsize',12);
 xlabel('Time [s]','Fontsize',12);
-ylabel('Angle [rad]','Fontsize',12);
+ylabel('Angular Velocity [rad/s]','Fontsize',12);
 legend('Roll Angular Velocity Estimation','Roll Angular Velocity','Location','southeast')
 xlim([0 1.5])
 subplot(3,1,2)
@@ -38,7 +38,7 @@ grid on;
 grid minor;
 title('Estimation of the Pitch Angular Velocity','Fontsize',12);
 xlabel('Time [s]','Fontsize',12);
-ylabel('Angle [rad]','Fontsize',12);
+ylabel('Angular Velocity [rad/s]','Fontsize',12);
 legend('Pitch Angular Velocity Estimation','Pitch Angular Velocity','Location','southeast')
 xlim([0 1.5])
 subplot(3,1,3)
@@ -49,7 +49,7 @@ grid on;
 grid minor;
 title('Estimation of the Yaw Angular Velocity','Fontsize',12);
 xlabel('Time [s]','Fontsize',12);
-ylabel('Angle [rad]','Fontsize',12);
+ylabel('Angular Velocity [rad/s]','Fontsize',12);
 xlim([0 1.5])
 legend('Yaw Angular Velocity Estimation','Yaw Angular Velocity','Location','southeast');
 
