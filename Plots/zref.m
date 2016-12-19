@@ -11,7 +11,7 @@ plot(z.Time,z.Data,'Color',[0 0 0.4],'LineWidth',line)
 hold on
 plot(z_ref.Time,z_ref.Data,'Color',[0 0 0.7],'LineStyle','--','LineWidth',line)
 xlim([0 8])
-ylim([0 1.1])
+ylim([0 1.2])
 grid on
 grid minor
 set(gca,'FontSize',font-3);
