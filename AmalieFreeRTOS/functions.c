@@ -201,93 +201,104 @@ void Controller(void)
 	float e_k[3] = { 0.0, 0.0, 0.0 };
 	int i = 0;
 
-	////Code for acceptance test 2
-	//if (flaag)
-	//	countercontrol=countercontrol+1;
-	//if ((velcake[2] == vel_old) && flaag)
-	//	counterold=counterold + 1;
-	//else
-	//	vel_old = velcake[2];
+  //counterold = counterold+1;
+  //if (velcake[2] == 1.5)
+  // flaag = 0;
+  // if (counterold <= 50)
+  // flaag = 1;
+  
+	//Code for acceptance test 2
+
+	if (velcake[2] < 1.5)
+		countercontrol=countercontrol+1;
+  
+	if ((velcake[2] == vel_old) && (velcake[2] < 1.5))
+		counterold=counterold + 1;
+	else
+		vel_old = velcake[2];
 
 	//------------Translational Controller-----------------//
 	
+  LED = 0xFF;
 	for (i = 0; i < 3; i=i+1)
 	{
 		switch (i)
 		{
-		case 0:
-		{
-			pos_e_k[i] = pos_ref[i] - position[i];
-			vel_ref_k[i] = 0.3*pos_e_k[i];
-			//vel_ref_k[i] = 0;
-			vel_e_k[i] = vel_ref_k[i] - velcake[i];
-			if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_pitch)
-				vel_e_k[i] = 0;
-			r_k[1] = -0.08*vel_e_k[i] + 0.08*vel_e_k1[i] + r_k[1];
-			//r_k[1] =- 0.5*vel_e_k[i];
-			sat_angle_roll = 0;
-			if (r_k[1] > MAX_ANGLE){
-				r_k[1] = MAX_ANGLE;
-				sat_angle_roll = 1;
-			}
-			if (r_k[1] < MIN_ANGLE){
-				r_k[1] = MIN_ANGLE;
-				sat_angle_roll = 1;
-			}
-		}
-			break;
-		case 1:
-		{
-			pos_e_k[i] = pos_ref[i] - position[i];
-			vel_ref_k[i] = 0.3*pos_e_k[i];
-			//vel_ref_k[i] = 0;
-			vel_e_k[i] = vel_ref_k[i] - velcake[i];
-			if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_roll)
-				vel_e_k[i] = 0;
-			r_k[0] = 0.08*vel_e_k[i] - 0.08*vel_e_k1[i] + r_k[0];
-			//r_k[0] = 0.12*vel_e_k[i];
-			sat_angle_pitch = 0;
+      case 0: {
+        pos_e_k[i] = pos_ref[i] - position[i];
+        vel_ref_k[i] = 0.3*pos_e_k[i];
+        //vel_ref_k[i] = 0;
+        vel_e_k[i] = vel_ref_k[i] - velcake[i];
+        if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_pitch)
+          vel_e_k[i] = 0;
+        r_k[1] = -0.08*vel_e_k[i] + 0.08*vel_e_k1[i] + r_k[1];
+        //r_k[1] =- 0.5*vel_e_k[i];
+        sat_angle_roll = 0;
+        if (r_k[1] > MAX_ANGLE)
+        {
+          r_k[1] = MAX_ANGLE;
+          sat_angle_roll = 1;
+        }
+        if (r_k[1] < MIN_ANGLE)
+        {
+          r_k[1] = MIN_ANGLE;
+          sat_angle_roll = 1;
+        }
+        break;
+      }
+      case 1: {
+        pos_e_k[i] = pos_ref[i] - position[i];
+        vel_ref_k[i] = 0.3*pos_e_k[i];
+        //vel_ref_k[i] = 0;
+        vel_e_k[i] = vel_ref_k[i] - velcake[i];
+        if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_roll)
+          vel_e_k[i] = 0;
+        r_k[0] = 0.08*vel_e_k[i] - 0.08*vel_e_k1[i] + r_k[0];
+        //r_k[0] = 0.12*vel_e_k[i];
+        sat_angle_pitch = 0;
 
-			if (r_k[0] > MAX_ANGLE){
-				r_k[0] = MAX_ANGLE;
-				sat_angle_pitch = 1;
-			}
-			if (r_k[0] < MIN_ANGLE){
-				r_k[0] = MIN_ANGLE;
-				sat_angle_pitch = 1;
-			}
-		}
-			break;
-		case 2:
-		{
-			pos_e_k[i] = pos_ref[i] - position[i];
-			vel_ref_k[i] = 0.5*pos_e_k[i];
-						//vel_ref_k[i] = 0;
-			vel_e_k[i] = vel_ref_k[i] - velcake[i];
-			//if (sat[0] || sat[1] || sat[2] || sat[3] || sat_z)
-			//	 vel_e_k[i] = 0;
-			
-				u_z = -208.8*vel_e_k[i] + 198.2*vel_e_k1[i] + u_z;
-				//u_z = -121.3*vel_e_k[i] + 118.7*vel_e_k1[i] + u_z;
-				//u_z = -305.3*vel_e_k[i] + 294.8*vel_e_k1[i] + u_z;
-			//u_z = -200*vel_e_k[i];
-			sat_z = 0;
-			
-			if (u_z > UZ_MAX){
-				u_z = UZ_MAX;
-				sat_z = 1;
-			}
-			if (u_z < UZ_MIN){
-				u_z = UZ_MIN;
-				sat_z = 1;
-				
-			}
-		}
-			break;
-		}
-		
-	}
-	
+        if (r_k[0] > MAX_ANGLE)
+        {
+          r_k[0] = MAX_ANGLE;
+          sat_angle_pitch = 1;
+        }
+        if (r_k[0] < MIN_ANGLE)
+        {
+          r_k[0] = MIN_ANGLE;
+          sat_angle_pitch = 1;
+        }
+        break;
+      }
+      case 2: {
+        pos_e_k[i] = pos_ref[i] - position[i];
+        vel_ref_k[i] = 0.5*pos_e_k[i];
+        //			vel_ref_k[i] = 0;
+        vel_e_k[i] = vel_ref_k[i] - velcake[i];
+        //if (sat[0] || sat[1] || sat[2] || sat[3] || sat_z)
+        //	 vel_e_k[i] = 0;
+        
+          u_z = -208.8*vel_e_k[i] + 198.2*vel_e_k1[i] + u_z;
+          // u_z = -121.3*vel_e_k[i] + 118.7*vel_e_k1[i] + u_z;
+          // u_z = -305.3*vel_e_k[i] + 294.8*vel_e_k1[i] + u_z;
+        // u_z = -200*vel_e_k[i];
+        sat_z = 0;
+        
+        if (u_z > UZ_MAX)
+        {
+          u_z = UZ_MAX;
+          sat_z = 1;
+        }
+        if (u_z < UZ_MIN)
+        {
+          u_z = UZ_MIN;
+          sat_z = 1;	
+        }
+        break;
+      }
+	  }
+  }
+  LED = 0x00;
+  
 	//------------Angular Controller-----------------//
 
 	if (u_k1[0] > U_MAX)
@@ -519,8 +530,6 @@ int CheckPackageArrival(void)
 
 void GetPackage(void)
 {
-	
-	//LED = 0xFF;
 	unsigned char dummy[18] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 	unsigned long parts[5] = { 0, 0, 0, 0, 0 };
 	unsigned long sum = 0;
@@ -629,7 +638,7 @@ void GetPackage(void)
 		//	flaag = 1;
 		//if (velcake[2] == 1.3)
 		//	counterold++;
-		LED = 0x00;
+		LED2 = 0x00;
 	}
 	return;
 } //GetPackage
