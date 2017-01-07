@@ -24,13 +24,13 @@ For the first case, the reliability, cumulative and probability functions for th
 \begin{flalign}
 	R_{\mathrm{n}}(t)&=R_1(t)R_2(t)=e^{-\lambda t}e^{-\lambda t}=e^{-2\lambda  t}\label{eq:reliabilitycase1} \\
 	F_{\mathrm{n}}(t)&=1-R_{\mathrm{n}}(t)=1-e^{-2\lambda t} \label{eq:cumulativecase1}  \\
-	f_{\mathrm{n}}(t)&={F^{\prime}}_{\mathrm{n}}=-2 \lambda e^{{-2\lambda t}} \label{eq:probabilitycase1}  
+	f_{\mathrm{n}}(t)&={F^{\prime}}_{\mathrm{n}}=2 \lambda e^{{-2\lambda t}} \label{eq:probabilitycase1}  
 \end{flalign}
 
 To find the probability of the network failing before the rest of the car does, a double integration is performed from 5 to 15 for and from 0 to $t_{\mathrm{c}}$, where $t_{\mathrm{c}}$ is the time in which the car fails. \autoref{eq:integralcase1} shows the performed computation.
 %
 \begin{flalign}
-	P(t_\mathrm{n}-t_\mathrm{c})&=\int_{5}^{15}\left[\int_{0}^{t_{\mathrm{c}}}f_{\mathrm{n}}(t)f_{\mathrm{c}}(t)dt_{\mathrm{n}}\right]dt_{\mathrm{c}}\label{eq:integralcase1}
+	P(t_\mathrm{n}\leq t_\mathrm{c})&=\int_{5}^{15}\left[\int_{0}^{t_{\mathrm{c}}}f_{\mathrm{n}}(t)f_{\mathrm{c}}(t)dt_{\mathrm{n}}\right]dt_{\mathrm{c}}\label{eq:integralcase1}
 \end{flalign}
 
 The result of this integral gave a probability of 0.0668 of the network failing before the rest of the car.
@@ -61,8 +61,8 @@ In the last case, both switches are duplicated. The structure is shown in \autor
 \begin{flalign}
 	R_{\mathrm{n}}(t)&=(R_1(t)+R_3(t)-R_1(t)R_2(t))(R_2(t)+R_4(t)-R_2(t)R_4(t))=\label{eq:reliabilitycase2b} \\
 			&\left(2e^{-\lambda t}-e^{-2\lambda  t}\right)\left(2e^{-\lambda t}-e^{-2\lambda  t}\right)=\left(4e^{-2\lambda t}-4e^{-3\lambda t}+e^{-4\lambda t}\right)\nonumber\\
-	F_{\mathrm{n}}(t)&=1-R_{\mathrm{n}}(t)=1-e^{-2\lambda t} \label{eq:cumulativecase2b}  \\
-	f_{\mathrm{n}}(t)&={F^{\prime}}_{\mathrm{n}}=-2 \lambda e^{{-2\lambda t}} \label{eq:probabilitycase2b}  
+	F_{\mathrm{n}}(t)&=1-R_{\mathrm{n}}(t)=1-4e^{-2\lambda t}+4e^{-3\lambda t}-e^{-4\lambda t} \label{eq:cumulativecase2b}  \\
+	f_{\mathrm{n}}(t)&={F^{\prime}}_{\mathrm{n}}=8 \lambda e^{{-2\lambda t}}-12 \lambda e^{{-3\lambda t}}+4\lambda e^{{-4\lambda t}}\label{eq:probabilitycase2b}  
 \end{flalign}
 
 The new probability density function is used to find the probability of the network failing before the car does in the same way as with the previous two cases. See \autoref{eq:integralcase1}. The result obtained for this case is 0.0025. 
