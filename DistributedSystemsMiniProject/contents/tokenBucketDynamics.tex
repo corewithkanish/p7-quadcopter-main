@@ -28,7 +28,7 @@ period, $\lambda$ is the arrival rate of packets to the filter.
 \begin{flalign}
 H=
 \begin{bmatrix}
-A_0 & A_1 & A_2 & A_3 & ... & ... & 1-\sum_{0}^{L-1}A_j  \\
+A_0 + A_1 & A_2 & A_3 & A_4 & ... & ... & 1-\sum_{0}^{L}A_j  \\
 A_0 & A_1 & A_2 & A_3 & ... & ... & 1-\sum_{0}^{L-1}A_j \\
 0   & A_0 & A_1 & A_2 & ... & ... & 1-\sum_{0}^{L-2}A_j \\
 0   & 0   & A_0 & A_1 & ... & ... & 1-\sum_{0}^{L-3}A_j \\
@@ -42,21 +42,27 @@ Once it is calculated it is possible to solve for $\Pi$ in \autoref{eq:pieq}
 The mean queue length, mean waiting time and packet loss probability are given by:
 %
 \begin{flalign}
-    \bar{Q}=\sum_{i=0}^{L} \Pi_i i \\
-    \bar{W}=\frac{\bar{Q}}{\lambda} \\
-    PLP=\Pi_L
+    \bar{Q}&=\sum_{i=0}^{L} \Pi_i i \\
+    \bar{W}&=\frac{\bar{Q}}{\lambda(1-PLP)} \\
+    PLP&=\Pi_L
 \end{flalign}
 
 \subsection{Rear Camera}
 The $H$ matrix in the case of the rear camera is $9\times9$ as the queue can hold a maximum of 8 packets. The mean queue length, mean waiting time and PLP is found following the procedure above.
-
+%
+\begin{flalign}
+    \bar{Q} &= 0.1635\ \mathrm{packets} \\
+    \bar{W} &= 0.0065\ \mathrm{s}\\
+    PLP &= 3.1616 \cdot 10^{-5}
+\end{flalign}
+%
 The estimated queue lengths and mean delay have been found using the TrueTime Simulation by averaging their values in a 50 seconds simulation. These are seen below.
 %
 \begin{flalign}
-	\bar{Q}=0.0391\ \mathrm{packets}  \nonumber\\
-	\bar{W}=0.00073\ \mathrm{s} \nonumber\\
-	Q_{\mathrm{max}}=5\ \mathrm{packets}  \nonumber\\
-	W_{\mathrm{max}}=0.0717\ \mathrm{s} \nonumber
+	\bar{Q}&=0.1490\ \mathrm{packets}  \nonumber\\
+	\bar{W}&=0.0026\ \mathrm{s} \nonumber\\
+	Q_{\mathrm{max}}&=8\ \mathrm{packets}  \nonumber\\
+	W_{\mathrm{max}}&=0.1312\ \mathrm{s} \nonumber
 \end{flalign}
 %
 The figures below show how the queue and the delay evolved in the simulation.
@@ -83,14 +89,20 @@ The figures below show how the queue and the delay evolved in the simulation.
 
 \subsection{Multimedia System}
 In the multimedia case, the $H$ matrix is $6\times6$ as the queue length is 5. The analytical values for the mean queue length, mean waiting time and PLP are found similarly as for the multimedia.
-
+%
+\begin{flalign}
+    \bar{Q} &= 0.1331 \ \mathrm{packets}\\
+    \bar{W} &= 0.0067 \ \mathrm{s}\\
+    PLP &= 1.4426 \cdot 10^{-4}
+\end{flalign}
+%
 The estimated queue lengths and mean delay have been found using the TrueTime Simulation following the same procedure as for the rear camera.
 %
 \begin{flalign}
-	\bar{Q}=0.1389\ \mathrm{packets}  \nonumber\\
-	\bar{W}=0.0032\ \mathrm{s} \nonumber\\
-	Q_{\mathrm{max}}=5\ \mathrm{packets}  \nonumber\\
-	W_{\mathrm{max}}=0.1\ \mathrm{s} \nonumber
+	\bar{Q}&=0.0763\ \mathrm{packets}  \nonumber\\
+	\bar{W}&=0.0019\ \mathrm{s} \nonumber\\
+	Q_{\mathrm{max}}&=5\ \mathrm{packets}  \nonumber\\
+	W_{\mathrm{max}}&=0.0999\ \mathrm{s} \nonumber
 \end{flalign}
 %
 The figures below show how the queue and the delay evolved in the simulation.
