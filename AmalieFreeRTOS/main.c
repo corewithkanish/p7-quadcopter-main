@@ -22,7 +22,6 @@ float u_k1[4];
 short reading;
 float y_k[3];
 xTaskHandle xHandle;
-//SemaphoreHandle_t xSemaphore = NULL;
 
 int nrOfSend = 10;
 
@@ -38,7 +37,6 @@ int main()
 	LED2 = 0x00;
 
 	// Task Creation
-	//xSemaphore = xSemaphoreCreateMutex();
 	xTaskCreate(Controllers, "Control", 1000, NULL, configMAX_PRIORITIES - 1, NULL );
 	xTaskCreate(Communication, "Com", 1000, NULL, configMAX_PRIORITIES - 2, &xHandle);
 
@@ -54,9 +52,11 @@ int main()
 	_delay_ms(1000);
 	int duty = 128;
 	Set_PWM_duty(duty, duty, duty, duty);
-	//_delay_ms(10000);
-	Set_PWM_duty(DUTY_INIT, DUTY_INIT, DUTY_INIT, DUTY_INIT);
-	_delay_ms(1000);
+	_delay_ms(10000);
+	//Set_PWM_duty(DUTY_INIT, DUTY_INIT, DUTY_INIT, DUTY_INIT);
+	//_delay_ms(1000);
+	//duty = (int)(EQU_SPEED * 0.1598 + 122.79);
+	//Set_PWM_duty(duty, duty, duty, duty);
 
 	//while (count<40)
 	//{
@@ -116,7 +116,7 @@ void Controllers(void *pvParameters)
 
 	while (1)
 	{
-		if (count<500)
+		if (count<1000)
 		{
 			//LED = 0xFF;
 			Controller();
@@ -127,20 +127,19 @@ void Controllers(void *pvParameters)
 		else
 		{
 			Set_PWM_duty(128, 128, 128, 128);
-      
-      if ( nrOfSend > 0 )
-      {
-        c_low=(char)(countercontrol & 0x00FF);
-        c_high = (char)((countercontrol & 0xFF00) >> 8);
-        USART_Transmit(c_high);
-        USART_Transmit(c_low);
-        c_low = (char)(counterold & 0x00FF);
-        c_high = (char)((counterold & 0xFF00) >> 8);
-        USART_Transmit(c_high);
-        USART_Transmit(c_low);
-        nrOfSend = nrOfSend-1;
-      }
-      count = 6000;
+			//if (nrOfSend > 0)
+			//{
+			//	c_low = (char)(countercontrol & 0x00FF);
+			//	c_high = (char)((countercontrol & 0xFF00) >> 8);
+			//	USART_Transmit(c_high);
+			//	USART_Transmit(c_low);
+			//	c_low = (char)(counterold & 0x00FF);
+			//	c_high = (char)((counterold & 0xFF00) >> 8);
+			//	USART_Transmit(c_high);
+			//	USART_Transmit(c_low);
+			//	nrOfSend = nrOfSend - 1;
+			//}
+			count = 6000;
 		}
 		if (reading)
 		{
@@ -162,7 +161,7 @@ void Communication(void *pvParameters)
 		int pack = 0;
 		pack = CheckPackageArrival();
 		if (pack)
-      GetPackage();
+			GetPackage();
 	}
 	vTaskDelete(NULL);
 }

@@ -13,7 +13,6 @@
 #define MAX_ANGLE 0.30
 #define MIN_ANGLE -0.30
 
-
 #define LENGTH 0.225
 #define H 0.422
 #define K 0.05

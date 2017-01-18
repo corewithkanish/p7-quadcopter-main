@@ -166,7 +166,7 @@ float oint_k1[3] = { 0.0, 0.0, 0.0 };
 float u_z = 0;
 float position[3] = { 0.0, 0.0, 0.0 };
 float pos_ref[3] = { 0.0, 0.0, 0.0 };
-float velcake[3] = { 0.0, 0.0, 10 };
+float velocity[3] = { 0.0, 0.0, 10 };
 float pos_e_k1[3] = { 0.0, 0.0, 0.0 };
 float vel_ref_k1[3] = { 0.0, 0.0, 0.0 };
 short sat[4] = { 0, 0, 0, 0 };
@@ -201,104 +201,102 @@ void Controller(void)
 	float e_k[3] = { 0.0, 0.0, 0.0 };
 	int i = 0;
 
-  //counterold = counterold+1;
-  //if (velcake[2] == 1.5)
-  // flaag = 0;
-  // if (counterold <= 50)
-  // flaag = 1;
-  
+	//counterold = counterold + 1;
+ // if (velocity[2] == 1.5)
+	//  flaag = 0;
+ // if (counterold <= 50)
+	//  flaag = 1;
+
 	//Code for acceptance test 2
 
-	if (velcake[2] < 1.5)
+	if (y_k[0] == 2.5)
 		countercontrol=countercontrol+1;
-  
-	if ((velcake[2] == vel_old) && (velcake[2] < 1.5))
+	if ((velocity[2] == vel_old) && (velocity[2] < 1.5))
 		counterold=counterold + 1;
 	else
-		vel_old = velcake[2];
+		vel_old = velocity[2];
 
 	//------------Translational Controller-----------------//
 	
-  LED = 0xFF;
-	for (i = 0; i < 3; i=i+1)
+	LED = 0xFF;
+	for (i = 0; i < 3; i = i + 1)
 	{
 		switch (i)
 		{
-      case 0: {
-        pos_e_k[i] = pos_ref[i] - position[i];
-        vel_ref_k[i] = 0.3*pos_e_k[i];
-        //vel_ref_k[i] = 0;
-        vel_e_k[i] = vel_ref_k[i] - velcake[i];
-        if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_pitch)
-          vel_e_k[i] = 0;
-        r_k[1] = -0.08*vel_e_k[i] + 0.08*vel_e_k1[i] + r_k[1];
-        //r_k[1] =- 0.5*vel_e_k[i];
-        sat_angle_roll = 0;
-        if (r_k[1] > MAX_ANGLE)
-        {
-          r_k[1] = MAX_ANGLE;
-          sat_angle_roll = 1;
-        }
-        if (r_k[1] < MIN_ANGLE)
-        {
-          r_k[1] = MIN_ANGLE;
-          sat_angle_roll = 1;
-        }
-        break;
-      }
-      case 1: {
-        pos_e_k[i] = pos_ref[i] - position[i];
-        vel_ref_k[i] = 0.3*pos_e_k[i];
-        //vel_ref_k[i] = 0;
-        vel_e_k[i] = vel_ref_k[i] - velcake[i];
-        if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_roll)
-          vel_e_k[i] = 0;
-        r_k[0] = 0.08*vel_e_k[i] - 0.08*vel_e_k1[i] + r_k[0];
-        //r_k[0] = 0.12*vel_e_k[i];
-        sat_angle_pitch = 0;
+		case 0: {
+			//pos_e_k[i] = pos_ref[i] - position[i];
+			//vel_ref_k[i] = 0.3*pos_e_k[i];
+			//vel_ref_k[i] = 0;
+			//vel_e_k[i] = vel_ref_k[i] - velocity[i];
+			//if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_pitch)
+			//	vel_e_k[i] = 0;
+			//r_k[1] = -0.08*vel_e_k[i] + 0.08*vel_e_k1[i] + r_k[1];
+			////r_k[1] =- 0.5*vel_e_k[i];
+			//sat_angle_roll = 0;
+			//if (r_k[1] > MAX_ANGLE)
+			//{
+			//	r_k[1] = MAX_ANGLE;
+			//	sat_angle_roll = 1;
+			//}
+			//if (r_k[1] < MIN_ANGLE)
+			//{
+			//	r_k[1] = MIN_ANGLE;
+			//	sat_angle_roll = 1;
+			//}
+			break;
+		}
+		case 1: {
+			//pos_e_k[i] = pos_ref[i] - position[i];
+			//vel_ref_k[i] = 0.3*pos_e_k[i];
+			//vel_ref_k[i] = 0;
+			//vel_e_k[i] = vel_ref_k[i] - velocity[i];
+			//if (sat[0] || sat[1] || sat[2] || sat[3] || sat_angle_roll)
+			//	vel_e_k[i] = 0;
+			//r_k[0] = 0.08*vel_e_k[i] - 0.08*vel_e_k1[i] + r_k[0];
+			////r_k[0] = 0.12*vel_e_k[i];
+			//sat_angle_pitch = 0;
 
-        if (r_k[0] > MAX_ANGLE)
-        {
-          r_k[0] = MAX_ANGLE;
-          sat_angle_pitch = 1;
-        }
-        if (r_k[0] < MIN_ANGLE)
-        {
-          r_k[0] = MIN_ANGLE;
-          sat_angle_pitch = 1;
-        }
-        break;
-      }
-      case 2: {
-        pos_e_k[i] = pos_ref[i] - position[i];
-        vel_ref_k[i] = 0.5*pos_e_k[i];
-        //			vel_ref_k[i] = 0;
-        vel_e_k[i] = vel_ref_k[i] - velcake[i];
-        //if (sat[0] || sat[1] || sat[2] || sat[3] || sat_z)
-        //	 vel_e_k[i] = 0;
-        
-          u_z = -208.8*vel_e_k[i] + 198.2*vel_e_k1[i] + u_z;
-          // u_z = -121.3*vel_e_k[i] + 118.7*vel_e_k1[i] + u_z;
-          // u_z = -305.3*vel_e_k[i] + 294.8*vel_e_k1[i] + u_z;
-        // u_z = -200*vel_e_k[i];
-        sat_z = 0;
-        
-        if (u_z > UZ_MAX)
-        {
-          u_z = UZ_MAX;
-          sat_z = 1;
-        }
-        if (u_z < UZ_MIN)
-        {
-          u_z = UZ_MIN;
-          sat_z = 1;	
-        }
-        break;
-      }
-	  }
-  }
-  LED = 0x00;
-  
+			//if (r_k[0] > MAX_ANGLE)
+			//{
+			//	r_k[0] = MAX_ANGLE;
+			//	sat_angle_pitch = 1;
+			//}
+			//if (r_k[0] < MIN_ANGLE)
+			//{
+			//	r_k[0] = MIN_ANGLE;
+			//	sat_angle_pitch = 1;
+			//}
+			break;
+		}
+		case 2: {
+			pos_e_k[i] = pos_ref[i] - position[i];
+			vel_ref_k[i] = 0.5*pos_e_k[i];
+			vel_ref_k[i] = 0;
+			vel_e_k[i] = vel_ref_k[i] - velocity[i];
+			if (sat[0] || sat[1] || sat[2] || sat[3] || sat_z)
+				 vel_e_k[i] = 0;
+			u_z = -208.8*vel_e_k[i] + 198.2*vel_e_k1[i] + u_z;
+			// u_z = -121.3*vel_e_k[i] + 118.7*vel_e_k1[i] + u_z;
+			// u_z = -305.3*vel_e_k[i] + 294.8*vel_e_k1[i] + u_z;
+			// u_z = -200*vel_e_k[i];
+			sat_z = 0;
+
+			if (u_z > UZ_MAX)
+			{
+				u_z = UZ_MAX;
+				sat_z = 1;
+			}
+			if (u_z < UZ_MIN)
+			{
+				u_z = UZ_MIN;
+				sat_z = 1;
+			}
+			break;
+		}
+		}
+	}
+	LED = 0x00;
+
 	//------------Angular Controller-----------------//
 
 	if (u_k1[0] > U_MAX)
@@ -392,7 +390,6 @@ void Controller(void)
 	vel_e_k1[0] = vel_e_k[0];
 	vel_e_k1[1] = vel_e_k[1];
 	vel_e_k1[2] = vel_e_k[2];
-
 	e_k1[0] = e_k[0];
 	e_k1[1] = e_k[1];
 	e_k1[2] = e_k[2];
@@ -409,6 +406,9 @@ void Controller(void)
 	x2_k1[0] = x2_k[0];
 	x2_k1[1] = x2_k[1];
 	x2_k1[2] = x2_k[2];
+
+	//USART_Transmit((char)r_k[0]);
+
 	return;
 } //Controller
 
@@ -427,7 +427,7 @@ void ApplyVelocities(void)
 	// Mix the needed rotational speeds for the motors
 	sum_u_k1 = u_k1[0] + u_k1[1] + u_k1[2] + u_k1[3];
 
-	add_z = (u_z - sum_u_k1) / 4.0;
+	add_z = 0; // (u_z - sum_u_k1) / 4.0;
 	
 	for (i = 0; i<4; i++)
 	{
@@ -616,27 +616,28 @@ void GetPackage(void)
 			sign = -1;
 		else
 			sign = 1;
-		velcake[0] = sign*(float)((((((int)dummy[11]) << 2) & 0x03FE) | ((dummy[12] >> 6) & 0x03))) / 100;
+		velocity[0] = sign*(float)((((((int)dummy[11]) << 2) & 0x03FE) | ((dummy[12] >> 6) & 0x03))) / 100;
 		//----------- ydot --------------
 		if (dummy[12] & 0x20)
 			sign = -1;
 		else
 			sign = 1;
-		velcake[1] = sign*(float)((((((int)dummy[12]) << 5) & 0x03E0) | ((dummy[13] >> 3) & 0x1F))) / 100;
+		velocity[1] = sign*(float)((((((int)dummy[12]) << 5) & 0x03E0) | ((dummy[13] >> 3) & 0x1F))) / 100;
 		//----------- zdot --------------
 		if (dummy[13] & 0x04)
 			sign = -1;
 		else
 			sign = 1;
-		velcake[2] = sign*(float)(((((int)dummy[13]) << 8) & 0x0300) | dummy[14])/100 ;
+		velocity[2] = sign*(float)(((((int)dummy[13]) << 8) & 0x0300) | dummy[14])/100 ;
+
 		//// Test code
-		//if (velcake[2] == 1.02)
+		//if (velocity[2] == 1.02)
 		//	USART_Transmit(dummy[1]);
 		//LED2 = 0x00;
 		//flaag = 0;
-		//if (velcake[2] < 9.99)
+		//if (velocity[2] < 9.99)
 		//	flaag = 1;
-		//if (velcake[2] == 1.3)
+		//if (velocity[2] == 1.3)
 		//	counterold++;
 		LED2 = 0x00;
 	}
