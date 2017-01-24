@@ -29,7 +29,7 @@ yaw_step=0;
 
 sim('TotalControllerSimOld.slx')
 
-FigHandle = figure('Position', [100, 100, 600, 375]);
+figure;%FigHandle = figure('Position', [100, 100, 600, 375]);
 plot(roll.Time, roll.Data, 'Color', '[0 0 1]','lineWidth', 1.2);
 hold on;
 plot(pitch.Time, pitch.Data, 'Color', '[0 1 0]','lineWidth', 1.2);
@@ -112,14 +112,14 @@ yaw_step=0;
 
 sim('TotalControllerSimOld.slx')
 
-FigHandle = figure('Position', [100, 100, 600, 375]);
+figure;%FigHandle = figure('Position', [100, 100, 600, 375]);
 plot(roll.Time, roll.Data, 'Color', '[0 0 1]','lineWidth', 1.2);
 hold on;
 %plot(pitch.Time, pitch.Data, 'Color', '[0 1 0]','lineWidth', 1.2);
 %plot(yaw.Time, yaw.Data, 'Color', '[1 0 0]','lineWidth', 1.2);
 grid on;
 grid minor;
-xlim([0 5])
+xlim([0 3])
 title('Step Response of the Attitude Controller in Roll','Fontsize',12);
 xlabel('Time [s]','Fontsize',12);
 ylabel('Angle [rad]','Fontsize',12);

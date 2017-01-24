@@ -19,7 +19,7 @@ clc
 run TotalController.m
 t=20;
 xdot_ref_time=0;
-xdot_ref_step=1;
+xdot_ref_step=0;
 ydot_ref_time=0;
 ydot_ref_step=0;
 zdot_ref_time=0;
@@ -138,10 +138,10 @@ run TotalController.m
 t=30;
 x_ref_time=0;
 x_ref_step=1;
-y_ref_time=2.5;
+y_ref_time=0;
 y_ref_step=0;
 z_ref_time=0;
-z_ref_step=1;
+z_ref_step=0;
 xdot_ref_time=0;
 xdot_ref_step=0;
 ydot_ref_time=0;

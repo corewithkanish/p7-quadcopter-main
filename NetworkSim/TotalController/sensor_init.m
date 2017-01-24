@@ -5,5 +5,5 @@ ttInitKernel('prioFP');  % scheduling policy - fixed priority
 
 % Periodic task, send information from the wheel
 starttime = 0.0;
-period = 0.035;      % 30 ms
+period = 0.025;      % 35 ms
 ttCreatePeriodicTask('sensor_task', starttime, period, 'sensor_code');
