@@ -52,7 +52,7 @@ all:	build upload clean
 	#$(COMPILE) -o $(FILENAME).elf $(FILENAME).o
 
 .c.o:
-	$(COMPILE) -c $< -o $@
+	$(COMPILE) -c $
 
 build:	
 	$(COMPILE) $(FOLDERS) $(SOURCES) -o $(FILENAME).elf
@@ -64,9 +64,9 @@ upload:
 	avrdude -v -p $(DEVICE) -c $(PROGRAMMER) -P $(PORT) -U flash:w:$(FILENAME).hex:i 
  
 clean:
-	rm -f $(FILENAME).o
-	rm -f $(FILENAME).elf
-	rm -f $(FILENAME).hex
+	rm -f $(FILENAME).o;
+	rm -f $(FILENAME).elf;
+	rm -f $(FILENAME).hex;
 	
 fuses:
 	avrdude -v -p $(DEVICE) -c $(PROGRAMMER) -P $(PORT) -U lfuse:w:0xff:m -U hfuse:w:0xD9:m 
