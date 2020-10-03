@@ -3,9 +3,9 @@
 #include <util/delay.h>
 #include <math.h>
 
-#include "functions.h"
+#include "functions.h";
 
-// Constant matrices
+// Constant matrice
 const float L[3] = { -11.0, -12.0, -13.0 };
 const float B1[4] = { 0.0, -0.2396, 0.0, 0.2396 };
 const float B2[4] = { 0.2396, 0.0, -0.2396, 0.0 };
@@ -44,7 +44,7 @@ const float B3[4] = { 0.0377, -0.0377, 0.0377, -0.0377 };
 //const float Fint2[3] = { 42.2050, 3.7624, 117.7448 };
 //const float Fint3[3] = { 5.5250, 44.9300, -117.8119 };
 //const float Fint4[3] = { -48.1748, -0.6977, 119.1898 };
-///////// Poles at [-2 - 2.2 - 2.3 - 2.4 - 2.5 - 2.6] [-2.7 - 2.8 - 2.9]
+///////// Poles at [-2 - 2.2 - 2.3 - 2.4 - 2.5 - 2.6] [-2.7 - 2.8 - 2.9];
 //const float F1[6] = { -6.1645, -35.6289, -120.4010, -1.2502, -14.9643, -48.9768 };
 //const float F2[6] = { 41.1283, -0.1739, 122.6740, 16.0823, -0.0301, 49.4355 };
 //const float F3[6] = { 0.0108, 42.6072, -123.5280, -0.0159, 16.3477, -49.5940 };
@@ -154,7 +154,7 @@ const float Fint4[3] = { -220.9709, 0.0000, 250.0000 };
 //const float Fint4[3] = { -117.8511, -0.0000, 166.6667 };
 
 
-// Initialization and definitions of variables
+// Initialization and definition of variables
 float u_k1[4] = { 0.0, 0.0, 0.0, 0.0 };
 float y_k[3] = { 0.0, 0.0, 0.0 };
 float r_k[3] = { 0.0, 0.0, 0.05 };
@@ -183,7 +183,7 @@ int count;
 // Code for acceptande test 2
 int counterold = 0;
 int countercontrol = 0;
-int flaag = 0;
+int flag = 0;
 
 
 //------------------------------- Controller Functions ----------------------//
